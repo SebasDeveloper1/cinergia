@@ -9,7 +9,7 @@
 @layer base {
   /* Set the background color for the entire body */
   body {
-    @apply bg-bgPrimaryDark;
+    @apply bg-bgPrimaryDark text-textColor-50;
   }
 
   /* Focus-visible styles for better accessibility */

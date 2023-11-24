@@ -1,8 +1,11 @@
-import Navbar from '@/containers/Navbar/Navbar';
+import Navbar from '@/containers/GlobalContainers/Navbar/Navbar';
 export default function Home() {
   return (
-    <main className="w-full bg-bgPrimaryDark text-white">
-      <Navbar />
-    </main>
+    <>
+      <header className="w-full">
+        <Navbar />
+      </header>
+      <main className="w-full"></main>
+    </>
   );
 }
