@@ -1,4 +1,4 @@
-import Navbar from '@/containers/GlobalContainers/Navbar/Navbar';
+import Navbar from './ui/containers/GlobalContainers/Navbar/Navbar';
 export default function Home() {
   return (
     <>

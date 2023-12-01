@@ -1,8 +1,8 @@
 'use client';
 import { useState, useRef, MouseEvent } from 'react';
-import InputSearch from '@/components/Inputs/InputSearch/InputSearch';
-import IconButton from '@/components/Buttons/IconButton/IconButton';
-import useOnClickOutside from '@/hooks/useOnClickOutside';
+import InputSearch from '@/app/ui/components/Inputs/InputSearch/InputSearch';
+import IconButton from '@/app/ui/components/Buttons/IconButton/IconButton';
+import useOnClickOutside from '@/app/lib/utils/hooks/useOnClickOutside';
 
 export default function NavbarSM(): JSX.Element {
   const [openSearch, setOpenSearch] = useState<boolean>(false);

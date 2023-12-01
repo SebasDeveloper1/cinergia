@@ -1,5 +1,5 @@
 import React from 'react';
-import IconButton from '@/components/Buttons/IconButton/IconButton';
+import IconButton from '../../Buttons/IconButton/IconButton';
 import { InputSearchProps } from '../Inputs.model';
 
 export default function InputSearch({

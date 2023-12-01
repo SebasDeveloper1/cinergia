@@ -1,4 +1,4 @@
-import InputSearch from '@/components/Inputs/InputSearch/InputSearch';
+import InputSearch from '@/app/ui/components/Inputs/InputSearch/InputSearch';
 
 export default function NavbarLG() {
   return (
