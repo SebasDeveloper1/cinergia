@@ -60,65 +60,71 @@
 
 @layer components {
   /* Heading styles */
-  .heading_1 {
+  .heading-1 {
     @apply text-5xl tracking-tight sm:text-6xl md:text-7xl xl:text-8xl;
   }
-  .heading_2 {
+  .heading-2 {
     @apply text-4xl tracking-tight sm:text-5xl;
   }
-  .heading_3 {
+  .heading-3 {
     @apply text-3xl tracking-tight sm:text-4xl;
   }
-  .heading_4 {
+  .heading-4 {
     @apply text-2xl tracking-tight sm:text-3xl;
   }
-  .heading_5 {
+  .heading-5 {
     @apply text-xl tracking-tight sm:text-2xl;
   }
-  .heading_6 {
+  .heading-6 {
     @apply text-lg tracking-tight sm:text-xl;
   }
 
   /* Paragraph styles */
-  .paragraph_xl {
+  .paragraph-xl {
     @apply text-xl tracking-tight;
   }
-  .paragraph_lg {
+  .paragraph-lg {
     @apply text-lg tracking-tight;
   }
-  .paragraph_base {
+  .paragraph-base {
     @apply text-base tracking-tight;
   }
-  .paragraph_sm {
+  .paragraph-sm {
     @apply text-sm tracking-tight;
   }
-  .paragraph_xs {
+  .paragraph-xs {
     @apply text-xs tracking-tight;
   }
 
   /* Span styles */
-  .span_xl {
+  .span-xl {
     @apply text-xl tracking-tight;
   }
-  .span_lg {
+  .span-lg {
     @apply text-lg tracking-tight;
   }
-  .span_base {
+  .span-base {
     @apply text-base tracking-tight;
   }
-  .span_sm {
+  .span-sm {
     @apply text-sm tracking-tight;
   }
-  .span_xs {
+  .span-xs {
     @apply text-xs tracking-tight;
   }
 
   /* Button styles */
   .button {
-    @apply inline-flex items-center justify-center gap-2 py-2 px-4 rounded-xl text-base font-semibold;
+    @apply inline-flex items-center justify-center gap-2 rounded-md text-base font-medium;
+  }
+  .padding-button {
+    @apply py-2 px-6;
+  }
+  .padding-icon {
+    @apply p-2;
   }
   .button-primary {
-    @apply button text-textColor-50 bg-primary-500 hover:bg-primary-400 transition-colors focus;
+    @apply button text-textColor-50 bg-primary-600 hover:bg-primary-700 transition-colors focus;
   }
   .button-secondary {
     @apply button text-textColor-50 bg-secondary-500 hover:bg-secondary-400 transition-colors focus;

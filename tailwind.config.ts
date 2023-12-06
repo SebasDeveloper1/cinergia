@@ -12,7 +12,8 @@ const config: Config = {
     extend: {
       colors: {
         primary: colors.blue,
-        secondary: colors.indigo,
+        secondary: colors.violet,
+        accent: colors.yellow,
         textColor: colors.slate,
         dark: colors.slate,
         bgPrimaryDark: colors.slate[950],

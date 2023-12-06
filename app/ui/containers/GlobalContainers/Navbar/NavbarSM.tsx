@@ -1,8 +1,7 @@
 'use client';
 import { useState, useRef, MouseEvent } from 'react';
 import InputSearch from '@/app/ui/components/Inputs/InputSearch/InputSearch';
-import IconButton from '@/app/ui/components/Buttons/IconButton/IconButton';
-import useOnClickOutside from '@/app/lib/utils/hooks/useOnClickOutside';
+import useOnClickOutside from '@/app/lib/hooks/useOnClickOutside';
 
 export default function NavbarSM(): JSX.Element {
   const [openSearch, setOpenSearch] = useState<boolean>(false);
@@ -25,16 +24,17 @@ export default function NavbarSM(): JSX.Element {
     setOpenSearch(false);
   });
   return (
-    <section ref={menuRef} className="lg:hidden">
-      <IconButton
-        variant={'text'}
+    <section ref={menuRef} className="lg:hidden z-50 flex gap-2">
+      <button
+        className="button-text padding-icon"
         title="Buscar"
         aria-label="Search"
         onClick={(e) => handleSearch(e)}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="h-5 w-5"
+          width={24}
+          height={24}
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -46,15 +46,14 @@ export default function NavbarSM(): JSX.Element {
             d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
           />
         </svg>
-      </IconButton>
-      <IconButton
+      </button>
+      <button
         type="button"
-        variant={'text'}
-        title={!openMenu ? 'Menu' : 'Cerrar'}
-        aria-label="Menu"
-        styles={`transition-all duration-300 transform ${
+        className={`button-text padding-icon transition-all duration-300 transform ${
           openMenu ? 'rotate-90' : ''
         }`}
+        title={!openMenu ? 'Menu' : 'Cerrar'}
+        aria-label="Menu"
         onClick={handleMenu}
       >
         {!openMenu ? (
@@ -82,29 +81,29 @@ export default function NavbarSM(): JSX.Element {
             width="24"
             height="24"
             viewBox="0 0 24 24"
-            stroke-width="2"
+            strokeWidth="2"
             stroke="currentColor"
             fill="none"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           >
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <path d="M18 6l-12 12" />
             <path d="M6 6l12 12" />
           </svg>
         )}
-      </IconButton>
+      </button>
       <article
         aria-hidden={!openSearch}
         aria-live="assertive"
-        className={`absolute inset-0 bg-gray-900 p-2 transform transition-all ${
+        className={`absolute inset-0 flex justify-center items-center bg-gray-900 p-2 transform transition-all ${
           !openSearch ? '-translate-y-[110%]' : ''
         }`}
       >
         <div className="flex justify-center items-center gap-2 w-full">
           <InputSearch variant="SM" />
-          <IconButton
-            variant={'text'}
+          <button
+            className="button-text padding-icon"
             title="Cerrar búsqueda"
             aria-label="Cerrar búsqueda"
             onClick={(e) => handleSearch(e)}
@@ -115,17 +114,17 @@ export default function NavbarSM(): JSX.Element {
               width="24"
               height="24"
               viewBox="0 0 24 24"
-              stroke-width="2"
+              strokeWidth="2"
               stroke="currentColor"
               fill="none"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             >
               <path stroke="none" d="M0 0h24v24H0z" fill="none" />
               <path d="M18 6l-12 12" />
               <path d="M6 6l12 12" />
             </svg>
-          </IconButton>
+          </button>
         </div>
       </article>
       <article
@@ -144,11 +143,11 @@ export default function NavbarSM(): JSX.Element {
                   width="24"
                   height="24"
                   viewBox="0 0 24 24"
-                  stroke-width="2"
+                  strokeWidth="2"
                   stroke="currentColor"
                   fill="none"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 >
                   <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                   <path d="M5 12l-2 0l9 -9l9 9l-2 0" />
@@ -166,11 +165,11 @@ export default function NavbarSM(): JSX.Element {
                   width="24"
                   height="24"
                   viewBox="0 0 24 24"
-                  stroke-width="2"
+                  strokeWidth="2"
                   stroke="currentColor"
                   fill="none"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 >
                   <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                   <path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" />
