@@ -31,16 +31,16 @@ export default function HeroCard({
 
   return (
     <section
-      className="w-full min-h-[80vh] bg-cover bg-center "
+      className="w-full min-h-[100vh] bg-cover bg-center "
       style={{
         backgroundImage: `url('https://image.tmdb.org/t/p/${widthBackdropMovie}/${backdrop_path}')`,
       }}
       data-src="dfjh"
     >
-      <div className="w-full min-h-[80vh] py-5 lg:py-10  flex items-center justify-center bg-gradient-to-t from-bgPrimaryDark via-bgPrimaryDark/70 to-transparent">
+      <div className="w-full min-h-[100vh] py-5 lg:py-10  flex items-center justify-center bg-gradient-to-t from-bgPrimaryDark via-bgPrimaryDark/70 to-transparent">
         <div className="flex flex-col justify-center gap-8 w-11/12 md:w-9/12 h-full mb-12">
           <div className="w-full">
-            <span className="span-sm px-2.5 py-0.5 rounded-full bg-secondary-600 text-secondary-50 font-medium">
+            <span className="span-sm px-2.5 py-0.5 rounded-md bg-secondary-600/50 text-secondary-50 font-medium">
               {'Película'}
             </span>
             <h2 className="heading-2 font-extrabold text-primary-50">

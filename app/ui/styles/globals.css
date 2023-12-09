@@ -130,10 +130,10 @@
     @apply button text-textColor-50 bg-secondary-500 hover:bg-secondary-400 transition-colors focus;
   }
   .button-tertiary {
-    @apply button text-gray-900 bg-white hover:bg-blue-50 transition-colors focus;
+    @apply button text-primary-950 font-medium bg-primary-50 hover:bg-primary-100 transition-colors focus;
   }
   .button-outlined {
-    @apply button ring-1 ring-inset text-dark-400 ring-white/10 hover:bg-white/5 hover:text-white transition-colors focus;
+    @apply button ring-1 ring-inset text-dark-100 bg-dark-900/30 ring-white/10 hover:bg-white/5 hover:text-white transition-colors focus;
   }
   .button-text {
     @apply button transition-colors focus text-dark-300 hover:text-dark-50 hover:bg-dark-50/10;
