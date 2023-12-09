@@ -51,14 +51,14 @@ export default function ExclusiveSectionCard({
             {/* Exclusive badge */}
             <div className="w-full">
               <span className="relative px-5 py-2.5 rounded-md bg-dark-500/30">
-                <span className="absolute -top-1 -right-1 ">
-                  <span className="relative flex h-3 w-3">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75" />
-                    <span className="relative inline-flex rounded-full h-3 w-3 bg-sky-500" />
+                <span className="absolute -top-2 -right-2 ">
+                  <span className="relative flex w-4 aspect-square">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
+                    <span className="relative inline-flex rounded-full w-4 aspect-square bg-green-500" />
                   </span>
                 </span>
                 <span className="span-xl text-primary-50 font-semibold">
-                  {'Exclusive'}
+                  {'Exclusiva'}
                 </span>
               </span>
 
@@ -69,7 +69,7 @@ export default function ExclusiveSectionCard({
             </div>
 
             {/* Production company name */}
-            <span className="span-xl text-primary-50 font-medium">
+            <span className="span-xl text-white font-medium">
               {production_companies[0].name}
             </span>
 
@@ -86,7 +86,7 @@ export default function ExclusiveSectionCard({
               className="button-primary padding-button w-full md:w-fit"
               onClick={() => console.log('hello world')}
             >
-              Watch Movie
+              Ver Película
             </button>
 
             {/* "Ver exclusivas" button */}
@@ -94,7 +94,7 @@ export default function ExclusiveSectionCard({
               className="button-outlined padding-button w-full md:w-fit"
               onClick={() => console.log('hello world')}
             >
-              View Exclusives
+              Ver Exclusivas
             </button>
           </div>
         </div>

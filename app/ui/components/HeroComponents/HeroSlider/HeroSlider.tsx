@@ -20,7 +20,7 @@ export default function HeroSlider({
     '--swiper-pagination-bullet-inactive-color': '#ffffff',
   };
   return (
-    <>
+    <div className="pb-16">
       <Swiper
         loop={true}
         pagination={{
@@ -38,6 +38,6 @@ export default function HeroSlider({
           </SwiperSlide>
         ))}
       </Swiper>
-    </>
+    </div>
   );
 }

@@ -35,15 +35,14 @@ export default function HeroCard({
       style={{
         backgroundImage: `url('https://image.tmdb.org/t/p/${widthBackdropMovie}/${backdrop_path}')`,
       }}
-      data-src="dfjh"
     >
-      <div className="w-full min-h-[100vh] py-5 lg:py-10  flex items-center justify-center bg-gradient-to-t from-bgPrimaryDark via-bgPrimaryDark/70 to-transparent">
+      <div className="w-full min-h-[100vh] py-12 flex justify-center items-end bg-gradient-to-t from-bgPrimaryDark via-bgPrimaryDark/70 to-transparent">
         <div className="flex flex-col justify-center gap-8 w-11/12 md:w-9/12 h-full mb-12">
-          <div className="w-full">
-            <span className="span-sm px-2.5 py-0.5 rounded-md bg-secondary-600/50 text-secondary-50 font-medium">
+          <div className="w-full h-auto">
+            <span className="span-sm px-3 py-1 rounded-full bg-dark-500/30 text-secondary-50 font-medium">
               {'Película'}
             </span>
-            <h2 className="heading-2 font-extrabold text-primary-50">
+            <h2 className="heading-2 font-extrabold text-primary-50 mt-2">
               {title}
             </h2>
             <div className="flex gap-2 w-fit span-lg text-primary-100">
@@ -53,7 +52,7 @@ export default function HeroCard({
               </span>
             </div>
           </div>
-          <p className="paragraph-lg line-clamp-5 lg:line-clamp-none font-normal text-primary-100">
+          <p className="paragraph-lg line-clamp-5 lg:line-clamp-none font-normal text-primary-200">
             {overview}
           </p>
           <button
