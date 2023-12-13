@@ -1,0 +1,6 @@
+export interface ButtonStyleType extends React.CSSProperties {
+  '--swiper-navigation-size'?: string;
+  '--swiper-navigation-top-offset'?: string;
+  '--swiper-navigation-sides-offset'?: string;
+  '--swiper-navigation-color'?: string;
+}

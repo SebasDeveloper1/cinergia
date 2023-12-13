@@ -1,6 +1,7 @@
 import Navbar from './ui/containers/GlobalContainers/Navbar/Navbar';
 import ExclusiveSection from './ui/containers/HomeContainers/ExclusiveSection/ExclusiveSection';
 import Hero from './ui/containers/HomeContainers/Hero/Hero';
+import TrendSection from './ui/containers/HomeContainers/TrendSection/TrendSection';
 export default function Home() {
   return (
     <>
@@ -10,6 +11,7 @@ export default function Home() {
       <main className="w-full">
         <Hero />
         <ExclusiveSection />
+        <TrendSection />
       </main>
     </>
   );

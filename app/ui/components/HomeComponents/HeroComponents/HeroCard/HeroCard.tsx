@@ -37,7 +37,7 @@ export default function HeroCard({
       }}
     >
       <div className="w-full min-h-[100vh] py-12 flex justify-center items-end bg-gradient-to-t from-bgPrimaryDark via-bgPrimaryDark/70 to-transparent">
-        <div className="flex flex-col justify-center gap-8 w-11/12 md:w-9/12 h-full mb-12">
+        <div className="flex flex-col justify-center gap-8 w-11/12 md:w-10/12 h-full mb-12">
           <div className="w-full h-auto">
             <span className="span-sm px-3 py-1 rounded-full bg-dark-500/30 text-secondary-50 font-medium">
               {'Película'}
