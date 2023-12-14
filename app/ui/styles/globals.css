@@ -136,7 +136,7 @@
     @apply button ring-1 ring-inset text-dark-100 bg-dark-900/30 ring-white/10 hover:bg-white/5 hover:text-white transition-colors focus;
   }
   .button-text {
-    @apply button transition-colors focus text-dark-300 hover:text-dark-50 hover:bg-dark-50/10;
+    @apply button transition-colors focus text-dark-300 hover:text-dark-50 hover:bg-white/5;
   }
 
   /* Navbar item styles */
