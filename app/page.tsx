@@ -5,6 +5,7 @@ import Hero from './ui/containers/HomeContainers/Hero/Hero';
 import MyListSection from './ui/containers/HomeContainers/MyListSection/MyListSection';
 import NewsSection from './ui/containers/HomeContainers/NewsSection/NewsSection';
 import TrendSection from './ui/containers/HomeContainers/TrendSection/TrendSection';
+import EventBannerSection from './ui/containers/HomeContainers/EventBannerSection/EventBannerSection';
 
 /**
  * Home Component
@@ -43,6 +44,9 @@ export default function Home() {
 
         {/* ShortFilmsBannerSection component */}
         <ShortFilmsBannerSection />
+
+        {/* EventBannerSection component */}
+        <EventBannerSection />
       </main>
     </>
   );
