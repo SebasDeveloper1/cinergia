@@ -16,7 +16,7 @@ export default async function TrendSection(): Promise<JSX.Element> {
 
   // Return the JSX element with the HorizontalMovieListPrimary component
   return (
-    <section className="flex justify-center items-center w-full pt-4 pb-12 bg-bgPrimaryDark">
+    <section className="flex justify-center items-center w-full pb-16 bg-bgPrimaryDark">
       <HorizontalMovieListPrimary
         title="Tendencias"
         path="/"

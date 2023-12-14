@@ -3,13 +3,6 @@ enum MediaType {
   Tv = 'tv',
 }
 
-enum OriginalLanguage {
-  En = 'en',
-  Hi = 'hi',
-  Ja = 'ja',
-  Ko = 'ko',
-}
-
 interface DataType {
   page: number;
   results: TrendingMovieType[];
@@ -22,7 +15,7 @@ interface TrendingMovieType {
   backdrop_path: string;
   id: number;
   title?: string;
-  original_language: OriginalLanguage;
+  original_language: string;
   original_title?: string;
   overview: string;
   poster_path: string;
@@ -39,32 +32,19 @@ interface TrendingMovieType {
   origin_country?: string[];
 }
 
-interface MovieType {
-  adult: boolean;
-  backdrop_path: string;
+interface MovieType extends TrendingMovieType {
   belongs_to_collection: null;
   budget: number;
   genres: Genre[];
   homepage: string;
-  id: number;
   imdb_id: string;
-  original_language: string;
-  original_title: string;
-  overview: string;
-  popularity: number;
-  poster_path: string;
   production_companies: ProductionCompany[];
   production_countries: ProductionCountry[];
-  release_date: Date;
   revenue: number;
   runtime: number;
   spoken_languages: SpokenLanguage[];
   status: string;
   tagline: string;
-  title: string;
-  video: boolean;
-  vote_average: number;
-  vote_count: number;
 }
 
 interface Genre {
