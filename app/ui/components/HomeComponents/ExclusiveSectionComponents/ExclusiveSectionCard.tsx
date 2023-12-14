@@ -1,7 +1,6 @@
 'use client';
 // Import necessary dependencies and types
 import { useState, useEffect } from 'react';
-import { MovieType } from '@/app/ui/containers/HomeContainers/Hero/Hero.model';
 
 // Define and export the ExclusiveSectionCard component
 export default function ExclusiveSectionCard({

@@ -1,7 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
 import convertMinutesToHours from '@/app/lib/utils/convertMinutesToHours';
-import { MovieType } from '@/app/ui/containers/HomeContainers/Hero/Hero.model';
 
 export default function HeroCard({
   movieData,

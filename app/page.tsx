@@ -10,8 +10,8 @@ export default function Home() {
       </header>
       <main className="w-full">
         <Hero />
-        <ExclusiveSection />
         <TrendSection />
+        <ExclusiveSection />
       </main>
     </>
   );

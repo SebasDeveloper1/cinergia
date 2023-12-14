@@ -7,7 +7,6 @@ import 'swiper/css/pagination';
 // import required modules
 import { Pagination, Autoplay } from 'swiper/modules';
 import HeroCard from '@/app/ui/components/HomeComponents/HeroComponents/HeroCard/HeroCard';
-import { MovieType } from '@/app/ui/containers/HomeContainers/Hero/Hero.model';
 import { BulletStyleType } from './HeroSlider.model';
 
 export default function HeroSlider({

@@ -1,8 +1,23 @@
+.swiper {
+  user-select: none;
+}
 /* Initial styles with opacity set to 0 and transition effect */
 .swiper-button-next,
 .swiper-button-prev {
-  opacity: 0;
+  top: 0;
+  bottom: 0;
+  height: auto;
+  padding-inline: 1.5rem;
+  opacity: 1;
   transition: opacity 0.3s ease-in-out;
+}
+
+.swiper-button-prev {
+  background: linear-gradient(to right, #020617, transparent);
+}
+
+.swiper-button-next {
+  background: linear-gradient(to left, #020617, transparent);
 }
 
 /* When hovering over .horizontalSlider, set opacity to 1 */
