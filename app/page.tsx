@@ -1,4 +1,5 @@
 import Navbar from './ui/containers/GlobalContainers/Navbar/Navbar';
+import ShortFilmsBannerSection from './ui/containers/HomeContainers/ShortFilmsBannerSection/ShortFilmsBannerSection';
 import ExclusiveSection from './ui/containers/HomeContainers/ExclusiveSection/ExclusiveSection';
 import Hero from './ui/containers/HomeContainers/Hero/Hero';
 import MyListSection from './ui/containers/HomeContainers/MyListSection/MyListSection';
@@ -39,6 +40,9 @@ export default function Home() {
 
         {/* NewsSection component */}
         <NewsSection />
+
+        {/* ShortFilmsBannerSection component */}
+        <ShortFilmsBannerSection />
       </main>
     </>
   );
