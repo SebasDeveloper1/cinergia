@@ -2,6 +2,7 @@ import Navbar from './ui/containers/GlobalContainers/Navbar/Navbar';
 import ExclusiveSection from './ui/containers/HomeContainers/ExclusiveSection/ExclusiveSection';
 import Hero from './ui/containers/HomeContainers/Hero/Hero';
 import MyListSection from './ui/containers/HomeContainers/MyListSection/MyListSection';
+import NewsSection from './ui/containers/HomeContainers/NewsSection/NewsSection';
 import TrendSection from './ui/containers/HomeContainers/TrendSection/TrendSection';
 
 /**
@@ -35,6 +36,9 @@ export default function Home() {
 
         {/* ExclusiveSection component */}
         <ExclusiveSection />
+
+        {/* NewsSection component */}
+        <NewsSection />
       </main>
     </>
   );

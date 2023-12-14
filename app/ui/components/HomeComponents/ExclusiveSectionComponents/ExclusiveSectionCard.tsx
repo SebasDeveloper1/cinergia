@@ -82,7 +82,7 @@ export default function ExclusiveSectionCard({
           <div className="flex flex-col md:flex-row gap-4 justify-start items-center w-full">
             {/* "Ver película" button */}
             <button
-              className="button-primary padding-button w-full md:w-fit"
+              className="button-secondary padding-button w-full md:w-fit"
               onClick={() => console.log('hello world')}
             >
               Ver Película

@@ -20,22 +20,21 @@ import MovieCard from '../../Cards/MovieCard/MovieCard';
  */
 export default function HorizontalSlider({
   movieList,
+  breakpoints,
 }: {
   movieList: TrendingMovieType[] | MovieType[];
+
+  breakpoints: {
+    [key: number]: {
+      slidesPerView: number;
+    };
+  };
 }): JSX.Element {
   // Button styles for Swiper navigation
   const buttonStyle: ButtonStyleType = {
     '--swiper-navigation-size': '2rem',
     '--swiper-navigation-color': '#ffffff',
     '--swiper-navigation-sides-offset': '0',
-  };
-
-  // Responsive breakpoints for the number of slides per view
-  const breakpoints = {
-    320: { slidesPerView: 2 },
-    480: { slidesPerView: 3 },
-    768: { slidesPerView: 4 },
-    1536: { slidesPerView: 5 },
   };
 
   return (

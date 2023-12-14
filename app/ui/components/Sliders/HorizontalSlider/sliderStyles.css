@@ -8,16 +8,13 @@
   bottom: 0;
   height: auto;
   padding-inline: 1.5rem;
-  opacity: 1;
+  opacity: 0;
   transition: opacity 0.3s ease-in-out;
 }
-
-.swiper-button-prev {
-  background: linear-gradient(to right, #020617, transparent);
-}
-
+.swiper-button-prev,
 .swiper-button-next {
-  background: linear-gradient(to left, #020617, transparent);
+  backdrop-filter: blur(4px);
+  background-color: rgba(2, 6, 23, 0.3);
 }
 
 /* When hovering over .horizontalSlider, set opacity to 1 */
