@@ -2,6 +2,7 @@
 // Import necessary dependencies and types
 import { useState, useEffect } from 'react';
 import HorizontalSlider from '../HorizontalSlider/HorizontalSlider';
+import BannerSliderMovieSkeleton from './BannerSliderMovieSkeleton';
 /**
  * BannerSliderMovie Component
  *
@@ -24,9 +25,18 @@ export default function BannerSliderMovie({
 
   // Set up state for the width of the movie backdrop image
   const [widthBackdropMovie, setWidthBackdropMovie] = useState<string>('w780');
+  // State to manage loading status
+  const [loading, setLoading] = useState(true);
 
   // Construct the background image URL using the backdrop path and width
   const backgroundImageUrl = `url('https://image.tmdb.org/t/p/${widthBackdropMovie}/${backdrop_path}')`;
+
+  // Simulating loading delay with a timeout
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+  }, []);
 
   // Effect hook to handle window resize events and update the backdrop width accordingly
   useEffect(() => {
@@ -46,6 +56,11 @@ export default function BannerSliderMovie({
       window.removeEventListener('resize', handleResize);
     };
   }, []);
+
+  // Render skeleton loader while loading
+  if (loading) {
+    return <BannerSliderMovieSkeleton />;
+  }
 
   // Render the JSX for the BannerSliderMovie component
   return (
