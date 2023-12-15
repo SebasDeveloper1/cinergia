@@ -47,7 +47,8 @@ export default function HeroCard({
             <div className="flex gap-2 w-fit span-lg text-primary-100">
               <span>{convertMinutesToHours(runtime)}</span>
               <span className="before:content-['•'] before:mr-2">
-                {new Date(release_date).getFullYear()}
+                {release_date !== undefined &&
+                  new Date(release_date).getFullYear()}
               </span>
             </div>
           </div>
