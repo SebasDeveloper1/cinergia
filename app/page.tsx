@@ -2,11 +2,12 @@ import Navbar from './ui/containers/GlobalContainers/Navbar/Navbar';
 import ShortFilmsBannerSection from './ui/containers/HomeContainers/ShortFilmsBannerSection/ShortFilmsBannerSection';
 import ExclusiveSection from './ui/containers/HomeContainers/ExclusiveSection/ExclusiveSection';
 import Hero from './ui/containers/HomeContainers/Hero/Hero';
-import MyListSection from './ui/containers/HomeContainers/MyListSection/MyListSection';
+// import MyListSection from './ui/containers/HomeContainers/MyListSection/MyListSection';
 import NewsSection from './ui/containers/HomeContainers/NewsSection/NewsSection';
 import TrendSection from './ui/containers/HomeContainers/TrendSection/TrendSection';
 import EventBannerSection from './ui/containers/HomeContainers/EventBannerSection/EventBannerSection';
 import WeekMovieSection from './ui/containers/HomeContainers/WeekMovieSection/WeekMovieSection';
+import Footer from './ui/containers/GlobalContainers/Footer/Footer';
 
 /**
  * Home Component
@@ -32,7 +33,7 @@ export default function Home() {
         <Hero />
 
         {/* MyListSection component added */}
-        <MyListSection />
+        {/* <MyListSection /> */}
 
         {/* TrendSection component */}
         <TrendSection />
@@ -51,6 +52,9 @@ export default function Home() {
 
         {/* WeekMovieSection component */}
         <WeekMovieSection />
+
+        {/* Footer component */}
+        <Footer />
       </main>
     </>
   );
