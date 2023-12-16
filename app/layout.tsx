@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import '@/app/ui/styles/globals.css';
+import Navbar from './ui/containers/GlobalContainers/Navbar/Navbar';
+import Footer from './ui/containers/GlobalContainers/Footer/Footer';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -16,7 +18,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" data-theme="cinergia">
-      <body className={`${inter.className} antialiased`}>{children}</body>
+      <body className={`${inter.className} antialiased`}>
+        {/*header with navigation bar */}
+        <header className="fixed top-0 inset-x-0 z-50 w-full">
+          <Navbar />
+        </header>
+        {children}
+        {/* Footer component */}
+        <Footer />
+      </body>
     </html>
   );
 }

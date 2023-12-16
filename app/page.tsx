@@ -1,13 +1,11 @@
-import Navbar from './ui/containers/GlobalContainers/Navbar/Navbar';
-import ShortFilmsBannerSection from './ui/containers/HomeContainers/ShortFilmsBannerSection/ShortFilmsBannerSection';
-import ExclusiveSection from './ui/containers/HomeContainers/ExclusiveSection/ExclusiveSection';
 import Hero from './ui/containers/HomeContainers/Hero/Hero';
-// import MyListSection from './ui/containers/HomeContainers/MyListSection/MyListSection';
-import NewsSection from './ui/containers/HomeContainers/NewsSection/NewsSection';
 import TrendSection from './ui/containers/HomeContainers/TrendSection/TrendSection';
+import ExclusiveSection from './ui/containers/HomeContainers/ExclusiveSection/ExclusiveSection';
+import NewsSection from './ui/containers/HomeContainers/NewsSection/NewsSection';
+import ShortFilmsBannerSection from './ui/containers/HomeContainers/ShortFilmsBannerSection/ShortFilmsBannerSection';
 import EventBannerSection from './ui/containers/HomeContainers/EventBannerSection/EventBannerSection';
 import WeekMovieSection from './ui/containers/HomeContainers/WeekMovieSection/WeekMovieSection';
-import Footer from './ui/containers/GlobalContainers/Footer/Footer';
+// import MyListSection from './ui/containers/HomeContainers/MyListSection/MyListSection';
 
 /**
  * Home Component
@@ -22,11 +20,6 @@ import Footer from './ui/containers/GlobalContainers/Footer/Footer';
 export default function Home() {
   return (
     <>
-      {/* Fixed header with navigation bar */}
-      <header className="fixed top-0 inset-x-0 z-50 w-full">
-        <Navbar />
-      </header>
-
       {/* Main content area */}
       <main className="w-full">
         {/* Hero section */}
@@ -52,9 +45,6 @@ export default function Home() {
 
         {/* WeekMovieSection component */}
         <WeekMovieSection />
-
-        {/* Footer component */}
-        <Footer />
       </main>
     </>
   );
