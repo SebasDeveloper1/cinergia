@@ -1,13 +1,12 @@
 'use client';
 // Import necessary dependencies and types
 import { useState, useEffect } from 'react';
+import { ExclusiveSectionCardPropsTypes } from './ExclusiveSectionCard.model';
 
 // Define and export the ExclusiveSectionCard component
 export default function ExclusiveSectionCard({
   movieData,
-}: {
-  movieData: MovieType;
-}): JSX.Element {
+}: ExclusiveSectionCardPropsTypes): JSX.Element {
   // Destructure movieData to extract relevant information
   const { backdrop_path, title, overview, production_companies } = movieData;
 

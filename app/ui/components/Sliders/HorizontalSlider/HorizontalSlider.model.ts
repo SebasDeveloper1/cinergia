@@ -4,3 +4,13 @@ export interface ButtonStyleType extends React.CSSProperties {
   '--swiper-navigation-sides-offset'?: string;
   '--swiper-navigation-color'?: string;
 }
+
+export interface HorizontalSliderPropsTypes {
+  movieList: TrendingMovieType[] | MovieType[];
+
+  breakpoints: {
+    [key: number]: {
+      slidesPerView: number;
+    };
+  };
+}

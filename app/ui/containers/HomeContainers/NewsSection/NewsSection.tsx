@@ -12,7 +12,7 @@ import HorizontalMovieListSecondary from '../../GlobalContainers/GenericList/Hor
 // Define the NewsSection component as an asynchronous function
 export default async function NewsSection(): Promise<JSX.Element> {
   // Fetch trending movies using the fetchTrending function
-  const { results: trendingResults }: { results: TrendingMovieType[] } =
+  const { results: trendingResults }: ResultsTrendingTypes =
     await fetchTrending();
 
   // Return the JSX element with the HorizontalMovieListSecondary component

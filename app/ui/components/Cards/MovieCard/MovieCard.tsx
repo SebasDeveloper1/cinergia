@@ -1,6 +1,7 @@
 'use client';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
+import { MovieCardPropsTypes } from './MovieCard.model';
 
 /**
  * MovieCard Component
@@ -12,11 +13,7 @@ import { useState, useEffect } from 'react';
  * @param {MovieType | TrendingMovieType} props.movieData - An object containing movie data, either of type MovieType or TrendingMovieType.
  * @returns {JSX.Element} - JSX element representing the MovieCard component.
  */
-export default function MovieCard({
-  movieData,
-}: {
-  movieData: MovieType | TrendingMovieType;
-}) {
+export default function MovieCard({ movieData }: MovieCardPropsTypes) {
   // Extracting movie data properties
   const { title, backdrop_path, release_date } = movieData;
 

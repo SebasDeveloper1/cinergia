@@ -1,7 +1,7 @@
 'use client';
 import HorizontalSlider from '@/app/ui/components/Sliders/HorizontalSlider/HorizontalSlider';
 import { useEffect, useState } from 'react';
-import { HorizontalMovieListTypes } from '../HorizontalMovieList.model';
+import { HorizontalMovieListSecondaryTypes } from '../HorizontalMovieList.model';
 import HorizontalMovieListSecondarySkeleton from './HorizontalMovieListSecondarySkeleton';
 
 /**
@@ -23,7 +23,7 @@ export default function HorizontalMovieListSecondary({
   path,
   movieList,
   ...props
-}: HorizontalMovieListTypes): JSX.Element {
+}: HorizontalMovieListSecondaryTypes): JSX.Element {
   // State to manage loading status
   const [loading, setLoading] = useState(true);
 

@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import HorizontalSlider from '../HorizontalSlider/HorizontalSlider';
 import EventBannerSliderSkeleton from './EventBannerSliderSkeleton';
+import { EventBannerSliderPropsTypes } from './EventBannerSlider.model';
 
 /**
  * EventBannerSlider Component
@@ -24,13 +25,7 @@ export default function EventBannerSlider({
   eventDescription,
   backgroundImageUrl,
   movieList,
-}: {
-  eventTitle: string;
-  eventDate?: string;
-  backgroundImageUrl: string;
-  eventDescription: string;
-  movieList: TrendingMovieType[];
-}): JSX.Element {
+}: EventBannerSliderPropsTypes): JSX.Element {
   // State to manage loading status
   const [loading, setLoading] = useState(true);
 

@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import HorizontalSlider from '../HorizontalSlider/HorizontalSlider';
 import BannerSliderMovieSkeleton from './BannerSliderMovieSkeleton';
+import { BannerSliderMoviePropsTypes } from './BannerSliderMovie.modell';
 /**
  * BannerSliderMovie Component
  *
@@ -16,10 +17,7 @@ import BannerSliderMovieSkeleton from './BannerSliderMovieSkeleton';
 export default function BannerSliderMovie({
   sectionTitle,
   movieList,
-}: {
-  sectionTitle: string;
-  movieList: TrendingMovieType[];
-}): JSX.Element {
+}: BannerSliderMoviePropsTypes): JSX.Element {
   // Destructure movieList to extract relevant information
   const { backdrop_path, title, overview, original_title } = movieList[0];
 

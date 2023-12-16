@@ -11,7 +11,7 @@ import BannerSliderMovie from '@/app/ui/components/Sliders/BannerSliderMovie/Ban
  */
 export default async function ShortFilmsBannerSection(): Promise<JSX.Element> {
   // Fetch currently playing movies using the fetchMovieNowPlaying function
-  const { results: DocumentalListResults }: { results: MovieType[] } =
+  const { results: DocumentalListResults }: ResultsMoviesTypes =
     await fetchMovieNowPlaying();
 
   /**

@@ -69,3 +69,10 @@ interface SpokenLanguage {
   iso_639_1: string;
   name: string;
 }
+
+interface ResultsTrendingTypes {
+  results: TrendingMovieType[];
+}
+interface ResultsMoviesTypes {
+  results: MovieType[];
+}

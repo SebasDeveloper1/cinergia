@@ -7,13 +7,11 @@ import 'swiper/css/pagination';
 // import required modules
 import { Pagination, Autoplay } from 'swiper/modules';
 import HeroCard from '@/app/ui/components/HomeComponents/HeroComponents/HeroCard/HeroCard';
-import { BulletStyleType } from './HeroSlider.model';
+import { BulletStyleType, HeroSliderPropsTypes } from './HeroSlider.model';
 
 export default function HeroSlider({
   movieList,
-}: {
-  movieList: MovieType[];
-}): JSX.Element {
+}: HeroSliderPropsTypes): JSX.Element {
   const bulletStyle: BulletStyleType = {
     '--swiper-pagination-color': '#3b82f6',
     '--swiper-pagination-bullet-inactive-color': '#ffffff',

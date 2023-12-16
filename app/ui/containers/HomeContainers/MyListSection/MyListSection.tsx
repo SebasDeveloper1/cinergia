@@ -11,7 +11,7 @@ import HorizontalMovieListPrimary from '../../GlobalContainers/GenericList/Horiz
  */
 export default async function MyListSection(): Promise<JSX.Element> {
   // Fetch currently playing movies using the fetchMovieNowPlaying function
-  const { results: MyListResults }: { results: MovieType[] } =
+  const { results: MyListResults }: ResultsMoviesTypes =
     await fetchMovieNowPlaying();
 
   // Return the JSX element with the HorizontalMovieListPrimary component

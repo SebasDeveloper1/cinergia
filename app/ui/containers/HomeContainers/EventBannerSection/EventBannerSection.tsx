@@ -11,7 +11,7 @@ import EventBannerSlider from '@/app/ui/components/Sliders/EventBannerSlider/Eve
  */
 export default async function EventBannerSection(): Promise<JSX.Element> {
   // Fetch trending movies using the fetchTrending function
-  const { results: EventMovieListResults }: { results: MovieType[] } =
+  const { results: EventMovieListResults }: ResultsMoviesTypes =
     await fetchTrending();
 
   /**

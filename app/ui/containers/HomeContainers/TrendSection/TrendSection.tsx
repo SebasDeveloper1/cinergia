@@ -11,7 +11,7 @@ import HorizontalMovieListPrimary from '../../GlobalContainers/GenericList/Horiz
  */
 export default async function TrendSection(): Promise<JSX.Element> {
   // Fetch trending movies using the fetchTrending function
-  const { results: trendingResults }: { results: TrendingMovieType[] } =
+  const { results: trendingResults }: ResultsTrendingTypes =
     await fetchTrending();
 
   // Return the JSX element with the HorizontalMovieListPrimary component

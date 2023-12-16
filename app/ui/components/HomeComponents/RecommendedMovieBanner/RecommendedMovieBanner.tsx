@@ -1,5 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
+import { RecommendedMovieBannerPropsTypes } from './RecommendedMovieBanner.model';
 
 /**
  * RecommendedMovieBanner Component
@@ -15,10 +16,7 @@ import { useState, useEffect } from 'react';
 export default function RecommendedMovieBanner({
   titleBanner,
   movieData,
-}: {
-  titleBanner: string;
-  movieData: MovieType;
-}): JSX.Element {
+}: RecommendedMovieBannerPropsTypes): JSX.Element {
   // Destructure movieData to extract relevant information
   const { backdrop_path, title, overview, production_companies } = movieData;
 

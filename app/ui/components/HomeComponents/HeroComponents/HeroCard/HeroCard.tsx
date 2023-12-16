@@ -1,12 +1,11 @@
 'use client';
 import { useState, useEffect } from 'react';
 import convertMinutesToHours from '@/app/lib/utils/convertMinutesToHours';
+import { HeroCardPropsTypes } from './HeroCard.model';
 
 export default function HeroCard({
   movieData,
-}: {
-  movieData: MovieType;
-}): JSX.Element {
+}: HeroCardPropsTypes): JSX.Element {
   const { backdrop_path, title, release_date, runtime, overview } = movieData;
   const [widthBackdropMovie, setWidthBackdropMovie] = useState<string>('w780');
 

@@ -5,7 +5,10 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import './sliderStyles.css';
 import { Pagination, Navigation } from 'swiper/modules';
-import { ButtonStyleType } from './HorizontalSlider.model';
+import {
+  ButtonStyleType,
+  HorizontalSliderPropsTypes,
+} from './HorizontalSlider.model';
 import MovieCard from '../../Cards/MovieCard/MovieCard';
 
 /**
@@ -21,15 +24,7 @@ import MovieCard from '../../Cards/MovieCard/MovieCard';
 export default function HorizontalSlider({
   movieList,
   breakpoints,
-}: {
-  movieList: TrendingMovieType[] | MovieType[];
-
-  breakpoints: {
-    [key: number]: {
-      slidesPerView: number;
-    };
-  };
-}): JSX.Element {
+}: HorizontalSliderPropsTypes): JSX.Element {
   // Button styles for Swiper navigation
   const buttonStyle: ButtonStyleType = {
     '--swiper-navigation-size': '2rem',

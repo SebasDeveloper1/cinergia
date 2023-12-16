@@ -2,7 +2,7 @@
 import HorizontalSlider from '@/app/ui/components/Sliders/HorizontalSlider/HorizontalSlider';
 import { useEffect, useState } from 'react';
 import HorizontalMovieListPrimarySkeleton from './HorizontalMovieListPrimarySkeleton';
-import { HorizontalMovieListTypes } from '../HorizontalMovieList.model';
+import { HorizontalMovieListPrimaryTypes } from '../HorizontalMovieList.model';
 
 /**
  * HorizontalMovieListPrimary Component
@@ -20,7 +20,7 @@ export default function HorizontalMovieListPrimary({
   title,
   path,
   movieList,
-}: HorizontalMovieListTypes): JSX.Element {
+}: HorizontalMovieListPrimaryTypes): JSX.Element {
   // State to manage loading status
   const [loading, setLoading] = useState(true);
 
