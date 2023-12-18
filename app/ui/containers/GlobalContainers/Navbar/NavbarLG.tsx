@@ -1,62 +1,51 @@
 import InputSearch from '@/app/ui/components/Inputs/InputSearch/InputSearch';
+import { NavbarPropsTypes } from './Navbar.model';
+import Link from 'next/link';
 
-export default function NavbarLG() {
+/**
+ * NavbarLG Component
+ *
+ * A React component representing the large screen version of the navigation bar. It includes an input search bar and a list of navigation links.
+ *
+ * @component
+ * @param {NavbarPropsTypes[]} links - An array of objects representing navigation links, each with a name, href, and icon.
+ * @returns {JSX.Element} - JSX element representing the NavbarLG component.
+ */
+export default function NavbarLG({
+  links,
+}: {
+  links: NavbarPropsTypes[];
+}): JSX.Element {
+  /**
+   * Render the JSX for the NavbarLG component
+   */
   return (
     <>
+      {/* Search bar section */}
       <section className="hidden lg:flex w-2/5">
         <InputSearch />
       </section>
+      {/* Navigation links section */}
       <section className="hidden lg:flex justify-center items-center w-auto">
         <ul className="flex justify-center items-center gap-6 w-full">
-          <li className="navbar-item-sm w-full">
-            <a className="flex items-center gap-3" href="#">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="icon icon-tabler icon-tabler-home"
-                width={24}
-                height={24}
-                viewBox="0 0 24 24"
-                strokeWidth={2}
-                stroke="currentColor"
-                fill="none"
-                strokeLinecap="round"
-                strokeLinejoin="round"
+          {/* Map through the array of navigation links */}
+          {links.map((link) => (
+            <li
+              key={`Navbar-link-${link?.name}`}
+              className="navbar-item-sm w-full capitalize"
+            >
+              {/* Link to the specified href */}
+              <Link
+                className="flex items-center gap-3"
+                href={link?.href}
+                title={link?.name}
               >
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M5 12l-2 0l9 -9l9 9l-2 0" />
-                <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
-                <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
-              </svg>
-              Inicio
-            </a>
-          </li>
-          <li className="navbar-item-sm w-full">
-            <a className="flex items-center gap-3 whitespace-nowrap" href="#">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="icon icon-tabler icon-tabler-movie"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                strokeWidth="2"
-                stroke="currentColor"
-                fill="none"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" />
-                <path d="M8 4l0 16" />
-                <path d="M16 4l0 16" />
-                <path d="M4 8l4 0" />
-                <path d="M4 16l4 0" />
-                <path d="M4 12l16 0" />
-                <path d="M16 8l4 0" />
-                <path d="M16 16l4 0" />
-              </svg>
-              Mi lista
-            </a>
-          </li>
+                {/* Display the link icon and name */}
+                {link?.icon}
+                {link?.name}
+              </Link>
+            </li>
+          ))}
         </ul>
       </section>
     </>

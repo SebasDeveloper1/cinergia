@@ -2,29 +2,54 @@
 import { useState, useRef, MouseEvent } from 'react';
 import InputSearch from '@/app/ui/components/Inputs/InputSearch/InputSearch';
 import useOnClickOutside from '@/app/lib/hooks/useOnClickOutside';
+import { NavbarPropsTypes } from './Navbar.model';
+import Link from 'next/link';
 
-export default function NavbarSM(): JSX.Element {
+/**
+ * NavbarSM Component
+ *
+ * A React component representing the small screen version of the navigation bar. It includes a search input, a menu button, and a list of navigation links.
+ *
+ * @component
+ * @param {NavbarPropsTypes[]} links - An array of objects representing navigation links, each with a name, href, and icon.
+ * @returns {JSX.Element} - JSX element representing the NavbarSM component.
+ */
+export default function NavbarSM({
+  links,
+}: {
+  links: NavbarPropsTypes[];
+}): JSX.Element {
+  // State for controlling the visibility of the search input and menu
   const [openSearch, setOpenSearch] = useState<boolean>(false);
   const [openMenu, setOpenMenu] = useState<boolean>(false);
 
+  // Handler for toggling the menu
   const handleMenu = (e: MouseEvent<HTMLElement>) => {
     e.preventDefault;
     setOpenMenu(!openMenu);
   };
 
+  // Handler for toggling the search input
   const handleSearch = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     setOpenSearch(!openSearch);
   };
 
+  // Ref for handling clicks outside the menu
   const menuRef = useRef(null);
 
+  // Hook to close menu and search on clicks outside
   useOnClickOutside(menuRef, () => {
     setOpenMenu(false);
     setOpenSearch(false);
   });
+
+  /**
+   * Render the JSX for the NavbarSM component
+   */
   return (
     <section ref={menuRef} className="lg:hidden z-50 flex gap-2">
+      {/* Search button */}
       <button
         className="button-text padding-icon"
         title="Buscar"
@@ -47,6 +72,7 @@ export default function NavbarSM(): JSX.Element {
           />
         </svg>
       </button>
+      {/* Menu button */}
       <button
         type="button"
         className={`button-text padding-icon transition-all duration-300 transform ${
@@ -93,6 +119,7 @@ export default function NavbarSM(): JSX.Element {
           </svg>
         )}
       </button>
+      {/* Search input section */}
       <article
         aria-hidden={!openSearch}
         aria-live="assertive"
@@ -102,6 +129,7 @@ export default function NavbarSM(): JSX.Element {
       >
         <div className="flex justify-center items-center gap-2 w-full">
           <InputSearch variant="SM" />
+          {/* Close search button */}
           <button
             className="button-text padding-icon"
             title="Cerrar búsqueda"
@@ -127,6 +155,7 @@ export default function NavbarSM(): JSX.Element {
           </button>
         </div>
       </article>
+      {/* Menu section */}
       <article
         aria-hidden={!openMenu}
         aria-live="assertive"
@@ -134,56 +163,24 @@ export default function NavbarSM(): JSX.Element {
        transform transition-all  ${!openMenu ? 'translate-x-full' : ''}`}
       >
         <div className="w-full">
-          <ul className="flex flex-col items-center gap-5 w-full">
-            <li className="navbar-item-sm w-full pb-3 border-b border-borderPrimaryDark/20">
-              <a className="flex items-center gap-3" href="#">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="icon icon-tabler icon-tabler-home"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  strokeWidth="2"
-                  stroke="currentColor"
-                  fill="none"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
+          <ul className="flex flex-col items-center gap-4 w-full divide-y divide-borderPrimaryDark/10">
+            {/* Map through the array of navigation links */}
+            {links.map((link) => (
+              <li
+                key={`Navbar-link-${link.name}`}
+                className="navbar-item-sm w-full pt-4"
+              >
+                {/* Link to the specified href */}
+                <Link
+                  className="flex items-center gap-3 capitalize"
+                  href={link?.href}
                 >
-                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                  <path d="M5 12l-2 0l9 -9l9 9l-2 0" />
-                  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
-                  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
-                </svg>
-                Inicio
-              </a>
-            </li>
-            <li className="navbar-item-sm w-full">
-              <a className="flex items-center gap-3" href="#">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="icon icon-tabler icon-tabler-movie"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  strokeWidth="2"
-                  stroke="currentColor"
-                  fill="none"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                  <path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" />
-                  <path d="M8 4l0 16" />
-                  <path d="M16 4l0 16" />
-                  <path d="M4 8l4 0" />
-                  <path d="M4 16l4 0" />
-                  <path d="M4 12l16 0" />
-                  <path d="M16 8l4 0" />
-                  <path d="M16 16l4 0" />
-                </svg>
-                Mi lista
-              </a>
-            </li>
+                  {/* Display the link icon and name */}
+                  {link?.icon}
+                  {link?.name}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
       </article>
