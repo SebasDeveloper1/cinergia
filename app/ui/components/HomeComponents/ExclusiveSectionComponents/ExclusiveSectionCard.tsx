@@ -48,31 +48,31 @@ export default function ExclusiveSectionCard({
           <div className="flex flex-col gap-4 w-full">
             {/* Exclusive badge */}
             <div className="w-full">
-              <span className="relative px-5 py-2.5 rounded-md bg-dark-500/30">
+              <span className="relative px-3 py-2 rounded-md border border-dashed border-borderNeutral-100/20 bg-dark-500/5">
                 <span className="absolute -top-2 -right-2 ">
                   <span className="relative flex w-4 aspect-square">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
-                    <span className="relative inline-flex rounded-full w-4 aspect-square bg-green-500" />
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary-400 opacity-75" />
+                    <span className="relative inline-flex rounded-full w-4 aspect-square bg-secondary-500" />
                   </span>
                 </span>
-                <span className="span-xl text-primary-50 font-semibold">
+                <span className="span-xl text-textColorNeutral-50 font-semibold">
                   {'Exclusiva'}
                 </span>
               </span>
 
               {/* Movie title */}
-              <h2 className="heading-2 mt-16 font-extrabold text-primary-50 max-w-prose">
+              <h2 className="heading-2 mt-16 font-extrabold text-textColorNeutral-50 max-w-prose">
                 {title}
               </h2>
             </div>
 
             {/* Production company name */}
-            <span className="span-xl text-white font-medium">
+            <span className="span-xl text-textColorNeutral-50 font-medium">
               {production_companies[0].name}
             </span>
 
             {/* Movie overview */}
-            <p className="paragraph-lg line-clamp-5 lg:line-clamp-none font-normal text-primary-100 max-w-prose">
+            <p className="paragraph-base line-clamp-5 lg:line-clamp-none font-normal text-textColorNeutral-100 max-w-prose">
               {overview}
             </p>
           </div>

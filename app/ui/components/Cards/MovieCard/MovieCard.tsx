@@ -59,11 +59,11 @@ export default function MovieCard({ movieData }: MovieCardPropsTypes) {
         </span>
         <section className="flex flex-col justify-center w-full p-2 md:px-4">
           {/* Movie title */}
-          <span className="span-base line-clamp-1 text-primary-50 md:text-primary-200 md:group-hover:text-primary-50">
+          <span className="span-base line-clamp-1 text-textColorNeutral-50 md:text-textColorNeutral-200 md:group-hover:text-textColorNeutral-50">
             {title}
           </span>
           {/* Release date */}
-          <span className="span-sm text-xs text-blue-500">
+          <span className="span-sm text-xs text-textColorPrimary-500">
             {release_date !== undefined && new Date(release_date).getFullYear()}
           </span>
         </section>

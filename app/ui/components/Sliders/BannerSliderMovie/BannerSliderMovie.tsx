@@ -70,26 +70,29 @@ export default function BannerSliderMovie({
     >
       <div className="flex flex-col items-center justify-center w-full min-h-[80vh] py-14 lg:py-16 bg-gradient-to-t from-bgPrimaryDark via-bgPrimaryDark/70 to-transparent">
         <div className="flex flex-col justify-center gap-8 w-11/12 md:w-10/12">
-          <div className="flex flex-col gap-4 w-full">
+          <div className="flex flex-col gap-1 w-full">
             {/* Exclusive badge */}
             <div className="w-full">
-              <span className="span-xl text-primary-50 font-semibold px-4 py-2 rounded-md bg-dark-500/30">
+              <span
+                className="span-xl text-textColorNeutral-50 font-semibold px-3 py-2 rounded-md border border-dashed border-borderNeutral-100/20
+              bg-dark-500/5"
+              >
                 {sectionTitle}
               </span>
 
               {/* Movie title */}
-              <h2 className="heading-2 mt-16 font-extrabold text-primary-50 max-w-prose">
+              <h2 className="heading-2 mt-16 font-extrabold text-textColorNeutral-50 max-w-prose">
                 {title}
               </h2>
             </div>
 
             {/* Original title movie */}
-            <span className="span-xl text-white font-medium">
+            <span className="span-xl text-primary-500 font-medium mb-5">
               {original_title}
             </span>
 
             {/* Movie overview */}
-            <p className="paragraph-lg line-clamp-5 lg:line-clamp-none font-normal text-primary-100 max-w-prose">
+            <p className="paragraph-base line-clamp-5 lg:line-clamp-none font-normal text-textColorNeutral-100 max-w-prose">
               {overview}
             </p>
           </div>

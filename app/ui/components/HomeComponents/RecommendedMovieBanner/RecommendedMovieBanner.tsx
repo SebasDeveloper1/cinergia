@@ -56,38 +56,38 @@ export default function RecommendedMovieBanner({
       }}
     >
       <div className="relative flex items-end justify-center w-full min-h-[80vh] py-16 lg:py-24 bg-gradient-to-t from-bgPrimaryDark via-bgPrimaryDark/70 to-transparent">
-        <span className="absolute top-0 left-0 span-xl text-2xl text-primary-50 font-semibold px-8 py-2.5 rounded-br-full bg-gradient-to-tr from-primary-800 to-purple-500">
+        <span className="absolute top-0 left-0 span-xl text-2xl text-textColorNeutral-50 font-semibold px-8 py-2.5 rounded-br-full bg-secondary-500">
           {titleBanner}
         </span>
         <div className="flex flex-col justify-center gap-8 w-11/12 md:w-10/12">
-          <div className="flex flex-col gap-4 w-full">
+          <div className="flex flex-col gap-1 w-full">
             {/* Banner title and movie information */}
             <div className="w-full">
               {/* Movie title */}
-              <h2 className="heading-2 font-extrabold text-primary-50 max-w-prose">
+              <h2 className="heading-2 font-extrabold text-textColorNeutral-50 max-w-prose">
                 {title}
               </h2>
             </div>
 
             {/* Production company name */}
-            <span className="span-xl text-white font-medium">
+            <span className="span-xl text-textColorAccent-500 font-semibold mb-5">
               {production_companies[0].name}
             </span>
 
             {/* Movie overview */}
-            <p className="paragraph-lg line-clamp-5 lg:line-clamp-none font-normal text-primary-100 max-w-prose">
+            <p className="paragraph-lg line-clamp-5 lg:line-clamp-none font-normal text-textColorNeutral-100 max-w-prose">
               {overview}
             </p>
           </div>
 
           {/* Action buttons */}
           <div className="flex flex-col md:flex-row gap-4 justify-start items-center w-full">
-            {/* "Watch Movie" button */}
+            {/* "Ver Película" button */}
             <button
               className="button-secondary padding-button w-full md:w-fit"
               onClick={() => console.log('hello world')}
             >
-              Watch Movie
+              Ver película
             </button>
           </div>
         </div>

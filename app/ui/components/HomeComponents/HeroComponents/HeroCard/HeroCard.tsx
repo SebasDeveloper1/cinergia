@@ -37,13 +37,13 @@ export default function HeroCard({
       <div className="w-full min-h-[100vh] py-12 flex justify-center items-end bg-gradient-to-t from-bgPrimaryDark via-bgPrimaryDark/70 to-transparent">
         <div className="flex flex-col justify-center gap-8 w-11/12 md:w-10/12 h-full mb-12">
           <div className="w-full h-auto">
-            <span className="span-sm px-3 py-1 rounded-full bg-dark-500/30 text-secondary-50 font-medium">
+            <span className="span-sm px-3 py-1 rounded-full bg-dark-500/30 text-textColorNeutral-50 font-medium">
               {'Película'}
             </span>
-            <h2 className="heading-2 font-extrabold text-primary-50 mt-2">
+            <h2 className="heading-2 font-extrabold text-textColorNeutral-50 mt-2">
               {title}
             </h2>
-            <div className="flex gap-2 w-fit span-lg text-primary-100">
+            <div className="flex gap-2 w-fit span-lg text-textColorNeutral-100">
               <span>{convertMinutesToHours(runtime)}</span>
               <span className="before:content-['•'] before:mr-2">
                 {release_date !== undefined &&
@@ -51,7 +51,7 @@ export default function HeroCard({
               </span>
             </div>
           </div>
-          <p className="paragraph-lg line-clamp-5 lg:line-clamp-none font-normal text-primary-200">
+          <p className="paragraph-lg line-clamp-5 lg:line-clamp-none font-normal text-textColorNeutral-200">
             {overview}
           </p>
           <button

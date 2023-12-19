@@ -45,7 +45,7 @@ export default function HorizontalMovieListPrimary({
             href={path}
             className="flex flex-nowrap gap-2 items-center w-full h-full hover:pr-5 hover:opacity-80 hover:translate-x-2 transition-all duration-300 ease-in-out"
           >
-            <h2 className="heading-6 font-medium text-primary-50 py-1.5">
+            <h2 className="heading-6 font-medium text-textColorNeutral-50 py-1.5">
               {title}
             </h2>
             <svg

@@ -123,7 +123,7 @@ export default function NavbarSM({
       <article
         aria-hidden={!openSearch}
         aria-live="assertive"
-        className={`absolute inset-0 flex justify-center items-center bg-gray-900 p-2 transform transition-all ${
+        className={`absolute inset-0 flex justify-center items-center bg-bgPrimaryDark p-2 transform transition-all ${
           !openSearch ? '-translate-y-[110%]' : ''
         }`}
       >
@@ -163,7 +163,7 @@ export default function NavbarSM({
        transform transition-all  ${!openMenu ? 'translate-x-full' : ''}`}
       >
         <div className="w-full">
-          <ul className="flex flex-col items-center gap-4 w-full divide-y divide-borderPrimaryDark/10">
+          <ul className="flex flex-col items-center gap-4 w-full divide-y divide-borderNeutral/10">
             {/* Map through the array of navigation links */}
             {links.map((link) => (
               <li

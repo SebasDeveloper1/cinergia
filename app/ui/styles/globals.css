@@ -124,24 +124,24 @@
     @apply p-2;
   }
   .button-primary {
-    @apply button text-textColorNeutral-50 bg-primary-600 hover:bg-primary-700 transition-colors focus;
+    @apply button text-textColorNeutral-900 bg-customGray-50 hover:bg-customGray-200 transition-colors focus;
   }
   .button-secondary {
-    @apply button text-textColorNeutral-50 bg-secondary-600 hover:bg-secondary-700 transition-colors focus;
+    @apply button text-textColorNeutral-50 bg-customNeutral-50/20 hover:bg-customNeutral-50/30 transition-colors focus;
   }
   .button-tertiary {
-    @apply button text-primary-950 font-medium bg-primary-50 hover:bg-primary-100 transition-colors focus;
+    @apply button text-textColorNeutral-50 bg-customNeutral-100/20 hover:bg-customNeutral-100/30 transition-colors focus;
   }
   .button-outlined {
-    @apply button ring-1 ring-inset text-dark-100 bg-dark-900/30 ring-white/10 hover:bg-white/5 hover:text-white transition-colors focus;
+    @apply button ring-1 ring-inset text-textColorNeutral-100 bg-dark-900/30 ring-customNeutral-50/10 hover:bg-dark-50/5 hover:text-textColorNeutral-50 transition-colors focus;
   }
   .button-text {
-    @apply button transition-colors focus text-dark-300 hover:text-dark-50 hover:bg-white/5;
+    @apply button transition-colors focus text-dark-300 hover:text-dark-50 hover:bg-dark-50/5;
   }
 
   /* Navbar item styles */
   .navbar-item {
-    @apply w-full xl:w-fit font-normal text-textColorNeutral-300/70 transition-all duration-200 focus:outline-none hover:text-textColorNeutral-300 focus:ring-1 focus:ring-dark-900 focus:ring-offset-2;
+    @apply w-full xl:w-fit font-normal text-textColorNeutral-300 transition-all duration-200 focus:outline-none hover:text-textColorNeutral-50 focus:ring-1 focus:ring-dark-900 focus:ring-offset-2;
   }
   .navbar-item-sm {
     @apply navbar-item text-base;

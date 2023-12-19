@@ -13,7 +13,7 @@ export default function HeroSlider({
   movieList,
 }: HeroSliderPropsTypes): JSX.Element {
   const bulletStyle: BulletStyleType = {
-    '--swiper-pagination-color': '#3b82f6',
+    '--swiper-pagination-color': '#1775E8',
     '--swiper-pagination-bullet-inactive-color': '#ffffff',
   };
   return (

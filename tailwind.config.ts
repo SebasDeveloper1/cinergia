@@ -114,7 +114,7 @@ const config: Config = {
         textColorNeutral: colorPalette.customDark,
         bgPrimaryDark: colorPalette.customDark[950],
         bgSecondaryDark: colorPalette.customDark[900],
-        borderPrimaryDark: colorPalette.customDark[50],
+        borderNeutral: colorPalette.customNeutral,
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

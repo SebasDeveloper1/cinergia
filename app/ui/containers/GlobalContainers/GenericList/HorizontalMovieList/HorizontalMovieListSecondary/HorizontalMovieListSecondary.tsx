@@ -45,10 +45,12 @@ export default function HorizontalMovieListSecondary({
       <div className="grid grid-cols-1 md:grid-cols-6 justify-center items-center gap-10 w-full h-full">
         <header className="col-span-1 md:col-span-2 flex flex-col justify-center gap-8 w-full h-full">
           <div className="w-full">
-            <h2 className="heading-4 font-semibold text-primary-50 mb-4">
+            <h2 className="heading-4 font-semibold text-textColorNeutral-50 mb-4">
               {title}
             </h2>
-            <span className="span-base text-dark-400">{description}</span>
+            <span className="span-base text-textColorNeutral-400">
+              {description}
+            </span>
           </div>
           <a
             href={path}

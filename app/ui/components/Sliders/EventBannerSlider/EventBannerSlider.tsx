@@ -54,17 +54,19 @@ export default function EventBannerSlider({
     >
       <div className="flex flex-col items-center justify-center w-full min-h-[80vh] py-14 lg:py-16 bg-gradient-to-t from-bgPrimaryDark via-bgPrimaryDark/70 to-transparent">
         <div className="flex flex-col justify-center gap-8 w-11/12 md:w-10/12">
-          <div className="flex flex-col gap-4 w-full">
+          <div className="flex flex-col gap-1 w-full">
             {/* Event title */}
-            <h2 className="heading-2 font-extrabold text-primary-50 w-full md:w-1/2">
+            <h2 className="heading-1 font-extrabold text-textColorNeutral-50 w-full">
               {eventTitle}
             </h2>
 
             {/* Event date */}
-            <span className="span-lg text-white font-medium">{eventDate}</span>
+            <span className="span-lg text-textColorNeutral-50 font-medium w-fit mb-5 px-2.5 py-0.5 rounded-full bg-secondary-500">
+              {eventDate}
+            </span>
 
             {/* Event description */}
-            <p className="paragraph-base line-clamp-5 lg:line-clamp-none font-normal text-primary-100 w-full md:w-1/2">
+            <p className="paragraph-base line-clamp-5 lg:line-clamp-none font-normal text-textColorNeutral-100 w-full md:w-1/2">
               {eventDescription}
             </p>
           </div>
