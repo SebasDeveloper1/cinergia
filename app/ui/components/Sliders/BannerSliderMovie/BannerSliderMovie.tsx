@@ -116,7 +116,7 @@ export default function BannerSliderMovie({
             </button>
           </div>
           <div className="flex justify-end items-center w-full mt-4">
-            <div className="w-full md:w-2/3">
+            <div className="w-full md:w-3/4">
               {/* Horizontal movie slider */}
               <HorizontalSlider
                 movieList={movieList.slice(1)}

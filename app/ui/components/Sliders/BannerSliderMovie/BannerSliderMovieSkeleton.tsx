@@ -21,7 +21,7 @@ export default function BannerSliderMovieSkeleton() {
             <div className="w-full md:w-36 h-10 rounded-md bg-dark-700" />
           </div>
           <div className="flex justify-end items-center w-full mt-4">
-            <div className="w-full md:w-2/3">
+            <div className="w-full md:w-3/4">
               <div className="w-full h-48 rounded-md bg-dark-700" />
             </div>
           </div>

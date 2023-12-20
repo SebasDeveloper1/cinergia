@@ -42,9 +42,12 @@ export default function MovieCard({ movieData }: MovieCardPropsTypes) {
   }, []);
 
   return (
-    <li className="overflow-hidden rounded-md bg-bgSecondaryDark md:hover:bg-dark-800 transition-all duration-200 ease-in-out">
-      <a className="group flex flex-col justify-center items-center" href="">
-        <span className="relative w-full aspect-[3/4] md:aspect-video">
+    <li className="overflow-hidden rounded-sm border-[2px] border-dark-900 md:hover:border-dark-800 bg-bgSecondaryDark md:hover:bg-dark-800 transition-all duration-200 ease-in-out">
+      <a
+        className="relative group flex flex-col justify-center items-center"
+        href=""
+      >
+        <span className="relative w-full aspect-[2/3] md:aspect-video">
           {/* Movie poster image using Next.js Image component */}
           <Image
             fill
@@ -57,15 +60,18 @@ export default function MovieCard({ movieData }: MovieCardPropsTypes) {
             blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIwIiBoZWlnaHQ9IjMyMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4="
           />
         </span>
-        <section className="flex flex-col justify-center w-full p-2 md:px-4">
-          {/* Movie title */}
-          <span className="span-base line-clamp-1 text-textColorNeutral-50 md:text-textColorNeutral-200 md:group-hover:text-textColorNeutral-50">
-            {title}
-          </span>
-          {/* Release date */}
-          <span className="span-sm text-xs text-textColorPrimary-500">
-            {release_date !== undefined && new Date(release_date).getFullYear()}
-          </span>
+        <section className="absolute inset-0 flex justify-center items-end bg-gradient-to-t from-bgPrimaryDark via-bgPrimaryDark/10 to-transparent">
+          <div className="flex flex-col justify-center w-full p-2 md:px-4">
+            {/* Movie title */}
+            <span className="span-base line-clamp-1 text-textColorNeutral-50 md:text-textColorNeutral-100 md:group-hover:text-textColorNeutral-50">
+              {title}
+            </span>
+            {/* Release date */}
+            <span className="span-sm text-xs text-textColorPrimary-500 font-semibold">
+              {release_date !== undefined &&
+                new Date(release_date).getFullYear()}
+            </span>
+          </div>
         </section>
       </a>
     </li>

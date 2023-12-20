@@ -12,7 +12,7 @@ export default function EventBannerSliderSkeleton() {
             <div className="w-60 h-6 rounded-md bg-dark-700" />
           </div>
           <div className="flex justify-end items-center w-full mt-4">
-            <div className="w-full md:w-2/3">
+            <div className="w-full md:w-3/4">
               <div className="w-full h-48 rounded-md bg-dark-700" />
             </div>
           </div>

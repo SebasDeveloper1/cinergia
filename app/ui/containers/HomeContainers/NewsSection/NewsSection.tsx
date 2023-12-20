@@ -25,7 +25,7 @@ export default async function NewsSection(): Promise<JSX.Element> {
         description="Millones de películas, programas de televisión y personas por descubrir. Explora ahora."
         path="/"
         movieList={trendingResults}
-        className="w-11/12 rounded-lg px-4 py-8 md:px-8 md:py-16 bg-bgSecondaryDark/40 "
+        className="w-11/12 rounded-lg px-4 py-8 md:px-8 md:py-16 bg-dark-800/40"
       />
     </section>
   );

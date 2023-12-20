@@ -36,7 +36,7 @@ export default function HorizontalSlider({
     <Swiper
       navigation={{ enabled: true }}
       modules={[Pagination, Navigation]}
-      spaceBetween={15}
+      spaceBetween={10}
       slidesPerView={'auto'}
       className="horizontalSlider"
       style={buttonStyle}
