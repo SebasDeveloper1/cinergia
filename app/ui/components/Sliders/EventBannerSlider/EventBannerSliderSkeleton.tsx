@@ -1,7 +1,7 @@
 export default function EventBannerSliderSkeleton() {
   return (
-    <section className="flex items-center justify-center w-full min-h-[80vh] bg-cover bg-center rounded-md bg-dark-800 animate-pulse">
-      <div className="flex flex-col items-center justify-center w-full min-h-[80vh] py-14 lg:py-16">
+    <section className="flex items-center justify-center w-full min-height-banner--sm lg:min-height-banner--lg bg-cover bg-center rounded-md bg-dark-800 animate-pulse">
+      <div className="flex flex-col items-center justify-center w-full min-height-banner--sm lg:min-height-banner--lg py-14 lg:py-16">
         <div className="flex flex-col justify-center gap-8 w-11/12 md:w-10/12">
           <div className="flex flex-col gap-4 w-full">
             <div className="w-full">

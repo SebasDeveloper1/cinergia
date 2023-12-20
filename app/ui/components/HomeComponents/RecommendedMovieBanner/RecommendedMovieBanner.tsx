@@ -50,12 +50,12 @@ export default function RecommendedMovieBanner({
    */
   return (
     <section
-      className="flex items-center justify-center w-full min-h-[80vh] bg-cover bg-center "
+      className="flex items-center justify-center w-full min-height-banner--sm lg:min-height-banner--lg bg-cover bg-center "
       style={{
         backgroundImage: backgroundImageUrl,
       }}
     >
-      <div className="relative flex items-end justify-center w-full min-h-[80vh] py-16 lg:py-24 bg-gradient-to-t from-bgPrimaryDark via-bgPrimaryDark/70 to-transparent">
+      <div className="relative flex items-end justify-center w-full min-height-banner--sm lg:min-height-banner--lg py-16 lg:py-24 bg-gradient-to-t from-bgPrimaryDark via-bgPrimaryDark/70 to-transparent">
         <span className="absolute top-0 left-0 span-xl text-2xl text-textColorNeutral-50 font-semibold px-8 py-2.5 rounded-br-full bg-secondary-500">
           {titleBanner}
         </span>

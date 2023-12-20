@@ -63,12 +63,12 @@ export default function BannerSliderMovie({
   // Render the JSX for the BannerSliderMovie component
   return (
     <section
-      className="flex items-center justify-center w-full min-h-[80vh] bg-cover bg-center "
+      className="flex items-center justify-center w-full min-height-banner--sm lg:min-height-banner--lg bg-cover bg-center "
       style={{
         backgroundImage: backgroundImageUrl,
       }}
     >
-      <div className="flex flex-col items-center justify-center w-full min-h-[80vh] py-14 lg:py-16 bg-gradient-to-t from-bgPrimaryDark via-bgPrimaryDark/70 to-transparent">
+      <div className="flex flex-col items-center justify-center w-full min-height-banner--sm lg:min-height-banner--lg py-14 lg:py-16 bg-gradient-to-t from-bgPrimaryDark via-bgPrimaryDark/70 to-transparent">
         <div className="flex flex-col justify-center gap-8 w-11/12 md:w-10/12">
           <div className="flex flex-col gap-1 w-full">
             {/* Exclusive badge */}

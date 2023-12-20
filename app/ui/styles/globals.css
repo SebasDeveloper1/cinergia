@@ -41,6 +41,16 @@
     border-radius: 2px;
     background-color: #1775e8;
   }
+
+  /* Custom style for minimum height on small screens (sm) for banners */
+  .min-height-banner--sm {
+    min-height: calc(100vh - 4rem);
+  }
+
+  /* Custom style for minimum height on large screens (lg) for banners */
+  .min-height-banner--lg {
+    min-height: calc(100vh - 4.5rem);
+  }
 }
 
 /* ================================
