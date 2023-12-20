@@ -52,7 +52,7 @@ export default function EventBannerSlider({
         backgroundImage: `url("${backgroundImageUrl}")`,
       }}
     >
-      <div className="flex flex-col items-center justify-center w-full min-height-banner--sm lg:min-height-banner--lg py-14 lg:py-16 bg-gradient-to-t from-bgPrimaryDark via-bgPrimaryDark/70 to-transparent">
+      <div className="flex flex-col items-center justify-center w-full min-height-banner--sm lg:min-height-banner--lg py-14 lg:py-16 bg-gradient-to-br from-bgPrimaryDark/70 via-bgPrimaryDark/50 to-transparent">
         <div className="flex flex-col justify-center gap-8 w-11/12 md:w-10/12">
           <div className="flex flex-col gap-1 w-full">
             {/* Event title */}
@@ -61,12 +61,12 @@ export default function EventBannerSlider({
             </h2>
 
             {/* Event date */}
-            <span className="span-lg text-textColorNeutral-50 font-medium w-fit mb-5 px-2.5 py-0.5 rounded-full bg-secondary-500">
+            <span className="span-lg text-textColorNeutral-50 font-semibold mb-5">
               {eventDate}
             </span>
 
             {/* Event description */}
-            <p className="paragraph-base line-clamp-5 lg:line-clamp-none font-normal text-textColorNeutral-100 w-full md:w-1/2">
+            <p className="paragraph-base line-clamp-5 lg:line-clamp-none font-normal text-textColorNeutral-50 w-full md:w-1/2">
               {eventDescription}
             </p>
           </div>

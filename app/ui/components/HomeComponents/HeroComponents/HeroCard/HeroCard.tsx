@@ -34,8 +34,8 @@ export default function HeroCard({
         backgroundImage: `url('https://image.tmdb.org/t/p/${widthBackdropMovie}/${backdrop_path}')`,
       }}
     >
-      <div className="w-full min-h-[100vh] py-16 lg:py-[4.5rem] flex justify-center items-end bg-gradient-to-t from-bgPrimaryDark via-bgPrimaryDark/70 to-transparent">
-        <div className="flex flex-col justify-center gap-8 w-11/12 md:w-10/12 h-full mb-12">
+      <div className="w-full min-h-[100vh] py-16 lg:py-[4.5rem] flex justify-center items-end bg-gradient-to-t from-bgPrimaryDark via-bgPrimaryDark/90 to-transparent">
+        <div className="flex flex-col justify-center gap-8 w-11/12 md:w-10/12 h-full">
           <div className="w-full h-auto">
             <span className="span-sm px-3 py-1 rounded-full bg-dark-500/30 text-textColorNeutral-50 font-medium">
               {'Película'}
@@ -51,7 +51,7 @@ export default function HeroCard({
               </span>
             </div>
           </div>
-          <p className="paragraph-lg line-clamp-5 lg:line-clamp-none font-normal text-textColorNeutral-200">
+          <p className="paragraph-lg line-clamp-5 lg:line-clamp-none font-normal text-textColorNeutral-50">
             {overview}
           </p>
           <button

@@ -55,7 +55,7 @@ export default function RecommendedMovieBanner({
         backgroundImage: backgroundImageUrl,
       }}
     >
-      <div className="relative flex items-end justify-center w-full min-height-banner--sm lg:min-height-banner--lg py-16 lg:py-24 bg-gradient-to-t from-bgPrimaryDark via-bgPrimaryDark/70 to-transparent">
+      <div className="relative flex items-end justify-center w-full min-height-banner--sm lg:min-height-banner--lg py-16 lg:py-24 bg-gradient-to-br from-bgPrimaryDark/70 via-bgPrimaryDark/50 to-transparent">
         <span className="absolute top-0 left-0 span-xl text-2xl text-textColorNeutral-50 font-semibold px-8 py-2.5 rounded-br-full bg-secondary-500">
           {titleBanner}
         </span>
@@ -75,7 +75,7 @@ export default function RecommendedMovieBanner({
             </span>
 
             {/* Movie overview */}
-            <p className="paragraph-lg line-clamp-5 lg:line-clamp-none font-normal text-textColorNeutral-100 max-w-prose">
+            <p className="paragraph-lg line-clamp-5 lg:line-clamp-none font-normal text-textColorNeutral-50 max-w-prose">
               {overview}
             </p>
           </div>

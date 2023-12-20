@@ -68,7 +68,7 @@ export default function BannerSliderMovie({
         backgroundImage: backgroundImageUrl,
       }}
     >
-      <div className="flex flex-col items-center justify-center w-full min-height-banner--sm lg:min-height-banner--lg py-14 lg:py-16 bg-gradient-to-t from-bgPrimaryDark via-bgPrimaryDark/70 to-transparent">
+      <div className="flex flex-col items-center justify-center w-full min-height-banner--sm lg:min-height-banner--lg py-14 lg:py-16 bg-gradient-to-br from-bgPrimaryDark via-bgPrimaryDark/40 to-transparent">
         <div className="flex flex-col justify-center gap-8 w-11/12 md:w-10/12">
           <div className="flex flex-col gap-1 w-full">
             {/* Exclusive badge */}
@@ -87,12 +87,12 @@ export default function BannerSliderMovie({
             </div>
 
             {/* Original title movie */}
-            <span className="span-xl text-primary-500 font-medium mb-5">
+            <span className="span-xl text-textColorNeutral-50 font-medium mb-5">
               {original_title}
             </span>
 
             {/* Movie overview */}
-            <p className="paragraph-base line-clamp-5 lg:line-clamp-none font-normal text-textColorNeutral-100 max-w-prose">
+            <p className="paragraph-base line-clamp-5 lg:line-clamp-none font-normal text-textColorNeutral-50 max-w-prose">
               {overview}
             </p>
           </div>

@@ -43,7 +43,7 @@ export default function ExclusiveSectionCard({
         backgroundImage: backgroundImageUrl,
       }}
     >
-      <div className="flex items-center justify-center w-full min-height-banner--sm lg:min-height-banner--lg py-5 lg:py-10 bg-gradient-to-t from-bgPrimaryDark via-bgPrimaryDark/70 to-transparent">
+      <div className="flex items-center justify-center w-full min-height-banner--sm lg:min-height-banner--lg py-5 lg:py-10 bg-gradient-to-br from-bgPrimaryDark/70 via-bgPrimaryDark/50 to-transparent">
         <div className="flex flex-col justify-center gap-8 w-11/12 md:w-10/12">
           <div className="flex flex-col gap-4 w-full">
             {/* Exclusive badge */}
@@ -72,7 +72,7 @@ export default function ExclusiveSectionCard({
             </span>
 
             {/* Movie overview */}
-            <p className="paragraph-base line-clamp-5 lg:line-clamp-none font-normal text-textColorNeutral-100 max-w-prose">
+            <p className="paragraph-base line-clamp-5 lg:line-clamp-none font-normal text-textColorNeutral-50 max-w-prose">
               {overview}
             </p>
           </div>
