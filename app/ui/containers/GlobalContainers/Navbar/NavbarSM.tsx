@@ -159,7 +159,7 @@ export default function NavbarSM({
       <article
         aria-hidden={!openMenu}
         aria-live="assertive"
-        className={`fixed inset-x-0 top-0 bg-bgSecondaryDark mt-16 px-4 py-6
+        className={`fixed inset-x-0 top-0 bg-bgSecondaryDark mt-16 px-4 pt-2 pb-6
        transform transition-all  ${!openMenu ? 'translate-x-full' : ''}`}
       >
         <div className="w-full">
