@@ -42,7 +42,7 @@ export default function HorizontalMovieListSecondary({
   // Render the actual content after loading
   return (
     <article {...props}>
-      <div className="grid grid-cols-1 md:grid-cols-8 justify-center items-center gap-10 w-full h-full">
+      <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-8 justify-center items-center gap-10 w-full h-full">
         <header className="col-span-1 md:col-span-2 flex flex-col justify-center gap-8 w-full h-full">
           <div className="w-full">
             <h2 className="heading-4 font-semibold text-textColorNeutral-50 mb-4">
@@ -74,7 +74,7 @@ export default function HorizontalMovieListSecondary({
             </svg>
           </a>
         </header>
-        <div className="col-span-1 md:col-span-6">
+        <div className="col-span-1 md:col-span-4 lg:col-span-6">
           {/* Horizontal movie slider */}
           <HorizontalSlider
             movieList={movieList}

@@ -17,24 +17,22 @@ export default function HeroSlider({
     '--swiper-pagination-bullet-inactive-color': '#ffffff',
   };
   return (
-    <div className="pb-16">
-      <Swiper
-        loop={true}
-        pagination={{
-          clickable: true,
-        }}
-        modules={[Pagination, Autoplay]}
-        className="mySwiper"
-        autoplay={{ delay: 5000, pauseOnMouseEnter: true }}
-        grabCursor
-        style={bulletStyle}
-      >
-        {movieList.map((movie) => (
-          <SwiperSlide key={`HeroSlider-${movie?.id}`}>
-            <HeroCard movieData={movie} />
-          </SwiperSlide>
-        ))}
-      </Swiper>
-    </div>
+    <Swiper
+      loop={true}
+      pagination={{
+        clickable: true,
+      }}
+      modules={[Pagination, Autoplay]}
+      className="mySwiper"
+      autoplay={{ delay: 5000, pauseOnMouseEnter: true }}
+      grabCursor
+      style={bulletStyle}
+    >
+      {movieList.map((movie) => (
+        <SwiperSlide key={`HeroSlider-${movie?.id}`}>
+          <HeroCard movieData={movie} />
+        </SwiperSlide>
+      ))}
+    </Swiper>
   );
 }

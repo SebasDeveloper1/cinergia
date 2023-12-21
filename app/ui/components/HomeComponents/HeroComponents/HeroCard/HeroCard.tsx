@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import convertMinutesToHours from '@/app/lib/utils/convertMinutesToHours';
 import { HeroCardPropsTypes } from './HeroCard.model';
+import Figure1 from '../../../assets/Figure1';
 
 export default function HeroCard({
   movieData,
@@ -29,13 +30,13 @@ export default function HeroCard({
 
   return (
     <section
-      className="w-full min-h-[100vh] bg-cover bg-center "
+      className="overflow-hidden relative w-full min-h-[100vh] bg-cover bg-center "
       style={{
         backgroundImage: `url('https://image.tmdb.org/t/p/${widthBackdropMovie}/${backdrop_path}')`,
       }}
     >
       <div className="w-full min-h-[100vh] py-16 lg:py-[4.5rem] flex justify-center items-end bg-gradient-to-t from-bgPrimaryDark via-bgPrimaryDark/50 to-transparent">
-        <div className="flex flex-col justify-center gap-8 w-11/12 md:w-10/12 h-full">
+        <div className="z-10 flex flex-col justify-center gap-8 w-11/12 md:w-10/12 h-full">
           <div className="w-full h-auto">
             <span className="span-sm px-3 py-1 rounded-full bg-dark-500/30 text-textColorNeutral-50 font-medium">
               {'Película'}
@@ -62,6 +63,7 @@ export default function HeroCard({
           </button>
         </div>
       </div>
+      <Figure1 className="absolute -bottom-8 md:-bottom-16 lg:-bottom-32 -left-[10%] w-3/5 text-secondary-500" />
     </section>
   );
 }
