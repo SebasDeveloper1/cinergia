@@ -38,7 +38,7 @@ export default function HorizontalMovieListPrimary({
 
   // Render the actual content after loading
   return (
-    <article className="flex flex-col items-start gap-5 w-11/12 md:w-10/12">
+    <article className="flex flex-col items-start gap-5 w-full">
       <header className="w-full">
         <span className="button-text">
           <a
