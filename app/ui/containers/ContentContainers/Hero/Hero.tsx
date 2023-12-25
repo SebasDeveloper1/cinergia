@@ -1,6 +1,6 @@
 import React from 'react';
 import { fetchMovieDetails, fetchTrending } from '@/app/lib/data/data';
-import HeroCard from './HeroCard';
+import HeroCard from '@/app/ui/components/ContentComponents/HeroComponents/HeroCard';
 /**
  * Fetches trending movies and renders the HeroCard component.
  * @component
