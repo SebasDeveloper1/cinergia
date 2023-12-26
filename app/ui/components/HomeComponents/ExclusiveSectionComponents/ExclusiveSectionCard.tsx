@@ -2,6 +2,8 @@
 // Import necessary dependencies and types
 import { useState, useEffect } from 'react';
 import { ExclusiveSectionCardPropsTypes } from './ExclusiveSectionCard.model';
+import createMovieSlug from '@/app/lib/utils/createMovieSlug';
+import Link from 'next/link';
 
 /**
  * ExclusiveSectionCard Component
@@ -19,7 +21,8 @@ export default function ExclusiveSectionCard({
   movieData,
 }: ExclusiveSectionCardPropsTypes): JSX.Element {
   // Destructure movieData to extract relevant information
-  const { backdrop_path, title, overview, production_companies } = movieData;
+  const { id, backdrop_path, title, overview, production_companies } =
+    movieData;
 
   // Set up state for the width of the movie backdrop image
   const [widthBackdropMovie, setWidthBackdropMovie] = useState<string>('w780');
@@ -91,12 +94,12 @@ export default function ExclusiveSectionCard({
           {/* Action buttons */}
           <div className="flex flex-col md:flex-row gap-4 justify-start items-center w-full">
             {/* "Ver película" button */}
-            <button
+            <Link
               className="button-secondary padding-button w-full md:w-fit"
-              onClick={() => console.log('hello world')}
+              href={`/peliculas/${createMovieSlug({ id, title })}`}
             >
               Ver Película
-            </button>
+            </Link>
 
             {/* "Ver exclusivas" button */}
             <button

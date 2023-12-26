@@ -3,6 +3,8 @@
 import { useState, useEffect } from 'react';
 import { HeroCardPropsTypes } from './Hero.model';
 import HorizontalMovieListPrimary from '@/app/ui/containers/GlobalContainers/GenericList/HorizontalMovieList/HorizontalMovieListPrimary/HorizontalMovieListPrimary';
+import createMovieSlug from '@/app/lib/utils/createMovieSlug';
+import Link from 'next/link';
 
 /**
  * HeroCard Component
@@ -18,7 +20,7 @@ export default function HeroCard({
   movieList,
 }: HeroCardPropsTypes): JSX.Element {
   // Destructure key movie information
-  const { backdrop_path, title, release_date, overview } = movieList[0];
+  const { id, backdrop_path, title, release_date, overview } = movieList[0];
 
   // State for dynamically adjusting backdrop image width
   const [widthBackdropMovie, setWidthBackdropMovie] = useState<string>('w780');
@@ -71,12 +73,12 @@ export default function HeroCard({
             {overview}
           </p>
           {/* Button to view the movie */}
-          <button
+          <Link
             className="button-secondary padding-button w-full md:w-fit"
-            onClick={() => console.log('helllo world')}
+            href={`/peliculas/${createMovieSlug({ id, title })}`}
           >
             Ver Película
-          </button>
+          </Link>
         </section>
         {/* Horizontal movie list section */}
         <section className="flex justify-center items-center w-11/12 md:w-10/12">

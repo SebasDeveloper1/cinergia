@@ -1,8 +1,10 @@
 'use client';
 // Import necessary dependencies and types
+import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { MovieCardPropsTypes } from './MovieCard.model';
+import createMovieSlug from '@/app/lib/utils/createMovieSlug';
 
 /**
  * MovieCard Component
@@ -17,7 +19,7 @@ import { MovieCardPropsTypes } from './MovieCard.model';
  */
 export default function MovieCard({ movieData }: MovieCardPropsTypes) {
   // Extracting movie data properties
-  const { title, backdrop_path, release_date } = movieData;
+  const { id, title, backdrop_path, release_date } = movieData;
 
   // State to manage the width of the movie backdrop based on window size
   const [widthBackdropMovie, setWidthBackdropMovie] = useState<string>('w780');
@@ -45,9 +47,9 @@ export default function MovieCard({ movieData }: MovieCardPropsTypes) {
 
   return (
     <li className="group overflow-hidden rounded-sm bg-bgSecondaryDark md:hover:bg-dark-800">
-      <a
+      <Link
         className="relative group flex flex-col justify-center items-center"
-        href=""
+        href={`/peliculas/${createMovieSlug({ id, title })}`}
       >
         <span className="relative w-full aspect-[2/3] md:aspect-video">
           {/* Movie poster image using Next.js Image component */}
@@ -75,7 +77,7 @@ export default function MovieCard({ movieData }: MovieCardPropsTypes) {
             </span>
           </div>
         </section>
-      </a>
+      </Link>
     </li>
   );
 }

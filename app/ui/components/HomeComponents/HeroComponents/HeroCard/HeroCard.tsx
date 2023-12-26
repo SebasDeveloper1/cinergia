@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react';
 import convertMinutesToHours from '@/app/lib/utils/convertMinutesToHours';
 import { HeroCardPropsTypes } from './HeroCard.model';
 import Figure1 from '@/app/ui/components/assets/Figure1';
+import createMovieSlug from '@/app/lib/utils/createMovieSlug';
+import Link from 'next/link';
 
 /**
  * HeroCard Component
@@ -21,7 +23,8 @@ export default function HeroCard({
   movieData,
 }: HeroCardPropsTypes): JSX.Element {
   // Destructure movieData for easier access
-  const { backdrop_path, title, release_date, runtime, overview } = movieData;
+  const { id, backdrop_path, title, release_date, runtime, overview } =
+    movieData;
 
   // State to dynamically adjust the width of the backdrop image based on screen size
   const [widthBackdropMovie, setWidthBackdropMovie] = useState<string>('w780');
@@ -73,12 +76,12 @@ export default function HeroCard({
           <p className="paragraph-lg line-clamp-5 lg:line-clamp-none font-normal text-textColorNeutral-50">
             {overview}
           </p>
-          <button
+          <Link
             className="button-primary padding-button w-full md:w-fit"
-            onClick={() => console.log('helllo world')}
+            href={`/peliculas/${createMovieSlug({ id, title })}`}
           >
             Ver Película
-          </button>
+          </Link>
         </div>
       </div>
       <Figure1 className="absolute -bottom-8 md:-bottom-16 lg:-bottom-32 -left-[10%] w-3/5 text-secondary-500" />

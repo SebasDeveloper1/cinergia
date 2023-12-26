@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react';
 import HorizontalSlider from '@/app/ui/components/Sliders/HorizontalSlider/HorizontalSlider';
 import BannerSliderMovieSkeleton from './BannerSliderMovieSkeleton';
 import { BannerSliderMoviePropsTypes } from './BannerSliderMovie.model';
+import createMovieSlug from '@/app/lib/utils/createMovieSlug';
+import Link from 'next/link';
 
 /**
  * BannerSliderMovie Component
@@ -20,7 +22,7 @@ export default function BannerSliderMovie({
   movieList,
 }: BannerSliderMoviePropsTypes): JSX.Element {
   // Destructure movieList to extract relevant information
-  const { backdrop_path, title, overview, original_title } = movieList[0];
+  const { id, backdrop_path, title, overview, original_title } = movieList[0];
 
   // Set up state for the width of the movie backdrop image
   const [widthBackdropMovie, setWidthBackdropMovie] = useState<string>('w780');
@@ -101,12 +103,12 @@ export default function BannerSliderMovie({
           {/* Action buttons */}
           <div className="flex flex-col md:flex-row gap-4 justify-start items-center w-full">
             {/* "Ver película" button */}
-            <button
+            <Link
               className="button-secondary padding-button w-full md:w-fit"
-              onClick={() => console.log('hello world')}
+              href={`/peliculas/${createMovieSlug({ id, title })}`}
             >
               Ver Película
-            </button>
+            </Link>
 
             {/* "Ver más" button */}
             <button

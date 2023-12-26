@@ -2,6 +2,8 @@
 // Import necessary dependencies and types
 import { useState, useEffect } from 'react';
 import { RecommendedMovieBannerPropsTypes } from './RecommendedMovieBanner.model';
+import createMovieSlug from '@/app/lib/utils/createMovieSlug';
+import Link from 'next/link';
 
 /**
  * RecommendedMovieBanner Component
@@ -19,7 +21,8 @@ export default function RecommendedMovieBanner({
   movieData,
 }: RecommendedMovieBannerPropsTypes): JSX.Element {
   // Destructure movieData to extract relevant information
-  const { backdrop_path, title, overview, production_companies } = movieData;
+  const { id, backdrop_path, title, overview, production_companies } =
+    movieData;
 
   // Set up state for the width of the movie backdrop image
   const [widthBackdropMovie, setWidthBackdropMovie] = useState<string>('w780');
@@ -84,12 +87,12 @@ export default function RecommendedMovieBanner({
           {/* Action buttons */}
           <div className="flex flex-col md:flex-row gap-4 justify-start items-center w-full">
             {/* "Ver Película" button */}
-            <button
+            <Link
               className="button-secondary padding-button w-full md:w-fit"
-              onClick={() => console.log('hello world')}
+              href={`/peliculas/${createMovieSlug({ id, title })}`}
             >
               Ver película
-            </button>
+            </Link>
           </div>
         </div>
       </div>
