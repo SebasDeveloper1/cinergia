@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "dev:host": "next dev -H  192.168.2.103",
+    "dev:host": "next dev -H  192.168.20.32",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -19,6 +19,7 @@
     "next": "14.0.2",
     "react": "18",
     "react-dom": "18",
+    "react-infinite-scroll-component": "^6.1.0",
     "swiper": "11.0.5"
   },
   "devDependencies": {

@@ -1,4 +1,5 @@
 'use client';
+// Import necessary dependencies and types
 import { useState, useRef, MouseEvent } from 'react';
 import InputSearch from '@/app/ui/components/Inputs/InputSearch/InputSearch';
 import useOnClickOutside from '@/app/lib/hooks/useOnClickOutside';
@@ -25,7 +26,7 @@ export default function NavbarSM({
 
   // Handler for toggling the menu
   const handleMenu = (e: MouseEvent<HTMLElement>) => {
-    e.preventDefault;
+    e.preventDefault();
     setOpenMenu(!openMenu);
   };
 

@@ -3,7 +3,18 @@
 import { useState, useEffect } from 'react';
 import { ExclusiveSectionCardPropsTypes } from './ExclusiveSectionCard.model';
 
-// Define and export the ExclusiveSectionCard component
+/**
+ * ExclusiveSectionCard Component
+ *
+ * The ExclusiveSectionCard component displays detailed information about an exclusive movie.
+ * It includes a backdrop image, movie title, production company, overview, and action buttons.
+ * The backdrop image dynamically adjusts its width based on the window size.
+ *
+ * @component
+ * @param {ExclusiveSectionCardPropsTypes} props - Props for configuring the ExclusiveSectionCard component.
+ * @param {MovieType} props.movieData - Movie data used to populate the card.
+ * @returns {JSX.Element} - JSX element representing the ExclusiveSectionCard component.
+ */
 export default function ExclusiveSectionCard({
   movieData,
 }: ExclusiveSectionCardPropsTypes): JSX.Element {

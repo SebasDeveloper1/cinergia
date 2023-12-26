@@ -1,16 +1,18 @@
-import Hero from './ui/containers/HomeContainers/Hero/Hero';
-import ExclusiveSection from './ui/containers/HomeContainers/ExclusiveSection/ExclusiveSection';
-import NewsSection from './ui/containers/HomeContainers/NewsSection/NewsSection';
-import ShortFilmsBannerSection from './ui/containers/HomeContainers/ShortFilmsBannerSection/ShortFilmsBannerSection';
-import EventBannerSection from './ui/containers/HomeContainers/EventBannerSection/EventBannerSection';
-import WeekMovieSection from './ui/containers/HomeContainers/WeekMovieSection/WeekMovieSection';
+// Import necessary dependencies and types
+import Hero from '@/app/ui/containers/HomeContainers/Hero/Hero';
+import ExclusiveSection from '@/app/ui/containers/HomeContainers/ExclusiveSection/ExclusiveSection';
+import NewsSection from '@/app/ui/containers/HomeContainers/NewsSection/NewsSection';
+import ShortFilmsBannerSection from '@/app/ui/containers/HomeContainers/ShortFilmsBannerSection/ShortFilmsBannerSection';
+import EventBannerSection from '@/app/ui/containers/HomeContainers/EventBannerSection/EventBannerSection';
+import WeekMovieSection from '@/app/ui/containers/HomeContainers/WeekMovieSection/WeekMovieSection';
 
 /**
  * Home Component
  *
- * This component represents the main structure of the home page.
- * It includes a fixed header with a navigation bar and various sections,
- * such as Hero, MyListSection, TrendSection, and ExclusiveSection.
+ * The Home component serves as the main structure for the home page.
+ * It comprises a fixed header with a navigation bar and various sections,
+ * including Hero, ExclusiveSection, NewsSection, ShortFilmsBannerSection,
+ * EventBannerSection, and WeekMovieSection.
  *
  * @component
  * @returns {JSX.Element} - JSX element representing the Home component.

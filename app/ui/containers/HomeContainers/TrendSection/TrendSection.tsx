@@ -1,3 +1,4 @@
+// Import necessary dependencies and types
 import { fetchTrending } from '@/app/lib/data/data';
 import HorizontalMovieListPrimary from '../../GlobalContainers/GenericList/HorizontalMovieList/HorizontalMovieListPrimary/HorizontalMovieListPrimary';
 

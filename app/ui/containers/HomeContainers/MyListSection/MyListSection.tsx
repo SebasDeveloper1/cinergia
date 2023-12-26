@@ -1,5 +1,6 @@
+// Import necessary dependencies and types
 import { fetchMovieNowPlaying } from '@/app/lib/data/data';
-import HorizontalMovieListPrimary from '../../GlobalContainers/GenericList/HorizontalMovieList/HorizontalMovieListPrimary/HorizontalMovieListPrimary';
+import HorizontalMovieListPrimary from '@/app/ui/containers/GlobalContainers/GenericList/HorizontalMovieList/HorizontalMovieListPrimary/HorizontalMovieListPrimary';
 
 /**
  * MyListSection Component

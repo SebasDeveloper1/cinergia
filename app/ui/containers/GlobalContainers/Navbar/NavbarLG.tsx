@@ -1,6 +1,7 @@
+// Import necessary dependencies and types
+import Link from 'next/link';
 import InputSearch from '@/app/ui/components/Inputs/InputSearch/InputSearch';
 import { NavbarPropsTypes } from './Navbar.model';
-import Link from 'next/link';
 
 /**
  * NavbarLG Component

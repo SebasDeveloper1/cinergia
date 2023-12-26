@@ -1,4 +1,5 @@
 'use client';
+// Import necessary dependencies and types
 import { useState, useEffect } from 'react';
 import { RecommendedMovieBannerPropsTypes } from './RecommendedMovieBanner.model';
 

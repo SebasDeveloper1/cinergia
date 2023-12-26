@@ -1,7 +1,8 @@
-import NavbarSM from './NavbarSM';
-import NavbarLG from './NavbarLG';
-import { NavbarPropsTypes } from './Navbar.model';
+// Import necessary dependencies and types
 import Link from 'next/link';
+import NavbarSM from '@/app/ui/containers/GlobalContainers/Navbar/NavbarSM';
+import NavbarLG from '@/app/ui/containers/GlobalContainers/Navbar/NavbarLG';
+import { NavbarPropsTypes } from './Navbar.model';
 
 /**
  * Navbar Component

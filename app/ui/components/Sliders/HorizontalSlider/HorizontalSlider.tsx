@@ -1,24 +1,27 @@
 'use client';
+// Import necessary dependencies and types
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import './sliderStyles.css';
 import { Pagination, Navigation } from 'swiper/modules';
+import MovieCard from '@/app/ui/components/Cards/MovieCard/MovieCard';
 import {
   ButtonStyleType,
   HorizontalSliderPropsTypes,
 } from './HorizontalSlider.model';
-import MovieCard from '../../Cards/MovieCard/MovieCard';
 
 /**
  * HorizontalSlider Component
  *
- * A React component that displays a horizontal slider of movie cards using the Swiper library.
+ * The HorizontalSlider component displays a horizontal slider of movie cards using the Swiper library.
+ * It supports navigation and pagination features and adapts to different breakpoints.
  *
  * @component
  * @param {Object} props - The component props.
  * @param {TrendingMovieType[] | MovieType[]} props.movieList - An array of movie data of type TrendingMovieType[] or MovieType[].
+ * @param {Object} props.breakpoints - Breakpoints configuration for responsive design.
  * @returns {JSX.Element} - JSX element representing the HorizontalSlider component.
  */
 export default function HorizontalSlider({
@@ -36,7 +39,7 @@ export default function HorizontalSlider({
     <Swiper
       navigation={{ enabled: true }}
       modules={[Pagination, Navigation]}
-      spaceBetween={10}
+      spaceBetween={7}
       slidesPerView={'auto'}
       className="horizontalSlider"
       style={buttonStyle}

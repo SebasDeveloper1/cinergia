@@ -1,4 +1,5 @@
 'use client';
+// Import necessary dependencies and types
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { MovieCardPropsTypes } from './MovieCard.model';
@@ -6,7 +7,8 @@ import { MovieCardPropsTypes } from './MovieCard.model';
 /**
  * MovieCard Component
  *
- * A React component for displaying movie information in a card format.
+ * The MovieCard component displays movie information in a card format.
+ * It includes the movie title, poster image, and release date.
  *
  * @component
  * @param {Object} props - The component props.
@@ -42,7 +44,7 @@ export default function MovieCard({ movieData }: MovieCardPropsTypes) {
   }, []);
 
   return (
-    <li className="overflow-hidden rounded-sm border-[2px] border-dark-900 md:hover:border-dark-800 bg-bgSecondaryDark md:hover:bg-dark-800 transition-all duration-200 ease-in-out">
+    <li className="group overflow-hidden rounded-sm bg-bgSecondaryDark md:hover:bg-dark-800">
       <a
         className="relative group flex flex-col justify-center items-center"
         href=""
@@ -56,7 +58,7 @@ export default function MovieCard({ movieData }: MovieCardPropsTypes) {
             alt={title || 'Movie Card'}
             placeholder="blur"
             loading="lazy"
-            className="object-cover object-center"
+            className="object-cover object-center md:group-hover:scale-110 transition-all duration-200 ease-in"
             blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIwIiBoZWlnaHQ9IjMyMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4="
           />
         </span>
