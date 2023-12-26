@@ -1,4 +1,5 @@
 'use client';
+// Import necessary dependencies and types
 import HorizontalSlider from '@/app/ui/components/Sliders/HorizontalSlider/HorizontalSlider';
 import { useEffect, useState } from 'react';
 import HorizontalMovieListPrimarySkeleton from './HorizontalMovieListPrimarySkeleton';

@@ -1,3 +1,4 @@
+// Import necessary dependencies and types
 import { fetchMovieDetails } from '@/app/lib/data/data';
 import RecommendedMovieBanner from '@/app/ui/components/HomeComponents/RecommendedMovieBanner/RecommendedMovieBanner';
 

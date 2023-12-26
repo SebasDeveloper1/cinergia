@@ -1,6 +1,7 @@
+// Import necessary dependencies and types
 import Image from 'next/image';
 import { fetchTrending } from '@/app/lib/data/data';
-import HorizontalMovieListSecondary from '../../GlobalContainers/GenericList/HorizontalMovieList/HorizontalMovieListSecondary/HorizontalMovieListSecondary';
+import HorizontalMovieListSecondary from '@/app/ui/containers/GlobalContainers/GenericList/HorizontalMovieList/HorizontalMovieListSecondary/HorizontalMovieListSecondary';
 import Figure2 from '@/app/ui/components/assets/Figure2';
 import Figure3 from '@/app/ui/components/assets/Figure3';
 import walletImage from '@/public/images/walletImage.png';
@@ -8,7 +9,9 @@ import walletImage from '@/public/images/walletImage.png';
 /**
  * NewsSection Component
  *
- * A React component that fetches trending movies and displays them in a styled horizontal movie list.
+ * The NewsSection component fetches trending movies using the fetchTrending function
+ * and displays them in a styled horizontal movie list. It also includes visual elements
+ * such as Figure2, Figure3, and a wallet image.
  *
  * @component
  * @returns {Promise<JSX.Element>} - Promise resolving to JSX element representing the NewsSection component.
@@ -37,6 +40,7 @@ export default async function NewsSection(): Promise<JSX.Element> {
         />
         <div className="relative w-11/12">
           <figure className="relative w-full">
+            {/* Use the Next.js Image component for optimized image loading */}
             <Image
               src={walletImage}
               alt={'Wallets'}

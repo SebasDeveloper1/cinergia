@@ -1,4 +1,5 @@
 'use client';
+// Import necessary dependencies and types
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { MovieCardPropsTypes } from './MovieCard.model';
@@ -6,7 +7,8 @@ import { MovieCardPropsTypes } from './MovieCard.model';
 /**
  * MovieCard Component
  *
- * A React component for displaying movie information in a card format.
+ * The MovieCard component displays movie information in a card format.
+ * It includes the movie title, poster image, and release date.
  *
  * @component
  * @param {Object} props - The component props.

@@ -1,33 +1,51 @@
 'use client';
+// Import necessary dependencies and types
 import { useState, useEffect } from 'react';
 import convertMinutesToHours from '@/app/lib/utils/convertMinutesToHours';
 import { HeroCardPropsTypes } from './HeroCard.model';
-import Figure1 from '../../../assets/Figure1';
+import Figure1 from '@/app/ui/components/assets/Figure1';
 
+/**
+ * HeroCard Component
+ *
+ * The HeroCard component represents a card displaying detailed information
+ * about a movie, including title, release date, runtime, and overview.
+ * It also includes a background image and a button to view the movie.
+ *
+ * @component
+ * @param {HeroCardPropsTypes} props - Props for configuring the HeroCard component.
+ * @param {MovieType} props.movieData - Movie data used to populate the card.
+ * @returns {JSX.Element} - JSX element representing the HeroCard component.
+ */
 export default function HeroCard({
   movieData,
 }: HeroCardPropsTypes): JSX.Element {
+  // Destructure movieData for easier access
   const { backdrop_path, title, release_date, runtime, overview } = movieData;
+
+  // State to dynamically adjust the width of the backdrop image based on screen size
   const [widthBackdropMovie, setWidthBackdropMovie] = useState<string>('w780');
 
   useEffect(() => {
+    // Function to handle resizing and adjust the width accordingly
     const handleResize = () => {
       const width = window.innerWidth >= 768 ? 'w1280' : 'w780';
       setWidthBackdropMovie(width);
     };
 
-    // Manejar el cambio de tamaño de la ventana
+    // Add event listener for window resize
     window.addEventListener('resize', handleResize);
 
-    // Llamar a handleResize inicialmente
+    // Call handleResize initially
     handleResize();
 
-    // Limpiar el evento al desmontar el componente
+    // Clean up the event listener on component unmount
     return () => {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
 
+  // Render the HeroCard component with movie details
   return (
     <section
       className="overflow-hidden relative w-full min-h-[100vh] bg-cover bg-center "

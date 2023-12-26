@@ -1,10 +1,23 @@
+// Import necessary dependencies and types
 import React from 'react';
 import { InputSearchProps } from '../Inputs.model';
+
+/**
+ * InputSearch Component
+ *
+ * A React component representing a search input. It supports different variants for small (SM) and large (LG) screens.
+ *
+ * @component
+ * @param {InputSearchProps} props - Props for the InputSearch component.
+ * @param {string} [props.variant='LG'] - The variant of the input (SM or LG).
+ * @returns {JSX.Element} - JSX element representing the InputSearch component.
+ */
 
 export default function InputSearch({
   variant = 'LG',
   ...InputSearchProps
 }: InputSearchProps) {
+  // Function to render the search input
   const renderInput = () => (
     <input
       type="search"
@@ -15,7 +28,9 @@ export default function InputSearch({
       {...InputSearchProps}
     />
   );
-
+  /**
+   * Render the JSX for the InputSearch component
+   */
   return (
     <span
       className={`overflow-hidden flex justify-center items-center gap-1 w-full rounded-md bg-dark-800/60 ${
@@ -23,6 +38,8 @@ export default function InputSearch({
       }`}
     >
       {variant === 'SM' ? (
+        /* Render search icon and input for small screen */
+
         <>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -37,6 +54,7 @@ export default function InputSearch({
               strokeWidth="2"
               d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
             />
+            {/* Render input and search button for large screen */}
           </svg>
           {renderInput()}
         </>

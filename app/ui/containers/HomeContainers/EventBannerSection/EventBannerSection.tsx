@@ -1,3 +1,4 @@
+// Import necessary dependencies and types
 import { fetchTrending } from '@/app/lib/data/data';
 import EventBannerSlider from '@/app/ui/components/Sliders/EventBannerSlider/EventBannerSlider';
 

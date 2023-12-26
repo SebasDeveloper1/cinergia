@@ -1,3 +1,4 @@
+// Import necessary dependencies and types
 import React from 'react';
 import { fetchMovieDetails, fetchTrending } from '@/app/lib/data/data';
 import HeroCard from '@/app/ui/components/ContentComponents/HeroComponents/HeroCard';

@@ -1,4 +1,5 @@
 'use client';
+// Import necessary dependencies and types
 import { useState, useEffect } from 'react';
 import { HeroCardPropsTypes } from './Hero.model';
 import HorizontalMovieListPrimary from '@/app/ui/containers/GlobalContainers/GenericList/HorizontalMovieList/HorizontalMovieListPrimary/HorizontalMovieListPrimary';

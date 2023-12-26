@@ -1,13 +1,16 @@
 'use client';
-import HorizontalSlider from '@/app/ui/components/Sliders/HorizontalSlider/HorizontalSlider';
+// Import necessary dependencies and types
 import { useEffect, useState } from 'react';
+import HorizontalSlider from '@/app/ui/components/Sliders/HorizontalSlider/HorizontalSlider';
 import { HorizontalMovieListSecondaryTypes } from '../HorizontalMovieList.model';
 import HorizontalMovieListSecondarySkeleton from './HorizontalMovieListSecondarySkeleton';
 
 /**
  * HorizontalMovieListSecondary Component
  *
- * A React component for displaying a horizontal movie list with secondary information.
+ * The HorizontalMovieListSecondary component displays a horizontal movie list with secondary information.
+ * It includes a title, description, and a "Ver Más" (See More) button that links to a specified path.
+ * The actual movie list is presented using the HorizontalSlider component.
  *
  * @component
  * @param {string} title - The title of the movie list section.
