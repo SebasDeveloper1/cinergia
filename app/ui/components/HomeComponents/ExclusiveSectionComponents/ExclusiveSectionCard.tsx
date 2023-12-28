@@ -25,7 +25,8 @@ export default function ExclusiveSectionCard({
     movieData;
 
   // Set up state for the width of the movie backdrop image
-  const [widthBackdropMovie, setWidthBackdropMovie] = useState<string>('w780');
+  const [widthBackdropMovie, setWidthBackdropMovie] =
+    useState<string>('original');
 
   // Construct the background image URL using the backdrop path and width
   const backgroundImageUrl = `url('https://image.tmdb.org/t/p/${widthBackdropMovie}/${backdrop_path}')`;
@@ -33,7 +34,7 @@ export default function ExclusiveSectionCard({
   // Effect hook to handle window resize events and update the backdrop width accordingly
   useEffect(() => {
     const handleResize = () => {
-      const width = window.innerWidth >= 768 ? 'w1280' : 'w780';
+      const width = window.innerWidth >= 768 ? 'original' : 'original';
       setWidthBackdropMovie(width);
     };
 

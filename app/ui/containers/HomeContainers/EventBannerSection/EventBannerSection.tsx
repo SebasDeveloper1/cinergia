@@ -23,7 +23,7 @@ export default async function EventBannerSection(): Promise<JSX.Element> {
       eventTitle="Semana del cine"
       eventDate="Del 24 al 31 de Diciembre"
       eventDescription="Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen."
-      backgroundImageUrl="https://image.tmdb.org/t/p/w1280/bWIIWhnaoWx3FTVXv6GkYDv3djL.jpg"
+      backgroundImageUrl="https://image.tmdb.org/t/p/original/bWIIWhnaoWx3FTVXv6GkYDv3djL.jpg"
       movieList={EventMovieListResults}
     />
   );

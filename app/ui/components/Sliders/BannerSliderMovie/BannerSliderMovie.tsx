@@ -25,7 +25,8 @@ export default function BannerSliderMovie({
   const { id, backdrop_path, title, overview, original_title } = movieList[0];
 
   // Set up state for the width of the movie backdrop image
-  const [widthBackdropMovie, setWidthBackdropMovie] = useState<string>('w780');
+  const [widthBackdropMovie, setWidthBackdropMovie] =
+    useState<string>('original');
   // State to manage loading status
   const [loading, setLoading] = useState(true);
 
@@ -42,7 +43,7 @@ export default function BannerSliderMovie({
   // Effect hook to handle window resize events and update the backdrop width accordingly
   useEffect(() => {
     const handleResize = () => {
-      const width = window.innerWidth >= 768 ? 'w1280' : 'w780';
+      const width = window.innerWidth >= 768 ? 'original' : 'original';
       setWidthBackdropMovie(width);
     };
 

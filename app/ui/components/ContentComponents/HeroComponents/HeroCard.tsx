@@ -23,12 +23,13 @@ export default function HeroCard({
   const { id, backdrop_path, title, release_date, overview } = movieList[0];
 
   // State for dynamically adjusting backdrop image width
-  const [widthBackdropMovie, setWidthBackdropMovie] = useState<string>('w780');
+  const [widthBackdropMovie, setWidthBackdropMovie] =
+    useState<string>('original');
 
   useEffect(() => {
     // Function to handle window resize and adjust image width
     const handleResize = () => {
-      const width = window.innerWidth >= 768 ? 'w1280' : 'w780';
+      const width = window.innerWidth >= 768 ? 'original' : 'original';
       setWidthBackdropMovie(width);
     };
 
