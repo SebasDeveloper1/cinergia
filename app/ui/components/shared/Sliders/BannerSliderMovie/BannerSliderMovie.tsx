@@ -72,7 +72,7 @@ export function BannerSliderMovie({
         backgroundImage: backgroundImageUrl,
       }}
     >
-      <div className="flex flex-col items-center justify-center w-full min-height-banner--sm lg:min-height-banner--lg py-14 lg:py-16 bg-gradient-to-br from-bgPrimaryDark via-bgPrimaryDark/40 to-transparent">
+      <div className="relative flex flex-col items-center justify-center w-full min-height-banner--sm lg:min-height-banner--lg py-14 lg:py-16 bg-gradient-to-br from-bgPrimaryDark via-bgPrimaryDark/40 to-transparent after:absolute after:inset-x-0 after:top-0 after:w-full after:h-4 after:bg-gradient-to-t after:from-transparent after:to-bgPrimaryDark">
         <div className="flex flex-col justify-center gap-8 w-11/12 md:w-10/12">
           <div className="flex flex-col gap-1 w-full">
             {/* Exclusive badge */}

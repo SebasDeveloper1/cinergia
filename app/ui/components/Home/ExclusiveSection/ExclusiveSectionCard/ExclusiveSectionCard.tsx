@@ -58,8 +58,8 @@ export function ExclusiveSectionCard({
         backgroundImage: backgroundImageUrl,
       }}
     >
-      <div className="flex items-center justify-center w-full min-height-banner--sm lg:min-height-banner--lg py-5 lg:py-10 bg-gradient-to-br from-bgPrimaryDark/70 via-bgPrimaryDark/50 to-transparent">
-        <div className="flex flex-col justify-center gap-8 w-11/12 md:w-10/12">
+      <div className="relative flex items-center justify-center w-full min-height-banner--sm lg:min-height-banner--lg py-5 lg:py-10 bg-gradient-to-br from-bgPrimaryDark/70 via-bgPrimaryDark/50 to-transparent after:absolute after:inset-x-0 after:bottom-0 after:w-full after:h-4 after:bg-gradient-to-t after:from-bgPrimaryDark after:to-transparent">
+        <div className="z-10 flex flex-col justify-center gap-8 w-11/12 md:w-10/12">
           <div className="flex flex-col gap-4 w-full">
             {/* Exclusive badge */}
             <div className="w-full">
