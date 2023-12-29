@@ -33,7 +33,7 @@ export function InputSearch({
    */
   return (
     <span
-      className={`overflow-hidden flex justify-center items-center gap-1 w-full rounded-md bg-dark-800/60 ${
+      className={`overflow-hidden flex justify-center items-center gap-1 w-full rounded-md bg-dark-800 ${
         variant === 'SM' ? 'pr-1 pl-2' : 'p-0'
       }`}
     >

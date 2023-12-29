@@ -50,7 +50,7 @@ export function Navbar(): JSX.Element {
    * Render the JSX for the Navbar component
    */
   return (
-    <nav className="flex justify-center items-center w-full h-16 lg:h-[4.5rem] border-b border-borderNeutral-50/10 bg-bgPrimaryDark">
+    <nav className="flex justify-center items-center w-full h-16 lg:h-[4.5rem] border-b border-borderNeutral-50/10 bg-bgPrimaryDark/70 backdrop-blur-sm">
       <div className="relative flex justify-between items-center w-full h-full p-4">
         <div>
           {/* Application logo */}
