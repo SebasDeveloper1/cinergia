@@ -3,7 +3,6 @@
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { convertMinutesToHours } from '@/app/lib/utils/convertMinutesToHours';
-import Figure1 from '@/app/ui/components/shared/assets/Figure1';
 import createMovieSlug from '@/app/lib/utils/createMovieSlug';
 import { HeroCardPropsTypes } from './HeroCard.model';
 
@@ -56,7 +55,7 @@ export function HeroCard({ movieData }: HeroCardPropsTypes): JSX.Element {
       }}
     >
       <div className="w-full min-h-[100vh] py-16 lg:py-[4.5rem] flex justify-center items-end bg-gradient-to-t from-bgPrimaryDark via-bgPrimaryDark/50 to-transparent">
-        <div className="z-10 flex flex-col justify-center gap-8 w-11/12 md:w-10/12 h-full">
+        <div className="flex flex-col justify-center gap-8 w-11/12 md:w-10/12 h-full">
           <div className="w-full h-auto">
             <span className="span-sm px-3 py-1 rounded-full bg-dark-500/30 text-textColorNeutral-50 font-medium">
               {'Película'}
@@ -83,7 +82,6 @@ export function HeroCard({ movieData }: HeroCardPropsTypes): JSX.Element {
           </Link>
         </div>
       </div>
-      <Figure1 className="absolute -bottom-8 md:-bottom-16 lg:-bottom-32 -left-[10%] w-3/5 text-secondary-500" />
     </section>
   );
 }

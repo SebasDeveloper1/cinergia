@@ -1,9 +1,10 @@
 'use client';
 // Import necessary dependencies and types
+import Link from 'next/link';
 import { useState, useEffect } from 'react';
+import Figure1 from '../../../shared/assets/Figure1';
 import { ExclusiveSectionCardPropsTypes } from './ExclusiveSectionCard.model';
 import createMovieSlug from '@/app/lib/utils/createMovieSlug';
-import Link from 'next/link';
 
 /**
  * ExclusiveSectionCard Component
@@ -53,17 +54,19 @@ export function ExclusiveSectionCard({
   // Render the JSX for the ExclusiveSectionCard component
   return (
     <section
-      className="flex items-center justify-center w-full min-height-banner--sm lg:min-height-banner--lg bg-cover bg-center "
+      className="relative flex items-center justify-center w-full min-height-banner--sm lg:min-height-banner--lg bg-cover bg-center "
       style={{
         backgroundImage: backgroundImageUrl,
       }}
     >
+      <Figure1 className="z-20 absolute -top-[4%] lg-top-[6%] -left-[10%] w-3/5 md:w-2/5 text-secondary-500" />
+
       <div className="relative flex items-center justify-center w-full min-height-banner--sm lg:min-height-banner--lg py-5 lg:py-10 bg-gradient-to-br from-bgPrimaryDark/70 via-bgPrimaryDark/50 to-transparent after:absolute after:inset-x-0 after:bottom-0 after:w-full after:h-4 after:bg-gradient-to-t after:from-bgPrimaryDark after:to-transparent">
-        <div className="z-10 flex flex-col justify-center gap-8 w-11/12 md:w-10/12">
+        <div className="z-30flex flex-col justify-center gap-8 w-11/12 md:w-10/12">
           <div className="flex flex-col gap-4 w-full">
             {/* Exclusive badge */}
-            <div className="w-full">
-              <span className="relative px-3 py-2 rounded-md border border-dashed border-borderNeutral-100/20 bg-dark-500/5">
+            <div className="flex flex-col w-full">
+              <span className="relative lg:self-end w-fit px-3 py-2 rounded-md border border-dashed border-borderNeutral-100/20 bg-dark-500/5">
                 <span className="absolute -top-2 -right-2 ">
                   <span className="relative flex w-4 aspect-square">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary-400 opacity-75" />
