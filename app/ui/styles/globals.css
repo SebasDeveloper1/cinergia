@@ -134,7 +134,7 @@
     @apply p-2;
   }
   .button-primary {
-    @apply button text-textColorNeutral-900 bg-customGray-50 hover:bg-customGray-200 transition-colors focus;
+    @apply button text-textColorNeutral-900 hover:text-textColorNeutral-50 bg-customGray-50 hover:bg-primary-500 transition-colors focus;
   }
   .button-secondary {
     @apply button text-textColorNeutral-50 bg-customNeutral-50/20 backdrop-blur-lg hover:bg-customNeutral-50/30 transition-colors focus;
