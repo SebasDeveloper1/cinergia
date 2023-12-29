@@ -1,12 +1,12 @@
 'use client';
 // Import necessary dependencies and types
 import { useState, useEffect } from 'react';
-import convertMinutesToHours from '@/app/lib/utils/convertMinutesToHours';
+import { PlayButton } from './PlayButton';
+import { InfoSection } from './InfoSection';
+import { OverviewSectionSM } from './OverviewSectionSM';
+import { convertMinutesToHours } from '@/app/lib/utils/convertMinutesToHours';
+import { extractValuesByKey } from '@/app/lib/utils/extractValuesByKey';
 import { HeroCardProps } from './HeroCard.model';
-import extractValuesByKey from '@/app/lib/utils/extractValuesByKey';
-import PlayButton from './PlayButton/PlayButton';
-import InfoSection from './InfoSection/InfoSection';
-import OverviewSectionSM from './OverviewSectionSM/OverviewSectionSM';
 
 /**
  * HeroCard Component

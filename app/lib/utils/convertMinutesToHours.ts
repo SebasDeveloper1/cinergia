@@ -1,4 +1,4 @@
-const convertMinutesToHours = (time: number) => {
+export const convertMinutesToHours = (time: number) => {
   if (Number.isInteger(time)) {
     if (time > 0) {
       const hours = Math.floor(time / 60);
@@ -10,5 +10,3 @@ const convertMinutesToHours = (time: number) => {
   }
   throw new Error(`Invalid time: ${time}`);
 };
-
-export default convertMinutesToHours;

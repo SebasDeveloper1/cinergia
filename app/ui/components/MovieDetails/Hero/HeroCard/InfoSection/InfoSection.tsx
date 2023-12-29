@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { InfoSectionProps } from '../HeroCard.model';
 
-export default function InfoSection({
+export function InfoSection({
   title,
   productionCompanies,
   productionCountries,

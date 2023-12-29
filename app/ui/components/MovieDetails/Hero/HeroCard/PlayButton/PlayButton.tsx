@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { PlayButtonProps } from '../HeroCard.model';
-export default function PlayButton({ path }: PlayButtonProps): JSX.Element {
+export function PlayButton({ path }: PlayButtonProps): JSX.Element {
   return (
     <Link
       className="button-outlined p-4 w-20 aspect-square rounded-full ring-customNeutral-200 md:hover:ring-customNeutral-50 hover:bg-dark-900/30 md:hover:bg-primary-500 md:hover:scale-110 transition ease-in-out duration-300"

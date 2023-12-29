@@ -1,6 +1,6 @@
 import { OverviewSectionProps } from '../HeroCard.model';
 
-export default function OverviewSectionSM({
+export function OverviewSectionSM({
   overview,
   whySeeIt,
 }: OverviewSectionProps): JSX.Element {

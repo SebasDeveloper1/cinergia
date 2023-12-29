@@ -1,7 +1,7 @@
 // Import necessary dependencies and components
 import React from 'react';
-import Hero from '../ui/containers/ContentContainers/Hero/Hero';
-import ListSection from '../ui/containers/ContentContainers/ListSection/ListSection';
+import { Hero } from '@/app/ui/components/Content/Hero';
+import { ListSection } from '@/app/ui/components/Content/ListSection/ListSection';
 
 /**
  * Content Page Component

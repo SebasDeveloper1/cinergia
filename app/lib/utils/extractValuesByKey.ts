@@ -16,7 +16,7 @@
  * console.log(resultValues); // Output: ["Illumination", ...]
  */
 
-const extractValuesByKey = ({
+export const extractValuesByKey = ({
   array,
   key,
 }: {
@@ -29,5 +29,3 @@ const extractValuesByKey = ({
   // Return the values as an array of strings or numbers
   return valuesArray.join(', ');
 };
-
-export default extractValuesByKey;
