@@ -71,7 +71,7 @@ export function MovieCard({ movieData }: MovieCardPropsTypes) {
               {title}
             </span>
             {/* Release date */}
-            <span className="span-sm text-xs text-textColorPrimary-500 font-semibold">
+            <span className="span-sm text-xs text-textColorNeutral-50 font-semibold">
               {release_date !== undefined &&
                 new Date(release_date).getFullYear()}
             </span>
