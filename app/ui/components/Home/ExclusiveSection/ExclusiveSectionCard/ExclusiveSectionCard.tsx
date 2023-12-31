@@ -62,7 +62,7 @@ export function ExclusiveSectionCard({
       <Figure1 className="z-20 absolute -top-[4%] lg-top-[6%] -left-[10%] w-3/5 md:w-2/5 text-secondary-500" />
 
       <div className="relative flex items-center justify-center w-full min-height-banner--sm lg:min-height-banner--lg py-5 lg:py-10 bg-gradient-to-br from-bgPrimaryDark/70 via-bgPrimaryDark/50 to-transparent after:absolute after:inset-x-0 after:bottom-0 after:w-full after:h-4 after:bg-gradient-to-t after:from-bgPrimaryDark after:to-transparent">
-        <div className="z-30flex flex-col justify-center gap-8 w-11/12 md:w-10/12">
+        <div className="z-30 flex flex-col justify-center gap-8 w-11/12 md:w-10/12">
           <div className="flex flex-col gap-4 w-full">
             {/* Exclusive badge */}
             <div className="flex flex-col w-full">
@@ -104,14 +104,6 @@ export function ExclusiveSectionCard({
             >
               Ver Película
             </Link>
-
-            {/* "Ver exclusivas" button */}
-            <button
-              className="button-outlined padding-button w-full md:w-fit"
-              onClick={() => console.log('hello world')}
-            >
-              Ver Exclusivas
-            </button>
           </div>
         </div>
       </div>
