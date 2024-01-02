@@ -18,7 +18,7 @@ import Link from 'next/link';
  */
 export function HeroCard({ movieList }: HeroCardPropsTypes): JSX.Element {
   // Destructure key movie information
-  const { id, backdrop_path, title, release_date, overview } = movieList[0];
+  const { id, backdrop_path, title, release_date } = movieList[0];
 
   // State for dynamically adjusting backdrop image width
   const [widthBackdropMovie, setWidthBackdropMovie] =
@@ -67,10 +67,6 @@ export function HeroCard({ movieList }: HeroCardPropsTypes): JSX.Element {
                 new Date(release_date).getFullYear()}
             </span>
           </div>
-          {/* Movie overview */}
-          <p className="paragraph-sm max-w-prose line-clamp-5 lg:line-clamp-none font-normal text-textColorNeutral-50">
-            {overview}
-          </p>
           {/* Button to view the movie */}
           <Link
             className="button-secondary padding-button w-full md:w-fit"
