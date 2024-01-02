@@ -2,8 +2,8 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import '@/app/ui/styles/globals.css';
-import Navbar from '@/app/ui/containers/GlobalContainers/Navbar/Navbar';
-import Footer from '@/app/ui/containers/GlobalContainers/Footer/Footer';
+import { Navbar } from '@/app/ui/components/shared/Navbar';
+import { Footer } from '@/app/ui/components/shared/Footer';
 
 // Initialize the Inter font with Latin subset
 const inter = Inter({ subsets: ['latin'] });

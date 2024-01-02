@@ -1,10 +1,10 @@
 // Import necessary dependencies and types
-import Hero from '@/app/ui/containers/HomeContainers/Hero/Hero';
-import ExclusiveSection from '@/app/ui/containers/HomeContainers/ExclusiveSection/ExclusiveSection';
-import NewsSection from '@/app/ui/containers/HomeContainers/NewsSection/NewsSection';
-import ShortFilmsBannerSection from '@/app/ui/containers/HomeContainers/ShortFilmsBannerSection/ShortFilmsBannerSection';
-import EventBannerSection from '@/app/ui/containers/HomeContainers/EventBannerSection/EventBannerSection';
-import WeekMovieSection from '@/app/ui/containers/HomeContainers/WeekMovieSection/WeekMovieSection';
+import { Hero } from '@/app/ui/components/Home/Hero';
+import { ExclusiveSection } from '@/app/ui/components/Home/ExclusiveSection';
+import { NewsSection } from '@/app/ui/components/Home/NewsSection';
+import { ShortFilmsBannerSection } from '@/app/ui/components/Home/ShortFilmsBannerSection';
+import { EventBannerSection } from '@/app/ui/components/Home/EventBannerSection';
+import { WeekMovieSection } from '@/app/ui/components/Home/WeekMovieSection';
 
 /**
  * Home Component
