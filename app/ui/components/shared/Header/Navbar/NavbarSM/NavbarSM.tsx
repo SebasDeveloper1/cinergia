@@ -1,10 +1,9 @@
-'use client';
 // Import necessary dependencies and types
-import { useState, useRef, MouseEvent } from 'react';
+import { useRouter } from 'next/navigation';
+import { useState, useRef, MouseEvent, Dispatch, SetStateAction } from 'react';
 import { InputSearch } from '@/app/ui/components/shared/Inputs/InputSearch';
 import useOnClickOutside from '@/app/lib/hooks/useOnClickOutside';
 import { NavbarPropsTypes } from '../Navbar.model';
-import Link from 'next/link';
 
 /**
  * NavbarSM Component
@@ -12,17 +11,26 @@ import Link from 'next/link';
  * A React component representing the small screen version of the navigation bar. It includes a search input, a menu button, and a list of navigation links.
  *
  * @component
- * @param {NavbarPropsTypes[]} links - An array of objects representing navigation links, each with a name, href, and icon.
+ * @param {Object} props - The properties of the NavbarSM component.
+ * @param {NavbarPropsTypes[]} props.links - An array of objects representing navigation links, each with a name, href, and icon.
+ * @param {Dispatch<SetStateAction<boolean>>} props.handleMyListState - A function to handle the state of MyListPreview visibility.
+ * @param {boolean} props.myListState - The state of MyListPreview visibility.
  * @returns {JSX.Element} - JSX element representing the NavbarSM component.
  */
 export function NavbarSM({
   links,
+  handleMyListState,
+  myListState,
 }: {
   links: NavbarPropsTypes[];
+  handleMyListState: Dispatch<SetStateAction<boolean>>;
+  myListState: boolean;
 }): JSX.Element {
   // State for controlling the visibility of the search input and menu
   const [openSearch, setOpenSearch] = useState<boolean>(false);
   const [openMenu, setOpenMenu] = useState<boolean>(false);
+
+  const router = useRouter();
 
   // Handler for toggling the menu
   const handleMenu = (e: MouseEvent<HTMLElement>) => {
@@ -45,11 +53,24 @@ export function NavbarSM({
     setOpenSearch(false);
   });
 
+  // Handler for toggling MyListPreview visibility
+  const handleMyList = (e: MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    handleMyListState(!myListState);
+  };
+
+  // Handler for navigating to a link
+  const handleLink = (e: MouseEvent<HTMLButtonElement>, link: string) => {
+    e.preventDefault();
+    router.push(link);
+    setOpenMenu(!openMenu);
+  };
+
   /**
    * Render the JSX for the NavbarSM component
    */
   return (
-    <section ref={menuRef} className="lg:hidden z-50 flex gap-2">
+    <section ref={menuRef} className="lg:hidden flex gap-2">
       {/* Search button */}
       <button
         className="button-text padding-icon"
@@ -71,6 +92,35 @@ export function NavbarSM({
             strokeWidth="2"
             d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
           />
+        </svg>
+      </button>
+      {/*My list button*/}
+      <button
+        type="button"
+        className="button-text padding-icon"
+        title="Mi lista"
+        aria-label="Mi lista"
+        onClick={handleMyList}
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="icon icon-tabler icon-tabler-list-details"
+          width={24}
+          height={24}
+          viewBox="0 0 24 24"
+          strokeWidth={2}
+          stroke="currentColor"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <path d="M13 5h8" />
+          <path d="M13 9h5" />
+          <path d="M13 15h8" />
+          <path d="M13 19h5" />
+          <path d="M3 4m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z" />
+          <path d="M3 14m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z" />
         </svg>
       </button>
       {/* Menu button */}
@@ -172,14 +222,14 @@ export function NavbarSM({
                 className="navbar-item-sm w-full pt-4"
               >
                 {/* Link to the specified href */}
-                <Link
+                <button
                   className="flex items-center gap-3 capitalize"
-                  href={link?.href}
+                  onClick={(e) => handleLink(e, link?.href)}
                 >
                   {/* Display the link icon and name */}
                   {link?.icon}
                   {link?.name}
-                </Link>
+                </button>
               </li>
             ))}
           </ul>

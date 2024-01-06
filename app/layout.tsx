@@ -2,7 +2,7 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import '@/app/ui/styles/globals.css';
-import { Navbar } from '@/app/ui/components/shared/Navbar';
+import { Header } from '@/app/ui/components/shared/Header';
 import { Footer } from '@/app/ui/components/shared/Footer';
 
 // Initialize the Inter font with Latin subset
@@ -32,9 +32,7 @@ export default function RootLayout({
     <html lang="en" data-theme="cinergia">
       <body className={`${inter.className} antialiased`}>
         {/* Header with navigation bar */}
-        <header className="fixed top-0 inset-x-0 z-50 w-full">
-          <Navbar />
-        </header>
+        <Header />
 
         {/* Main content */}
         {children}
