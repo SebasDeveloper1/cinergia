@@ -34,7 +34,7 @@ export async function ListSection(): Promise<JSX.Element> {
               key={`genreList_${item.genre}`}
               title={item.genre}
               movieList={item.movies}
-              path={'/'}
+              path={`/generos/${item?.slug}`}
             />
           ))}
         </div>

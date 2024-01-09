@@ -128,7 +128,7 @@ export async function fetchMovieDataForGenres(genresList: genresListTypes[]) {
   for (const genre of genresList) {
     try {
       const { results: movies } = await fetchMovieList({ genreId: genre.id });
-      resultArray.push({ genre: genre.name, movies });
+      resultArray.push({ genre: genre.name, slug: genre.slug, movies });
     } catch (error) {
       console.error(`Error fetching movies for genre ${genre.name}: ${error}`);
     }
