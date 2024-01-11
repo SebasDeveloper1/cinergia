@@ -4,6 +4,7 @@ import { Inter } from 'next/font/google';
 import '@/app/ui/styles/globals.css';
 import { Header } from '@/app/ui/components/shared/Header';
 import { Footer } from '@/app/ui/components/shared/Footer';
+import { ScrollWrapper } from '@/app/lib/utils/ScrollWrapper';
 
 // Initialize the Inter font with Latin subset
 const inter = Inter({ subsets: ['latin'] });
@@ -30,16 +31,18 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" data-theme="cinergia">
-      <body className={`${inter.className} antialiased`}>
-        {/* Header with navigation bar */}
-        <Header />
+      <ScrollWrapper>
+        <body className={`${inter.className} antialiased`}>
+          {/* Header with navigation bar */}
+          <Header />
 
-        {/* Main content */}
-        {children}
+          {/* Main content */}
+          {children}
 
-        {/* Footer component */}
-        <Footer />
-      </body>
+          {/* Footer component */}
+          <Footer />
+        </body>
+      </ScrollWrapper>
     </html>
   );
 }
