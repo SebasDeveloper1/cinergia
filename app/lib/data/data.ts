@@ -101,7 +101,9 @@ export async function fetchMovieList({
     method: 'GET',
     headers: {
       accept: 'application/json',
-      Authorization: `Bearer ${process.env.ACCESS_TOKEN}`,
+      Authorization: `Bearer ${
+        process.env.ACCESS_TOKEN || process.env.NEXT_PUBLIC_ACCESS_TOKEN
+      }`,
     },
   };
 

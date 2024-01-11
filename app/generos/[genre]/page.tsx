@@ -1,6 +1,8 @@
 import { fetchMovieList } from '@/app/lib/data/data';
 import { genresList } from '@/app/lib/data/genreList/genreList';
 import { Hero } from '@/app/ui/components/Genres/Hero';
+import { MovieList } from '@/app/ui/components/Genres/MovieList';
+import { NoMoviesAvailable } from '@/app/ui/components/Genres/NoMoviesAvailable';
 
 /**
  * Genre Page
@@ -27,7 +29,7 @@ export default async function GenrePage({
 
   // If genre information is not found, display a "Not found" message
   if (!genreInfo) {
-    return <div className="mt-20">Not found</div>;
+    return <div className="mt-20">No found</div>;
   }
 
   try {
@@ -39,8 +41,9 @@ export default async function GenrePage({
       const firstMovie = movieList.results[0];
 
       return (
-        <section>
+        <section className="w-full">
           <Hero genreInfo={genreInfo} movieInfo={firstMovie} />
+          <MovieList genreInfo={genreInfo} movieList={movieList} />
         </section>
       );
     }
@@ -50,5 +53,5 @@ export default async function GenrePage({
   }
 
   // Display a message when no movies are available
-  return <div className="mt-20">No movies available</div>;
+  return <NoMoviesAvailable />;
 }

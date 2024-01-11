@@ -77,7 +77,7 @@ export function Navbar({
    * Render the JSX for the Navbar component
    */
   return (
-    <nav className="relative flex justify-center items-center w-full h-16 lg:h-[4.5rem] border-b border-borderNeutral-50/10 bg-bgPrimaryDark/80">
+    <nav className="relative flex justify-center items-center w-full h-16 lg:h-[4.5rem] border-b border-borderNeutral-50/10 bg-bgPrimaryDark/50">
       <div className="relative flex justify-between items-center w-full h-full p-4 backdrop-blur-sm">
         <div>
           {/* Application logo */}
