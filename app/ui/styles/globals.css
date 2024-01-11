@@ -151,7 +151,7 @@
 
   /* Navbar item styles */
   .navbar-item {
-    @apply w-full xl:w-fit font-normal text-textColorNeutral-300 transition-all duration-200 focus:outline-none hover:text-textColorNeutral-50 focus:ring-1 focus:ring-dark-900 focus:ring-offset-2;
+    @apply w-full xl:w-fit font-normal text-textColorNeutral-100 transition-all duration-200 focus:outline-none hover:text-textColorNeutral-50 focus:ring-1 focus:ring-dark-900 focus:ring-offset-2;
   }
   .navbar-item-sm {
     @apply navbar-item text-base;

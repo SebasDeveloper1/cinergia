@@ -33,7 +33,7 @@ export function InputSearch({
    */
   return (
     <span
-      className={`overflow-hidden flex justify-center items-center gap-1 w-full rounded-md bg-dark-800 ${
+      className={`overflow-hidden flex justify-center items-center gap-1 w-full rounded-md bg-dark-700 text-textColorNeutral-50${
         variant === 'SM' ? 'pr-1 pl-2' : 'p-0'
       }`}
     >
@@ -62,7 +62,7 @@ export function InputSearch({
         <>
           {renderInput()}
           <button
-            className="button-text py-2 px-4 rounded-none bg-dark-800"
+            className="button-text py-2 px-4 rounded-none bg-dark-700"
             title="Buscar"
             aria-label="Search"
           >

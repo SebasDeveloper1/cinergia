@@ -78,7 +78,7 @@ export function Navbar({
    */
   return (
     <nav className="relative flex justify-center items-center w-full h-16 lg:h-[4.5rem] border-b border-borderNeutral-50/10 bg-bgPrimaryDark/50">
-      <div className="relative flex justify-between items-center w-full h-full p-4 backdrop-blur-sm">
+      <div className="relative flex justify-between items-center w-full h-full p-4 backdrop-blur-md">
         <div>
           {/* Application logo */}
           <Link href="/" className="text-xl">

@@ -17,7 +17,7 @@ export default function Content(): JSX.Element {
    * Render the JSX for the Content component
    */
   return (
-    <div className="pt-16 lg:pt-[4.5rem]">
+    <div className="w-full">
       {/* Hero section */}
       <Hero />
       {/* List section */}

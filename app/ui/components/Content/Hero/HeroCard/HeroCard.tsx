@@ -50,7 +50,7 @@ export function HeroCard({ movieList }: HeroCardPropsTypes): JSX.Element {
         backgroundImage: `url('https://image.tmdb.org/t/p/${widthBackdropMovie}/${backdrop_path}')`,
       }}
     >
-      <div className="w-full min-h-[50vh] py-16 flex flex-col justify-start items-center gap-16 bg-gradient-to-br from-bgPrimaryDark/90 via-bgPrimaryDark/50 to-transparent">
+      <div className="w-full min-h-[50vh] py-20 lg:py-[5.5rem] flex flex-col justify-start items-center gap-16 bg-gradient-to-br from-bgPrimaryDark/90 via-bgPrimaryDark/50 to-transparent">
         <section className="flex flex-col justify-center gap-8 w-11/12 md:w-10/12 h-full">
           <div className="w-full h-auto">
             {/* Movie type label */}
