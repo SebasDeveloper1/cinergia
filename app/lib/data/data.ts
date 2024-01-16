@@ -138,3 +138,32 @@ export async function fetchMovieDataForGenres(genresList: genresListTypes[]) {
 
   return resultArray;
 }
+
+export async function fetchVideoMovie(movieId: number) {
+  const apiUrl = `
+  https://api.themoviedb.org/3/movie/${movieId}/videos?language=es-CO`;
+  const options = {
+    next: { revalidate: 86400 },
+    method: 'GET',
+    headers: {
+      accept: 'application/json',
+      Authorization: `Bearer ${process.env.ACCESS_TOKEN}`,
+    },
+  };
+
+  try {
+    const response = await fetch(apiUrl, options);
+
+    if (!response.ok) {
+      const error: Error = new Error(
+        `Error: ${response.status} - ${response.statusText}`,
+      );
+      throw error;
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Error fetching videos');
+  }
+}

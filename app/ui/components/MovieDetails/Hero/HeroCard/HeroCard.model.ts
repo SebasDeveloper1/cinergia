@@ -1,21 +1,11 @@
 // Describes the properties for a Hero Card component.
 export interface HeroCardProps {
-  movieData: MovieType; // Data related to a movie.
+  movieData: MovieType;
+  videos: VideoList; // Data related to a movie.
 }
 
 // Describes the properties for an Information Section component.
-export interface InfoSectionProps {
-  title: string; // Title of the movie.
-  productionCompanies: string; // Production companies involved in the movie.
-  productionCountries: string; // Production countries of the movie.
-  genreList: string; // List of genres associated with the movie.
-  detailsMovieList: {
-    name: string; // Name of the detail.
-    data: string | number | boolean | Array<string>; // Adjust types based on the actual type of 'data'.
-    icon: JSX.Element; // JSX element for an icon.
-  }[];
-  overview: string; // Overview of the movie.
-}
+export interface InfoSectionProps extends HeroCardProps {}
 
 // Describes the properties for an Overview Section component.
 export interface OverviewSectionProps {
