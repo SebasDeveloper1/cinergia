@@ -1,5 +1,5 @@
-// Importa las dependencias y componentes necesarios
-import { fetchMovieDetails } from '@/app/lib/data/data';
+// Import necessary dependencies and components
+import { fetchMovieDetails, fetchVideoMovie } from '@/app/lib/data/data';
 import { HeroCard } from './HeroCard';
 
 /**
@@ -11,11 +11,17 @@ import { HeroCard } from './HeroCard';
  * @component
  * @param {Object} props - Component properties.
  * @param {number} props.movieId - The ID of the movie for which to retrieve and display information.
- * @returns {JSX.Element} - JSX element representing the Hero component.
+ * @returns {Promise<JSX.Element>} - A Promise resolving to a JSX element representing the Hero component.
  *
  * @example
  * // Usage of the Hero component in some other component or view
- * <Hero movieId={123} />
+ * import { Hero } from './path-to-Hero-component';
+ *
+ * // Inside your component or view
+ * const MovieDetailsPage = () => {
+ *   const movieId = 123; // Replace with the actual movie ID
+ *   return <Hero movieId={movieId} />;
+ * };
  */
 export async function Hero({
   movieId,
@@ -24,7 +30,8 @@ export async function Hero({
 }): Promise<JSX.Element> {
   // Fetches movie information based on the provided ID
   const movieData: MovieType = await fetchMovieDetails(movieId);
+  const videos: VideoList = await fetchVideoMovie(movieId);
 
   // Renders the HeroCard with the movie information
-  return <HeroCard movieData={movieData} />;
+  return <HeroCard movieData={movieData} videos={videos} />;
 }

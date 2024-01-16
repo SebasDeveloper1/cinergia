@@ -75,6 +75,7 @@ export function MyListPreview({
         </span>
         {/* Close button */}
         <button
+          type="button"
           className="button-text padding-icon"
           title="Buscar"
           aria-label="Search"

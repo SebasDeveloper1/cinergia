@@ -73,6 +73,7 @@ export function NavbarSM({
     <section ref={menuRef} className="lg:hidden flex gap-2">
       {/* Search button */}
       <button
+        type="button"
         className="button-text padding-icon"
         title="Buscar"
         aria-label="Search"
@@ -182,6 +183,7 @@ export function NavbarSM({
           <InputSearch variant="SM" />
           {/* Close search button */}
           <button
+            type="button"
             className="button-text padding-icon"
             title="Cerrar búsqueda"
             aria-label="Cerrar búsqueda"
@@ -223,6 +225,7 @@ export function NavbarSM({
               >
                 {/* Link to the specified href */}
                 <button
+                  type="button"
                   className="flex items-center gap-3 capitalize"
                   onClick={(e) => handleLink(e, link?.href)}
                 >

@@ -1,12 +1,12 @@
 'use client';
 // Import necessary dependencies and types
-import { useState, useEffect } from 'react';
+import { useState, useEffect, MouseEvent } from 'react';
 import { PlayButton } from './PlayButton';
 import { InfoSection } from './InfoSection';
 import { OverviewSectionSM } from './OverviewSectionSM';
-import { convertMinutesToHours } from '@/app/lib/utils/convertMinutesToHours';
-import { extractValuesByKey } from '@/app/lib/utils/extractValuesByKey';
+import { VideoPlayerModal } from '@/app/ui/components/shared/Modals/VideoPlayerModal';
 import { HeroCardProps } from './HeroCard.model';
+import { VideoPlayer } from '../../../shared/VideoPlayer';
 
 /**
  * HeroCard Component
@@ -18,137 +18,18 @@ import { HeroCardProps } from './HeroCard.model';
  * @component
  * @param {HeroCardProps} props - Props for configuring the HeroCard component.
  * @param {MovieType} props.movieData - Movie data used to populate the card.
+ * @param {VideoList} props.videos - List of videos related to the movie.
  * @returns {JSX.Element} - JSX element representing the HeroCard component.
  */
-export function HeroCard({ movieData }: HeroCardProps): JSX.Element {
+
+export function HeroCard({ movieData, videos }: HeroCardProps): JSX.Element {
   // Destructure movieData for easier access
-  const {
-    backdrop_path,
-    title,
-    production_companies,
-    production_countries,
-    genres,
-    release_date,
-    runtime,
-    spoken_languages,
-    overview,
-  } = movieData;
-
-  const productionCompanies = extractValuesByKey({
-    array: production_companies,
-    key: 'name',
-  });
-  const productionCountries = extractValuesByKey({
-    array: production_countries,
-    key: 'name',
-  });
-  const genreList = extractValuesByKey({
-    array: genres,
-    key: 'name',
-  });
-  const spokenLanguages = extractValuesByKey({
-    array: spoken_languages,
-    key: 'name',
-  });
-
-  const detailsMovieList = [
-    {
-      name: 'type',
-      data: 'Película',
-      icon: (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="icon icon-tabler icon-tabler-device-tv"
-          width={24}
-          height={24}
-          viewBox="0 0 24 24"
-          strokeWidth={2}
-          stroke="currentColor"
-          fill="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-          <path d="M3 7m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z" />
-          <path d="M16 3l-4 4l-4 -4" />
-        </svg>
-      ),
-    },
-    {
-      name: 'runtime',
-      data: convertMinutesToHours(runtime),
-      icon: (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="icon icon-tabler icon-tabler-clock"
-          width={24}
-          height={24}
-          viewBox="0 0 24 24"
-          strokeWidth={2}
-          stroke="currentColor"
-          fill="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-          <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" />
-          <path d="M12 7v5l3 3" />
-        </svg>
-      ),
-    },
-    {
-      name: 'release_date',
-      data: release_date !== undefined && new Date(release_date).getFullYear(),
-      icon: (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="icon icon-tabler icon-tabler-calendar-event"
-          width={24}
-          height={24}
-          viewBox="0 0 24 24"
-          strokeWidth={2}
-          stroke="currentColor"
-          fill="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-          <path d="M4 5m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" />
-          <path d="M16 3l0 4" />
-          <path d="M8 3l0 4" />
-          <path d="M4 11l16 0" />
-          <path d="M8 15h2v2h-2z" />
-        </svg>
-      ),
-    },
-    {
-      name: 'spoken_lenguages',
-      data: spokenLanguages,
-      icon: (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="icon icon-tabler icon-tabler-volume"
-          width={24}
-          height={24}
-          viewBox="0 0 24 24"
-          strokeWidth={2}
-          stroke="currentColor"
-          fill="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-          <path d="M15 8a5 5 0 0 1 0 8" />
-          <path d="M17.7 5a9 9 0 0 1 0 14" />
-          <path d="M6 15h-2a1 1 0 0 1 -1 -1v-4a1 1 0 0 1 1 -1h2l3.5 -4.5a.8 .8 0 0 1 1.5 .5v14a.8 .8 0 0 1 -1.5 .5l-3.5 -4.5" />
-        </svg>
-      ),
-    },
-  ];
+  const { backdrop_path, overview } = movieData;
 
   // State to dynamically adjust the width of the backdrop image based on screen size
   const [widthBackdropMovie, setWidthBackdropMovie] =
     useState<string>('original');
+  const [openModal, setOpenModal] = useState<boolean>(false);
 
   useEffect(() => {
     // Function to handle resizing and adjust the width accordingly
@@ -169,30 +50,44 @@ export function HeroCard({ movieData }: HeroCardProps): JSX.Element {
     };
   }, []);
 
+  const handleOpenModal = (e: MouseEvent) => {
+    e.preventDefault;
+    setOpenModal(!openModal);
+  };
+
   // Render the HeroCard component with movie details
   return (
     <>
       <section
-        className="overflow-hidden w-full h-screen bg-cover bg-center "
+        className="overflow-hidden w-full h-screen bg-cover bg-center"
         style={{
           backgroundImage: `url('https://image.tmdb.org/t/p/${widthBackdropMovie}/${backdrop_path}')`,
         }}
       >
         <article className="w-full h-screen flex justify-center items-center bg-gradient-to-t from-bgPrimaryDark/80 via-bgPrimaryDark/10 to-transparent">
           <div className="grid grid-rows-2 justify-items-center items-end gap-16 w-11/12 h-screen py-16 lg:pt-[4.5rem] lg:pb-9">
-            <PlayButton path="" />
-            <InfoSection
-              title={title ? title : ''}
-              productionCompanies={productionCompanies}
-              productionCountries={productionCountries}
-              genreList={genreList}
-              detailsMovieList={detailsMovieList}
-              overview={overview}
+            <PlayButton
+              title="Reproducir"
+              aria-label="Reproducir"
+              onClick={(e) => handleOpenModal(e)}
             />
+            <InfoSection movieData={movieData} videos={videos} />
           </div>
         </article>
       </section>
       <OverviewSectionSM overview={overview} whySeeIt={overview} />
+      {/* Video Player */}
+      {openModal ? (
+        <VideoPlayerModal
+          openModalState={openModal}
+          handleOpenModal={setOpenModal}
+        >
+          <VideoPlayer
+            src="https://muse.ai/embed/xDsP7wV?search=0&links=0&logo=0&title=0&cover_play_position=center"
+            allowFullScreen
+          />
+        </VideoPlayerModal>
+      ) : null}
     </>
   );
 }
