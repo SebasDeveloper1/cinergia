@@ -1,10 +1,10 @@
-import Link from 'next/link';
 import { PlayButtonProps } from '../HeroCard.model';
-export function PlayButton({ path }: PlayButtonProps): JSX.Element {
+export function PlayButton(props: PlayButtonProps): JSX.Element {
   return (
-    <Link
+    <button
+      type="button"
       className="button-outlined p-4 w-20 aspect-square rounded-full ring-customNeutral-200 md:hover:ring-customNeutral-50 hover:bg-dark-900/30 md:hover:bg-primary-500 md:hover:scale-110 transition ease-in-out duration-300"
-      href={path}
+      {...props}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +23,6 @@ export function PlayButton({ path }: PlayButtonProps): JSX.Element {
           fill="currentColor"
         />
       </svg>
-    </Link>
+    </button>
   );
 }

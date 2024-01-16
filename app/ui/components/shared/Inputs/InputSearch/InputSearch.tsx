@@ -62,6 +62,7 @@ export function InputSearch({
         <>
           {renderInput()}
           <button
+            type="button"
             className="button-text py-2 px-4 rounded-none bg-dark-700"
             title="Buscar"
             aria-label="Search"

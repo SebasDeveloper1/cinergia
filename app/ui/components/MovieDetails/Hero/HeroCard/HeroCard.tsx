@@ -1,10 +1,12 @@
 'use client';
 // Import necessary dependencies and types
-import { useState, useEffect } from 'react';
+import { useState, useEffect, MouseEvent } from 'react';
 import { PlayButton } from './PlayButton';
 import { InfoSection } from './InfoSection';
 import { OverviewSectionSM } from './OverviewSectionSM';
+import { VideoPlayerModal } from '@/app/ui/components/shared/Modals/VideoPlayerModal';
 import { HeroCardProps } from './HeroCard.model';
+import { VideoPlayer } from '../../../shared/VideoPlayer';
 
 /**
  * HeroCard Component
@@ -19,6 +21,7 @@ import { HeroCardProps } from './HeroCard.model';
  * @param {VideoList} props.videos - List of videos related to the movie.
  * @returns {JSX.Element} - JSX element representing the HeroCard component.
  */
+
 export function HeroCard({ movieData, videos }: HeroCardProps): JSX.Element {
   // Destructure movieData for easier access
   const { backdrop_path, overview } = movieData;
@@ -26,6 +29,7 @@ export function HeroCard({ movieData, videos }: HeroCardProps): JSX.Element {
   // State to dynamically adjust the width of the backdrop image based on screen size
   const [widthBackdropMovie, setWidthBackdropMovie] =
     useState<string>('original');
+  const [openModal, setOpenModal] = useState<boolean>(false);
 
   useEffect(() => {
     // Function to handle resizing and adjust the width accordingly
@@ -46,6 +50,11 @@ export function HeroCard({ movieData, videos }: HeroCardProps): JSX.Element {
     };
   }, []);
 
+  const handleOpenModal = (e: MouseEvent) => {
+    e.preventDefault;
+    setOpenModal(!openModal);
+  };
+
   // Render the HeroCard component with movie details
   return (
     <>
@@ -57,12 +66,28 @@ export function HeroCard({ movieData, videos }: HeroCardProps): JSX.Element {
       >
         <article className="w-full h-screen flex justify-center items-center bg-gradient-to-t from-bgPrimaryDark/80 via-bgPrimaryDark/10 to-transparent">
           <div className="grid grid-rows-2 justify-items-center items-end gap-16 w-11/12 h-screen py-16 lg:pt-[4.5rem] lg:pb-9">
-            <PlayButton path="" />
+            <PlayButton
+              title="Reproducir"
+              aria-label="Reproducir"
+              onClick={(e) => handleOpenModal(e)}
+            />
             <InfoSection movieData={movieData} videos={videos} />
           </div>
         </article>
       </section>
       <OverviewSectionSM overview={overview} whySeeIt={overview} />
+      {/* Video Player */}
+      {openModal ? (
+        <VideoPlayerModal
+          openModalState={openModal}
+          handleOpenModal={setOpenModal}
+        >
+          <VideoPlayer
+            src="https://muse.ai/embed/xDsP7wV?search=0&links=0&logo=0&title=0&cover_play_position=center"
+            allowFullScreen
+          />
+        </VideoPlayerModal>
+      ) : null}
     </>
   );
 }

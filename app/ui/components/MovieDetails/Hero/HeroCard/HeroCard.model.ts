@@ -1,3 +1,5 @@
+import { ButtonHTMLAttributes } from 'react';
+
 // Describes the properties for a Hero Card component.
 export interface HeroCardProps {
   movieData: MovieType;
@@ -14,6 +16,5 @@ export interface OverviewSectionProps {
 }
 
 // Describes the properties for a Play Button component.
-export interface PlayButtonProps {
-  path: string; // Path to the video or content to be played.
-}
+export interface PlayButtonProps
+  extends ButtonHTMLAttributes<HTMLButtonElement> {}

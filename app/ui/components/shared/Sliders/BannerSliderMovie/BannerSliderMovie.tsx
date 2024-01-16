@@ -113,6 +113,7 @@ export function BannerSliderMovie({
 
             {/* "Ver más" button */}
             <button
+              type="button"
               className="button-outlined padding-button w-full md:w-fit"
               onClick={() => console.log('hello world')}
             >

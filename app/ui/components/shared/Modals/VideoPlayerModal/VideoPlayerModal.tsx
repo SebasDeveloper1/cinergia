@@ -50,6 +50,7 @@ export function VideoPlayerModal({
   return (
     <section className="z-[60] fixed inset-0 flex flex-col justify-center items-center gap-8 w-full h-screen bg-dark-950/80 backdrop-blur-sm">
       <button
+        type="button"
         className="button-secondary padding-icon"
         title="Cerrar"
         aria-label="Cerrar"
@@ -74,7 +75,7 @@ export function VideoPlayerModal({
       </button>
       <article
         ref={modalRef}
-        className="relative w-11/12 md:w-8/12 aspect-video rounded-sm bg-dark-700"
+        className="overflow-hidden relative w-11/12 md:w-8/12 aspect-video rounded-sm bg-bgPrimaryDark"
       >
         {children}
       </article>

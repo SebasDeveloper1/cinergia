@@ -4,6 +4,7 @@ import { VideoPlayerModal } from '@/app/ui/components/shared/Modals/VideoPlayerM
 import { convertMinutesToHours } from '@/app/lib/utils/convertMinutesToHours';
 import { extractValuesByKey } from '@/app/lib/utils/extractValuesByKey';
 import { InfoSectionProps } from '../HeroCard.model';
+import { VideoPlayer } from '@/app/ui/components/shared/VideoPlayer';
 
 /**
  * InfoSection Component
@@ -191,6 +192,7 @@ export function InfoSection({
           </article>
           <article className="flex flex-col md:flex-row gap-4 w-full">
             <button
+              type="button"
               className="button-outlined padding-button w-full md:w-fit"
               onClick={(e) => handleOpenModal(e)}
             >
@@ -223,8 +225,7 @@ export function InfoSection({
           openModalState={openModal}
           handleOpenModal={setOpenModal}
         >
-          <iframe
-            className="w-full h-full"
+          <VideoPlayer
             src={`https://www.youtube.com/embed/${videoKey}`}
             title="YouTube video player"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
