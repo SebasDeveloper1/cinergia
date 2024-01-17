@@ -1,7 +1,7 @@
 // Import necessary dependencies and types
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import '@/app/ui/styles/globals.css';
+import '@/app/styles/globals.css';
 import { Header } from '@/app/ui/components/shared/Header';
 import { Footer } from '@/app/ui/components/shared/Footer';
 import { ScrollWrapper } from '@/app/lib/utils/ScrollWrapper';

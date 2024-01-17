@@ -4,7 +4,6 @@ import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { RecommendedMovieBannerPropsTypes } from './RecommendedMovieBanner.model';
 import createMovieSlug from '@/app/lib/utils/createMovieSlug';
-import Figure1 from '@/app/ui/components/shared/assets/Figure1';
 
 /**
  * RecommendedMovieBanner Component
@@ -62,9 +61,8 @@ export function RecommendedMovieBanner({
       }}
     >
       <div className="relative flex items-end justify-center w-full min-height-banner--sm lg:min-height-banner--lg py-16 lg:py-24 bg-gradient-to-br from-bgPrimaryDark/70 via-bgPrimaryDark/50 to-transparent">
-        <div className="absolute top-0 left-0 w-full md:w-3/6 lg:w-2/5">
-          <Figure1 className="w-full h-full text-secondary-600" />
-          <span className="z-10 absolute top-[50%] left-[20%] transform translate-x-[-20%] translate-y-[-50%] rotate-[8deg] span-xl text-2xl lg:text-4xl text-textColorNeutral-50 font-semibold whitespace-nowrap">
+        <div className="absolute top-0 -left-5 w-fit p-10 bg-greenBrushStroke2 bg-contain bg-center bg-no-repeat">
+          <span className="span-xl text-2xl lg:text-4xl text-textColorNeutral-50 font-semibold whitespace-nowrap">
             {titleBanner}
           </span>
         </div>

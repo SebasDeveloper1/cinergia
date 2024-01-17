@@ -1,3 +1,4 @@
+/** @type {import('tailwindcss').Config} */
 import type { Config } from 'tailwindcss';
 
 /**
@@ -117,6 +118,16 @@ const config: Config = {
         borderNeutral: colorPalette.customNeutral,
       },
       backgroundImage: {
+        greenBrushStroke1:
+          "url('../../public/assets/greenBrushStroke1.min.svg')",
+        greenBrushStroke2:
+          "url('../../public/assets/greenBrushStroke2.min.svg')",
+        greenBrushStroke3:
+          "url('../../public/assets/greenBrushStroke3.min.svg')",
+        greenBrushStroke4:
+          "url('../../public/assets/greenBrushStroke4.min.svg')",
+        greenBrushStroke5:
+          "url('../../public/assets/greenBrushStroke5.min.svg')",
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
