@@ -1,7 +1,7 @@
 'use client';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import createMovieSlug from '@/app/lib/utils/createMovieSlug';
 
@@ -21,21 +21,19 @@ export function MovieCard({
 }: {
   movieData: MovieType | TrendingMovieType;
 }) {
-  const { id, title, backdrop_path, release_date } = movieData;
-  const [widthBackdropMovie, setWidthBackdropMovie] = useState<string>('w780');
+  const { id, title, poster_path, release_date } = movieData;
+  const [widthBackdropMovie, setWidthBackdropMovie] = useState<string>('w500');
   const [isImageVisible, setIsImageVisible] = useState(false);
   const [ref, inView] = useInView({
     triggerOnce: true,
   });
-
-  const imageRef = useRef(null);
 
   useEffect(() => {
     /**
      * Function to handle window resize and adjust image width.
      */
     const handleResize = () => {
-      const width = window.innerWidth >= 768 ? 'w1280' : 'w780';
+      const width = window.innerWidth >= 768 ? 'w342' : 'w500';
       setWidthBackdropMovie(width);
     };
 
@@ -57,8 +55,9 @@ export function MovieCard({
     }
   }, [inView, isImageVisible]);
 
+  const imageURL = `https://image.tmdb.org/t/p/${widthBackdropMovie}/${poster_path}`;
   const imageSrc = isImageVisible
-    ? `https://image.tmdb.org/t/p/${widthBackdropMovie}/${backdrop_path}`
+    ? imageURL
     : 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIwIiBoZWlnaHQ9IjMyMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4=';
 
   return (
@@ -69,14 +68,12 @@ export function MovieCard({
       >
         <span className="relative w-full aspect-[2/3]">
           <Image
-            ref={imageRef}
             fill
-            sizes="(max-width: 768px) 100vw,"
-            src={`${imageSrc}`}
+            src={imageSrc}
             alt={title || 'Movie Card'}
             placeholder="blur"
             loading="lazy"
-            className="object-cover object-center md:group-hover:scale-110 transition-all duration-200 ease-in"
+            className="object-cover object-center md:group-hover:scale-110 transition-all duration-200 ease-in bg-bgMovieCard bg-cover bg-center bg-no-repeat"
             blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIwIiBoZWlnaHQ9IjMyMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4="
           />
           <div ref={ref} className="absolute top-0 left-0 w-full h-full" />

@@ -45,6 +45,8 @@ export function MovieCard({ movieData }: MovieCardPropsTypes) {
     };
   }, []);
 
+  const imageURL = `https://image.tmdb.org/t/p/${widthBackdropMovie}/${backdrop_path}`;
+
   return (
     <li className="group overflow-hidden rounded-sm bg-bgSecondaryDark md:hover:bg-dark-800">
       <Link
@@ -55,12 +57,11 @@ export function MovieCard({ movieData }: MovieCardPropsTypes) {
           {/* Movie poster image using Next.js Image component */}
           <Image
             fill
-            sizes="(max-width: 768px) 100vw,"
-            src={`https://image.tmdb.org/t/p/${widthBackdropMovie}/${backdrop_path}`}
+            src={imageURL}
             alt={title || 'Movie Card'}
             placeholder="blur"
             loading="lazy"
-            className="object-cover object-center md:group-hover:scale-110 transition-all duration-200 ease-in"
+            className="object-cover object-center md:group-hover:scale-110 transition-all duration-200 ease-in bg-bgMovieCard bg-cover bg-center bg-no-repeat"
             blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIwIiBoZWlnaHQ9IjMyMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4="
           />
         </span>
