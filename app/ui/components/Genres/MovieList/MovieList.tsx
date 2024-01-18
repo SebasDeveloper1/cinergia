@@ -90,7 +90,7 @@ export function MovieList({
           {name}
         </h2>
         {/* Movie Grid */}
-        <ul className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 2xl:grid-cols-8 gap-x-4 gap-y-8 w-full">
+        <ul className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-x-4 gap-y-8 w-full">
           {movieResults.map((movie) => (
             <MovieCard key={`movie-${movie?.id}`} movieData={movie} />
           ))}
