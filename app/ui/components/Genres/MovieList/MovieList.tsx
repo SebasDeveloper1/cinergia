@@ -84,7 +84,7 @@ export function MovieList({
 
   return (
     <section className="flex place-content-center w-full py-16">
-      <div className="w-11/12">
+      <div className="w-11/12 md:w-10/12">
         {/* Genre Heading */}
         <h2 className="heading-3 font-bold text-textColorNeutral-50 w-fit mb-12">
           {name}

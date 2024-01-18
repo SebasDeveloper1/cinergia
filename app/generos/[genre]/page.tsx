@@ -3,6 +3,7 @@ import { genresList } from '@/app/lib/data/genreList/genreList';
 import { Hero } from '@/app/ui/components/Genres/Hero';
 import { MovieList } from '@/app/ui/components/Genres/MovieList';
 import { NoMoviesAvailable } from '@/app/ui/components/Genres/NoMoviesAvailable';
+import { ScrollTopButtonWrapper } from '@/app/ui/components/shared/ScrollTopButtonWrapper';
 
 /**
  * Genre Page
@@ -42,8 +43,12 @@ export default async function GenrePage({
 
       return (
         <section className="w-full">
-          <Hero genreInfo={genreInfo} movieInfo={firstMovie} />
-          <MovieList genreInfo={genreInfo} movieList={movieList} />
+          <ScrollTopButtonWrapper>
+            <>
+              <Hero genreInfo={genreInfo} movieInfo={firstMovie} />
+              <MovieList genreInfo={genreInfo} movieList={movieList} />
+            </>
+          </ScrollTopButtonWrapper>
         </section>
       );
     }
