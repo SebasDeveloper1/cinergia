@@ -7,6 +7,7 @@ import 'swiper/css/navigation';
 import './sliderStyles.css';
 import { Pagination, Navigation } from 'swiper/modules';
 import { MovieCard } from '@/app/ui/components/shared/Cards/MovieCard';
+import { MovieCardAPI } from '@/app/ui/components/shared/Cards/MovieCardAPI';
 import {
   ButtonStyleType,
   HorizontalSliderPropsTypes,
@@ -25,6 +26,7 @@ import {
  * @returns {JSX.Element} - JSX element representing the HorizontalSlider component.
  */
 export function HorizontalSlider({
+  type = 'TEST',
   movieList,
   breakpoints,
 }: HorizontalSliderPropsTypes): JSX.Element {
@@ -49,7 +51,11 @@ export function HorizontalSlider({
       {movieList.map((movie) => (
         <SwiperSlide key={`movie-${movie?.id}`}>
           {/* Rendering MovieCard for each movie in the list */}
-          <MovieCard movieData={movie} />
+          {type === 'API' ? (
+            <MovieCardAPI movieData={movie} />
+          ) : (
+            <MovieCard movieData={movie} />
+          )}
         </SwiperSlide>
       ))}
     </Swiper>

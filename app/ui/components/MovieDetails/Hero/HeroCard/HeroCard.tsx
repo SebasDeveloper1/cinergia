@@ -1,6 +1,6 @@
 'use client';
 // Import necessary dependencies and types
-import { useState, useEffect, MouseEvent } from 'react';
+import { useState, MouseEvent } from 'react';
 import { PlayButton } from './PlayButton';
 import { InfoSection } from './InfoSection';
 import { OverviewSectionSM } from './OverviewSectionSM';
@@ -22,33 +22,33 @@ import { VideoPlayer } from '../../../shared/VideoPlayer';
  * @returns {JSX.Element} - JSX element representing the HeroCard component.
  */
 
-export function HeroCard({ movieData, videos }: HeroCardProps): JSX.Element {
+export function HeroCard({ movieData }: HeroCardProps): JSX.Element {
   // Destructure movieData for easier access
-  const { backdrop_path, overview } = movieData;
-
-  // State to dynamically adjust the width of the backdrop image based on screen size
-  const [widthBackdropMovie, setWidthBackdropMovie] =
-    useState<string>('original');
+  const { data } = movieData;
+  const { description, whySee, image2, urlId } = data;
+  // // State to dynamically adjust the width of the backdrop image based on screen size
+  // const [widthBackdropMovie, setWidthBackdropMovie] =
+  //   useState<string>('original');
   const [openModal, setOpenModal] = useState<boolean>(false);
 
-  useEffect(() => {
-    // Function to handle resizing and adjust the width accordingly
-    const handleResize = () => {
-      const width = window.innerWidth >= 768 ? 'original' : 'original';
-      setWidthBackdropMovie(width);
-    };
+  // useEffect(() => {
+  //   // Function to handle resizing and adjust the width accordingly
+  //   const handleResize = () => {
+  //     const width = window.innerWidth >= 768 ? 'original' : 'original';
+  //     setWidthBackdropMovie(width);
+  //   };
 
-    // Add event listener for window resize
-    window.addEventListener('resize', handleResize);
+  //   // Add event listener for window resize
+  //   window.addEventListener('resize', handleResize);
 
-    // Call handleResize initially
-    handleResize();
+  //   // Call handleResize initially
+  //   handleResize();
 
-    // Clean up the event listener on component unmount
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
+  //   // Clean up the event listener on component unmount
+  //   return () => {
+  //     window.removeEventListener('resize', handleResize);
+  //   };
+  // }, []);
 
   const handleOpenModal = (e: MouseEvent) => {
     e.preventDefault;
@@ -61,7 +61,7 @@ export function HeroCard({ movieData, videos }: HeroCardProps): JSX.Element {
       <section
         className="overflow-hidden w-full h-screen bg-cover bg-center"
         style={{
-          backgroundImage: `url('https://image.tmdb.org/t/p/${widthBackdropMovie}/${backdrop_path}')`,
+          backgroundImage: `url('https://cdn.cursosya.info/${image2}')`,
         }}
       >
         <article className="w-full h-screen flex justify-center items-center bg-gradient-to-t from-bgPrimaryDark/80 via-bgPrimaryDark/10 to-transparent">
@@ -71,11 +71,11 @@ export function HeroCard({ movieData, videos }: HeroCardProps): JSX.Element {
               aria-label="Reproducir"
               onClick={(e) => handleOpenModal(e)}
             />
-            <InfoSection movieData={movieData} videos={videos} />
+            <InfoSection movieData={movieData} />
           </div>
         </article>
       </section>
-      <OverviewSectionSM overview={overview} whySeeIt={overview} />
+      <OverviewSectionSM overview={description} whySeeIt={whySee} />
       {/* Video Player */}
       {openModal ? (
         <VideoPlayerModal
@@ -83,7 +83,7 @@ export function HeroCard({ movieData, videos }: HeroCardProps): JSX.Element {
           handleOpenModal={setOpenModal}
         >
           <VideoPlayer
-            src="https://muse.ai/embed/xDsP7wV?search=0&links=0&logo=0&title=0&cover_play_position=center"
+            src={`https://muse.ai/embed/${urlId}?search=0&links=0&logo=0&title=0&cover_play_position=center`}
             allowFullScreen
           />
         </VideoPlayerModal>

@@ -117,6 +117,7 @@ interface MovieDetailsObjAPI {
 interface MovieDetailsAPI extends Omit<MovieAPI, 'releaseYear'> {
   agerates: AgeratesAPI;
   description: string;
+  whySee: string;
   directors: DirectorsAPI;
   genre_movie: GenreMovieAPI[];
   languages: LanguagesAPI;
@@ -146,4 +147,31 @@ interface GenreMovieAPI {
 interface LanguagesAPI {
   id: number;
   name: string;
+}
+
+interface HomeSectionrRootAPI {
+  data: Datum[];
+}
+
+interface Datum {
+  home_section: HomeSectionAPI[];
+}
+
+interface HomeSectionAPI {
+  background: string;
+  home_section_movie: HomeSectionMovieAPI[];
+  title: string;
+}
+
+interface HomeSectionMovieAPI {
+  movies: MoviesAPI;
+}
+
+interface MoviesAPI {
+  id: number;
+  image1: string;
+  image2: string;
+  name: string;
+  releaseYear: Date;
+  slug: string;
 }

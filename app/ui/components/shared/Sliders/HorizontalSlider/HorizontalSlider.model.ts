@@ -6,7 +6,8 @@ export interface ButtonStyleType extends React.CSSProperties {
 }
 
 export interface HorizontalSliderPropsTypes {
-  movieList: TrendingMovieType[] | MovieType[];
+  type: 'API' | 'TEST';
+  movieList: TrendingMovieType[] | MovieType[] | MoviesAPI[];
 
   breakpoints: {
     [key: number]: {

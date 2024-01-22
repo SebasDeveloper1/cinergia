@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react';
 import BannerSliderMovieSkeleton from './BannerSliderMovieSkeleton';
 import { BannerSliderMoviePropsTypes } from './BannerSliderMovie.model';
-import createMovieSlug from '@/app/lib/utils/createMovieSlug';
 import Link from 'next/link';
 import { HorizontalSlider } from '@/app/ui/components/shared/Sliders/HorizontalSlider';
 
@@ -19,19 +18,23 @@ import { HorizontalSlider } from '@/app/ui/components/shared/Sliders/HorizontalS
  */
 export function BannerSliderMovie({
   sectionTitle,
+  background,
+  firstMovieDetails,
   movieList,
 }: BannerSliderMoviePropsTypes): JSX.Element {
   // Destructure movieList to extract relevant information
-  const { id, backdrop_path, title, overview, original_title } = movieList[0];
+  const { name, description, slug, image1 } = firstMovieDetails;
 
-  // Set up state for the width of the movie backdrop image
-  const [widthBackdropMovie, setWidthBackdropMovie] =
-    useState<string>('original');
-  // State to manage loading status
+  // // Set up state for the width of the movie backdrop image
+  // const [widthBackdropMovie, setWidthBackdropMovie] =
+  //   useState<string>('original');
+  // // State to manage loading status
   const [loading, setLoading] = useState(true);
 
   // Construct the background image URL using the backdrop path and width
-  const backgroundImageUrl = `url('https://image.tmdb.org/t/p/${widthBackdropMovie}/${backdrop_path}')`;
+  const backgroundImageUrl = background
+    ? `url('https://cdn.cursosya.info/${background}')`
+    : `url('https://cdn.cursosya.info/${image1}')`;
 
   // Simulating loading delay with a timeout
   useEffect(() => {
@@ -40,24 +43,26 @@ export function BannerSliderMovie({
     }, 1000);
   }, []);
 
-  // Effect hook to handle window resize events and update the backdrop width accordingly
-  useEffect(() => {
-    const handleResize = () => {
-      const width = window.innerWidth >= 768 ? 'original' : 'original';
-      setWidthBackdropMovie(width);
-    };
+  const moviesOnly: MoviesAPI[] = movieList.map((object) => object.movies);
 
-    // Attach event listener for window resize
-    window.addEventListener('resize', handleResize);
+  // // Effect hook to handle window resize events and update the backdrop width accordingly
+  // useEffect(() => {
+  //   const handleResize = () => {
+  //     const width = window.innerWidth >= 768 ? 'original' : 'original';
+  //     setWidthBackdropMovie(width);
+  //   };
 
-    // Call handleResize initially
-    handleResize();
+  //   // Attach event listener for window resize
+  //   window.addEventListener('resize', handleResize);
 
-    // Clean up the event listener on component unmount
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
+  //   // Call handleResize initially
+  //   handleResize();
+
+  //   // Clean up the event listener on component unmount
+  //   return () => {
+  //     window.removeEventListener('resize', handleResize);
+  //   };
+  // }, []);
 
   // Render skeleton loader while loading
   if (loading) {
@@ -83,19 +88,19 @@ export function BannerSliderMovie({
             {/* Exclusive badge */}
             <div className="w-full">
               {/* Movie title */}
-              <h2 className="heading-2 mt-16 font-extrabold text-textColorNeutral-50 max-w-prose">
-                {title}
+              <h2 className="heading-2 mt-16 mb-5 font-extrabold text-textColorNeutral-50 max-w-prose">
+                {name}
               </h2>
             </div>
 
-            {/* Original title movie */}
+            {/* Original title movie
             <span className="span-xl text-textColorNeutral-50 font-medium mb-5">
               {original_title}
-            </span>
+            </span> */}
 
             {/* Movie overview */}
             <p className="paragraph-base line-clamp-5 lg:line-clamp-none font-normal text-textColorNeutral-50 max-w-prose">
-              {overview}
+              {description}
             </p>
           </div>
 
@@ -104,7 +109,7 @@ export function BannerSliderMovie({
             {/* "Ver película" button */}
             <Link
               className="button-secondary padding-button w-full md:w-fit"
-              href={`/peliculas/${createMovieSlug({ id, title })}`}
+              href={`/peliculas/${slug}`}
             >
               Ver Película
             </Link>
@@ -122,7 +127,8 @@ export function BannerSliderMovie({
             <div className="w-full md:w-3/4">
               {/* Horizontal movie slider */}
               <HorizontalSlider
-                movieList={movieList.slice(1)}
+                type="API"
+                movieList={moviesOnly.slice(1)}
                 breakpoints={{
                   320: { slidesPerView: 2 },
                   480: { slidesPerView: 3 },

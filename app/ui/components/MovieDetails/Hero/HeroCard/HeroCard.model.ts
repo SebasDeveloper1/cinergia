@@ -2,8 +2,7 @@ import { ButtonHTMLAttributes } from 'react';
 
 // Describes the properties for a Hero Card component.
 export interface HeroCardProps {
-  movieData: MovieType;
-  videos: VideoList; // Data related to a movie.
+  movieData: MovieDetailsObjAPI;
 }
 
 // Describes the properties for an Information Section component.

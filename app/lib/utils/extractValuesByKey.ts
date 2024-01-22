@@ -29,3 +29,52 @@ export const extractValuesByKey = ({
   // Return the values as an array of strings or numbers
   return valuesArray.join(', ');
 };
+
+export const extractValuesGenre = ({
+  genre_movie,
+  key,
+}: {
+  genre_movie: Array<any>;
+  key: string;
+}) => {
+  // Map each object in the array and extract the 'name' property from the 'genres' object
+  const valuesArray = genre_movie.map((item) => {
+    // Check if the key exists in the object
+    if (key in item) {
+      const genres = item[key];
+
+      // Check if 'genres' is an array and has at least one element
+      if (Array.isArray(genres) && genres.length > 0) {
+        const firstGenre = genres[0];
+
+        // Check if the first element has a 'name' property
+        if (
+          typeof firstGenre === 'object' &&
+          firstGenre !== null &&
+          'name' in firstGenre
+        ) {
+          // Return the 'name' property of the 'genres' object
+          return firstGenre.name;
+        }
+      }
+    }
+
+    // If any condition fails, return undefined
+    return undefined;
+  });
+
+  // Filter out undefined values and return the result as an array of strings
+  return valuesArray.filter((value) => value !== undefined);
+};
+
+export const extractYouTubeVideoId = (link) => {
+  // Divide el enlace usando el caracter "/" y encuentra la última parte
+  const parts = link.split('/');
+  const lastPart = parts[parts.length - 1];
+
+  // Si hay parámetros de consulta, elimínalos
+  const videoId = lastPart.split('?')[0];
+
+  // Verifica que la longitud de la ID sea la esperada (11 caracteres)
+  return videoId.length === 11 ? videoId : null;
+};

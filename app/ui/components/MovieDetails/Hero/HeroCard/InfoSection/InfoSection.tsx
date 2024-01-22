@@ -2,7 +2,10 @@
 import { useState, MouseEvent } from 'react';
 import { VideoPlayerModal } from '@/app/ui/components/shared/Modals/VideoPlayerModal';
 import { convertMinutesToHours } from '@/app/lib/utils/convertMinutesToHours';
-import { extractValuesByKey } from '@/app/lib/utils/extractValuesByKey';
+import {
+  extractValuesGenre,
+  extractYouTubeVideoId,
+} from '@/app/lib/utils/extractValuesByKey';
 import { InfoSectionProps } from '../HeroCard.model';
 import { VideoPlayer } from '@/app/ui/components/shared/VideoPlayer';
 
@@ -21,41 +24,30 @@ import { VideoPlayer } from '@/app/ui/components/shared/VideoPlayer';
  *
  */
 
-export function InfoSection({
-  movieData,
-  videos,
-}: InfoSectionProps): JSX.Element {
+export function InfoSection({ movieData }: InfoSectionProps): JSX.Element {
+  const { data } = movieData;
   const {
-    title,
-    overview,
-    release_date,
-    production_companies,
-    production_countries,
-    genres,
-    spoken_languages,
-    runtime,
-  } = movieData;
-
-  const videoKey = videos?.results[0]?.key;
+    name,
+    description,
+    whySee,
+    movieLength,
+    trailer,
+    languages,
+    directors,
+    genre_movie,
+  } = data;
 
   const [openModal, setOpenModal] = useState<boolean>(false);
 
-  const productionCompanies = extractValuesByKey({
-    array: production_companies,
-    key: 'name',
-  });
-  const productionCountries = extractValuesByKey({
-    array: production_countries,
-    key: 'name',
-  });
-  const genreList = extractValuesByKey({
-    array: genres,
-    key: 'name',
-  });
-  const spokenLanguages = extractValuesByKey({
-    array: spoken_languages,
-    key: 'name',
-  });
+  // const productionCompanies = extractValuesByKey({
+  //   array: production_companies,
+  //   key: 'name',
+  // });
+  // const productionCountries = extractValuesByKey({
+  //   array: production_countries,
+  //   key: 'name',
+  // });
+  const genreList = extractValuesGenre({ genre_movie, key: 'genres' });
 
   const detailsMovieList = [
     {
@@ -82,7 +74,7 @@ export function InfoSection({
     },
     {
       name: 'runtime',
-      data: convertMinutesToHours(runtime),
+      data: convertMinutesToHours(movieLength),
       icon: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -104,7 +96,7 @@ export function InfoSection({
     },
     {
       name: 'release_date',
-      data: release_date !== undefined && new Date(release_date).getFullYear(),
+      data: '2023',
       icon: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -129,7 +121,7 @@ export function InfoSection({
     },
     {
       name: 'spoken_lenguages',
-      data: spokenLanguages,
+      data: languages.name,
       icon: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -163,17 +155,15 @@ export function InfoSection({
         <section className="col-span-1 flex flex-col gap-4 w-full h-full">
           <article className="flex flex-col justify-center gap-4 w-full h-auto text-textColorNeutral-50">
             <div className="w-full leading-4">
-              <h2 className="heading-5 font-extrabold">{title}</h2>
+              <h2 className="heading-5 font-extrabold">{name}</h2>
               <span className="inline-block w-full span-xs font-semibold">
                 Producido por:
               </span>
               <span className="inline-block w-full span-xs">
-                {` ${productionCompanies}`}
+                {` ${directors?.firstName} ${directors?.lastName}`}
               </span>
 
-              <span className="inline-block w-full span-xs">
-                {` ${productionCountries}`}
-              </span>
+              <span className="inline-block w-full span-xs">{`Perú`}</span>
             </div>
             <span className="span-sm font-medium text-customNeutral-300">
               {genreList}
@@ -206,7 +196,7 @@ export function InfoSection({
               Sinopsis
             </span>
             <p className="paragraph-sm font-normal text-textColorNeutral-100">
-              {overview}
+              {description}
             </p>
           </article>
           <article className="md:col-span-1 lg:col-span-1 w-full line-clamp-5 lg:line-clamp-none">
@@ -214,7 +204,7 @@ export function InfoSection({
               Por qué verla
             </span>
             <p className="paragraph-sm line-clamp-5 lg:line-clamp-none font-normal text-textColorNeutral-100">
-              {overview}
+              {whySee}
             </p>
           </article>
         </section>
@@ -226,7 +216,7 @@ export function InfoSection({
           handleOpenModal={setOpenModal}
         >
           <VideoPlayer
-            src={`https://www.youtube.com/embed/${videoKey}`}
+            src={`https://www.youtube.com/embed/${extractYouTubeVideoId(trailer)}`}
             title="YouTube video player"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen

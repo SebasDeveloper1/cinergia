@@ -63,9 +63,7 @@ export function HeroCard({ movieData }: HeroCardProps): JSX.Element {
             </h2>
             <div className="flex gap-2 w-fit span-lg text-textColorNeutral-100">
               <span>{convertMinutesToHours(movieLength)}</span>
-              <span className="before:content-['•'] before:mr-2">
-                {'falta'}
-              </span>
+              <span className="before:content-['•'] before:mr-2">{'2023'}</span>
             </div>
           </div>
           <p className="paragraph-lg line-clamp-5 lg:line-clamp-none font-normal text-textColorNeutral-50">

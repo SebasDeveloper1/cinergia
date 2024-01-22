@@ -1,5 +1,5 @@
 // Import necessary dependencies and components
-import { fetchMovieDetails, fetchVideoMovie } from '@/app/lib/data/data';
+import { fetchMovieDetails } from '@/app/lib/data/fetch';
 import { HeroCard } from './HeroCard';
 
 /**
@@ -26,12 +26,11 @@ import { HeroCard } from './HeroCard';
 export async function Hero({
   movieId,
 }: {
-  movieId: number;
+  movieId: string;
 }): Promise<JSX.Element> {
   // Fetches movie information based on the provided ID
-  const movieData: MovieType = await fetchMovieDetails(movieId);
-  const videos: VideoList = await fetchVideoMovie(movieId);
+  const movieData = await fetchMovieDetails(movieId);
 
   // Renders the HeroCard with the movie information
-  return <HeroCard movieData={movieData} videos={videos} />;
+  return <HeroCard movieData={movieData} />;
 }
