@@ -1,3 +1,3 @@
-export interface HeroCardPropsTypes {
-  movieData: MovieType;
+export interface HeroCardProps {
+  movieData: MovieDetailsAPI;
 }

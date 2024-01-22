@@ -3,6 +3,6 @@ export interface BulletStyleType extends React.CSSProperties {
   '--swiper-pagination-bullet-inactive-color'?: string;
 }
 
-export interface HeroSliderPropsTypes {
-  movieList: MovieType[];
+export interface HeroSliderProps {
+  movieList: MovieDetailsAPI[];
 }

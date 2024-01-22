@@ -94,3 +94,56 @@ interface VideoList {
   id: number;
   results: Video[];
 }
+
+//////////////////////////////
+
+interface MovieListAPI {
+  data: MovieAPI[];
+}
+
+interface MovieAPI {
+  id: number;
+  image1: string;
+  image2: string;
+  name: string;
+  releaseYear: Date;
+  slug: string;
+}
+
+interface MovieDetailsObjAPI {
+  data: MovieDetailsAPI;
+}
+
+interface MovieDetailsAPI extends Omit<MovieAPI, 'releaseYear'> {
+  agerates: AgeratesAPI;
+  description: string;
+  directors: DirectorsAPI;
+  genre_movie: GenreMovieAPI[];
+  languages: LanguagesAPI;
+  movieLength: number;
+  price: string;
+  trailer: string;
+  urlId: string;
+  whySee: string;
+}
+
+interface AgeratesAPI {
+  id: number;
+  name: string;
+  range: string;
+}
+
+interface DirectorsAPI {
+  firstName: string;
+  id: number;
+  lastName: string;
+}
+
+interface GenreMovieAPI {
+  genres: LanguagesAPI;
+}
+
+interface LanguagesAPI {
+  id: number;
+  name: string;
+}

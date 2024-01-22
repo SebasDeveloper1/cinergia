@@ -1,10 +1,9 @@
 'use client';
 // Import necessary dependencies and types
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
+// import { useState, useEffect } from 'react';
 import { convertMinutesToHours } from '@/app/lib/utils/convertMinutesToHours';
-import createMovieSlug from '@/app/lib/utils/createMovieSlug';
-import { HeroCardPropsTypes } from './HeroCard.model';
+import { HeroCardProps } from './HeroCard.model';
 
 /**
  * HeroCard Component
@@ -14,44 +13,43 @@ import { HeroCardPropsTypes } from './HeroCard.model';
  * It also includes a background image and a button to view the movie.
  *
  * @component
- * @param {HeroCardPropsTypes} props - Props for configuring the HeroCard component.
+ * @param {HeroCardProps} props - Props for configuring the HeroCard component.
  * @param {MovieType} props.movieData - Movie data used to populate the card.
  * @returns {JSX.Element} - JSX element representing the HeroCard component.
  */
-export function HeroCard({ movieData }: HeroCardPropsTypes): JSX.Element {
+export function HeroCard({ movieData }: HeroCardProps): JSX.Element {
   // Destructure movieData for easier access
-  const { id, backdrop_path, title, release_date, runtime, overview } =
-    movieData;
+  const { image2, name, movieLength, description, slug } = movieData;
 
-  // State to dynamically adjust the width of the backdrop image based on screen size
-  const [widthBackdropMovie, setWidthBackdropMovie] =
-    useState<string>('original');
+  // // State to dynamically adjust the width of the backdrop image based on screen size
+  // const [widthBackdropMovie, setWidthBackdropMovie] =
+  //   useState<string>('original');
 
-  useEffect(() => {
-    // Function to handle resizing and adjust the width accordingly
-    const handleResize = () => {
-      const width = window.innerWidth >= 768 ? 'original' : 'original';
-      setWidthBackdropMovie(width);
-    };
+  // useEffect(() => {
+  //   // Function to handle resizing and adjust the width accordingly
+  //   const handleResize = () => {
+  //     const width = window.innerWidth >= 768 ? 'original' : 'original';
+  //     setWidthBackdropMovie(width);
+  //   };
 
-    // Add event listener for window resize
-    window.addEventListener('resize', handleResize);
+  //   // Add event listener for window resize
+  //   window.addEventListener('resize', handleResize);
 
-    // Call handleResize initially
-    handleResize();
+  //   // Call handleResize initially
+  //   handleResize();
 
-    // Clean up the event listener on component unmount
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
+  //   // Clean up the event listener on component unmount
+  //   return () => {
+  //     window.removeEventListener('resize', handleResize);
+  //   };
+  // }, []);
 
   // Render the HeroCard component with movie details
   return (
     <section
       className="overflow-hidden relative w-full min-h-[100vh] bg-cover bg-center "
       style={{
-        backgroundImage: `url('https://image.tmdb.org/t/p/${widthBackdropMovie}/${backdrop_path}')`,
+        backgroundImage: `url('https://cdn.cursosya.info/${image2}')`,
       }}
     >
       <div className="w-full min-h-[100vh] py-16 lg:py-[4.5rem] flex justify-center items-end bg-gradient-to-t from-bgPrimaryDark via-bgPrimaryDark/50 to-transparent">
@@ -61,22 +59,21 @@ export function HeroCard({ movieData }: HeroCardPropsTypes): JSX.Element {
               {'Película'}
             </span>
             <h2 className="heading-2 font-extrabold text-textColorNeutral-50 mt-2">
-              {title}
+              {name}
             </h2>
             <div className="flex gap-2 w-fit span-lg text-textColorNeutral-100">
-              <span>{convertMinutesToHours(runtime)}</span>
+              <span>{convertMinutesToHours(movieLength)}</span>
               <span className="before:content-['•'] before:mr-2">
-                {release_date !== undefined &&
-                  new Date(release_date).getFullYear()}
+                {'falta'}
               </span>
             </div>
           </div>
           <p className="paragraph-lg line-clamp-5 lg:line-clamp-none font-normal text-textColorNeutral-50">
-            {overview}
+            {description}
           </p>
           <Link
             className="button-primary padding-button w-full md:w-fit"
-            href={`/peliculas/${createMovieSlug({ id, title })}`}
+            href={`/peliculas/${slug}`}
           >
             Ver Película
           </Link>
