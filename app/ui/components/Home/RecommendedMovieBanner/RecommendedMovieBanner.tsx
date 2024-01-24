@@ -1,9 +1,6 @@
-'use client';
 // Import necessary dependencies and types
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
 import { RecommendedMovieBannerPropsTypes } from './RecommendedMovieBanner.model';
-import createMovieSlug from '@/app/lib/utils/createMovieSlug';
 
 /**
  * RecommendedMovieBanner Component
@@ -18,37 +15,16 @@ import createMovieSlug from '@/app/lib/utils/createMovieSlug';
  */
 export function RecommendedMovieBanner({
   titleBanner,
+  background,
   movieData,
 }: RecommendedMovieBannerPropsTypes): JSX.Element {
   // Destructure movieData to extract relevant information
-  const { id, backdrop_path, title, overview, production_companies } =
-    movieData;
+  const { name, description, slug, image1, agerates } = movieData;
 
-  // Set up state for the width of the movie backdrop image
-  const [widthBackdropMovie, setWidthBackdropMovie] =
-    useState<string>('original');
-
-  // Construct the background image URL using the backdrop path and width
-  const backgroundImageUrl = `url('https://image.tmdb.org/t/p/${widthBackdropMovie}/${backdrop_path}')`;
-
-  // Effect hook to handle window resize events and update the backdrop width accordingly
-  useEffect(() => {
-    const handleResize = () => {
-      const width = window.innerWidth >= 768 ? 'original' : 'original';
-      setWidthBackdropMovie(width);
-    };
-
-    // Attach event listener for window resize
-    window.addEventListener('resize', handleResize);
-
-    // Call handleResize initially
-    handleResize();
-
-    // Clean up the event listener on component unmount
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
+  // Construct the background image URL
+  const backgroundImageUrl = background
+    ? `url('https://cdn.cursosya.info/${background}')`
+    : `url('https://cdn.cursosya.info/${image1}')`;
 
   /**
    * Render the JSX for the RecommendedMovieBanner component
@@ -73,18 +49,18 @@ export function RecommendedMovieBanner({
             <div className="w-full">
               {/* Movie title */}
               <h2 className="heading-2 font-extrabold text-textColorNeutral-50 max-w-prose">
-                {title}
+                {name}
               </h2>
             </div>
 
-            {/* Production company name */}
+            {/* Agerates */}
             <span className="span-xl text-textColorAccent-500 font-semibold mb-5">
-              {production_companies[0].name}
+              {agerates?.range}
             </span>
 
             {/* Movie overview */}
             <p className="paragraph-lg line-clamp-5 lg:line-clamp-none font-normal text-textColorNeutral-50 max-w-prose">
-              {overview}
+              {description}
             </p>
           </div>
 
@@ -93,9 +69,9 @@ export function RecommendedMovieBanner({
             {/* "Ver Película" button */}
             <Link
               className="button-secondary padding-button w-full md:w-fit"
-              href={`/peliculas/${createMovieSlug({ id, title })}`}
+              href={`/peliculas/${slug}`}
             >
-              Ver película
+              Ver Película
             </Link>
           </div>
         </div>

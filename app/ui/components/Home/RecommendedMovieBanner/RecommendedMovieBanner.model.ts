@@ -1,4 +1,5 @@
 export interface RecommendedMovieBannerPropsTypes {
   titleBanner: string;
-  movieData: MovieType;
+  background: string;
+  movieData: MovieDetailsAPI;
 }
