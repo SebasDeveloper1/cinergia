@@ -1,11 +1,10 @@
 'use client';
 // Import necessary dependencies and types
-// Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
-// import required modules
+// Import required modules
 import { Pagination, Autoplay } from 'swiper/modules';
 import { BulletStyleType, HeroSliderProps } from './HeroSlider.model';
 import { HeroCard } from '../HeroCard';

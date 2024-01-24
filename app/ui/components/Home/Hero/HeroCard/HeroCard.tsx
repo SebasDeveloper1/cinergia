@@ -9,7 +9,7 @@ import { HeroCardProps } from './HeroCard.model';
  * HeroCard Component
  *
  * The HeroCard component represents a card displaying detailed information
- * about a movie, including title, release date, runtime, and overview.
+ * about a movie, including name, slug, movieLength, description and image2.
  * It also includes a background image and a button to view the movie.
  *
  * @component
@@ -19,30 +19,7 @@ import { HeroCardProps } from './HeroCard.model';
  */
 export function HeroCard({ movieData }: HeroCardProps): JSX.Element {
   // Destructure movieData for easier access
-  const { image2, name, movieLength, description, slug } = movieData;
-
-  // // State to dynamically adjust the width of the backdrop image based on screen size
-  // const [widthBackdropMovie, setWidthBackdropMovie] =
-  //   useState<string>('original');
-
-  // useEffect(() => {
-  //   // Function to handle resizing and adjust the width accordingly
-  //   const handleResize = () => {
-  //     const width = window.innerWidth >= 768 ? 'original' : 'original';
-  //     setWidthBackdropMovie(width);
-  //   };
-
-  //   // Add event listener for window resize
-  //   window.addEventListener('resize', handleResize);
-
-  //   // Call handleResize initially
-  //   handleResize();
-
-  //   // Clean up the event listener on component unmount
-  //   return () => {
-  //     window.removeEventListener('resize', handleResize);
-  //   };
-  // }, []);
+  const { name, slug, movieLength, description, image2 } = movieData;
 
   // Render the HeroCard component with movie details
   return (
@@ -71,7 +48,7 @@ export function HeroCard({ movieData }: HeroCardProps): JSX.Element {
           </p>
           <Link
             className="button-primary padding-button w-full md:w-fit"
-            href={`/peliculas/${slug}`}
+            href={`/movies/${slug}`}
           >
             Ver Película
           </Link>
