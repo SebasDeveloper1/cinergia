@@ -13,6 +13,8 @@ import { HorizontalSlider } from '@/app/ui/components/shared/Sliders/HorizontalS
  *
  * @component
  * @param {string} sectionTitle - The title of the movie section.
+ * @param {string} background - The background image URL for the banner slider.
+ * @param {MovieDetailsType} firstMovieDetails - Details of the first movie in the slider.
  * @param {TrendingMovieType[]} movieList - An array of movie objects for display.
  * @returns {JSX.Element} - JSX element representing the BannerSliderMovie component.
  */
@@ -23,15 +25,12 @@ export function BannerSliderMovie({
   movieList,
 }: BannerSliderMoviePropsTypes): JSX.Element {
   // Destructure movieList to extract relevant information
-  const { name, description, slug, image1 } = firstMovieDetails;
+  const { name, description, slug, image1, agerates } = firstMovieDetails;
 
-  // // Set up state for the width of the movie backdrop image
-  // const [widthBackdropMovie, setWidthBackdropMovie] =
-  //   useState<string>('original');
-  // // State to manage loading status
+  // State to manage loading status
   const [loading, setLoading] = useState(true);
 
-  // Construct the background image URL using the backdrop path and width
+  // Construct the background image URL
   const backgroundImageUrl = background
     ? `url('https://cdn.cursosya.info/${background}')`
     : `url('https://cdn.cursosya.info/${image1}')`;
@@ -43,26 +42,8 @@ export function BannerSliderMovie({
     }, 1000);
   }, []);
 
+  // Extract movies from movieList
   const moviesOnly: MoviesAPI[] = movieList.map((object) => object.movies);
-
-  // // Effect hook to handle window resize events and update the backdrop width accordingly
-  // useEffect(() => {
-  //   const handleResize = () => {
-  //     const width = window.innerWidth >= 768 ? 'original' : 'original';
-  //     setWidthBackdropMovie(width);
-  //   };
-
-  //   // Attach event listener for window resize
-  //   window.addEventListener('resize', handleResize);
-
-  //   // Call handleResize initially
-  //   handleResize();
-
-  //   // Clean up the event listener on component unmount
-  //   return () => {
-  //     window.removeEventListener('resize', handleResize);
-  //   };
-  // }, []);
 
   // Render skeleton loader while loading
   if (loading) {
@@ -78,25 +59,25 @@ export function BannerSliderMovie({
       }}
     >
       <div className="relative flex flex-col items-center justify-center w-full min-height-banner--sm lg:min-height-banner--lg py-14 lg:py-16 bg-gradient-to-br from-bgPrimaryDark via-bgPrimaryDark/40 to-transparent after:absolute after:inset-x-0 after:top-0 after:w-full after:h-4 after:bg-gradient-to-t after:from-transparent after:to-bgPrimaryDark">
+        {/* Section title */}
         <div className="z-10 absolute top-0 -left-5 w-fit p-12 bg-greenBrushStroke1 bg-clip-padding bg-center bg-no-repeat">
           <span className="span-xl text-2xl lg:text-4xl text-textColorNeutral-50 font-semibold whitespace-nowrap">
             {sectionTitle}
           </span>
         </div>
+
+        {/* Movie details */}
         <div className="flex flex-col justify-center gap-8 w-11/12 md:w-10/12 pt-12">
           <div className="flex flex-col gap-1 w-full">
-            {/* Exclusive badge */}
+            {/* Movie title and age rating */}
             <div className="w-full">
-              {/* Movie title */}
-              <h2 className="heading-2 mt-16 mb-5 font-extrabold text-textColorNeutral-50 max-w-prose">
+              <h2 className="heading-2 mt-16 font-extrabold text-textColorNeutral-50 max-w-prose">
                 {name}
               </h2>
+              <span className="span-xl text-textColorNeutral-50 font-medium mb-5">
+                {agerates?.range} {agerates?.name}
+              </span>
             </div>
-
-            {/* Original title movie
-            <span className="span-xl text-textColorNeutral-50 font-medium mb-5">
-              {original_title}
-            </span> */}
 
             {/* Movie overview */}
             <p className="paragraph-base line-clamp-5 lg:line-clamp-none font-normal text-textColorNeutral-50 max-w-prose">
@@ -123,12 +104,12 @@ export function BannerSliderMovie({
               Ver Más
             </button>
           </div>
+
+          {/* Horizontal movie slider */}
           <div className="flex justify-end items-center w-full mt-4">
             <div className="w-full md:w-3/4">
-              {/* Horizontal movie slider */}
               <HorizontalSlider
-                type="API"
-                movieList={moviesOnly.slice(1)}
+                movieList={{ type: 'API', data: moviesOnly.slice(1) }}
                 breakpoints={{
                   320: { slidesPerView: 2 },
                   480: { slidesPerView: 3 },

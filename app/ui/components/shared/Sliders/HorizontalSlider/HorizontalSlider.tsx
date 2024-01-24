@@ -21,13 +21,12 @@ import {
  *
  * @component
  * @param {Object} props - The component props.
- * @param {TrendingMovieType[] | MovieType[]} props.movieList - An array of movie data of type TrendingMovieType[] or MovieType[].
+ * @param {Array} props.movieList - An array of movie data of type TrendingMovieType[] or MovieType[].
  * @param {Object} props.breakpoints - Breakpoints configuration for responsive design.
  * @returns {JSX.Element} - JSX element representing the HorizontalSlider component.
  */
 export function HorizontalSlider({
-  type = 'TEST',
-  movieList,
+  movieList = { type: 'TEST', data: [] },
   breakpoints,
 }: HorizontalSliderPropsTypes): JSX.Element {
   // Button styles for Swiper navigation
@@ -48,16 +47,25 @@ export function HorizontalSlider({
       breakpoints={breakpoints}
     >
       {/* Mapping through the movieList to create SwiperSlides */}
-      {movieList.map((movie) => (
-        <SwiperSlide key={`movie-${movie?.id}`}>
-          {/* Rendering MovieCard for each movie in the list */}
-          {type === 'API' ? (
-            <MovieCardAPI movieData={movie} />
-          ) : (
-            <MovieCard movieData={movie} />
-          )}
-        </SwiperSlide>
-      ))}
+      {movieList?.type === 'API' ? (
+        <>
+          {movieList?.data.map((movie) => (
+            <SwiperSlide key={`movie-${movie?.id}`}>
+              {/* Rendering MovieCardAPI for each movie in the list */}
+              <MovieCardAPI movieData={movie} />
+            </SwiperSlide>
+          ))}
+        </>
+      ) : (
+        <>
+          {movieList?.data.map((movie) => (
+            <SwiperSlide key={`movie-${movie?.id}`}>
+              {/* Rendering MovieCard for each movie in the list */}
+              <MovieCard movieData={movie} />
+            </SwiperSlide>
+          ))}
+        </>
+      )}
     </Swiper>
   );
 }

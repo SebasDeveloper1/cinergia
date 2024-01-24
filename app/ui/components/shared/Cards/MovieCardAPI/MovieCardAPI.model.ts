@@ -1,3 +1,3 @@
-export interface MovieCardProps {
+export interface MovieCardAPIProps {
   movieData: MoviesAPI;
 }

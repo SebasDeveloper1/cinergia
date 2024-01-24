@@ -80,7 +80,7 @@ export function HorizontalMovieListSecondary({
         <div className="col-span-1 md:col-span-4 lg:col-span-6">
           {/* Horizontal movie slider */}
           <HorizontalSlider
-            movieList={movieList}
+            movieList={{ type: 'TEST', data: movieList }}
             breakpoints={{
               320: { slidesPerView: 2 },
               480: { slidesPerView: 3 },

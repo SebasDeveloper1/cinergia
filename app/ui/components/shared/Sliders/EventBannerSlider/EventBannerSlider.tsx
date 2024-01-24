@@ -74,7 +74,7 @@ export function EventBannerSlider({
             <div className="w-full md:w-3/4">
               {/* Horizontal movie slider */}
               <HorizontalSlider
-                movieList={movieList.slice(1)}
+                movieList={{ type: 'TEST', data: movieList.slice(1) }}
                 breakpoints={{
                   320: { slidesPerView: 2 },
                   480: { slidesPerView: 3 },

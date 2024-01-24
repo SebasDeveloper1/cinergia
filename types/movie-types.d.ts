@@ -97,18 +97,21 @@ interface VideoList {
 
 //////////////////////////////
 
+//Movie list api types
 interface MovieListAPI {
   data: MovieAPI[];
 }
 
 interface MovieAPI {
   id: number;
+  name: string;
+  slug: string;
+  releaseYear: Date;
   image1: string;
   image2: string;
-  name: string;
-  releaseYear: Date;
-  slug: string;
 }
+
+//Movie details api types
 
 interface MovieDetailsObjAPI {
   data: MovieDetailsAPI;
@@ -149,7 +152,8 @@ interface LanguagesAPI {
   name: string;
 }
 
-interface HomeSectionrRootAPI {
+// home sections api types
+interface HomeSectionRequestAPI {
   data: Datum[];
 }
 
@@ -158,9 +162,9 @@ interface Datum {
 }
 
 interface HomeSectionAPI {
+  title: string;
   background: string;
   home_section_movie: HomeSectionMovieAPI[];
-  title: string;
 }
 
 interface HomeSectionMovieAPI {
@@ -169,9 +173,9 @@ interface HomeSectionMovieAPI {
 
 interface MoviesAPI {
   id: number;
+  name: string;
+  slug: string;
+  releaseYear: Date;
   image1: string;
   image2: string;
-  name: string;
-  releaseYear: Date;
-  slug: string;
 }

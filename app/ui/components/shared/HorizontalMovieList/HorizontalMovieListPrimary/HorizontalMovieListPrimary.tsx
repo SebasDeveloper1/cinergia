@@ -72,7 +72,7 @@ export function HorizontalMovieListPrimary({
         <div className="z-10 md:hidden absolute inset-y-0 right-0 w-14  bg-gradient-to-l from-bgPrimaryDark to-transparent"></div>
         {/* Horizontal movie slider */}
         <HorizontalSlider
-          movieList={movieList}
+          movieList={{ type: 'TEST', data: movieList }}
           breakpoints={{
             320: { slidesPerView: 2 },
             480: { slidesPerView: 3 },

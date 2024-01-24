@@ -3,7 +3,6 @@ export async function fetchMovieList({ top = 10 }: { top: number }) {
   const apiUrl = `http://api.cursosya.info/api/movies?top=${top}`;
   const options = {
     next: { revalidate: 86400 },
-    rejectUnauthorized: false, // ¡Esta línea desactiva la verificación del certificado SSL!
   };
 
   try {
@@ -29,7 +28,6 @@ export async function fetchMovieDetails(movieSlug: string) {
   const apiUrl = `http://api.cursosya.info/api/movies/${movieSlug}`;
   const options = {
     next: { revalidate: 86400 },
-    rejectUnauthorized: false, // ¡Esta línea desactiva la verificación del certificado SSL!
   };
 
   try {
@@ -55,7 +53,6 @@ export async function fetchHomeSection({ section }: { section: string }) {
   const apiUrl = `https://api.cursosya.info/api/homesection/${section}`;
   const options = {
     next: { revalidate: 86400 },
-    rejectUnauthorized: false, // ¡Esta línea desactiva la verificación del certificado SSL!
   };
 
   try {
