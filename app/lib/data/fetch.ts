@@ -1,5 +1,11 @@
-// Función para obtener la lista de películas
-export async function fetchMovieList({ top = 10 }: { top: number }) {
+/**
+ * Retrieves a list of movies from the API.
+ *
+ * @param {Object} options - Options for fetching movies.
+ * @param {number} options.top - The number of top movies to retrieve (default is 10).
+ * @returns {Promise<Array>} - A Promise that resolves to an array of movie data.
+ * @throws {Error} - Throws an error if there is an issue fetching the movie list.
+ */ export async function fetchMovieList({ top = 10 }: { top: number }) {
   const apiUrl = `http://api.cursosya.info/api/movies?top=${top}`;
   const options = {
     next: { revalidate: 86400 },
@@ -23,7 +29,13 @@ export async function fetchMovieList({ top = 10 }: { top: number }) {
   }
 }
 
-// Función para obtener detalles de una película
+/**
+ * Retrieves details for a specific movie using its slug.
+ *
+ * @param {string} movieSlug - The unique identifier (slug) of the movie.
+ * @returns {Promise<Object>} - A Promise that resolves to detailed information about the movie.
+ * @throws {Error} - Throws an error if there is an issue fetching movie details.
+ */
 export async function fetchMovieDetails(movieSlug: string) {
   const apiUrl = `http://api.cursosya.info/api/movies/${movieSlug}`;
   const options = {
@@ -48,7 +60,14 @@ export async function fetchMovieDetails(movieSlug: string) {
   }
 }
 
-// Función para obtener datos de una sección de inicio
+/**
+ * Retrieves data for a specific section of the home page.
+ *
+ * @param {Object} options - Options for fetching home section data.
+ * @param {string} options.section - The section identifier to retrieve data for.
+ * @returns {Promise<Object>} - A Promise that resolves to data for the specified home section.
+ * @throws {Error} - Throws an error if there is an issue fetching home section data.
+ */
 export async function fetchHomeSection({ section }: { section: string }) {
   const apiUrl = `https://api.cursosya.info/api/homesection/${section}`;
   const options = {
@@ -71,4 +90,149 @@ export async function fetchHomeSection({ section }: { section: string }) {
     console.error('Database Error:', error);
     throw new Error('Error fetching home section');
   }
+}
+
+/**
+ * Retrieves a list of free short films from the API.
+ *
+ * @returns {Promise<Array>} - A Promise that resolves to an array of free short film data.
+ * @throws {Error} - Throws an error if there is an issue fetching the free shorts list.
+ */
+export async function fetchFreeShortsList() {
+  const apiUrl = `https://api.cursosya.info/api/freeshorts?top=10}`;
+  const options = {
+    next: { revalidate: 86400 },
+  };
+
+  try {
+    const response = await fetch(apiUrl, options);
+
+    if (!response.ok) {
+      const error: Error = new Error(
+        `Error: ${response.status} - ${response.statusText}`,
+      );
+      throw error;
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Error fetching free shorts list');
+  }
+}
+
+/**
+ * Retrieves a list of movie genres or categories from the API.
+ *
+ * @param {Object} options - Options for fetching genres or categories.
+ * @param {string} options.list - Specify 'genres' or 'categories' to get the respective list.
+ * @returns {Promise<Array>} - A Promise that resolves to an array of genres or categories.
+ * @throws {Error} - Throws an error if there is an issue fetching genres.
+ */
+export async function fetchGenresList({
+  list,
+}: {
+  list: 'genres' | 'categories';
+}) {
+  const apiUrl = `https://api.cursosya.info/api/${list}`;
+  const options = {
+    next: { revalidate: 86400 },
+  };
+
+  try {
+    const response = await fetch(apiUrl, options);
+
+    if (!response.ok) {
+      const error: Error = new Error(
+        `Error: ${response.status} - ${response.statusText}`,
+      );
+      throw error;
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Error fetching genres');
+  }
+}
+
+/**
+ * Retrieves a list of movies for a specific genre from the API.
+ *
+ * @param {Object} options - Options for fetching movies for a genre.
+ * @param {string} options.genreSlug - The unique identifier (slug) of the genre.
+ * @param {number} options.top - The number of top movies to retrieve (default is 10).
+ * @returns {Promise<Array>} - A Promise that resolves to an array of movies for the specified genre.
+ * @throws {Error} - Throws an error if there is an issue fetching movies for the genre.
+ */
+export async function fetchMovieListForGenre({
+  genreSlug,
+  top = 10,
+}: {
+  genreSlug: string;
+  top: number;
+}) {
+  const apiUrl = `https://api.cursosya.info/api/movies-genre/${genreSlug}?top=${top}`;
+  const options = {
+    next: { revalidate: 86400 },
+  };
+
+  try {
+    const response = await fetch(apiUrl, options);
+
+    if (!response.ok) {
+      const error: Error = new Error(
+        `Error: ${response.status} - ${response.statusText}`,
+      );
+      throw error;
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Error fetching movies for genre');
+  }
+}
+
+/**
+ * Retrieves movie data for each genre in the provided list.
+ *
+ * @param {Array} genresList - An array of genre objects containing name and slug.
+ * @returns {Promise<Array>} - A Promise that resolves to an array of objects, each containing genre, slug, and movie data.
+ * @throws {Error} - Throws an error if there is an issue fetching movies for any genre.
+ */
+export async function fetchMovieDataForGenres(genresList: GenresListAPI[]) {
+  const resultArray: {
+    genre: string;
+    slug: string;
+    data: MoviesGenre[];
+  }[] = [];
+
+  for (const genre of genresList) {
+    try {
+      const { data }: MoviesDataForGenresRequestAPI =
+        await fetchMovieListForGenre({
+          genreSlug: genre.slug,
+          top: 10,
+        });
+
+      const moviesData: MoviesGenre[] = data
+        .flatMap((item: MoviesDataForGenresAPI) => item.genre_movie)
+        .map((movieInfo: GenreMovieAPI) => movieInfo.movies); // Extraer la propiedad "movies"
+
+      resultArray.push({
+        genre: genre.name,
+        slug: genre.slug,
+        data: moviesData,
+      });
+    } catch (error) {
+      console.error(`Error fetching movies for genre ${genre.name}: ${error}`);
+      resultArray.push({ genre: genre.name, slug: genre.slug, data: [] });
+    }
+  }
+
+  return resultArray;
 }

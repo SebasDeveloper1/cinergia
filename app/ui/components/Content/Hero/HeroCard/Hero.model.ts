@@ -1,3 +1,4 @@
-export interface HeroCardPropsTypes {
-  movieList: MovieType[] | TrendingMovieType[];
+export interface HeroCardProps {
+  firstMovieDetails: MovieDetailsAPI;
+  movieList: FreeShortsMoviesListAPI[];
 }

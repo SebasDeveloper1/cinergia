@@ -32,12 +32,9 @@ export function HorizontalMovieListPrimary({
     }, 1000);
   }, []);
 
-  // Render skeleton loader while loading
-  if (loading) {
-    return <HorizontalMovieListPrimarySkeleton />;
-  }
-
-  // Render the actual content after loading
+  /**
+   * Render the JSX for the HorizontalMovieListPrimary component
+   */
   return (
     <article className="flex flex-col items-start gap-5 w-full">
       <header className="w-full">
@@ -70,16 +67,21 @@ export function HorizontalMovieListPrimary({
       <div className="relative w-full">
         {/* Background gradient for mobile view */}
         <div className="z-10 md:hidden absolute inset-y-0 right-0 w-14  bg-gradient-to-l from-bgPrimaryDark to-transparent"></div>
-        {/* Horizontal movie slider */}
-        <HorizontalSlider
-          movieList={{ type: 'TEST', data: movieList }}
-          breakpoints={{
-            320: { slidesPerView: 2 },
-            480: { slidesPerView: 3 },
-            768: { slidesPerView: 4 },
-            1536: { slidesPerView: 5 },
-          }}
-        />
+        {/* Render skeleton loader while loading */}
+        {loading ? (
+          <HorizontalMovieListPrimarySkeleton />
+        ) : (
+          /* Horizontal movie slider */
+          <HorizontalSlider
+            movieList={{ type: 'API', data: movieList }}
+            breakpoints={{
+              320: { slidesPerView: 2 },
+              480: { slidesPerView: 3 },
+              768: { slidesPerView: 4 },
+              1536: { slidesPerView: 5 },
+            }}
+          />
+        )}
       </div>
     </article>
   );

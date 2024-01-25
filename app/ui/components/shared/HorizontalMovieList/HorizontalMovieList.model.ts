@@ -4,7 +4,7 @@ export interface HorizontalMovieListTypes
   extends HTMLAttributes<HTMLDivElement> {
   title: string;
   path: string;
-  movieList: TrendingMovieType[] | MovieType[];
+  movieList: FreeShortsMoviesListAPI[];
 }
 
 export interface HorizontalMovieListPrimaryTypes

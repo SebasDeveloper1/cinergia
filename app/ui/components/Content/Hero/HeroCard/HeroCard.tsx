@@ -1,9 +1,6 @@
-'use client';
 // Import necessary dependencies and types
-import { useState, useEffect } from 'react';
-import { HeroCardPropsTypes } from './Hero.model';
+import { HeroCardProps } from './Hero.model';
 import { HorizontalMovieListPrimary } from '@/app/ui/components/shared/HorizontalMovieList/HorizontalMovieListPrimary';
-import createMovieSlug from '@/app/lib/utils/createMovieSlug';
 import Link from 'next/link';
 
 /**
@@ -13,41 +10,26 @@ import Link from 'next/link';
  * and a dynamic background adjusted based on the window size.
  *
  * @component
- * @param {HeroCardPropsTypes} props - Props for configuring the HeroCard.
+ * @param {HeroCardProps} props - Props for configuring the HeroCard component.
+ * @param {MovieDetailsAPI} props.firstMovieDetails - Details of the first movie to be displayed.
+ * @param {FreeShortsMoviesListAPI[]} props.movieList - List of movies for the horizontal movie list section.
  * @returns {JSX.Element} - JSX element representing the HeroCard component.
  */
-export function HeroCard({ movieList }: HeroCardPropsTypes): JSX.Element {
+export function HeroCard({
+  firstMovieDetails,
+  movieList,
+}: HeroCardProps): JSX.Element {
   // Destructure key movie information
-  const { id, backdrop_path, title, release_date } = movieList[0];
+  const { name, slug, image1 } = firstMovieDetails;
 
-  // State for dynamically adjusting backdrop image width
-  const [widthBackdropMovie, setWidthBackdropMovie] =
-    useState<string>('original');
-
-  useEffect(() => {
-    // Function to handle window resize and adjust image width
-    const handleResize = () => {
-      const width = window.innerWidth >= 768 ? 'original' : 'original';
-      setWidthBackdropMovie(width);
-    };
-
-    // Add event listener for window resize
-    window.addEventListener('resize', handleResize);
-
-    // Call handleResize initially
-    handleResize();
-
-    // Clean up the event listener on component unmount
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
-
+  /**
+   * Render the JSX for the HeroCard component
+   */
   return (
     <section
       className="w-full min-h-[50vh] bg-cover bg-center"
       style={{
-        backgroundImage: `url('https://image.tmdb.org/t/p/${widthBackdropMovie}/${backdrop_path}')`,
+        backgroundImage: `url('http://cdn.cursosya.info/${image1}')`,
       }}
     >
       <div className="w-full min-h-[50vh] py-20 lg:py-[5.5rem] flex flex-col justify-start items-center gap-16 bg-gradient-to-br from-bgPrimaryDark/90 via-bgPrimaryDark/50 to-transparent">
@@ -59,18 +41,17 @@ export function HeroCard({ movieList }: HeroCardPropsTypes): JSX.Element {
             </span>
             {/* Movie title */}
             <h2 className="heading-3 w-full md:w-3/4 font-extrabold text-textColorNeutral-50 mt-2">
-              {title}
+              {name}
             </h2>
             {/* Movie release year */}
             <span className="span-lg max-w-prose text-textColorNeutral-100">
-              {release_date !== undefined &&
-                new Date(release_date).getFullYear()}
+              2023
             </span>
           </div>
           {/* Button to view the movie */}
           <Link
             className="button-secondary padding-button w-full md:w-fit"
-            href={`/peliculas/${createMovieSlug({ id, title })}`}
+            href={`/peliculas/${slug}`}
           >
             Ver Película
           </Link>

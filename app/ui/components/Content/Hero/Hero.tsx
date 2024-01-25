@@ -1,32 +1,34 @@
 // Import necessary dependencies and types
 import React from 'react';
-import { fetchMovieDetails, fetchTrending } from '@/app/lib/data/data';
 import { HeroCard } from '@/app/ui/components/Content/Hero/HeroCard';
+import { fetchFreeShortsList, fetchMovieDetails } from '@/app/lib/data/fetch';
+
 /**
  * Fetches trending movies and renders the HeroCard component.
+ *
  * @component
- * @returns {Promise<JSX.Element>} - The rendered HeroCard component with trending movies.
+ * @returns {Promise<JSX.Element>} - Promise resolving to the rendered HeroCard component with trending movies.
+ * @throws {Error} - Throws an error if there's an issue fetching data for the Hero component.
  */
-
 export async function Hero(): Promise<JSX.Element> {
-  // Fetch trending movies
-  const { results: trendingResults }: ResultsTrendingTypes =
-    await fetchTrending();
+  try {
+    // Fetch the list of trending movies
+    const { data: moviesData }: { data: FreeShortsMoviesListAPI[] } =
+      await fetchFreeShortsList();
 
-  // Extract movie IDs from trending results
-  const trendingMovieIds: number[] = trendingResults.map(
-    (element: TrendingMovieType) => element.id,
-  );
+    // Retrieve details of the first movie in the list
+    const firstMovie: FreeShortsMoviesListAPI = moviesData[0];
+    const { data: firstMovieDetails }: { data: MovieDetailsAPI } =
+      await fetchMovieDetails(firstMovie?.slug);
 
-  // Fetch details for each trending movie
-  const moviesData: MovieType[] = await Promise.all(
-    trendingMovieIds.map(async (id: number) => await fetchMovieDetails(id)),
-  );
-
-  return (
-    <>
-      {/* Render the HeroCard component with trending movies */}
-      <HeroCard movieList={moviesData} />
-    </>
-  );
+    /**
+     * Render the JSX for the Hero component
+     */
+    return (
+      <HeroCard firstMovieDetails={firstMovieDetails} movieList={moviesData} />
+    );
+  } catch (error) {
+    // Handle errors and throw an informative error message
+    throw new Error(`Error fetching data for Hero component: ${error}`);
+  }
 }

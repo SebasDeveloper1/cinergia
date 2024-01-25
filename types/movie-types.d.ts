@@ -179,3 +179,57 @@ interface MoviesAPI {
   image1: string;
   image2: string;
 }
+
+// Free Shorts List types
+interface FreeShortsRequestAPI {
+  data: FreeShortsMoviesListAPI[];
+}
+
+interface FreeShortsMoviesListAPI {
+  id: number;
+  name: string;
+  slug: string;
+  releaseYear: Date;
+  image1: string;
+  image2: string;
+}
+
+//Genres list types
+interface GenresRequestAPI {
+  data: GenresListAPI[];
+}
+
+interface GenresListAPI {
+  created_at: Date;
+  description: null | string;
+  id: number;
+  name: string;
+  slug: string;
+  updated_at: Date;
+}
+
+//Movie List by genre
+interface MoviesDataForGenresRequestAPI {
+  data: MoviesDataForGenresAPI[];
+}
+
+interface MoviesDataForGenresAPI {
+  description: null;
+  genre_movie: GenreMovieAPI[];
+  id: number;
+  name: string;
+  slug: string;
+}
+
+interface GenreMovieAPI {
+  movies: MoviesGenre;
+}
+
+interface MoviesGenre {
+  id: number;
+  image1: string;
+  image2: string;
+  name: string;
+  releaseYear: Date;
+  slug: string;
+}
