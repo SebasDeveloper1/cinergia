@@ -20,7 +20,7 @@ export function HeroCard({
   movieList,
 }: HeroCardProps): JSX.Element {
   // Destructure key movie information
-  const { name, slug, image1 } = firstMovieDetails;
+  const { name, slug, image2 } = firstMovieDetails;
 
   /**
    * Render the JSX for the HeroCard component
@@ -29,7 +29,7 @@ export function HeroCard({
     <section
       className="w-full min-h-[50vh] bg-cover bg-center"
       style={{
-        backgroundImage: `url('http://cdn.cursosya.info/${image1}')`,
+        backgroundImage: `url('http://cdn.cursosya.info/${image2}')`,
       }}
     >
       <div className="w-full min-h-[50vh] py-20 lg:py-[5.5rem] flex flex-col justify-start items-center gap-16 bg-gradient-to-br from-bgPrimaryDark/90 via-bgPrimaryDark/50 to-transparent">
@@ -61,7 +61,7 @@ export function HeroCard({
           <HorizontalMovieListPrimary
             title="Películas Gratuitas"
             movieList={movieList}
-            path={'/'}
+            path={`/contenido`}
           />
         </section>
       </div>

@@ -25,7 +25,7 @@ export function BannerSliderMovie({
   movieList,
 }: BannerSliderMoviePropsTypes): JSX.Element {
   // Destructure movieList to extract relevant information
-  const { name, description, slug, image1, agerates } = firstMovieDetails;
+  const { name, description, slug, image2, agerates } = firstMovieDetails;
 
   // State to manage loading status
   const [loading, setLoading] = useState(true);
@@ -33,7 +33,7 @@ export function BannerSliderMovie({
   // Construct the background image URL
   const backgroundImageUrl = background
     ? `url('https://cdn.cursosya.info/${background}')`
-    : `url('https://cdn.cursosya.info/${image1}')`;
+    : `url('https://cdn.cursosya.info/${image2}')`;
 
   // Simulating loading delay with a timeout
   useEffect(() => {

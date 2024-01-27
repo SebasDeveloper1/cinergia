@@ -1,5 +1,4 @@
 // Import necessary dependencies and components
-import React from 'react';
 import { Hero } from '@/app/ui/components/Content/Hero';
 import { ListSection } from '@/app/ui/components/Content/ListSection/ListSection';
 

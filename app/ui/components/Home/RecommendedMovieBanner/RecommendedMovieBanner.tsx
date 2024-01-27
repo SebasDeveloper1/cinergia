@@ -19,12 +19,12 @@ export function RecommendedMovieBanner({
   movieData,
 }: RecommendedMovieBannerPropsTypes): JSX.Element {
   // Destructure movieData to extract relevant information
-  const { name, description, slug, image1, agerates } = movieData;
+  const { name, description, slug, image2, agerates } = movieData;
 
   // Construct the background image URL
   const backgroundImageUrl = background
     ? `url('https://cdn.cursosya.info/${background}')`
-    : `url('https://cdn.cursosya.info/${image1}')`;
+    : `url('https://cdn.cursosya.info/${image2}')`;
 
   /**
    * Render the JSX for the RecommendedMovieBanner component

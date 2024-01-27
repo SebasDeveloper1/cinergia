@@ -18,10 +18,10 @@ import { MovieCardAPIProps } from './MovieCardAPI.model';
  */
 export function MovieCardAPI({ movieData }: MovieCardAPIProps): JSX.Element {
   // Extracting movie data properties
-  const { name, slug, releaseYear, image1 } = movieData;
+  const { name, slug, releaseYear, image2 } = movieData;
 
   // URL for the movie poster image
-  const imageURL = `https://cdn.cursosya.info/${image1}`;
+  const imageURL = `https://cdn.cursosya.info/${image2}`;
 
   return (
     <li className="group overflow-hidden rounded-sm bg-bgSecondaryDark md:hover:bg-dark-800">

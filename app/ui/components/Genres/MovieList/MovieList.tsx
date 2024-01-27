@@ -1,10 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-'use client';
-import React, { useState, useEffect } from 'react';
+// Import necessary dependencies and types
 import { MovieCard } from '../MovieCard';
-import { fetchMovieList } from '@/app/lib/data/data';
-import { genresListTypes } from '@/app/lib/data/genreList/genreList.model';
-import MovieListSkeleton from './MovieListSkeleton';
+import { MovieListProps } from './MovieList.model';
 
 /**
  * MovieList Component
@@ -18,71 +15,18 @@ import MovieListSkeleton from './MovieListSkeleton';
  * @param {{ page: number; results: MovieType[] | TrendingMovieType[] }} props.movieList - Information about the current page of movie results.
  * @returns {JSX.Element} - JSX element representing the MovieList component.
  */
-
-export function MovieList({
-  genreInfo,
-  movieList,
-}: {
-  genreInfo: genresListTypes;
-  movieList: { page: number; results: MovieType[] | TrendingMovieType[] };
-}) {
-  const { name, id } = genreInfo;
-  const { results, page } = movieList;
-
-  const [currentPage, setCurrentPage] = useState(page);
-  const [loading, setLoading] = useState(false);
-  const [hasMore, setHasMore] = useState(true);
-  const [movieResults, setMovieResults] = useState(results);
-
-  const loadMoreData = async () => {
-    try {
-      setLoading(true);
-
-      const nextPage = currentPage + 1;
-      const newData = await fetchMovieList({ genreId: id, page: nextPage });
-
-      setCurrentPage(nextPage);
-      setHasMore(nextPage < newData.total_pages);
-      setMovieResults((prevResults) => [...prevResults, ...newData.results]);
-    } catch (error) {
-      console.error('Error fetching more data:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    /**
-     * Event handler for scrolling. Checks if the user has scrolled to the bottom
-     * and triggers the loading of more movie data if conditions are met.
-     */
-    const handleScroll = () => {
-      const footerElement = document.getElementById('footer');
-
-      if (!footerElement) {
-        // If the footer element is not found, exit the function.
-        return;
-      }
-
-      const isScrolledToBottom =
-        window.innerHeight + document.documentElement.scrollTop >=
-        document.documentElement.offsetHeight - footerElement.offsetHeight;
-
-      if (isScrolledToBottom && !loading && hasMore) {
-        loadMoreData();
-      }
-    };
-
-    // Add event listener for window scroll
-    window.addEventListener('scroll', handleScroll);
-
-    // Cleanup: Remove event listener on component unmount
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [loading, hasMore, currentPage, id]);
+export function MovieList({ genreInfo, movieList }: MovieListProps) {
+  // Destructure genre information
+  const { name } = genreInfo;
 
   return (
+    /**
+     * MovieList Section
+     *
+     * Displays a list of movies for a specific genre.
+     *
+     * @returns {JSX.Element}
+     */
     <section className="flex place-content-center w-full py-16">
       <div className="w-11/12 md:w-10/12">
         {/* Genre Heading */}
@@ -91,11 +35,9 @@ export function MovieList({
         </h2>
         {/* Movie Grid */}
         <ul className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-x-4 gap-y-8 w-full">
-          {movieResults.map((movie) => (
+          {movieList.map((movie: MoviesGenre) => (
             <MovieCard key={`movie-${movie?.id}`} movieData={movie} />
           ))}
-          {/* Loading Indicator */}
-          {loading && <MovieListSkeleton />}
         </ul>
       </div>
     </section>

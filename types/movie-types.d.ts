@@ -107,7 +107,7 @@ interface MovieAPI {
   name: string;
   slug: string;
   releaseYear: Date;
-  image1: string;
+  image2: string;
   image2: string;
 }
 
@@ -176,7 +176,7 @@ interface MoviesAPI {
   name: string;
   slug: string;
   releaseYear: Date;
-  image1: string;
+  image2: string;
   image2: string;
 }
 
@@ -190,7 +190,7 @@ interface FreeShortsMoviesListAPI {
   name: string;
   slug: string;
   releaseYear: Date;
-  image1: string;
+  image2: string;
   image2: string;
 }
 
@@ -227,9 +227,11 @@ interface GenreMovieAPI {
 
 interface MoviesGenre {
   id: number;
-  image1: string;
+  image2: string;
   image2: string;
   name: string;
   releaseYear: Date;
   slug: string;
 }
+
+interface GenreInfoAPI extends Omit<MoviesDataForGenresAPI, 'genre_movie'> {}

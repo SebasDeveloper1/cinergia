@@ -1,5 +1,5 @@
-import { fetchMovieList } from '@/app/lib/data/data';
-import { genresList } from '@/app/lib/data/genreList/genreList';
+// Import necessary dependencies and types
+import { fetchMovieListForGenre } from '@/app/lib/data/fetch';
 import { Hero } from '@/app/ui/components/Genres/Hero';
 import { MovieList } from '@/app/ui/components/Genres/MovieList';
 import { NoMoviesAvailable } from '@/app/ui/components/Genres/NoMoviesAvailable';
@@ -9,8 +9,9 @@ import { ScrollTopButtonWrapper } from '@/app/ui/components/shared/ScrollTopButt
  * Genre Page
  *
  * This page component fetches and displays information about movies belonging to a specific genre.
- * It utilizes the `fetchMovieList` function to retrieve the list of movies for the specified genre,
- * and displays a Hero component featuring the first movie from the fetched list.
+ * It utilizes the `fetchMovieListForGenre` function to retrieve the list of movies for the specified genre
+ * and displays a Hero component featuring the first movie from the fetched list. If no movies are available,
+ * it displays a message using the NoMoviesAvailable component.
  *
  * @component
  * @param {Object} params - The parameters object containing the genre slug.
@@ -25,21 +26,30 @@ export default async function GenrePage({
   // Extract genre slug from parameters
   const genreSlug = params.genre;
 
-  // Find genre information based on the slug
-  const genreInfo = genresList.find((genre) => genre.slug === genreSlug);
-
-  // If genre information is not found, display a "Not found" message
-  if (!genreInfo) {
-    return <div className="mt-20">No found</div>;
-  }
-
   try {
     // Fetch the list of movies for the specified genre
-    const movieList = await fetchMovieList({ genreId: genreInfo.id });
+    const { data }: { data: MoviesDataForGenresAPI[] } =
+      await fetchMovieListForGenre({
+        genreSlug: genreSlug,
+        top: 10,
+      });
+
+    // Extract genre information from the first movie in the list
+    const genreInfo: GenreInfoAPI = {
+      id: data[0]?.id,
+      name: data[0]?.name,
+      slug: data[0]?.slug,
+      description: data[0]?.description,
+    };
+
+    // Extract the list of movies for the genre
+    const movieList: MoviesGenre[] = data
+      .flatMap((item: MoviesDataForGenresAPI) => item.genre_movie)
+      .map((movieInfo: GenreMovieAPI) => movieInfo.movies);
 
     // If there are movies available, display the Hero component with information about the first movie
-    if (movieList.results.length > 0) {
-      const firstMovie = movieList.results[0];
+    if (movieList.length > 0) {
+      const firstMovie = movieList[0];
 
       return (
         <section className="w-full">
