@@ -1,3 +1,5 @@
 export interface ExclusiveSectionCardPropsTypes {
-  movieData: MovieType;
+  titleBanner: string;
+  background: string;
+  movieData: MovieDetailsAPI;
 }

@@ -1,5 +1,5 @@
 // Import necessary dependencies and types
-import { fetchMovieDetails } from '@/app/lib/data/data';
+import { fetchHomeSection, fetchMovieDetails } from '@/app/lib/data/fetch';
 import { ExclusiveSectionCard } from './ExclusiveSectionCard';
 
 /**
@@ -13,9 +13,31 @@ import { ExclusiveSectionCard } from './ExclusiveSectionCard';
  * @returns {Promise<JSX.Element>} - A promise resolving to the JSX element representing the ExclusiveSection component.
  */
 export async function ExclusiveSection(): Promise<JSX.Element> {
-  // Fetch details for the exclusive movie (id: 502356)
-  const moviesData: MovieType = await fetchMovieDetails(502356);
+  try {
+    // Fetch data for the "Exclusiva" section
+    const { data }: HomeSectionRequestAPI = await fetchHomeSection({
+      section: 'exclusiva',
+    });
 
-  // Render the ExclusiveSectionCard component with the fetched movie data
-  return <ExclusiveSectionCard movieData={moviesData} />;
+    // Extract relevant information from the fetched data
+    const sectionInfo: HomeSectionAPI = data[0]?.home_section[0];
+    const movieList: HomeSectionMovieAPI[] = sectionInfo?.home_section_movie;
+    const firstMovie: MoviesAPI = movieList[0]?.movies;
+
+    // Fetch details for the recommended movie
+    const { data: firstMovieDetails }: { data: MovieDetailsAPI } =
+      await fetchMovieDetails(firstMovie?.slug);
+
+    // Render the ExclusiveSectionCard component with the fetched movie data
+    return (
+      <ExclusiveSectionCard
+        titleBanner="Exclusiva"
+        background={sectionInfo?.background}
+        movieData={firstMovieDetails}
+      />
+    );
+  } catch (error) {
+    // Handle errors and throw an informative error message
+    throw new Error(`Error fetching data for WeekMovieSection: ${error}`);
+  }
 }

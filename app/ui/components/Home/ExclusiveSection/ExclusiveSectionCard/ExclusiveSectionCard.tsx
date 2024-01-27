@@ -1,9 +1,6 @@
-'use client';
 // Import necessary dependencies and types
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
 import { ExclusiveSectionCardPropsTypes } from './ExclusiveSectionCard.model';
-import createMovieSlug from '@/app/lib/utils/createMovieSlug';
 
 /**
  * ExclusiveSectionCard Component
@@ -18,37 +15,17 @@ import createMovieSlug from '@/app/lib/utils/createMovieSlug';
  * @returns {JSX.Element} - JSX element representing the ExclusiveSectionCard component.
  */
 export function ExclusiveSectionCard({
+  titleBanner,
+  background,
   movieData,
 }: ExclusiveSectionCardPropsTypes): JSX.Element {
   // Destructure movieData to extract relevant information
-  const { id, backdrop_path, title, overview, production_companies } =
-    movieData;
+  const { name, description, slug, image2, agerates } = movieData;
 
-  // Set up state for the width of the movie backdrop image
-  const [widthBackdropMovie, setWidthBackdropMovie] =
-    useState<string>('original');
-
-  // Construct the background image URL using the backdrop path and width
-  const backgroundImageUrl = `url('https://image.tmdb.org/t/p/${widthBackdropMovie}/${backdrop_path}')`;
-
-  // Effect hook to handle window resize events and update the backdrop width accordingly
-  useEffect(() => {
-    const handleResize = () => {
-      const width = window.innerWidth >= 768 ? 'original' : 'original';
-      setWidthBackdropMovie(width);
-    };
-
-    // Attach event listener for window resize
-    window.addEventListener('resize', handleResize);
-
-    // Call handleResize initially
-    handleResize();
-
-    // Clean up the event listener on component unmount
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
+  // Construct the background image URL
+  const backgroundImageUrl = background
+    ? `url('https://cdn.cursosya.info/${background}')`
+    : `url('https://cdn.cursosya.info/${image2}')`;
 
   // Render the JSX for the ExclusiveSectionCard component
   return (
@@ -60,7 +37,7 @@ export function ExclusiveSectionCard({
     >
       <div className="z-10 absolute -top-10 -left-5 py-12 pr-24 bg-greenBrushStroke5 bg-contain bg-center bg-no-repeat">
         <span className="w-full pl-12 pr-24 py-12 span-xl text-2xl lg:text-4xl text-textColorNeutral-50 font-semibold whitespace-nowrap">
-          Exclusiva
+          {titleBanner}
         </span>
       </div>
       <div className="relative flex items-center justify-center w-full min-height-banner--sm lg:min-height-banner--lg py-5 lg:py-10 bg-gradient-to-br from-bgPrimaryDark/70 via-bgPrimaryDark/50 to-transparent after:absolute after:inset-x-0 after:bottom-0 after:w-full after:h-4 after:bg-gradient-to-t after:from-bgPrimaryDark after:to-transparent">
@@ -70,18 +47,18 @@ export function ExclusiveSectionCard({
             <div className="flex flex-col w-full">
               {/* Movie title */}
               <h2 className="heading-2 mt-16 font-extrabold text-textColorNeutral-50 max-w-prose">
-                {title}
+                {name}
               </h2>
             </div>
 
             {/* Production company name */}
             <span className="span-xl text-textColorNeutral-50 font-medium">
-              {production_companies[0].name}
+              {agerates?.range}
             </span>
 
             {/* Movie overview */}
             <p className="paragraph-base line-clamp-5 lg:line-clamp-none font-normal text-textColorNeutral-50 max-w-prose">
-              {overview}
+              {description}
             </p>
           </div>
 
@@ -90,7 +67,7 @@ export function ExclusiveSectionCard({
             {/* "Ver película" button */}
             <Link
               className="button-secondary padding-button w-full md:w-fit"
-              href={`/peliculas/${createMovieSlug({ id, title })}`}
+              href={`/peliculas/${slug}`}
             >
               Ver Película
             </Link>
