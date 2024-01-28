@@ -25,7 +25,7 @@ export function ScrollTopButtonWrapper({
       {children}
       <button
         type="button"
-        className={`fixed bottom-5 right-5 button-primary padding-icon ${isScrolled ? '' : 'hidden'}`}
+        className={`z-[100] fixed bottom-5 right-5 button-primary padding-icon ${isScrolled ? '' : 'hidden'}`}
         title="Ir arriba"
         aria-label="Ir arriba"
         onClick={(e) => handleButtonClick(e)}
@@ -33,8 +33,8 @@ export function ScrollTopButtonWrapper({
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="icon icon-tabler icon-tabler-chevron-up"
-          width={24}
-          height={24}
+          width={34}
+          height={34}
           viewBox="0 0 24 24"
           strokeWidth={2}
           stroke="currentColor"

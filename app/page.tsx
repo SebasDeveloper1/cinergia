@@ -5,6 +5,7 @@ import { NewsSection } from '@/app/ui/components/Home/NewsSection';
 import { ShortFilmsBannerSection } from '@/app/ui/components/Home/ShortFilmsBannerSection';
 import { EventBannerSection } from '@/app/ui/components/Home/EventBannerSection';
 import { WeekMovieSection } from '@/app/ui/components/Home/WeekMovieSection';
+import { ScrollTopButtonWrapper } from './ui/components/shared/ScrollTopButtonWrapper';
 
 /**
  * Home Component
@@ -19,7 +20,7 @@ import { WeekMovieSection } from '@/app/ui/components/Home/WeekMovieSection';
  */
 export default function Home() {
   return (
-    <>
+    <ScrollTopButtonWrapper>
       {/* Main content area */}
       <main className="w-full">
         {/* Hero section */}
@@ -40,6 +41,6 @@ export default function Home() {
         {/* WeekMovieSection component */}
         <WeekMovieSection />
       </main>
-    </>
+    </ScrollTopButtonWrapper>
   );
 }
