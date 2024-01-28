@@ -1,10 +1,10 @@
 // Import necessary dependencies and types
 import Image from 'next/image';
-import { fetchTrending } from '@/app/lib/data/data';
 import { HorizontalMovieListSecondary } from '@/app/ui/components/shared/HorizontalMovieList/HorizontalMovieListSecondary';
 import Figure2 from '@/app/ui/components/shared/assets/Figure2';
 import Figure3 from '@/app/ui/components/shared/assets/Figure3';
 import walletImage from '@/public/images/walletImage.png';
+import { fetchHomeSection } from '@/app/lib/data/fetch';
 
 /**
  * NewsSection Component
@@ -18,9 +18,19 @@ import walletImage from '@/public/images/walletImage.png';
  */
 // Define the NewsSection component as an asynchronous function
 export async function NewsSection(): Promise<JSX.Element> {
-  // Fetch trending movies using the fetchTrending function
-  const { results: trendingResults }: ResultsTrendingTypes =
-    await fetchTrending();
+  // Fetch data for the "Exclusiva" section
+  const { data }: HomeSectionRequestAPI = await fetchHomeSection({
+    section: 'novedades',
+  });
+
+  // Extract relevant information from the fetched data
+  const sectionInfo: HomeSectionAPI | undefined = data?.[0]?.home_section?.[0];
+
+  const movieListReverse: HomeSectionMovieAPI[] =
+    sectionInfo.home_section_movie?.reverse() || [];
+  const flattenedMovieList: MoviesAPI[] = movieListReverse.map(
+    (movie) => movie.movies,
+  );
 
   // Return the JSX element with the HorizontalMovieListSecondary component
   return (
@@ -33,8 +43,7 @@ export async function NewsSection(): Promise<JSX.Element> {
           <HorizontalMovieListSecondary
             title="Novedades MNET"
             description="Millones de películas por descubrir. Explora ahora."
-            path="/"
-            movieList={trendingResults}
+            movieList={flattenedMovieList}
             className="w-11/12"
           />
           <Figure2 className="absolute -top-10 -right-[20%] w-3/5 md:w-2/5 text-accent-500" />

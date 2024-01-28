@@ -37,7 +37,7 @@ export async function ShortFilmsBannerSection(): Promise<JSX.Element> {
         sectionTitle="Cortometrajes Gratuitos"
         background={sectionInfo?.background}
         firstMovieDetails={firstMovieDetails}
-        movieList={sectionInfo?.home_section_movie}
+        movieList={movieListReverse}
       />
     );
   } catch (error) {

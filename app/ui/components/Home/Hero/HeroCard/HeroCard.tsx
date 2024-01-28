@@ -48,7 +48,7 @@ export function HeroCard({ movieData }: HeroCardProps): JSX.Element {
           </p>
           <Link
             className="button-primary padding-button w-full md:w-fit"
-            href={`/movies/${slug}`}
+            href={`/peliculas/${slug}`}
           >
             Ver Película
           </Link>

@@ -23,7 +23,6 @@ import { HorizontalSlider } from '../../Sliders/HorizontalSlider';
 export function HorizontalMovieListSecondary({
   title,
   description,
-  path,
   movieList,
   ...props
 }: HorizontalMovieListSecondaryTypes): JSX.Element {
@@ -55,7 +54,7 @@ export function HorizontalMovieListSecondary({
               {description}
             </span>
           </div>
-          <a
+          {/* <a
             href={path}
             className="group button-secondary padding-button w-full md:w-fit"
           >
@@ -75,12 +74,12 @@ export function HorizontalMovieListSecondary({
               <path stroke="none" d="M0 0h24v24H0z" fill="none" />
               <path d="M9 6l6 6l-6 6" />
             </svg>
-          </a>
+          </a> */}
         </header>
         <div className="col-span-1 md:col-span-4 lg:col-span-6">
           {/* Horizontal movie slider */}
           <HorizontalSlider
-            movieList={{ type: 'TEST', data: movieList }}
+            movieList={{ type: 'API', data: movieList }}
             breakpoints={{
               320: { slidesPerView: 2 },
               480: { slidesPerView: 3 },
