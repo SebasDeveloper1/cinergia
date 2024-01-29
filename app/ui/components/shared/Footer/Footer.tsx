@@ -1,3 +1,6 @@
+import Image from 'next/image';
+import cinergiaLogo from '@/public/cinergiaLogoFucsia.svg';
+
 /**
  * Footer Component
  *
@@ -13,10 +16,18 @@ export function Footer(): JSX.Element {
       className="w-full bg-bgSecondaryDark border-t-[1px] border-borderNeutral-500"
     >
       <div className="flex justify-center items-center w-full h-full py-16 border-b-[4rem] border-bgPrimaryDark">
-        <div className="flex flex-col justify-center items-center gap-10 w-11/12 md:w-10/12 h-full">
-          <div className="pb-3 border-b-[1px] border-primary-500">
-            <a className="text-3xl">CinergiaLogo</a>
-          </div>
+        <div className="flex flex-col justify-center items-center gap-4 w-11/12 md:w-10/12 h-full">
+          <figure className="relative h-20 aspect-video">
+            <Image
+              fill
+              src={cinergiaLogo}
+              alt={'Logo Cinergia'}
+              placeholder="blur"
+              priority
+              className="w-full h-full"
+              blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIwIiBoZWlnaHQ9IjMyMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4="
+            />
+          </figure>
           <div>
             <div className="flex flex-col justify-center items-center gap-2 w-full h-full text-center">
               <span className="span-base text-textColorNeutral-400 w-full">
