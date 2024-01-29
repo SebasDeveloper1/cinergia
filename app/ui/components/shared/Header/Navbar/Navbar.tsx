@@ -1,11 +1,13 @@
 'use client';
 // Import necessary dependencies and types
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { NavbarSM } from '@/app/ui/components/shared/Header/Navbar/NavbarSM';
 import { NavbarLG } from '@/app/ui/components/shared/Header/Navbar/NavbarLG';
 import { NavbarPropsTypes } from './Navbar.model';
 import { MyListPreview } from './MyListPreview';
+import cinergiaLogo from '@/public/cinergiaLogo.svg';
 
 /**
  * Navbar Component
@@ -79,12 +81,27 @@ export function Navbar({
   return (
     <nav className="relative flex justify-center items-center w-full h-16 lg:h-[4.5rem] border-b border-borderNeutral-50/10 bg-bgPrimaryDark/50">
       <div className="relative flex justify-between items-center w-full h-full p-4 backdrop-blur-md">
-        <div>
-          {/* Application logo */}
-          <Link href="/" className="text-xl">
-            CinergiaLogo
-          </Link>
-        </div>
+        {/* Application logo */}
+        <Link
+          href="/"
+          className="flex justify-center items-center gap-2 h-full"
+        >
+          <figure className="relative h-full aspect-video">
+            <Image
+              fill
+              src={cinergiaLogo}
+              alt={'Logo Cinergia'}
+              placeholder="blur"
+              priority
+              className="w-full h-full object-cover object-center"
+              blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIwIiBoZWlnaHQ9IjMyMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4="
+            />
+          </figure>
+          {/* <span className="span-lg text-4xl font-bold text-neutral-50">
+            CINERGIA
+          </span> */}
+        </Link>
+
         {/* Small screen navbar */}
         <NavbarSM
           links={links}
