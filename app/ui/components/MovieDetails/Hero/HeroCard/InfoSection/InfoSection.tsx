@@ -3,7 +3,7 @@ import { useState, MouseEvent } from 'react';
 import { VideoPlayerModal } from '@/app/ui/components/shared/Modals/VideoPlayerModal';
 import { convertMinutesToHours } from '@/app/lib/utils/convertMinutesToHours';
 import {
-  extractValuesGenre,
+  extractValuesByKey,
   extractYouTubeVideoId,
 } from '@/app/lib/utils/extractValuesByKey';
 import { InfoSectionProps } from '../HeroCard.model';
@@ -25,17 +25,16 @@ import { VideoPlayer } from '@/app/ui/components/shared/VideoPlayer';
  */
 
 export function InfoSection({ movieData }: InfoSectionProps): JSX.Element {
-  const { data } = movieData;
   const {
     name,
     description,
     whySee,
-    movieLength,
+    duration,
     trailer,
     languages,
-    directors,
-    genre_movie,
-  } = data;
+    genres,
+    director,
+  } = movieData;
 
   const [openModal, setOpenModal] = useState<boolean>(false);
 
@@ -47,7 +46,11 @@ export function InfoSection({ movieData }: InfoSectionProps): JSX.Element {
   //   array: production_countries,
   //   key: 'name',
   // });
-  const genreList = extractValuesGenre({ genre_movie, key: 'genres' });
+  const genreList = genres.join(', ');
+  const languagesList = extractValuesByKey({ array: languages, key: 'name' });
+  const directorList = director
+    .map((item: DirectorAPI) => `${item?.firstName} ${item?.lastName}`)
+    .join(', ');
 
   const detailsMovieList = [
     {
@@ -74,7 +77,7 @@ export function InfoSection({ movieData }: InfoSectionProps): JSX.Element {
     },
     {
       name: 'runtime',
-      data: convertMinutesToHours(movieLength),
+      data: convertMinutesToHours(duration),
       icon: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -121,7 +124,7 @@ export function InfoSection({ movieData }: InfoSectionProps): JSX.Element {
     },
     {
       name: 'spoken_lenguages',
-      data: languages.name,
+      data: languagesList,
       icon: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -160,7 +163,7 @@ export function InfoSection({ movieData }: InfoSectionProps): JSX.Element {
                 Producido por:
               </span>
               <span className="inline-block w-full span-xs">
-                {` ${directors?.firstName} ${directors?.lastName}`}
+                {directorList}
               </span>
 
               <span className="inline-block w-full span-xs">{`Perú`}</span>
@@ -196,7 +199,7 @@ export function InfoSection({ movieData }: InfoSectionProps): JSX.Element {
               Sinopsis
             </span>
             <p className="paragraph-sm font-normal text-textColorNeutral-100">
-              {description}
+              {description || ''}
             </p>
           </article>
           <article className="md:col-span-1 lg:col-span-1 w-full line-clamp-5 lg:line-clamp-none">
@@ -204,7 +207,7 @@ export function InfoSection({ movieData }: InfoSectionProps): JSX.Element {
               Por qué verla
             </span>
             <p className="paragraph-sm line-clamp-5 lg:line-clamp-none font-normal text-textColorNeutral-100">
-              {whySee}
+              {whySee || ''}
             </p>
           </article>
         </section>

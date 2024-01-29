@@ -18,8 +18,11 @@ export async function Hero(): Promise<JSX.Element> {
 
     // Retrieve details of the first movie in the list
     const firstMovie: FreeShortsMoviesListAPI = moviesData[0];
-    const { data: firstMovieDetails }: { data: MovieDetailsAPI } =
+    // Fetch details for the recommended movie
+    const { data: firstMovieData }: { data: MovieDetailsAPI[] } =
       await fetchMovieDetails(firstMovie?.slug);
+
+    const firstMovieDetails: MovieDetailsAPI = firstMovieData[0];
 
     /**
      * Render the JSX for the Hero component

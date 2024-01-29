@@ -26,7 +26,8 @@ export async function Hero(): Promise<JSX.Element> {
       return data;
     }),
   );
+  const flatMovieList = movieList.flat();
 
   // Render the HeroSlider component with the fetched movie data
-  return <HeroSlider movieList={movieList} />;
+  return <HeroSlider movieList={flatMovieList} />;
 }

@@ -24,8 +24,7 @@ import { VideoPlayer } from '../../../shared/VideoPlayer';
 
 export function HeroCard({ movieData }: HeroCardProps): JSX.Element {
   // Destructure movieData for easier access
-  const { data } = movieData;
-  const { description, whySee, image2, urlId } = data;
+  const { description, whySee, image2, urlId } = movieData;
   // // State to dynamically adjust the width of the backdrop image based on screen size
   // const [widthBackdropMovie, setWidthBackdropMovie] =
   //   useState<string>('original');
@@ -75,7 +74,7 @@ export function HeroCard({ movieData }: HeroCardProps): JSX.Element {
           </div>
         </article>
       </section>
-      <OverviewSectionSM overview={description} whySeeIt={whySee} />
+      <OverviewSectionSM overview={description || ''} whySeeIt={whySee || ''} />
       {/* Video Player */}
       {openModal ? (
         <VideoPlayerModal

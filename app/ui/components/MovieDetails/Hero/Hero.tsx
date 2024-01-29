@@ -29,7 +29,10 @@ export async function Hero({
   movieId: string;
 }): Promise<JSX.Element> {
   // Fetches movie information based on the provided ID
-  const movieData = await fetchMovieDetails(movieId);
+  const { data }: { data: MovieDetailsAPI[] } =
+    await fetchMovieDetails(movieId);
+
+  const movieData = data[0];
 
   // Renders the HeroCard with the movie information
   return <HeroCard movieData={movieData} />;

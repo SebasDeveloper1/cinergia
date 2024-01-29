@@ -117,67 +117,53 @@ interface MovieDetailsObjAPI {
   data: MovieDetailsAPI;
 }
 
-interface MovieDetailsAPI extends Omit<MovieAPI, 'releaseYear'> {
-  agerates: AgeratesAPI;
+interface MovieDetailsAPI {
+  agerates: AgerateAPI[];
+  category: string;
+  created_at: Date;
   description: string;
-  whySee: string;
-  directors: DirectorsAPI;
-  genre_movie: GenreMovieAPI[];
-  languages: LanguagesAPI;
-  movieLength: number;
+  director: DirectorAPI[];
+  duration: number;
+  genres: string[];
+  id: number;
+  image1: string;
+  image2: string;
+  languages: LanguageAPI[];
+  name: string;
   price: string;
+  release_year: Date;
+  slug: string;
   trailer: string;
   urlId: string;
   whySee: string;
 }
 
-interface AgeratesAPI {
+interface AgerateAPI {
   id: number;
   name: string;
   range: string;
 }
 
-interface DirectorsAPI {
+interface DirectorAPI {
   firstName: string;
   id: number;
   lastName: string;
 }
 
-interface GenreMovieAPI {
-  genres: LanguagesAPI;
-}
-
-interface LanguagesAPI {
+interface LanguageAPI {
   id: number;
   name: string;
 }
 
 // home sections api types
 interface HomeSectionRequestAPI {
-  data: Datum[];
-}
-
-interface Datum {
-  home_section: HomeSectionAPI[];
+  data: HomeSectionAPI[];
 }
 
 interface HomeSectionAPI {
   title: string;
   background: string;
-  home_section_movie: HomeSectionMovieAPI[];
-}
-
-interface HomeSectionMovieAPI {
-  movies: MoviesAPI;
-}
-
-interface MoviesAPI {
-  id: number;
-  name: string;
-  slug: string;
-  releaseYear: Date;
-  image2: string;
-  image2: string;
+  movies: MovieAPI[];
 }
 
 // Free Shorts List types
@@ -210,28 +196,12 @@ interface GenresListAPI {
 
 //Movie List by genre
 interface MoviesDataForGenresRequestAPI {
-  data: MoviesDataForGenresAPI[];
+  data: GenreInfoAPI[];
 }
 
-interface MoviesDataForGenresAPI {
+interface GenreInfoAPI {
   description: null;
-  genre_movie: GenreMovieAPI[];
   id: number;
+  movies: MovieAPI[];
   name: string;
-  slug: string;
 }
-
-interface GenreMovieAPI {
-  movies: MoviesGenre;
-}
-
-interface MoviesGenre {
-  id: number;
-  image2: string;
-  image2: string;
-  name: string;
-  releaseYear: Date;
-  slug: string;
-}
-
-interface GenreInfoAPI extends Omit<MoviesDataForGenresAPI, 'genre_movie'> {}

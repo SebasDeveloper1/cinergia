@@ -1,4 +1,4 @@
 export interface HeroProps {
   genreInfo: GenreInfoAPI;
-  movieInfo: MoviesGenre;
+  movieInfo: MovieAPI;
 }

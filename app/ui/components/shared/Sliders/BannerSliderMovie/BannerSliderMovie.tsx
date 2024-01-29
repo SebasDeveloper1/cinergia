@@ -1,10 +1,11 @@
 'use client';
 // Import necessary dependencies and types
+import Link from 'next/link';
 import { useState, useEffect } from 'react';
+import { HorizontalSlider } from '@/app/ui/components/shared/Sliders/HorizontalSlider';
+import { extractValuesByKey } from '@/app/lib/utils/extractValuesByKey';
 import BannerSliderMovieSkeleton from './BannerSliderMovieSkeleton';
 import { BannerSliderMoviePropsTypes } from './BannerSliderMovie.model';
-import Link from 'next/link';
-import { HorizontalSlider } from '@/app/ui/components/shared/Sliders/HorizontalSlider';
 
 /**
  * BannerSliderMovie Component
@@ -35,15 +36,17 @@ export function BannerSliderMovie({
     ? `url('https://cdn.cursosya.info/${background}')`
     : `url('https://cdn.cursosya.info/${image2}')`;
 
+  const extractValuesAgregates = extractValuesByKey({
+    array: agerates,
+    key: 'range',
+  });
+
   // Simulating loading delay with a timeout
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
     }, 1000);
   }, []);
-
-  // Extract movies from movieList
-  const moviesOnly: MoviesAPI[] = movieList.map((object) => object.movies);
 
   // Render skeleton loader while loading
   if (loading) {
@@ -75,7 +78,7 @@ export function BannerSliderMovie({
                 {name}
               </h2>
               <span className="span-xl text-textColorNeutral-50 font-medium mb-5">
-                {agerates?.range} {agerates?.name}
+                {extractValuesAgregates}
               </span>
             </div>
 
@@ -109,7 +112,7 @@ export function BannerSliderMovie({
           <div className="flex justify-end items-center w-full mt-4">
             <div className="w-full md:w-3/4">
               <HorizontalSlider
-                movieList={{ type: 'API', data: moviesOnly.slice(1) }}
+                movieList={{ type: 'API', data: movieList.slice(1) }}
                 breakpoints={{
                   320: { slidesPerView: 2 },
                   480: { slidesPerView: 3 },

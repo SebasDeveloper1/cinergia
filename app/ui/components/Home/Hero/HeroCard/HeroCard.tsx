@@ -19,7 +19,7 @@ import { HeroCardProps } from './HeroCard.model';
  */
 export function HeroCard({ movieData }: HeroCardProps): JSX.Element {
   // Destructure movieData for easier access
-  const { name, slug, movieLength, description, image2 } = movieData;
+  const { name, slug, duration, release_year, description, image2 } = movieData;
 
   // Render the HeroCard component with movie details
   return (
@@ -39,8 +39,11 @@ export function HeroCard({ movieData }: HeroCardProps): JSX.Element {
               {name}
             </h2>
             <div className="flex gap-2 w-fit span-lg text-textColorNeutral-100">
-              <span>{convertMinutesToHours(movieLength)}</span>
-              <span className="before:content-['•'] before:mr-2">{'2023'}</span>
+              <span>{convertMinutesToHours(duration)}</span>
+              <span className="before:content-['•'] before:mr-2">
+                {release_year !== undefined &&
+                  new Date(release_year).getFullYear()}
+              </span>
             </div>
           </div>
           <p className="paragraph-lg line-clamp-5 lg:line-clamp-none font-normal text-textColorNeutral-50">

@@ -28,24 +28,20 @@ export default async function GenrePage({
 
   try {
     // Fetch the list of movies for the specified genre
-    const { data }: { data: MoviesDataForGenresAPI[] } =
-      await fetchMovieListForGenre({
-        genreSlug: genreSlug,
-        top: 10,
-      });
+    const { data }: { data: GenreInfoAPI[] } = await fetchMovieListForGenre({
+      genreSlug: genreSlug,
+      top: 10,
+    });
 
     // Extract genre information from the first movie in the list
     const genreInfo: GenreInfoAPI = {
       id: data[0]?.id,
       name: data[0]?.name,
-      slug: data[0]?.slug,
       description: data[0]?.description,
+      movies: data[0]?.movies,
     };
 
-    // Extract the list of movies for the genre
-    const movieList: MoviesGenre[] = data
-      .flatMap((item: MoviesDataForGenresAPI) => item.genre_movie)
-      .map((movieInfo: GenreMovieAPI) => movieInfo.movies);
+    const movieList = data[0]?.movies;
 
     // If there are movies available, display the Hero component with information about the first movie
     if (movieList.length > 0) {

@@ -24,13 +24,9 @@ export async function NewsSection(): Promise<JSX.Element> {
   });
 
   // Extract relevant information from the fetched data
-  const sectionInfo: HomeSectionAPI | undefined = data?.[0]?.home_section?.[0];
+  const sectionInfo: HomeSectionAPI = data[0];
 
-  const movieListReverse: HomeSectionMovieAPI[] =
-    sectionInfo.home_section_movie?.reverse() || [];
-  const flattenedMovieList: MoviesAPI[] = movieListReverse.map(
-    (movie) => movie.movies,
-  );
+  const movieListReverse: MovieAPI[] = sectionInfo?.movies.reverse() || [];
 
   // Return the JSX element with the HorizontalMovieListSecondary component
   return (
@@ -43,7 +39,7 @@ export async function NewsSection(): Promise<JSX.Element> {
           <HorizontalMovieListSecondary
             title="Novedades MNET"
             description="Millones de películas por descubrir. Explora ahora."
-            movieList={flattenedMovieList}
+            movieList={movieListReverse}
             className="w-11/12"
           />
           <Figure2 className="absolute -top-10 -right-[20%] w-3/5 md:w-2/5 text-accent-500" />

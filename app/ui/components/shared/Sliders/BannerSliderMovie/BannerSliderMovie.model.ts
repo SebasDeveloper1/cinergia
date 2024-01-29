@@ -2,5 +2,5 @@ export interface BannerSliderMoviePropsTypes {
   sectionTitle: string;
   background: string;
   firstMovieDetails: MovieDetailsAPI;
-  movieList: HomeSectionMovieAPI[];
+  movieList: MovieAPI[];
 }

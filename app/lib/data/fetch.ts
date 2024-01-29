@@ -208,7 +208,7 @@ export async function fetchMovieDataForGenres(genresList: GenresListAPI[]) {
   const resultArray: {
     genre: string;
     slug: string;
-    data: MoviesGenre[];
+    data: MovieAPI[];
   }[] = [];
 
   for (const genre of genresList) {
@@ -219,9 +219,9 @@ export async function fetchMovieDataForGenres(genresList: GenresListAPI[]) {
           top: 10,
         });
 
-      const moviesData: MoviesGenre[] = data
-        .flatMap((item: MoviesDataForGenresAPI) => item.genre_movie)
-        .map((movieInfo: GenreMovieAPI) => movieInfo.movies); // Extraer la propiedad "movies"
+      const moviesData: MovieAPI[] = data.flatMap(
+        (item: GenreInfoAPI) => item.movies,
+      );
 
       resultArray.push({
         genre: genre.name,

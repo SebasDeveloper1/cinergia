@@ -67,7 +67,7 @@ export const extractValuesGenre = ({
   return valuesArray.filter((value) => value !== undefined);
 };
 
-export const extractYouTubeVideoId = (link) => {
+export const extractYouTubeVideoId = (link: string) => {
   // Divide el enlace usando el caracter "/" y encuentra la última parte
   const parts = link.split('/');
   const lastPart = parts[parts.length - 1];

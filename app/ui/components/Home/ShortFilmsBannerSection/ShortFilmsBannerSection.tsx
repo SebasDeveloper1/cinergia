@@ -20,14 +20,16 @@ export async function ShortFilmsBannerSection(): Promise<JSX.Element> {
     });
 
     // Extract relevant information from the fetched data
-    const sectionInfo: HomeSectionAPI = data[0]?.home_section[0];
-    const movieListReverse: HomeSectionMovieAPI[] =
-      sectionInfo?.home_section_movie?.reverse();
+    const sectionInfo: HomeSectionAPI = data[0];
+
+    const movieListReverse: MovieAPI[] = sectionInfo?.movies.reverse();
 
     // Retrieve details of the first movie in the list
-    const firstMovie: MoviesAPI = movieListReverse[0]?.movies;
-    const { data: firstMovieDetails }: { data: MovieDetailsAPI } =
+    const firstMovie: MovieAPI = movieListReverse[0];
+    const { data: firstMovieData }: { data: MovieDetailsAPI[] } =
       await fetchMovieDetails(firstMovie?.slug);
+
+    const firstMovieDetails: MovieDetailsAPI = firstMovieData[0];
 
     /**
      * Render the JSX for the `ShortFilmsBannerSection` component
