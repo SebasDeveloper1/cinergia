@@ -35,7 +35,7 @@ export function MovieList({ genreInfo, movieList }: MovieListProps) {
         </h2>
         {/* Movie Grid */}
         <ul className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-x-4 gap-y-8 w-full">
-          {movieList.map((movie: MoviesGenre) => (
+          {movieList.map((movie: MovieAPI) => (
             <MovieCard key={`movie-${movie?.id}`} movieData={movie} />
           ))}
         </ul>

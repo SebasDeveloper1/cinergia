@@ -1,3 +1,3 @@
 export interface MovieCardProps {
-  movieData: MoviesGenre;
+  movieData: MovieAPI;
 }

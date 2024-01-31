@@ -53,7 +53,7 @@ export function ExclusiveSectionCard({
 
             {/* Production company name */}
             <span className="span-xl text-textColorNeutral-50 font-medium">
-              {agerates?.range}
+              {agerates[0]?.range}
             </span>
 
             {/* Movie overview */}

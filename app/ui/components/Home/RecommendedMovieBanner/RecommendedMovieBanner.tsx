@@ -55,7 +55,7 @@ export function RecommendedMovieBanner({
 
             {/* Agerates */}
             <span className="span-xl text-textColorAccent-500 font-semibold mb-5">
-              {agerates?.range}
+              {agerates[0]?.range}
             </span>
 
             {/* Movie overview */}
