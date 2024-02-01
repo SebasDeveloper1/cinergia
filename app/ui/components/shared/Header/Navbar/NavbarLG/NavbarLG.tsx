@@ -42,7 +42,7 @@ export function NavbarLG({
       </section>
       {/* Navigation links section */}
       <section className="hidden lg:flex justify-center items-center w-auto">
-        <ul className="flex justify-center items-center gap-6 w-full mr-6">
+        <ul className="flex justify-center items-center gap-6 w-full">
           {/* Map through the array of navigation links */}
           {links.map((link) => (
             <li

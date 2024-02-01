@@ -3,6 +3,8 @@
 import { signIn, signOut, useSession } from 'next-auth/react';
 import { useState, MouseEvent, TouchEvent, KeyboardEvent } from 'react';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
+import { savePreviusPath } from '@/app/lib/utils/savePreviusPath';
 
 /**
  * SessionSection Component
@@ -16,6 +18,7 @@ import Image from 'next/image';
 export function SessionSection(): JSX.Element {
   // Get user session data and status using NextAuth's useSession
   const { data: session, status } = useSession();
+  const pathname = usePathname();
 
   // State to control the visibility of additional options
   const [openMoreOptions, setOpenMoreOptions] = useState<boolean>(false);
@@ -30,25 +33,31 @@ export function SessionSection(): JSX.Element {
     setOpenMoreOptions(!openMoreOptions);
   };
 
+  const handleSignin = () => {
+    savePreviusPath({ path: pathname });
+    signIn();
+  };
+
   // Show a loading indicator while checking the session status
-  if (status === 'loading') {
+  if (status === 'loading' && pathname !== '/auth/signin') {
     return (
-      <div className="w-32 h-8 rounded-lg bg-dark-500 animate-pulse"></div>
+      <div className="w-44 h-10 rounded-lg bg-dark-500 animate-pulse"></div>
     );
   }
 
   return (
     <div className="h-full">
-      {!session ? (
+      {!session && pathname !== '/auth/signin' ? (
         <button
           type="button"
-          className="button-secondary padding-button whitespace-nowrap"
-          onClick={() => signIn()}
+          className="button-secondary padding-button whitespace-nowrap ml-6"
+          onClick={handleSignin}
         >
           Iniciar sesión
         </button>
-      ) : (
-        <section className="relative">
+      ) : null}
+      {session ? (
+        <section className="relative ml-6">
           <button
             type="button"
             className="flex justify-between items-center gap-1 text-2xl text-textColorNeutral-100 hover:text-textColorNeutral-50"
@@ -143,7 +152,7 @@ export function SessionSection(): JSX.Element {
             </section>
           ) : null}
         </section>
-      )}
+      ) : null}
     </div>
   );
 }

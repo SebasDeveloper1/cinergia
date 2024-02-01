@@ -1,12 +1,13 @@
 'use client';
 // Import necessary dependencies and types
 import { signIn, signOut, useSession } from 'next-auth/react';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { useState, useRef, MouseEvent, Dispatch, SetStateAction } from 'react';
 import { InputSearch } from '@/app/ui/components/shared/Inputs/InputSearch';
 import useOnClickOutside from '@/app/lib/hooks/useOnClickOutside';
 import { NavbarPropsTypes } from '../Navbar.model';
 import Image from 'next/image';
+import { savePreviusPath } from '@/app/lib/utils/savePreviusPath';
 
 /**
  * NavbarSM Component
@@ -35,6 +36,7 @@ export function NavbarSM({
 
   const { data: session } = useSession();
   const router = useRouter();
+  const pathname = usePathname();
 
   // Handler for toggling the menu
   const handleMenu = (e: MouseEvent<HTMLElement>) => {
@@ -68,6 +70,11 @@ export function NavbarSM({
     e.preventDefault();
     router.push(link);
     setOpenMenu(!openMenu);
+  };
+
+  const handleSignin = () => {
+    savePreviusPath({ path: pathname });
+    signIn();
   };
 
   /**
@@ -176,13 +183,13 @@ export function NavbarSM({
         )}
       </button>
       {/* "Inicio de Sesión" button */}
-      {!session ? (
+      {!session && pathname !== '/auth/signin' ? (
         <button
           type="button"
           className="button-text padding-icon"
           title="Iniciar Sesión"
           aria-label="Iniciar Sesión"
-          onClick={() => signIn()}
+          onClick={handleSignin}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
