@@ -1,5 +1,11 @@
 'use client';
-import { useEffect, useRef, MouseEvent } from 'react';
+import {
+  useEffect,
+  useRef,
+  MouseEvent,
+  TouchEvent,
+  KeyboardEvent,
+} from 'react';
 import useOnClickOutside from '@/app/lib/hooks/useOnClickOutside';
 import { ModalProps } from '../Modal.model';
 
@@ -42,7 +48,7 @@ export function VideoPlayerModal({
     handleOpenModal(!openModalState);
   });
 
-  const handleClose = (e: MouseEvent) => {
+  const handleClose = (e: MouseEvent | TouchEvent | KeyboardEvent) => {
     e.preventDefault();
     handleOpenModal(!openModalState);
   };

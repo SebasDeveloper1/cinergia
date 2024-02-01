@@ -5,6 +5,7 @@ import '@/app/styles/globals.css';
 import { Header } from '@/app/ui/components/shared/Header';
 import { Footer } from '@/app/ui/components/shared/Footer';
 import { ScrollWrapper } from '@/app/lib/utils/ScrollWrapper';
+import GoogleAuthProvider from './context/GoogleAuthProvider';
 
 // Initialize the Inter font with Latin subset
 const inter = Inter({ subsets: ['latin'] });
@@ -31,18 +32,20 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" data-theme="cinergia">
-      <ScrollWrapper>
-        <body className={`${inter.className} antialiased`}>
-          {/* Header with navigation bar */}
-          <Header />
+      <GoogleAuthProvider>
+        <ScrollWrapper>
+          <body className={`${inter.className} antialiased`}>
+            {/* Header with navigation bar */}
+            <Header />
 
-          {/* Main content */}
-          {children}
+            {/* Main content */}
+            {children}
 
-          {/* Footer component */}
-          <Footer />
-        </body>
-      </ScrollWrapper>
+            {/* Footer component */}
+            <Footer />
+          </body>
+        </ScrollWrapper>
+      </GoogleAuthProvider>
     </html>
   );
 }

@@ -1,6 +1,6 @@
 'use client';
 // Import necessary dependencies and types
-import { useState, MouseEvent } from 'react';
+import { useState, MouseEvent, TouchEvent, KeyboardEvent } from 'react';
 import { PlayButton } from './PlayButton';
 import { InfoSection } from './InfoSection';
 import { OverviewSectionSM } from './OverviewSectionSM';
@@ -49,7 +49,7 @@ export function HeroCard({ movieData }: HeroCardProps): JSX.Element {
   //   };
   // }, []);
 
-  const handleOpenModal = (e: MouseEvent) => {
+  const handleOpenModal = (e: MouseEvent | TouchEvent | KeyboardEvent) => {
     e.preventDefault;
     setOpenModal(!openModal);
   };

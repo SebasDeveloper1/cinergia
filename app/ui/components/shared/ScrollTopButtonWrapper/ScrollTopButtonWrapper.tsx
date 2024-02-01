@@ -1,5 +1,11 @@
 'use client';
-import { useState, useEffect, MouseEvent } from 'react';
+import {
+  useState,
+  useEffect,
+  MouseEvent,
+  TouchEvent,
+  KeyboardEvent,
+} from 'react';
 
 export function ScrollTopButtonWrapper({
   children,
@@ -15,7 +21,7 @@ export function ScrollTopButtonWrapper({
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleButtonClick = (e: MouseEvent) => {
+  const handleButtonClick = (e: MouseEvent | TouchEvent | KeyboardEvent) => {
     e.preventDefault();
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
