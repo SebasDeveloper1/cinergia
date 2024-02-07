@@ -3,7 +3,7 @@ import { Hero } from '@/app/ui/components/Home/Hero';
 import { ExclusiveSection } from '@/app/ui/components/Home/ExclusiveSection';
 import { NewsSection } from '@/app/ui/components/Home/NewsSection';
 import { ShortFilmsBannerSection } from '@/app/ui/components/Home/ShortFilmsBannerSection';
-import { EventBannerSection } from '@/app/ui/components/Home/EventBannerSection';
+// import { EventBannerSection } from '@/app/ui/components/Home/EventBannerSection';
 import { WeekMovieSection } from '@/app/ui/components/Home/WeekMovieSection';
 import { ScrollTopButtonWrapper } from './ui/components/shared/ScrollTopButtonWrapper';
 
@@ -36,7 +36,7 @@ export default function Home() {
         <ShortFilmsBannerSection />
 
         {/* EventBannerSection component */}
-        <EventBannerSection />
+        {/* <EventBannerSection /> */}
 
         {/* WeekMovieSection component */}
         <WeekMovieSection />
