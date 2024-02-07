@@ -5,20 +5,20 @@ import cinergiaLogo from '@/public/cinergiaLogoAzul.svg';
 import { signIn } from 'next-auth/react';
 
 /**
- * SigninPage Component
+ * SignInPage Component
  *
- * The SigninPage component represents the login page for the application.
+ * The SignInPage component represents the login page for the application.
  * It allows users to sign in using their Google accounts and provides a visually appealing
  * interface with background images, Cinergia logo, and a Google sign-in button.
  *
  * @component
- * @returns {JSX.Element} - JSX element representing the SigninPage component.
+ * @returns {JSX.Element} - JSX element representing the SignInPage component.
  * @example
  * // Usage in a parent component or route
- * import SigninPage from '@/app/ui/components/SigninPage';
+ * import SignInPage from '@/app/ui/components/SignInPage';
  * //...
  * return (
- *   <SigninPage />
+ *   <SignInPage />
  * );
  */
 export default function SignInPage() {
@@ -26,9 +26,25 @@ export default function SignInPage() {
    * Handles the sign-in process using the Google authentication provider.
    * Retrieves the previous path from sessionStorage for redirection after successful sign-in.
    */
+
   const handleSignin = () => {
     const previusPath = sessionStorage.getItem('previusPath');
-    signIn('google', { redirect: false, callbackUrl: `${previusPath}` });
+
+    if (previusPath) {
+      const desPath = previusPath.split('/');
+      const isPeliculasPath = desPath[1] === 'peliculas';
+
+      const callbackUrl = isPeliculasPath
+        ? `/peliculas/watch/${desPath[2]}`
+        : previusPath;
+
+      signIn('google', {
+        redirect: false,
+        callbackUrl,
+      });
+    } else {
+      console.error('Error: previusPath is no defined.');
+    }
   };
 
   return (

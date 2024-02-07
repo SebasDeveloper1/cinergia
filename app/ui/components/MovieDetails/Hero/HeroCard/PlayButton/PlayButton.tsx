@@ -1,9 +1,20 @@
+'use client';
+import { usePathname, useRouter } from 'next/navigation';
+import { savePreviusPath } from '@/app/lib/utils/savePreviusPath';
 import { PlayButtonProps } from '../HeroCard.model';
 export function PlayButton(props: PlayButtonProps): JSX.Element {
+  const pathname = usePathname();
+  const router = useRouter();
+
+  const handleClick = () => {
+    savePreviusPath({ path: pathname });
+    router.push(`/peliculas/watch/${props.movieSlug}`);
+  };
   return (
     <button
       type="button"
       className="button-outlined p-4 w-20 aspect-square rounded-full ring-customNeutral-200 md:hover:ring-customNeutral-50 hover:bg-dark-900/30 md:hover:bg-primary-500 md:hover:scale-110 transition ease-in-out duration-300"
+      onClick={handleClick}
       {...props}
     >
       <svg

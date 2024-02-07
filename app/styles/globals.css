@@ -160,3 +160,20 @@
     @apply navbar-item text-base;
   }
 }
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@layer utilities {
+  .fade-right {
+    animation: slideInRight 1s ease-out;
+  }
+}
