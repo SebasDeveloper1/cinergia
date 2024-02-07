@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { Dispatch, MouseEvent, SetStateAction } from 'react';
 import { InputSearch } from '@/app/ui/components/shared/Inputs/InputSearch';
 import { NavbarPropsTypes } from '../Navbar.model';
+import { SessionSection } from './SessionSection';
 
 /**
  * NavbarLG Component
@@ -36,7 +37,7 @@ export function NavbarLG({
   return (
     <>
       {/* Search bar section */}
-      <section className="hidden lg:flex w-2/5">
+      <section className="hidden lg:flex w-full max-w-md">
         <InputSearch />
       </section>
       {/* Navigation links section */}
@@ -61,10 +62,10 @@ export function NavbarLG({
             </li>
           ))}
           {/*My List button */}
-          <li className="navbar-item-sm w-full capitalize">
+          <li className="navbar-item-lg w-full capitalize">
             <button
               type="button"
-              className="flex items-center gap-3"
+              className="flex items-center gap-3 whitespace-nowrap"
               title={'Mi lista'}
               aria-label="Mi lista"
               onClick={(e) => handleMyList(e)}
@@ -95,6 +96,7 @@ export function NavbarLG({
             </button>
           </li>
         </ul>
+        <SessionSection />
       </section>
     </>
   );

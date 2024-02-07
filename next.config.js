@@ -2,7 +2,11 @@
 const nextConfig = {
   // output: 'export',
   images: {
-    domains: ['image.tmdb.org', 'cdn.cursosya.info'],
+    domains: [
+      'image.tmdb.org',
+      'cdn.cursosya.info',
+      'lh3.googleusercontent.com',
+    ],
   },
 };
 

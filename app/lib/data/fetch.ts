@@ -6,7 +6,7 @@
  * @returns {Promise<Array>} - A Promise that resolves to an array of movie data.
  * @throws {Error} - Throws an error if there is an issue fetching the movie list.
  */ export async function fetchMovieList({ top = 10 }: { top: number }) {
-  const apiUrl = `http://api.cursosya.info/api/movies?top=${top}`;
+  const apiUrl = `${process.env.API_URL}/api/movies?top=${top}`;
   const options = {
     next: { revalidate: 86400 },
   };
@@ -37,7 +37,7 @@
  * @throws {Error} - Throws an error if there is an issue fetching movie details.
  */
 export async function fetchMovieDetails(movieSlug: string) {
-  const apiUrl = `http://api.cursosya.info/api/movies/${movieSlug}`;
+  const apiUrl = `${process.env.API_URL}/api/movies/${movieSlug}`;
   const options = {
     next: { revalidate: 86400 },
   };
@@ -69,7 +69,7 @@ export async function fetchMovieDetails(movieSlug: string) {
  * @throws {Error} - Throws an error if there is an issue fetching home section data.
  */
 export async function fetchHomeSection({ section }: { section: string }) {
-  const apiUrl = `https://api.cursosya.info/api/homesection/${section}`;
+  const apiUrl = `${process.env.API_URL}/api/homesection/${section}`;
   const options = {
     next: { revalidate: 86400 },
   };
@@ -99,7 +99,7 @@ export async function fetchHomeSection({ section }: { section: string }) {
  * @throws {Error} - Throws an error if there is an issue fetching the free shorts list.
  */
 export async function fetchFreeShortsList() {
-  const apiUrl = `https://api.cursosya.info/api/freeshorts?top=10}`;
+  const apiUrl = `${process.env.API_URL}/api/freeshorts?top=10}`;
   const options = {
     next: { revalidate: 86400 },
   };
@@ -135,7 +135,7 @@ export async function fetchGenresList({
 }: {
   list: 'genres' | 'categories';
 }) {
-  const apiUrl = `https://api.cursosya.info/api/${list}`;
+  const apiUrl = `${process.env.API_URL}/api/${list}`;
   const options = {
     next: { revalidate: 86400 },
   };
@@ -174,7 +174,7 @@ export async function fetchMovieListForGenre({
   genreSlug: string;
   top: number;
 }) {
-  const apiUrl = `https://api.cursosya.info/api/movies-genre/${genreSlug}?top=${top}`;
+  const apiUrl = `${process.env.API_URL}/api/movies-genre/${genreSlug}?top=${top}`;
   const options = {
     next: { revalidate: 86400 },
   };

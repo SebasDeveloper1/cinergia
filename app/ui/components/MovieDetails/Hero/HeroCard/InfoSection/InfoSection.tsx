@@ -1,5 +1,5 @@
 'use client';
-import { useState, MouseEvent } from 'react';
+import { useState, MouseEvent, TouchEvent, KeyboardEvent } from 'react';
 import { VideoPlayerModal } from '@/app/ui/components/shared/Modals/VideoPlayerModal';
 import { convertMinutesToHours } from '@/app/lib/utils/convertMinutesToHours';
 import {
@@ -148,7 +148,7 @@ export function InfoSection({ movieData }: InfoSectionProps): JSX.Element {
     },
   ];
 
-  const handleOpenModal = (e: MouseEvent) => {
+  const handleOpenModal = (e: MouseEvent | TouchEvent | KeyboardEvent) => {
     e.preventDefault();
     setOpenModal(true);
   };

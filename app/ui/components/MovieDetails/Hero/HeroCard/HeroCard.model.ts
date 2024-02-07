@@ -16,4 +16,6 @@ export interface OverviewSectionProps {
 
 // Describes the properties for a Play Button component.
 export interface PlayButtonProps
-  extends ButtonHTMLAttributes<HTMLButtonElement> {}
+  extends ButtonHTMLAttributes<HTMLButtonElement> {
+  movieSlug: string;
+}

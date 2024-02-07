@@ -1,9 +1,13 @@
+'use client';
 // Import necessary dependencies and types
-import { useRouter } from 'next/navigation';
+import { signIn, signOut, useSession } from 'next-auth/react';
+import { usePathname, useRouter } from 'next/navigation';
 import { useState, useRef, MouseEvent, Dispatch, SetStateAction } from 'react';
 import { InputSearch } from '@/app/ui/components/shared/Inputs/InputSearch';
 import useOnClickOutside from '@/app/lib/hooks/useOnClickOutside';
 import { NavbarPropsTypes } from '../Navbar.model';
+import Image from 'next/image';
+import { savePreviusPath } from '@/app/lib/utils/savePreviusPath';
 
 /**
  * NavbarSM Component
@@ -30,7 +34,9 @@ export function NavbarSM({
   const [openSearch, setOpenSearch] = useState<boolean>(false);
   const [openMenu, setOpenMenu] = useState<boolean>(false);
 
+  const { data: session } = useSession();
   const router = useRouter();
+  const pathname = usePathname();
 
   // Handler for toggling the menu
   const handleMenu = (e: MouseEvent<HTMLElement>) => {
@@ -66,11 +72,16 @@ export function NavbarSM({
     setOpenMenu(!openMenu);
   };
 
+  const handleSignin = () => {
+    savePreviusPath({ path: pathname });
+    signIn();
+  };
+
   /**
    * Render the JSX for the NavbarSM component
    */
   return (
-    <section ref={menuRef} className="lg:hidden flex gap-2">
+    <section ref={menuRef} className="lg:hidden flex items-center gap-2">
       {/* Search button */}
       <button
         type="button"
@@ -171,6 +182,34 @@ export function NavbarSM({
           </svg>
         )}
       </button>
+      {/* "Inicio de Sesión" button */}
+      {!session && pathname !== '/auth/signin' ? (
+        <button
+          type="button"
+          className="button-text padding-icon"
+          title="Iniciar Sesión"
+          aria-label="Iniciar Sesión"
+          onClick={handleSignin}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="icon icon-tabler icon-tabler-login-2"
+            width={24}
+            height={24}
+            viewBox="0 0 24 24"
+            strokeWidth={2}
+            stroke="currentColor"
+            fill="none"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M9 8v-2a2 2 0 0 1 2 -2h7a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-7a2 2 0 0 1 -2 -2v-2" />
+            <path d="M3 12h13l-3 -3" />
+            <path d="M13 15l3 -3" />
+          </svg>
+        </button>
+      ) : null}
       {/* Search input section */}
       <article
         aria-hidden={!openSearch}
@@ -216,7 +255,34 @@ export function NavbarSM({
        transform transition-all  ${!openMenu ? 'translate-x-full' : ''}`}
       >
         <div className="w-full">
-          <ul className="flex flex-col items-center gap-4 w-full divide-y divide-borderNeutral/10">
+          {/* User profile section */}
+          {session ? (
+            <section className="flex items-center gap-3 w-full px-2 py-3 rounded-lg bg-dark-800/20">
+              {/* User image */}
+              <figure className="relative h-8 aspect-square">
+                <Image
+                  fill
+                  src={session?.user?.image as string}
+                  alt={session?.user?.name as string}
+                  placeholder="blur"
+                  priority
+                  className="w-full h-full rounded-full"
+                  blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIwIiBoZWlnaHQ9IjMyMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4="
+                />
+              </figure>
+              <article className="flex flex-col justify-centerw-full">
+                {/* User name */}
+                <span className="span-sm whitespace-nowrap capitalize text-textColorNeutral-50 font-medium">
+                  {session?.user?.name}
+                </span>
+                {/* User email */}
+                <span className="span-xs whitespace-nowrap text-textColorNeutral-400">
+                  {session?.user?.email}
+                </span>
+              </article>
+            </section>
+          ) : null}
+          <ul className="flex flex-col items-center gap-4 w-full divide-y divide-borderNeutral-50/10">
             {/* Map through the array of navigation links */}
             {links.map((link) => (
               <li
@@ -235,7 +301,37 @@ export function NavbarSM({
                 </button>
               </li>
             ))}
+            {/* Logout button for authenticated users */}
+            {session ? (
+              <li className="navbar-item-sm w-full pt-4">
+                <button
+                  type="button"
+                  className="flex items-center gap-3 w-full capitalize"
+                  onClick={() => signOut()}
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="icon icon-tabler icon-tabler-logout"
+                    width={24}
+                    height={24}
+                    viewBox="0 0 24 24"
+                    strokeWidth={2}
+                    stroke="currentColor"
+                    fill="none"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2" />
+                    <path d="M9 12h12l-3 -3" />
+                    <path d="M18 15l3 -3" />
+                  </svg>
+                  Cerrar Sesión
+                </button>
+              </li>
+            ) : null}
           </ul>
+          <section className="flex w-full"></section>
         </div>
       </article>
     </section>
