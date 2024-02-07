@@ -14,9 +14,10 @@ import { BannerSliderMovie } from '@/app/ui/components/shared/Sliders/BannerSlid
  */
 export async function ShortFilmsBannerSection(): Promise<JSX.Element> {
   try {
+    const listSlug = 'cortos-gratuitos';
     // Fetch data for the "Cortometrajes Gratuitos" section
     const { data }: HomeSectionRequestAPI = await fetchHomeSection({
-      section: 'cortos-gratuitos',
+      section: listSlug,
     });
 
     // Extract relevant information from the fetched data
@@ -40,6 +41,7 @@ export async function ShortFilmsBannerSection(): Promise<JSX.Element> {
         background={sectionInfo?.background}
         firstMovieDetails={firstMovieDetails}
         movieList={movieListReverse}
+        listSlug={listSlug}
       />
     );
   } catch (error) {

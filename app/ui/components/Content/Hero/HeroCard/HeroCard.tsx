@@ -18,9 +18,10 @@ import Link from 'next/link';
 export function HeroCard({
   firstMovieDetails,
   movieList,
+  listSlug,
 }: HeroCardProps): JSX.Element {
   // Destructure key movie information
-  const { name, slug, image2 } = firstMovieDetails;
+  const { name, slug, image2, release_year } = firstMovieDetails;
 
   /**
    * Render the JSX for the HeroCard component
@@ -45,7 +46,8 @@ export function HeroCard({
             </h2>
             {/* Movie release year */}
             <span className="span-lg max-w-prose text-textColorNeutral-100">
-              2023
+              {release_year !== undefined &&
+                new Date(release_year).getFullYear()}
             </span>
           </div>
           {/* Button to view the movie */}
@@ -59,9 +61,9 @@ export function HeroCard({
         {/* Horizontal movie list section */}
         <section className="flex justify-center items-center w-11/12 md:w-10/12">
           <HorizontalMovieListPrimary
-            title="Películas Gratuitas"
+            title="Cortometrajes Gratuitos"
             movieList={movieList}
-            path={`/contenido`}
+            path={`/generos/${listSlug}`}
           />
         </section>
       </div>

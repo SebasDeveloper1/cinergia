@@ -1,7 +1,7 @@
 // Import necessary dependencies and types
 import React from 'react';
 import { HeroCard } from '@/app/ui/components/Content/Hero/HeroCard';
-import { fetchFreeShortsList, fetchMovieDetails } from '@/app/lib/data/fetch';
+import { fetchHomeSection, fetchMovieDetails } from '@/app/lib/data/fetch';
 
 /**
  * Fetches trending movies and renders the HeroCard component.
@@ -12,13 +12,19 @@ import { fetchFreeShortsList, fetchMovieDetails } from '@/app/lib/data/fetch';
  */
 export async function Hero(): Promise<JSX.Element> {
   try {
-    // Fetch the list of trending movies
-    const { data: moviesData }: { data: FreeShortsMoviesListAPI[] } =
-      await fetchFreeShortsList();
+    const listSlug = 'cortos-gratuitos';
+    // Fetch data for the "Cortometrajes Gratuitos" section
+    const { data }: HomeSectionRequestAPI = await fetchHomeSection({
+      section: listSlug,
+    });
+
+    // Extract relevant information from the fetched data
+    const sectionInfo: HomeSectionAPI = data[0];
+
+    const movieListReverse: MovieAPI[] = sectionInfo?.movies.reverse();
 
     // Retrieve details of the first movie in the list
-    const firstMovie: FreeShortsMoviesListAPI = moviesData[0];
-    // Fetch details for the recommended movie
+    const firstMovie: MovieAPI = movieListReverse[0];
     const { data: firstMovieData }: { data: MovieDetailsAPI[] } =
       await fetchMovieDetails(firstMovie?.slug);
 
@@ -28,7 +34,11 @@ export async function Hero(): Promise<JSX.Element> {
      * Render the JSX for the Hero component
      */
     return (
-      <HeroCard firstMovieDetails={firstMovieDetails} movieList={moviesData} />
+      <HeroCard
+        firstMovieDetails={firstMovieDetails}
+        movieList={movieListReverse}
+        listSlug={listSlug}
+      />
     );
   } catch (error) {
     // Handle errors and throw an informative error message

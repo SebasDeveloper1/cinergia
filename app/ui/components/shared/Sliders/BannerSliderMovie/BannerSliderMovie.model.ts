@@ -3,4 +3,5 @@ export interface BannerSliderMoviePropsTypes {
   background: string;
   firstMovieDetails: MovieDetailsAPI;
   movieList: MovieAPI[];
+  listSlug: string;
 }

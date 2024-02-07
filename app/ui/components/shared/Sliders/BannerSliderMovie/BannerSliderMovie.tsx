@@ -24,6 +24,7 @@ export function BannerSliderMovie({
   background,
   firstMovieDetails,
   movieList,
+  listSlug,
 }: BannerSliderMoviePropsTypes): JSX.Element {
   // Destructure movieList to extract relevant information
   const { name, description, slug, image2, agerates } = firstMovieDetails;
@@ -99,13 +100,12 @@ export function BannerSliderMovie({
             </Link>
 
             {/* "Ver más" button */}
-            <button
-              type="button"
+            <Link
               className="button-outlined padding-button w-full md:w-fit"
-              onClick={() => console.log('hello world')}
+              href={`/generos/${listSlug}`}
             >
               Ver Más
-            </button>
+            </Link>
           </div>
 
           {/* Horizontal movie slider */}

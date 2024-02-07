@@ -219,14 +219,14 @@ export async function fetchMovieDataForGenres(genresList: GenresListAPI[]) {
           top: 10,
         });
 
-      const moviesData: MovieAPI[] = data.flatMap(
+      const moviesData: (MovieAPI | null)[] = data.flatMap(
         (item: GenreInfoAPI) => item.movies,
       );
 
       resultArray.push({
         genre: genre.name,
         slug: genre.slug,
-        data: moviesData,
+        data: moviesData as MovieAPI[],
       });
     } catch (error) {
       console.error(`Error fetching movies for genre ${genre.name}: ${error}`);

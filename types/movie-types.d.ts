@@ -161,7 +161,9 @@ interface HomeSectionRequestAPI {
 }
 
 interface HomeSectionAPI {
-  title: string;
+  id: number;
+  name: string;
+  description: string | null;
   background: string;
   movies: MovieAPI[];
 }
@@ -200,8 +202,8 @@ interface MoviesDataForGenresRequestAPI {
 }
 
 interface GenreInfoAPI {
-  description: null;
+  description: string | null;
   id: number;
-  movies: MovieAPI[];
+  movies: MovieAPI[] | null;
   name: string;
 }

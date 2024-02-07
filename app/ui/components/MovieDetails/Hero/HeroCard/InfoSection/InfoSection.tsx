@@ -34,6 +34,7 @@ export function InfoSection({ movieData }: InfoSectionProps): JSX.Element {
     languages,
     genres,
     director,
+    release_year,
   } = movieData;
 
   const [openModal, setOpenModal] = useState<boolean>(false);
@@ -99,7 +100,7 @@ export function InfoSection({ movieData }: InfoSectionProps): JSX.Element {
     },
     {
       name: 'release_date',
-      data: '2023',
+      data: release_year !== undefined && new Date(release_year).getFullYear(),
       icon: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
