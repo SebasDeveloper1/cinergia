@@ -195,19 +195,19 @@ export function InfoSection({ movieData }: InfoSectionProps): JSX.Element {
           </article>
         </section>
         <section className="hidden col-span-1 lg:col-span-2 self-end md:grid md:grid-cols-1 lg:grid-cols-2 gap-8">
-          <article className="md:col-span-1 lg:col-span-1 w-full line-clamp-5 lg:line-clamp-none">
+          <article className="md:col-span-1 lg:col-span-1 w-full">
             <span className="span-base font-semibold text-textColorNeutral-50">
               Sinopsis
             </span>
-            <p className="paragraph-sm font-normal text-textColorNeutral-100">
+            <p className="paragraph-sm line-clamp-[7] font-normal text-textColorNeutral-100">
               {description || ''}
             </p>
           </article>
-          <article className="md:col-span-1 lg:col-span-1 w-full line-clamp-5 lg:line-clamp-none">
+          <article className="md:col-span-1 lg:col-span-1 w-full">
             <span className="span-base font-semibold text-textColorNeutral-50">
               Por qué verla
             </span>
-            <p className="paragraph-sm line-clamp-5 lg:line-clamp-none font-normal text-textColorNeutral-100">
+            <p className="paragraph-sm line-clamp-[7] font-normal text-textColorNeutral-100">
               {whySee || ''}
             </p>
           </article>

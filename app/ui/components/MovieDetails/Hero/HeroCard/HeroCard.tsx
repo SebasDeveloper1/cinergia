@@ -26,13 +26,13 @@ export function HeroCard({ movieData }: HeroCardProps): JSX.Element {
   return (
     <>
       <section
-        className="overflow-hidden w-full h-screen bg-cover bg-center"
+        className="overflow-hidden w-full min-h-screen bg-cover bg-center"
         style={{
           backgroundImage: `url('https://cdn.cursosya.info/${image2}')`,
         }}
       >
-        <article className="w-full h-screen flex justify-center items-center bg-gradient-to-t from-bgPrimaryDark/80 via-bgPrimaryDark/10 to-transparent">
-          <div className="grid grid-rows-2 justify-items-center items-end gap-16 w-11/12 h-screen py-16 lg:pt-[4.5rem] lg:pb-9">
+        <article className="w-full min-h-screen flex justify-center items-center bg-gradient-to-t from-bgPrimaryDark/80 via-bgPrimaryDark/10 to-transparent">
+          <div className="grid auto-cols-fr justify-items-center items-end gap-16 w-11/12 min-h-screen py-16 lg:pt-[4.5rem] lg:pb-9">
             <PlayButton movieSlug={slug} />
             <InfoSection movieData={movieData} />
           </div>

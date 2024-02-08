@@ -1,5 +1,6 @@
+'use client';
+import { useRouter } from 'next/navigation';
 import { HeaderProps } from './Header.model';
-import Link from 'next/link';
 
 /**
  * Header Component
@@ -22,8 +23,10 @@ import Link from 'next/link';
  */
 
 export function Header({ movieData }: HeaderProps) {
-  const { name, agerates, slug } = movieData;
+  const { name, agerates } = movieData;
   const { name: agerate, range } = agerates[0];
+
+  const router = useRouter();
 
   return (
     <section className="z-10 overflow-hidden flex justify-center items-center w-full pl-4 border-l-4 border-accent-600">
@@ -37,11 +40,12 @@ export function Header({ movieData }: HeaderProps) {
             {range}
           </span>
         </div>
-        <Link
-          href={`/peliculas/${slug}`}
+        <button
+          type="button"
           className="button-secondary padding-icon"
           title="Cerrar"
           aria-label="Cerrar"
+          onClick={() => router.back()}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -59,7 +63,7 @@ export function Header({ movieData }: HeaderProps) {
             <path d="M18 6l-12 12" />
             <path d="M6 6l12 12" />
           </svg>
-        </Link>
+        </button>
       </article>
     </section>
   );
