@@ -20,9 +20,15 @@ import { MovieCardProps } from './MovieCard.model';
 export function MovieCard({ movieData }: MovieCardProps) {
   const { name, releaseYear, slug, image2 } = movieData;
   const [isImageVisible, setIsImageVisible] = useState(false);
+  const [date, setDate] = useState<number>(0);
   const [ref, inView] = useInView({
     triggerOnce: true,
   });
+
+  useEffect(() => {
+    const year = new Date(releaseYear).getFullYear();
+    return setDate(year);
+  }, [releaseYear]);
 
   useEffect(() => {
     /**
@@ -69,7 +75,7 @@ export function MovieCard({ movieData }: MovieCardProps) {
               {name}
             </span>
             <span className="span-sm text-xs text-textColorAccent-500 font-bold">
-              {releaseYear !== undefined && new Date(releaseYear).getFullYear()}
+              {date}
             </span>
           </div>
         </section>

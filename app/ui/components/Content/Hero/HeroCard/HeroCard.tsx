@@ -1,4 +1,6 @@
+'use client';
 // Import necessary dependencies and types
+import { useState, useEffect } from 'react';
 import { HeroCardProps } from './Hero.model';
 import { HorizontalMovieListPrimary } from '@/app/ui/components/shared/HorizontalMovieList/HorizontalMovieListPrimary';
 import Link from 'next/link';
@@ -22,6 +24,12 @@ export function HeroCard({
 }: HeroCardProps): JSX.Element {
   // Destructure key movie information
   const { name, slug, image2, release_year } = firstMovieDetails;
+  const [date, setDate] = useState<number>(0);
+
+  useEffect(() => {
+    const year = new Date(release_year).getFullYear();
+    return setDate(year);
+  }, [release_year]);
 
   /**
    * Render the JSX for the HeroCard component
@@ -46,8 +54,7 @@ export function HeroCard({
             </h2>
             {/* Movie release year */}
             <span className="span-lg max-w-prose text-textColorNeutral-100">
-              {release_year !== undefined &&
-                new Date(release_year).getFullYear()}
+              {date}
             </span>
           </div>
           {/* Button to view the movie */}

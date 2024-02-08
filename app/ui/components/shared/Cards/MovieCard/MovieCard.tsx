@@ -19,7 +19,7 @@ import createMovieSlug from '@/app/lib/utils/createMovieSlug';
  */
 export function MovieCard({ movieData }: MovieCardPropsTypes) {
   // Extracting movie data properties
-  const { id, title, backdrop_path, release_date } = movieData;
+  const { id, title, backdrop_path } = movieData;
 
   // State to manage the width of the movie backdrop based on window size
   const [widthBackdropMovie, setWidthBackdropMovie] = useState<string>('w780');
@@ -72,10 +72,7 @@ export function MovieCard({ movieData }: MovieCardPropsTypes) {
               {title}
             </span>
             {/* Release date */}
-            <span className="span-sm text-xs text-textColorNeutral-50 font-semibold">
-              {release_date !== undefined &&
-                new Date(release_date).getFullYear()}
-            </span>
+            <span className="span-sm text-xs text-textColorNeutral-50 font-semibold"></span>
           </div>
         </section>
       </Link>

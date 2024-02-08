@@ -1,5 +1,11 @@
 'use client';
-import { useState, MouseEvent, TouchEvent, KeyboardEvent } from 'react';
+import {
+  useState,
+  MouseEvent,
+  TouchEvent,
+  KeyboardEvent,
+  useEffect,
+} from 'react';
 import { VideoPlayerModal } from '@/app/ui/components/shared/Modals/VideoPlayerModal';
 import { convertMinutesToHours } from '@/app/lib/utils/convertMinutesToHours';
 import {
@@ -38,6 +44,12 @@ export function InfoSection({ movieData }: InfoSectionProps): JSX.Element {
   } = movieData;
 
   const [openModal, setOpenModal] = useState<boolean>(false);
+  const [date, setDate] = useState<number>(0);
+
+  useEffect(() => {
+    const year = new Date(release_year).getFullYear();
+    return setDate(year);
+  }, [release_year]);
 
   // const productionCompanies = extractValuesByKey({
   //   array: production_companies,
@@ -100,7 +112,7 @@ export function InfoSection({ movieData }: InfoSectionProps): JSX.Element {
     },
     {
       name: 'release_date',
-      data: release_year !== undefined && new Date(release_year).getFullYear(),
+      data: date,
       icon: (
         <svg
           xmlns="http://www.w3.org/2000/svg"

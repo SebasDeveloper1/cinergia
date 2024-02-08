@@ -1,7 +1,7 @@
 'use client';
 // Import necessary dependencies and types
 import Link from 'next/link';
-// import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { convertMinutesToHours } from '@/app/lib/utils/convertMinutesToHours';
 import { HeroCardProps } from './HeroCard.model';
 
@@ -20,6 +20,12 @@ import { HeroCardProps } from './HeroCard.model';
 export function HeroCard({ movieData }: HeroCardProps): JSX.Element {
   // Destructure movieData for easier access
   const { name, slug, duration, release_year, description, image2 } = movieData;
+  const [date, setDate] = useState<number>(0);
+
+  useEffect(() => {
+    const year = new Date(release_year).getFullYear();
+    return setDate(year);
+  }, [release_year]);
 
   // Render the HeroCard component with movie details
   return (
@@ -40,10 +46,7 @@ export function HeroCard({ movieData }: HeroCardProps): JSX.Element {
             </h2>
             <div className="flex gap-2 w-fit span-lg text-textColorNeutral-100">
               <span>{convertMinutesToHours(duration)}</span>
-              <span className="before:content-['•'] before:mr-2">
-                {release_year !== undefined &&
-                  new Date(release_year).getFullYear()}
-              </span>
+              <span className="before:content-['•'] before:mr-2">{date}</span>
             </div>
           </div>
           <p className="paragraph-lg line-clamp-5 lg:line-clamp-none font-normal text-textColorNeutral-50">
