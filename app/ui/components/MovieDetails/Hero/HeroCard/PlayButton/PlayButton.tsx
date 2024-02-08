@@ -8,7 +8,7 @@ export function PlayButton(props: PlayButtonProps): JSX.Element {
 
   const handleClick = () => {
     savePreviusPath({ path: pathname });
-    router.push(`/peliculas/watch/${props.movieSlug}`);
+    router.push(`/peliculas/watch/${props.movieslug}`);
   };
   return (
     <button

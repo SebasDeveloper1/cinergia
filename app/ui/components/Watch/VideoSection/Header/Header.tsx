@@ -1,5 +1,4 @@
 'use client';
-import { useRouter } from 'next/navigation';
 import { HeaderProps } from './Header.model';
 
 /**
@@ -26,7 +25,9 @@ export function Header({ movieData }: HeaderProps) {
   const { name, agerates } = movieData;
   const { name: agerate, range } = agerates[0];
 
-  const router = useRouter();
+  const handleToBack = () => {
+    window.history.go(-2);
+  };
 
   return (
     <section className="z-10 overflow-hidden flex justify-center items-center w-full pl-4 border-l-4 border-accent-600">
@@ -45,7 +46,7 @@ export function Header({ movieData }: HeaderProps) {
           className="button-secondary padding-icon"
           title="Cerrar"
           aria-label="Cerrar"
-          onClick={() => router.back()}
+          onClick={handleToBack}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
