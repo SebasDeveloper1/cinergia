@@ -1,4 +1,5 @@
 'use client';
+import { useRouter } from 'next/navigation';
 import { HeaderProps } from './Header.model';
 
 /**
@@ -24,9 +25,10 @@ import { HeaderProps } from './Header.model';
 export function Header({ movieData }: HeaderProps) {
   const { name, agerates } = movieData;
   const { name: agerate, range } = agerates[0];
+  const router = useRouter();
 
   const handleToBack = () => {
-    window.history.go(-2);
+    router.back();
   };
 
   return (

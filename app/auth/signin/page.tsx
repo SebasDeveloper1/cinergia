@@ -39,7 +39,6 @@ export default function SignInPage() {
         : previusPath;
 
       signIn('google', {
-        redirect: false,
         callbackUrl,
       });
     } else {

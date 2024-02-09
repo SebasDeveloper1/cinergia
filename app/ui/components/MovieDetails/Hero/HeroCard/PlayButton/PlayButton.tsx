@@ -1,14 +1,21 @@
 'use client';
+import { signIn, useSession } from 'next-auth/react';
 import { usePathname, useRouter } from 'next/navigation';
 import { savePreviusPath } from '@/app/lib/utils/savePreviusPath';
 import { PlayButtonProps } from '../HeroCard.model';
 export function PlayButton(props: PlayButtonProps): JSX.Element {
   const pathname = usePathname();
   const router = useRouter();
+  const { data: session } = useSession();
 
   const handleClick = () => {
     savePreviusPath({ path: pathname });
-    router.push(`/peliculas/watch/${props.movieslug}`);
+
+    if (session) {
+      router.push(`/peliculas/watch/${props.movieslug}`);
+    } else {
+      signIn();
+    }
   };
   return (
     <button
