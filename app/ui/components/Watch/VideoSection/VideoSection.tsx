@@ -28,7 +28,7 @@ export function VideoSection({ movieData }: VideoSectionProps) {
   return (
     <section className="flex flex-col justify-center items-center w-full">
       <article className="overflow-hidden relative w-11/12 md:w-9/12 rounded-sm border border-borderNeutral-50/10">
-        <section className="lg:z-10 lg:absolute lg:top-0 lg:inset-x-0 w-full p-4 lg:bg-gradient-to-b lg:from-bgPrimaryDark/50 lg:via-bgPrimaryDark/20 lg:to-transparent">
+        <section className="lg:z-10 lg:absolute lg:top-0 lg:inset-x-0 w-full p-4 bg-gradient-to-b from-bgPrimaryDark/50 via-bgPrimaryDark/20 lg:to-transparent">
           <Header movieData={movieData} />
         </section>
         <article className="w-full aspect-video">

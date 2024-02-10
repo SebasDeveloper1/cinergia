@@ -1,20 +1,17 @@
 'use client';
-import { signIn, useSession } from 'next-auth/react';
-import { usePathname, useRouter } from 'next/navigation';
-import { savePreviusPath } from '@/app/lib/utils/savePreviusPath';
+import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 import { PlayButtonProps } from '../HeroCard.model';
+import { popupCenter } from '@/app/lib/utils/popupCenter';
 export function PlayButton(props: PlayButtonProps): JSX.Element {
-  const pathname = usePathname();
   const router = useRouter();
   const { data: session } = useSession();
 
   const handleClick = () => {
-    savePreviusPath({ path: pathname });
-
     if (session) {
       router.push(`/peliculas/watch/${props.movieslug}`);
     } else {
-      signIn();
+      popupCenter('/auth/signin', 'Iniciar sesión');
     }
   };
   return (
