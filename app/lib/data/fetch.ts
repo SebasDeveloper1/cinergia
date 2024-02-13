@@ -236,3 +236,27 @@ export async function fetchMovieDataForGenres(genresList: GenresListAPI[]) {
 
   return resultArray;
 }
+
+export async function fetchUserData({ email }: { email: string }) {
+  const apiUrl = `${process.env.API_URL}/api/clients?email=${email}`;
+  const options = {
+    next: { revalidate: 86400 },
+  };
+
+  try {
+    const response = await fetch(apiUrl, options);
+
+    if (!response.ok) {
+      const error: Error = new Error(
+        `Error: ${response.status} - ${response.statusText}`,
+      );
+      throw error;
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Error fetching user data');
+  }
+}

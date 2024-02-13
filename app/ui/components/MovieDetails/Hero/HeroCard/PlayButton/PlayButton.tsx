@@ -1,8 +1,7 @@
 'use client';
-import { useSession } from 'next-auth/react';
+import { signIn, useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { PlayButtonProps } from '../HeroCard.model';
-import { popupCenter } from '@/app/lib/utils/popupCenter';
 export function PlayButton(props: PlayButtonProps): JSX.Element {
   const router = useRouter();
   const { data: session } = useSession();
@@ -11,7 +10,7 @@ export function PlayButton(props: PlayButtonProps): JSX.Element {
     if (session) {
       router.push(`/peliculas/watch/${props.movieslug}`);
     } else {
-      popupCenter('/auth/signin', 'Iniciar sesión');
+      signIn();
     }
   };
   return (

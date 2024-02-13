@@ -1,10 +1,9 @@
 'use client';
 // Import necessary dependencies and types
-import { signOut, useSession } from 'next-auth/react';
+import { signIn, signOut, useSession } from 'next-auth/react';
 import { useState, MouseEvent, TouchEvent, KeyboardEvent } from 'react';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { popupCenter } from '@/app/lib/utils/popupCenter';
 
 /**
  * SessionSection Component
@@ -34,7 +33,7 @@ export function SessionSection(): JSX.Element {
   };
 
   const handleSignin = () => {
-    popupCenter('/auth/signin', 'Iniciar sesión');
+    signIn();
   };
 
   // Show a loading indicator while checking the session status

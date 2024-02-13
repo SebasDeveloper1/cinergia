@@ -207,3 +207,27 @@ interface GenreInfoAPI {
   movies: MovieAPI[] | null;
   name: string;
 }
+
+interface UserDataRequestAPI {
+  data: UserDataAPI[];
+}
+
+interface UserDataAPI {
+  created_at: Date;
+  email: string;
+  id: number;
+  movies: MovieUserList[];
+  name: string;
+}
+
+interface MovieUserList {
+  date_end: string;
+  date_start: string;
+  id: number;
+  image1: string;
+  image2: string;
+  name: string;
+  releaseYear: string;
+  slug: string;
+  transactionId: string;
+}

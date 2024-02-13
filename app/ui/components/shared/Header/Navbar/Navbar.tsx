@@ -23,7 +23,7 @@ import cinergiaLogo from '@/public/cinergiaLogoWeb1.svg';
 export function Navbar({
   myListData,
 }: {
-  myListData: TrendingMovieType[];
+  myListData: MovieUserList[];
 }): JSX.Element {
   // State to manage the visibility of the MyListPreview component
   const [openMyList, setOpenMyList] = useState<boolean>(false);

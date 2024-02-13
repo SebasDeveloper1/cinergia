@@ -24,7 +24,7 @@ export function MyListPreview({
 }: {
   handleMyListState: Dispatch<SetStateAction<boolean>>;
   myListState: boolean;
-  myListData: TrendingMovieType[];
+  myListData: MovieUserList[];
 }): JSX.Element {
   const listRef = useRef(null);
 

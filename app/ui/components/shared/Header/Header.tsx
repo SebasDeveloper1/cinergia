@@ -1,6 +1,6 @@
 // Import necessary dependencies and types
-import { fetchTrending } from '@/app/lib/data/data';
 import { Navbar } from './Navbar';
+import { fetchUserData } from '@/app/lib/data/fetch';
 
 /**
  * Header Component
@@ -13,17 +13,18 @@ import { Navbar } from './Navbar';
  */
 
 export async function Header() {
-  // Fetch trending movies
-  const { results: trendingResults }: { results: TrendingMovieType[] } =
-    await fetchTrending();
-  // Extract the top 5 trending movies
-  const treandingData = trendingResults.slice(0, 5);
-  /**
-   * Render the JSX for the Header component
-   */
+  // Fetch user data
+  const userEmail = 'carlinoc@gmail.com';
+  const userDataResponse: UserDataRequestAPI = await fetchUserData({
+    email: userEmail,
+  });
+
+  const userData = userDataResponse.data[0];
+  const movieList = userData.movies.slice(0, 5);
+
   return (
     <header className="fixed top-0 inset-x-0 z-50 w-full">
-      <Navbar myListData={treandingData} />
+      <Navbar myListData={movieList} />
     </header>
   );
 }

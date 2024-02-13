@@ -1,9 +1,11 @@
 'use client';
-import { signIn, useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
+import { useSession } from 'next-auth/react';
 import Image from 'next/image';
-import { useEffect } from 'react';
 import coverLogin from '@/public/images/coverLogin.jpg';
 import cinergiaLogo from '@/public/cinergiaLogoWeb3.svg';
+import { popupCenter } from '@/app/lib/utils/popupCenter';
+import { useEffect } from 'react';
 
 /**
  * SignInPage Component
@@ -30,15 +32,17 @@ export default function SignInPage() {
 
   // Use next-auth/react hook to get session information
   const { data: session, status } = useSession();
+  const router = useRouter();
 
-  // Close the window if the user is already signed in
   useEffect(() => {
-    if (session) window.close();
-  }, [session, status]);
+    if (session) {
+      router.back();
+    }
+  }, [router, session]);
 
   // Function to handle Google sign-in
   const handleSigninGoogle = () => {
-    signIn('google');
+    popupCenter('/auth/google', 'Iniciar sesión');
   };
 
   // Loading state while checking for session information
