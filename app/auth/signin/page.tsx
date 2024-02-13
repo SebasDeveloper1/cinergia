@@ -1,9 +1,9 @@
 'use client';
-import Image from 'next/image';
-import coverLogin from '@/public/images/coverLogin.jpg';
-import cinergiaLogo from '@/public/cinergiaLogo.svg';
 import { signIn, useSession } from 'next-auth/react';
+import Image from 'next/image';
 import { useEffect } from 'react';
+import coverLogin from '@/public/images/coverLogin.jpg';
+import cinergiaLogo from '@/public/cinergiaLogoWeb3.svg';
 
 /**
  * SignInPage Component

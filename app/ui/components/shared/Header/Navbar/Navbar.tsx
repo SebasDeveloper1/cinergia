@@ -7,7 +7,7 @@ import { NavbarSM } from '@/app/ui/components/shared/Header/Navbar/NavbarSM';
 import { NavbarLG } from '@/app/ui/components/shared/Header/Navbar/NavbarLG';
 import { NavbarPropsTypes } from './Navbar.model';
 import { MyListPreview } from './MyListPreview';
-import cinergiaLogo from '@/public/cinergiaLogo.svg';
+import cinergiaLogo from '@/public/cinergiaLogoWeb1.svg';
 
 /**
  * Navbar Component
@@ -86,7 +86,7 @@ export function Navbar({
           href="/"
           className="flex justify-center items-center gap-2 h-full"
         >
-          <figure className="relative h-full aspect-video">
+          <figure className="relative w-28 md:w-32 h-full">
             <Image
               fill
               src={cinergiaLogo}

@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import cinergiaLogo from '@/public/cinergiaLogoFucsia.svg';
+import cinergiaLogo from '@/public/cinergiaLogoWeb2.svg';
 
 /**
  * Footer Component
