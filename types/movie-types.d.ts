@@ -136,6 +136,7 @@ interface MovieDetailsAPI {
   trailer: string;
   urlId: string;
   whySee: string;
+  payment_type: 'PT' | 'DO' | null;
 }
 
 interface AgerateAPI {

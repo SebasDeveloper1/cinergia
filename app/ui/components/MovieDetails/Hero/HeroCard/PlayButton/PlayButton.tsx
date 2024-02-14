@@ -5,14 +5,30 @@ import { PlayButtonProps } from '../HeroCard.model';
 export function PlayButton(props: PlayButtonProps): JSX.Element {
   const router = useRouter();
   const { data: session } = useSession();
+  const { slug, payment_type } = props.movieData;
 
+  /**
+   * Handles the click event based on the payment type and user session.
+   * Navigates to the appropriate route.
+   */
   const handleClick = () => {
-    if (session) {
-      router.push(`/peliculas/watch/${props.movieslug}`);
-    } else {
-      signIn();
+    // If no payment type is selected, navigate to free watch route.
+    if (payment_type === null) {
+      router.push(`/peliculas/watch-free/${slug}`);
+    }
+    // If payment type is 'DO' or 'PT'
+    else if (payment_type === 'DO' || payment_type === 'PT') {
+      // If the user is logged in, navigate to the regular watch route.
+      if (session) {
+        router.push(`/peliculas/watch/${slug}`);
+      }
+      // If the user is not logged in, prompt sign-in.
+      else {
+        signIn();
+      }
     }
   };
+
   return (
     <button
       type="button"
