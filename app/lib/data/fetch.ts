@@ -8,7 +8,7 @@
  */ export async function fetchMovieList({ top = 10 }: { top: number }) {
   const apiUrl = `${process.env.API_URL}/api/movies?top=${top}`;
   const options = {
-    next: { revalidate: 86400 },
+    next: { revalidate: 3600 },
   };
 
   try {
@@ -39,7 +39,7 @@
 export async function fetchMovieDetails(movieSlug: string) {
   const apiUrl = `${process.env.API_URL}/api/movies/${movieSlug}`;
   const options = {
-    next: { revalidate: 86400 },
+    next: { revalidate: 3600 },
   };
 
   try {
@@ -71,7 +71,7 @@ export async function fetchMovieDetails(movieSlug: string) {
 export async function fetchHomeSection({ section }: { section: string }) {
   const apiUrl = `${process.env.API_URL}/api/homesection/${section}`;
   const options = {
-    next: { revalidate: 86400 },
+    next: { revalidate: 3600 },
   };
 
   try {
@@ -101,7 +101,7 @@ export async function fetchHomeSection({ section }: { section: string }) {
 export async function fetchFreeShortsList() {
   const apiUrl = `${process.env.API_URL}/api/freeshorts?top=10}`;
   const options = {
-    next: { revalidate: 86400 },
+    next: { revalidate: 3600 },
   };
 
   try {
@@ -137,7 +137,7 @@ export async function fetchGenresList({
 }) {
   const apiUrl = `${process.env.API_URL}/api/${list}`;
   const options = {
-    next: { revalidate: 86400 },
+    next: { revalidate: 3600 },
   };
 
   try {
@@ -176,7 +176,7 @@ export async function fetchMovieListForGenre({
 }) {
   const apiUrl = `${process.env.API_URL}/api/movies-genre/${genreSlug}?top=${top}`;
   const options = {
-    next: { revalidate: 86400 },
+    next: { revalidate: 3600 },
   };
 
   try {
@@ -240,7 +240,7 @@ export async function fetchMovieDataForGenres(genresList: GenresListAPI[]) {
 export async function fetchUserData({ email }: { email: string }) {
   const apiUrl = `${process.env.API_URL}/api/clients?email=${email}`;
   const options = {
-    next: { revalidate: 86400 },
+    next: { revalidate: 3600 },
   };
 
   try {
