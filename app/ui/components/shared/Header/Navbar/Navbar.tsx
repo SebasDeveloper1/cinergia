@@ -1,5 +1,6 @@
 'use client';
 // Import necessary dependencies and types
+import { useSession } from 'next-auth/react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
@@ -25,6 +26,7 @@ export function Navbar({
 }: {
   myListData: MovieUserList[];
 }): JSX.Element {
+  const { data: session } = useSession();
   // State to manage the visibility of the MyListPreview component
   const [openMyList, setOpenMyList] = useState<boolean>(false);
 
@@ -123,11 +125,13 @@ export function Navbar({
         }`}
       >
         {/* MyListPreview component */}
-        <MyListPreview
-          handleMyListState={setOpenMyList}
-          myListState={openMyList}
-          myListData={myListData}
-        />
+        {session ? (
+          <MyListPreview
+            handleMyListState={setOpenMyList}
+            myListState={openMyList}
+            myListData={myListData}
+          />
+        ) : null}
       </section>
     </nav>
   );

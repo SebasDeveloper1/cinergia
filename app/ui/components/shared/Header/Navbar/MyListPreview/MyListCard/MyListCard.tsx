@@ -43,10 +43,10 @@ export function MyListCard({ movie }: { movie: MovieUserList }) {
         {/* Movie title */}
         <span className="span-lg capitalize font-semibold ">{name}</span>
         {/* Additional details */}
-        <span className="span-base font-medium text-textColorAccent-500">
+        {/* <span className="span-base font-medium text-textColorAccent-500">
           ¡Aún no has visto la película!
-        </span>
-        <span className="span-sm">
+        </span> */}
+        <span className="span-base font-medium text-textColorAccent-500">
           {calculateTimeToMovie({
             startDate: date_start,
             endDate: date_end,

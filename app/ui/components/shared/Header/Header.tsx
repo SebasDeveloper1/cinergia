@@ -20,7 +20,7 @@ export async function Header() {
   });
 
   const userData = userDataResponse.data[0];
-  const movieList = userData.movies.slice(0, 5);
+  const movieList = userData.movies;
 
   return (
     <header className="fixed top-0 inset-x-0 z-50 w-full">

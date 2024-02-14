@@ -1,6 +1,6 @@
 'use client';
 // Import necessary dependencies and types
-import Link from 'next/link';
+// import Link from 'next/link';
 import { MouseEvent, Dispatch, SetStateAction, useRef } from 'react';
 import useOnClickOutside from '@/app/lib/hooks/useOnClickOutside';
 import { MyListCard } from './MyListCard';
@@ -106,7 +106,7 @@ export function MyListPreview({
               <MyListCard movie={movie} />
             </li>
           ))}
-          <section className="w-full px-4 my-8">
+          {/* <section className="w-full px-4 my-8">
             <Link
               href={''}
               className="group button-secondary padding-button w-full"
@@ -128,7 +128,7 @@ export function MyListPreview({
                 <path d="M9 6l6 6l-6 6" />
               </svg>
             </Link>
-          </section>
+          </section> */}
         </ul>
       </div>
     </section>
