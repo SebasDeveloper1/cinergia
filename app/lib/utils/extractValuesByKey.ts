@@ -66,15 +66,3 @@ export const extractValuesGenre = ({
   // Filter out undefined values and return the result as an array of strings
   return valuesArray.filter((value) => value !== undefined);
 };
-
-export const extractYouTubeVideoId = (link: string) => {
-  // Divide el enlace usando el caracter "/" y encuentra la última parte
-  const parts = link.split('/');
-  const lastPart = parts[parts.length - 1];
-
-  // Si hay parámetros de consulta, elimínalos
-  const videoId = lastPart.split('?')[0];
-
-  // Verifica que la longitud de la ID sea la esperada (11 caracteres)
-  return videoId.length === 11 ? videoId : null;
-};

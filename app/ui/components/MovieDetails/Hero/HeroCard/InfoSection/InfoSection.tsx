@@ -8,10 +8,7 @@ import {
 } from 'react';
 import { VideoPlayerModal } from '@/app/ui/components/shared/Modals/VideoPlayerModal';
 import { convertMinutesToHours } from '@/app/lib/utils/convertMinutesToHours';
-import {
-  extractValuesByKey,
-  extractYouTubeVideoId,
-} from '@/app/lib/utils/extractValuesByKey';
+import { extractValuesByKey } from '@/app/lib/utils/extractValuesByKey';
 import { InfoSectionProps } from '../HeroCard.model';
 import { VideoPlayer } from '@/app/ui/components/shared/VideoPlayer';
 
@@ -196,15 +193,17 @@ export function InfoSection({ movieData }: InfoSectionProps): JSX.Element {
               ))}
             </div>
           </article>
-          <article className="flex flex-col md:flex-row gap-4 w-full">
-            <button
-              type="button"
-              className="button-outlined padding-button w-full md:w-fit"
-              onClick={(e) => handleOpenModal(e)}
-            >
-              Ver Trailer
-            </button>
-          </article>
+          {trailer ? (
+            <article className="flex flex-col md:flex-row gap-4 w-full">
+              <button
+                type="button"
+                className="button-outlined padding-button w-full md:w-fit"
+                onClick={(e) => handleOpenModal(e)}
+              >
+                Ver Trailer
+              </button>
+            </article>
+          ) : null}
         </section>
         <section className="hidden col-span-1 lg:col-span-2 self-end md:grid md:grid-cols-1 lg:grid-cols-2 gap-8">
           <article className="md:col-span-1 lg:col-span-1 w-full">
@@ -232,7 +231,7 @@ export function InfoSection({ movieData }: InfoSectionProps): JSX.Element {
           handleOpenModal={setOpenModal}
         >
           <VideoPlayer
-            src={`https://www.youtube.com/embed/${extractYouTubeVideoId(trailer)}`}
+            src={`https://www.youtube.com/embed/${trailer}`}
             title="YouTube video player"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
