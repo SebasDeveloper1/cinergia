@@ -6,6 +6,7 @@ import coverLogin from '@/public/images/coverLogin.jpg';
 import cinergiaLogo from '@/public/cinergiaLogoWeb3.svg';
 import { popupCenter } from '@/app/lib/utils/popupCenter';
 import { useEffect } from 'react';
+import { validateUser } from '@/app/lib/data/createUser';
 
 /**
  * SignInPage Component
@@ -35,9 +36,13 @@ export default function SignInPage() {
   const router = useRouter();
 
   useEffect(() => {
-    if (session) {
-      router.back();
-    }
+    const fetchData = async () => {
+      if (session) {
+        await validateUser({ user: session.user as UserDataAPI });
+        router.back();
+      }
+    };
+    fetchData();
   }, [router, session]);
 
   // Function to handle Google sign-in
