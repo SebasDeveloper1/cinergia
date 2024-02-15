@@ -1,13 +1,12 @@
 'use client';
 // Import necessary dependencies and types
-import { signOut, useSession } from 'next-auth/react';
+import { signIn, signOut, useSession } from 'next-auth/react';
 import { usePathname, useRouter } from 'next/navigation';
 import { useState, useRef, MouseEvent, Dispatch, SetStateAction } from 'react';
 // import { InputSearch } from '@/app/ui/components/shared/Inputs/InputSearch';
 import useOnClickOutside from '@/app/lib/hooks/useOnClickOutside';
 import { NavbarPropsTypes } from '../Navbar.model';
 import Image from 'next/image';
-import { popupCenter } from '@/app/lib/utils/popupCenter';
 
 /**
  * NavbarSM Component
@@ -73,7 +72,7 @@ export function NavbarSM({
   };
 
   const handleSignin = () => {
-    popupCenter('/auth/signin', 'Iniciar sesión');
+    signIn();
   };
 
   /**
