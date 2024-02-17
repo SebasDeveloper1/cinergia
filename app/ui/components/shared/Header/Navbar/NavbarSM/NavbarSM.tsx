@@ -1,13 +1,12 @@
 'use client';
 // Import necessary dependencies and types
-import { signOut, useSession } from 'next-auth/react';
+import { signIn, signOut, useSession } from 'next-auth/react';
 import { usePathname, useRouter } from 'next/navigation';
 import { useState, useRef, MouseEvent, Dispatch, SetStateAction } from 'react';
-import { InputSearch } from '@/app/ui/components/shared/Inputs/InputSearch';
+// import { InputSearch } from '@/app/ui/components/shared/Inputs/InputSearch';
 import useOnClickOutside from '@/app/lib/hooks/useOnClickOutside';
 import { NavbarPropsTypes } from '../Navbar.model';
 import Image from 'next/image';
-import { popupCenter } from '@/app/lib/utils/popupCenter';
 
 /**
  * NavbarSM Component
@@ -31,7 +30,7 @@ export function NavbarSM({
   myListState: boolean;
 }): JSX.Element {
   // State for controlling the visibility of the search input and menu
-  const [openSearch, setOpenSearch] = useState<boolean>(false);
+  // const [openSearch, setOpenSearch] = useState<boolean>(false);
   const [openMenu, setOpenMenu] = useState<boolean>(false);
 
   const { data: session } = useSession();
@@ -45,10 +44,10 @@ export function NavbarSM({
   };
 
   // Handler for toggling the search input
-  const handleSearch = (e: MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    setOpenSearch(!openSearch);
-  };
+  // const handleSearch = (e: MouseEvent<HTMLButtonElement>) => {
+  //   e.preventDefault();
+  //   setOpenSearch(!openSearch);
+  // };
 
   // Ref for handling clicks outside the menu
   const menuRef = useRef(null);
@@ -56,7 +55,7 @@ export function NavbarSM({
   // Hook to close menu and search on clicks outside
   useOnClickOutside(menuRef, () => {
     setOpenMenu(false);
-    setOpenSearch(false);
+    // setOpenSearch(false);
   });
 
   // Handler for toggling MyListPreview visibility
@@ -73,7 +72,7 @@ export function NavbarSM({
   };
 
   const handleSignin = () => {
-    popupCenter('/auth/signin', 'Iniciar sesión');
+    signIn();
   };
 
   /**
@@ -82,7 +81,7 @@ export function NavbarSM({
   return (
     <section ref={menuRef} className="lg:hidden flex items-center gap-2">
       {/* Search button */}
-      <button
+      {/* <button
         type="button"
         className="button-text padding-icon"
         title="Buscar"
@@ -104,7 +103,7 @@ export function NavbarSM({
             d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
           />
         </svg>
-      </button>
+      </button> */}
       {/*My list button*/}
       {session ? (
         <button
@@ -212,7 +211,7 @@ export function NavbarSM({
         </button>
       ) : null}
       {/* Search input section */}
-      <article
+      {/* <article
         aria-hidden={!openSearch}
         aria-live="assertive"
         className={`absolute inset-0 flex justify-center items-center bg-bgPrimaryDark p-2 transform transition-all ${
@@ -221,7 +220,6 @@ export function NavbarSM({
       >
         <div className="flex justify-center items-center gap-2 w-full">
           <InputSearch variant="SM" />
-          {/* Close search button */}
           <button
             type="button"
             className="button-text padding-icon"
@@ -247,7 +245,7 @@ export function NavbarSM({
             </svg>
           </button>
         </div>
-      </article>
+      </article> */}
       {/* Menu section */}
       <article
         aria-hidden={!openMenu}

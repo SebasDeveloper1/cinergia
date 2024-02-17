@@ -21,11 +21,7 @@ import cinergiaLogo from '@/public/cinergiaLogoWeb1.svg';
  * @param {TrendingMovieType[]} props.myListData - An array of trending movie data.
  * @returns {JSX.Element} - JSX element representing the Navbar component.
  */
-export function Navbar({
-  myListData,
-}: {
-  myListData: MovieUserList[];
-}): JSX.Element {
+export function Navbar(): JSX.Element {
   const { data: session } = useSession();
   // State to manage the visibility of the MyListPreview component
   const [openMyList, setOpenMyList] = useState<boolean>(false);
@@ -117,22 +113,21 @@ export function Navbar({
           myListState={openMyList}
         />
       </div>
-      <section
-        aria-hidden={!openMyList}
-        aria-live="assertive"
-        className={`fixed inset-0 flex justify-end w-full h-screen transform transition-all duration-500 ease-in-out ${
-          !openMyList ? 'translate-x-full' : ''
-        }`}
-      >
-        {/* MyListPreview component */}
-        {session ? (
+      {session ? (
+        <section
+          aria-hidden={!openMyList}
+          aria-live="assertive"
+          className={`fixed inset-0 flex justify-end w-full h-screen transform transition-all duration-500 ease-in-out ${
+            !openMyList ? 'translate-x-full' : ''
+          }`}
+        >
+          {/* MyListPreview component */}
           <MyListPreview
             handleMyListState={setOpenMyList}
             myListState={openMyList}
-            myListData={myListData}
           />
-        ) : null}
-      </section>
+        </section>
+      ) : null}
     </nav>
   );
 }

@@ -238,9 +238,9 @@ export async function fetchMovieDataForGenres(genresList: GenresListAPI[]) {
 }
 
 export async function fetchUserData({ email }: { email: string }) {
-  const apiUrl = `${process.env.API_URL}/api/clients?email=${email}`;
+  const apiUrl = `${process.env.API_URL || process.env.NEXT_PUBLIC_API_URL}/api/clients?email=${email}`;
   const options = {
-    next: { revalidate: 3600 },
+    next: { revalidate: 0, cache: 'no-store' },
   };
 
   try {

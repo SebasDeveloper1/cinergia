@@ -3,7 +3,7 @@
 import { useSession } from 'next-auth/react';
 import Link from 'next/link';
 import { Dispatch, MouseEvent, SetStateAction } from 'react';
-import { InputSearch } from '@/app/ui/components/shared/Inputs/InputSearch';
+// import { InputSearch } from '@/app/ui/components/shared/Inputs/InputSearch';
 import { NavbarPropsTypes } from '../Navbar.model';
 import { SessionSection } from './SessionSection';
 
@@ -41,9 +41,9 @@ export function NavbarLG({
   return (
     <>
       {/* Search bar section */}
-      <section className="hidden lg:flex w-full max-w-md">
+      {/* <section className="hidden lg:flex w-full max-w-md">
         <InputSearch />
-      </section>
+      </section> */}
       {/* Navigation links section */}
       <section className="hidden lg:flex justify-center items-center w-auto">
         <ul className="flex justify-center items-center gap-6 w-full">

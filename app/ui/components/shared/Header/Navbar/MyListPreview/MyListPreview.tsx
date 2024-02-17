@@ -1,9 +1,18 @@
 'use client';
 // Import necessary dependencies and types
 // import Link from 'next/link';
-import { MouseEvent, Dispatch, SetStateAction, useRef } from 'react';
+import {
+  MouseEvent,
+  Dispatch,
+  SetStateAction,
+  useRef,
+  useState,
+  useEffect,
+} from 'react';
 import useOnClickOutside from '@/app/lib/hooks/useOnClickOutside';
 import { MyListCard } from './MyListCard';
+import { fetchUserData } from '@/app/lib/data/fetch';
+import { useSession } from 'next-auth/react';
 
 /**
  * MyListPreview Component
@@ -20,12 +29,55 @@ import { MyListCard } from './MyListCard';
 export function MyListPreview({
   handleMyListState,
   myListState,
-  myListData,
 }: {
   handleMyListState: Dispatch<SetStateAction<boolean>>;
   myListState: boolean;
-  myListData: MovieUserList[];
 }): JSX.Element {
+  const [myListData, setMyListData] = useState<MovieUserList[]>([]);
+  // State to manage loading state
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [loading, setLoading] = useState(false);
+
+  // Get user session data using useSession hook
+  const { data: session } = useSession();
+
+  // Extract user email from session data
+  const userEmail = session?.user?.email;
+
+  // useEffect to fetch movie list when component mounts or myListState/userEmail changes
+  useEffect(() => {
+    // Function to fetch movie list data
+    const fetchMovieList = async () => {
+      try {
+        // Set loading state to true while fetching data
+        setLoading(true);
+
+        // Fetch user data from the API based on user email
+        const userDataResponse: UserDataRequestAPI = await fetchUserData({
+          email: userEmail as string,
+        });
+
+        // Extract movie list from user data
+        const userData = userDataResponse.data[0];
+        const movieList = userData?.movies;
+
+        // If movieList exists, update the state with the fetched data
+        if (movieList) {
+          setMyListData(movieList); // assuming setMyListData is a state update function
+        }
+      } catch (error) {
+        // Log and handle errors during the fetch
+        console.error('Error fetching movie list:', error);
+      } finally {
+        // Set loading state back to false after fetching, regardless of success or failure
+        setLoading(false);
+      }
+    };
+
+    // Call the fetchMovieList function when the component mounts or when myListState/userEmail changes
+    fetchMovieList();
+  }, [myListState, userEmail]); // Dependency array to re-run effect when these values change
+
   const listRef = useRef(null);
 
   // Handler for closing MyListPreview
@@ -101,12 +153,28 @@ export function MyListPreview({
       </header>
       <div className="overflow-hidden w-full h-full pb-[4rem] lg:pb-[4.5rem]">
         <ul className="overflow-y-auto w-full h-full">
-          {myListData.map((movie) => (
-            <li key={`myListItem-${movie?.id}`} className="w-full">
-              <MyListCard movie={movie} />
-            </li>
-          ))}
-          {/* <section className="w-full px-4 my-8">
+          {myListData.length > 0 ? (
+            <>
+              {myListData.map((movie) => (
+                <li key={`myListItem-${movie?.id}`} className="w-full">
+                  <MyListCard movie={movie} />
+                </li>
+              ))}
+            </>
+          ) : (
+            <div className="flex justify-center items-center w-full p-4 mt-6">
+              <span className="span-lg ">
+                Aún no tienes ninguna película en tu lista.
+              </span>
+            </div>
+          )}
+        </ul>
+      </div>
+    </section>
+  );
+}
+
+/* <section className="w-full px-4 my-8">
             <Link
               href={''}
               className="group button-secondary padding-button w-full"
@@ -128,9 +196,4 @@ export function MyListPreview({
                 <path d="M9 6l6 6l-6 6" />
               </svg>
             </Link>
-          </section> */}
-        </ul>
-      </div>
-    </section>
-  );
-}
+          </section> */

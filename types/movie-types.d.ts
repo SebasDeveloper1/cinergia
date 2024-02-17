@@ -214,11 +214,12 @@ interface UserDataRequestAPI {
 }
 
 interface UserDataAPI {
-  created_at: Date;
+  created_at?: Date;
   email: string;
   id: number;
-  movies: MovieUserList[];
+  movies?: MovieUserList[];
   name: string;
+  image: string;
 }
 
 interface MovieUserList {
