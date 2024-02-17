@@ -1,3 +1,4 @@
+'use client';
 // Import necessary dependencies and types
 import { PlayButton } from './PlayButton';
 import { InfoSection } from './InfoSection';

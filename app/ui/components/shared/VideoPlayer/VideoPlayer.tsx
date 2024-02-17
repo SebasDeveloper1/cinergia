@@ -31,11 +31,6 @@ export function VideoPlayer(props: VideoPlayerProps) {
   useEffect(() => {
     const iframe = document.querySelector('#videoPlayer');
 
-    if (!iframe) {
-      // If the iframe is not present, there's nothing to load or clean up
-      return;
-    }
-
     const handleLoad = () => {
       setLoading(false);
     };
