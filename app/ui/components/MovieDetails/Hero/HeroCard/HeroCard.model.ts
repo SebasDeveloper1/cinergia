@@ -18,4 +18,7 @@ export interface OverviewSectionProps {
 export interface PlayButtonProps
   extends ButtonHTMLAttributes<HTMLButtonElement> {
   movieData: MovieDetailsAPI;
+  userMovieList: MovieUserList[];
+  isLoading: boolean;
+  handlePay: () => void;
 }

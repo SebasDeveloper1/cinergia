@@ -5,6 +5,7 @@ import {
   getTokenSession,
   saveMoviePay,
 } from '@/app/lib/pay/izipay';
+import { iziConfigFuntion } from '@/app/lib/pay/iziConfig';
 
 // Función handlePayment
 // Descripción: Inicia el proceso de pago utilizando IziPay.
@@ -63,44 +64,6 @@ export const handlePayment = async ({
     } = authorization;
 
     if (token) {
-      // Configuración necesaria para el formulario de pago IziPay
-      const iziConfig = {
-        // Configuración específica para IziPay
-        config: {
-          transactionId: TRANSACTION_ID,
-          action: Izipay.enums.payActions.PAY,
-          merchantCode: MERCHANT_CODE,
-          order: {
-            orderNumber: ORDER_NUMBER,
-            currency: ORDER_CURRENCY,
-            amount: ORDER_AMOUNT,
-            processType: Izipay.enums.processType.AUTHORIZATION,
-            merchantBuyerId: 'mc1768',
-            dateTimeTransaction: currentTimeUnix,
-            payMethod: Izipay.enums.showMethods.YAPE,
-          },
-          billing: {
-            firstName: 'Juan',
-            lastName: 'Wick',
-            email: 'jwick@izipay.pe',
-            phoneNumber: '989339999',
-            street: 'calle el demo',
-            city: 'lima',
-            state: 'lima',
-            country: 'PE',
-            postalCode: '00001',
-            document: '12345678',
-            documentType: Izipay.enums.documentType.DNI,
-          },
-          render: {
-            typeForm: Izipay.enums.typeForm.POP_UP,
-            showButtonProcessForm: false,
-          },
-          appearance: {
-            logo: 'https://cursosya.info/_next/static/media/cinergiaLogoFucsia.05377d54.svg',
-          },
-        },
-      };
       // Función de retorno de llamada para manejar la respuesta del pago
       const callbackResponsePayment = (response) => {
         /************** Transaccion exitosa CODE=00 *************/
@@ -119,6 +82,14 @@ export const handlePayment = async ({
       // Función para cargar el formulario de pago
       const handleLoadForm = () => {
         try {
+          const iziConfig = iziConfigFuntion({
+            TRANSACTION_ID,
+            MERCHANT_CODE,
+            ORDER_NUMBER,
+            ORDER_CURRENCY,
+            ORDER_AMOUNT,
+            currentTimeUnix,
+          });
           // Crear instancia de IziPay y cargar el formulario
           const checkout = new Izipay({ config: iziConfig?.config });
 

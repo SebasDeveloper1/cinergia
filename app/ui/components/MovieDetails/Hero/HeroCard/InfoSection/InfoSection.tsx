@@ -1,15 +1,17 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable no-undef */
 'use client';
-import { useSession } from 'next-auth/react';
-import { useState, useEffect } from 'react';
+import {
+  useState,
+  MouseEvent,
+  TouchEvent,
+  KeyboardEvent,
+  useEffect,
+} from 'react';
 import { VideoPlayerModal } from '@/app/ui/components/shared/Modals/VideoPlayerModal';
 import { convertMinutesToHours } from '@/app/lib/utils/convertMinutesToHours';
 import { extractValuesByKey } from '@/app/lib/utils/extractValuesByKey';
+import { InfoSectionProps } from '../HeroCard.model';
 import { VideoPlayer } from '@/app/ui/components/shared/VideoPlayer';
-import Script from 'next/script';
-import { handlePayment } from '@/app/lib/pay/handlePayment';
-import { fetchUserData } from '@/app/lib/data/fetch';
+
 /**
  * InfoSection Component
  *
@@ -23,14 +25,10 @@ import { fetchUserData } from '@/app/lib/data/fetch';
  * @param {VideoList} props.videos - List of videos related to the movie.
  * @returns {JSX.Element} - JSX element representing the InfoSection component.
  *
- * @example
- * // Example usage of InfoSection component
- * <InfoSection movieData={movieData} />
  */
-export function InfoSection({ movieData }) {
-  // Destructuring movieData object
+
+export function InfoSection({ movieData }: InfoSectionProps): JSX.Element {
   const {
-    id: movieId,
     name,
     description,
     whySee,
@@ -40,71 +38,30 @@ export function InfoSection({ movieData }) {
     genres,
     director,
     release_year,
-    price,
-    payment_type,
   } = movieData;
 
-  // State variables
-  const [openModal, setOpenModal] = useState(false);
-  const [date, setDate] = useState(0);
-  const [userInfo, setUserInfo] = useState(null);
-  const [myListData, setMyListData] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [openModal, setOpenModal] = useState<boolean>(false);
+  const [date, setDate] = useState<number>(0);
 
-  // Get user session data using useSession hook
-  const { data: session } = useSession();
-  // Extract user email from session data
-  const userEmail = session?.user?.email;
-
-  // useEffect to fetch movie list when component mounts or myListState/userEmail changes
-  useEffect(() => {
-    // Function to fetch movie list data
-    const fetchMovieList = async () => {
-      try {
-        // Set loading state to true while fetching data
-        setLoading(true);
-
-        // Fetch user data from the API based on user email
-        const userDataResponse = await fetchUserData({
-          email: userEmail,
-        });
-        // Extract movie list from user data
-        const userData = userDataResponse.data[0];
-        if (userData) {
-          setUserInfo(userData);
-          const movieList = userData.movies;
-
-          if (movieList) {
-            setMyListData(movieList);
-          }
-        }
-      } catch (error) {
-        // Log and handle errors during the fetch
-        console.error('Error fetching movie list:', error);
-      } finally {
-        // Set loading state back to false after fetching, regardless of success or failure
-        setLoading(false);
-      }
-    };
-
-    // Call the fetchMovieList function when the component mounts or when myListState/userEmail changes
-    fetchMovieList();
-  }, [userEmail]); // Dependency array to re-run effect when these values change
-
-  // useEffect to update date when release_year changes
   useEffect(() => {
     const year = new Date(release_year).getFullYear();
     return setDate(year);
   }, [release_year]);
 
-  // Create lists for genres, languages, and directors
+  // const productionCompanies = extractValuesByKey({
+  //   array: production_companies,
+  //   key: 'name',
+  // });
+  // const productionCountries = extractValuesByKey({
+  //   array: production_countries,
+  //   key: 'name',
+  // });
   const genreList = genres.join(', ');
   const languagesList = extractValuesByKey({ array: languages, key: 'name' });
   const directorList = director
-    .map((item) => `${item?.firstName} ${item?.lastName}`)
+    .map((item: DirectorAPI) => `${item?.firstName} ${item?.lastName}`)
     .join(', ');
 
-  // Details about the movie for display
   const detailsMovieList = [
     {
       name: 'type',
@@ -200,38 +157,9 @@ export function InfoSection({ movieData }) {
     },
   ];
 
-  /**
-   * Function to handle opening the modal to view the movie trailer.
-   *
-   * @param {React.MouseEvent} e - The mouse event when the button is clicked.
-   * @returns {void}
-   */
-  const handleOpenModal = (e) => {
+  const handleOpenModal = (e: MouseEvent | TouchEvent | KeyboardEvent) => {
     e.preventDefault();
     setOpenModal(true);
-  };
-
-  // Constante que representa el monto de la orden, inicializado temporalmente con un valor estático.
-  // Este valor debería ser reemplazado por el valor real obtenido de la base de datos.
-  const ORDER_AMOUNT = price; // dinámico - usado de esta manera temporalmente mientras se cambia por el valor de la base de datos
-
-  // Constante que representa la moneda de la orden.
-  const ORDER_CURRENCY = 'PEN';
-
-  /**
-   * Function to handle initiating a payment for the movie.
-   * Calls the handlePayment function with the required parameters.
-   *
-   * @returns {void}
-   */
-  const handlePay = () => {
-    // Calling the handlePayment function with parameters
-    handlePayment({
-      orderAmount: ORDER_AMOUNT, // Order amount
-      orderCurrency: ORDER_CURRENCY, // Order currency
-      movieId, // Movie identifier
-      clientId: userInfo.id, // Client identifier
-    });
   };
 
   return (
@@ -265,9 +193,8 @@ export function InfoSection({ movieData }) {
               ))}
             </div>
           </article>
-
-          <article className="flex flex-col md:flex-row gap-4 w-full">
-            {trailer ? (
+          {trailer ? (
+            <article className="flex flex-col md:flex-row gap-4 w-full">
               <button
                 type="button"
                 className="button-outlined padding-button w-full md:w-fit"
@@ -275,18 +202,8 @@ export function InfoSection({ movieData }) {
               >
                 Ver Trailer
               </button>
-            ) : null}
-
-            {userInfo ? (
-              <button
-                type="button"
-                className="button-outlined padding-button w-full md:w-fit"
-                onClick={handlePay}
-              >
-                {`${ORDER_CURRENCY} ${ORDER_AMOUNT}`}
-              </button>
-            ) : null}
-          </article>
+            </article>
+          ) : null}
         </section>
         <section className="hidden col-span-1 lg:col-span-2 self-end md:grid md:grid-cols-1 lg:grid-cols-2 gap-8">
           <article className="md:col-span-1 lg:col-span-1 w-full">
@@ -321,10 +238,6 @@ export function InfoSection({ movieData }) {
           />
         </VideoPlayerModal>
       ) : null}
-      <Script
-        src="https://sandbox-checkout.izipay.pe/payments/v1/js/index.js"
-        strategy="beforeInteractive"
-      />
     </>
   );
 }
