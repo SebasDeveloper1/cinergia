@@ -22,3 +22,10 @@ export interface PlayButtonProps
   isLoading: boolean;
   handlePay: () => void;
 }
+
+export interface ConfigtPaymentTypes {
+  bg: string;
+  title: string;
+  text?: string;
+  subtitle: string;
+}
