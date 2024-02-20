@@ -48,10 +48,7 @@ export default function RootLayout({
         </ScrollWrapper>
       </GoogleAuthProvider>
       {/* Include the Izipay payment script */}
-      <Script
-        src="https://sandbox-checkout.izipay.pe/payments/v1/js/index.js"
-        strategy="beforeInteractive"
-      />
+      <Script src="https://sandbox-checkout.izipay.pe/payments/v1/js/index.js" />
     </html>
   );
 }
