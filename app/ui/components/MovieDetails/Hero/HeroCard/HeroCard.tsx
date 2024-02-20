@@ -7,24 +7,24 @@ import WrapperPlayButton from './WrapperPlayButton/WrapperPlayButton';
 // Object to map payment_type to configuration
 const paymentTypeConfig: Record<string, ConfigtPaymentTypes> = {
   PT: {
-    bg: 'fucsiaBrushStroke2',
+    bg: 'bg-fucsiaBrushStroke2',
     title: 'Disfrútala solo por',
     subtitle: '',
   },
   DO: {
-    bg: 'greenBrushStroke2',
+    bg: 'bg-greenBrushStroke2',
     title: '¡Disfrútala y apoya nuestro contenido!',
     text: 'Donación mínima',
     subtitle: '',
   },
   DV: {
-    bg: 'greenBrushStroke2',
+    bg: 'bg-greenBrushStroke2',
     title: '¡Disfrútala y apóyanos con lo que desees!',
     text: '',
     subtitle: 'Tu generosidad nos ayuda',
   },
   default: {
-    bg: 'blueBrushStroke2',
+    bg: 'bg-blueBrushStroke2',
     title: '¡Disfrútala gratis!',
     text: '',
     subtitle: 'Sin costo alguno',
@@ -65,7 +65,7 @@ export function HeroCard({ movieData }: HeroCardProps): JSX.Element {
         }}
       >
         <div
-          className={`absolute top-16 lg:top-[4.5rem] -left-5 w-full md:w-fit max-w-xl bg-${bg} bg-contain bg-center bg-no-repeat`}
+          className={`absolute top-16 lg:top-[4.5rem] -left-5 w-full md:w-fit max-w-xl ${bg} bg-contain bg-center bg-no-repeat`}
         >
           <div className="flex flex-col w-full pl-12 md:pr-40 py-12">
             <span className="span-xl text-textColorNeutral-50 font-semibold">

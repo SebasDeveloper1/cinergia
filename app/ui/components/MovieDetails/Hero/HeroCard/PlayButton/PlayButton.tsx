@@ -15,9 +15,7 @@ export function PlayButton({
   isLoading,
   handlePay,
 }: PlayButtonProps): JSX.Element {
-  const { slug } = movieData;
-  //TODO: Cambiar el dato por el real proveniente de la DB
-  const payment_type = 'PT'; //dato temporal para pruebas
+  const { slug, payment_type } = movieData;
   const { data: session } = useSession();
   const router = useRouter();
 

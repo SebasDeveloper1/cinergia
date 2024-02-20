@@ -26,9 +26,7 @@ export default function WrapperPlayButton({
   movieData: MovieDetailsAPI;
 }) {
   // Destructure movieData
-  const { id: movieId } = movieData;
-  //TODO: Cambiar el dato por el real proveniente de la DB
-  const price = '9.99'; //dato temporal para pruebas
+  const { id: movieId, price } = movieData;
 
   // State to store user session data
   const { data: session } = useSession();
