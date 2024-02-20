@@ -218,7 +218,7 @@ export default function WrapperPlayButton({
   };
 
   return (
-    <div className="w-fit h-fit">
+    <div className="z-[10] w-fit h-fit">
       <PlayButton
         movieData={movieData}
         userMovieList={userMovieList}
