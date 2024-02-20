@@ -1,3 +1,4 @@
+'use client';
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { useSession } from 'next-auth/react';
 import { useEffect, useState } from 'react';

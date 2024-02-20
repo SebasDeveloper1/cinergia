@@ -1,4 +1,3 @@
-'use client';
 // Import necessary dependencies and types
 import { InfoSection } from './InfoSection';
 import { OverviewSectionSM } from './OverviewSectionSM';
