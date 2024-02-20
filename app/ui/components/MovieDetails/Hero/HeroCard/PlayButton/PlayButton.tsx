@@ -2,7 +2,6 @@
 'use client';
 import { signIn, useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
-import Script from 'next/script';
 import { PlayButtonProps } from '../HeroCard.model';
 
 /**
@@ -102,11 +101,6 @@ export function PlayButton({
           />
         </svg>
       </button>
-      {/* Include the Izipay payment script */}
-      <Script
-        src="https://sandbox-checkout.izipay.pe/payments/v1/js/index.js"
-        strategy="beforeInteractive"
-      />
     </>
   );
 }

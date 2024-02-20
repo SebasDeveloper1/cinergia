@@ -2,6 +2,7 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import '@/app/styles/globals.css';
+import Script from 'next/script';
 import { Header } from '@/app/ui/components/shared/Header';
 import { Footer } from '@/app/ui/components/shared/Footer';
 import { ScrollWrapper } from '@/app/lib/utils/ScrollWrapper';
@@ -46,6 +47,11 @@ export default function RootLayout({
           </body>
         </ScrollWrapper>
       </GoogleAuthProvider>
+      {/* Include the Izipay payment script */}
+      <Script
+        src="https://sandbox-checkout.izipay.pe/payments/v1/js/index.js"
+        strategy="beforeInteractive"
+      />
     </html>
   );
 }
