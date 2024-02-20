@@ -81,7 +81,7 @@ export default function WrapperPlayButton({
 
     // Call the fetchMovieList function when the component mounts or when myListState/userEmail changes
     fetchMovieList();
-  }, [userEmail, isPaymentCompleted]); // Dependency array to re-run effect when these values change
+  }, [session, userEmail, isPaymentCompleted]); // Dependency array to re-run effect when these values change
 
   // Constant representing the order currency
   const ORDER_CURRENCY = 'PEN';
