@@ -3,6 +3,8 @@
 // import Link from 'next/link';
 import {
   MouseEvent,
+  TouchEvent,
+  KeyboardEvent,
   Dispatch,
   SetStateAction,
   useRef,
@@ -81,7 +83,7 @@ export function MyListPreview({
   const listRef = useRef(null);
 
   // Handler for closing MyListPreview
-  const handleClose = (e: MouseEvent<HTMLButtonElement>) => {
+  const handleClose = (e: MouseEvent | TouchEvent | KeyboardEvent) => {
     e.preventDefault();
     handleMyListState(!myListState);
   };
@@ -152,12 +154,15 @@ export function MyListPreview({
         </button>
       </header>
       <div className="overflow-hidden w-full h-full pb-[4rem] lg:pb-[4.5rem]">
-        <ul className="overflow-y-auto w-full h-full">
+        <ul className="overflow-y-auto w-full h-full pb-10">
           {myListData.length > 0 ? (
             <>
               {myListData.map((movie) => (
                 <li key={`myListItem-${movie?.id}`} className="w-full">
-                  <MyListCard movie={movie} />
+                  <MyListCard
+                    movie={movie}
+                    handleMyListState={handleMyListState}
+                  />
                 </li>
               ))}
             </>

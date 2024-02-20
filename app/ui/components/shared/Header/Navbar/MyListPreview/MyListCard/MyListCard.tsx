@@ -1,7 +1,15 @@
+'use client';
 // Import necessary dependencies and types
-import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { calculateTimeToMovie } from '@/app/lib/utils/calculateTimeToMovie';
+import {
+  MouseEvent,
+  TouchEvent,
+  KeyboardEvent,
+  Dispatch,
+  SetStateAction,
+} from 'react';
 
 /**
  * MyListCard Component
@@ -14,15 +22,29 @@ import { calculateTimeToMovie } from '@/app/lib/utils/calculateTimeToMovie';
  * @param {TrendingMovieType} props.movie - An object containing information about the movie.
  * @returns {JSX.Element} - JSX element representing the MyListCard component.
  */
-export function MyListCard({ movie }: { movie: MovieUserList }) {
+export function MyListCard({
+  movie,
+  handleMyListState,
+}: {
+  movie: MovieUserList;
+  handleMyListState: Dispatch<SetStateAction<boolean>>;
+}) {
   const { name, image2, slug, date_end, date_start } = movie;
+  const router = useRouter();
+
+  const handleClick = (e: MouseEvent | TouchEvent | KeyboardEvent) => {
+    e.preventDefault();
+    handleMyListState(false);
+    router.push(`/peliculas/${slug}`);
+  };
   /**
    * Render the JSX for the MyListCard component
    */
   return (
-    <Link
-      href={`/peliculas/${slug}`}
+    <button
+      type="button"
       className="grid grid-cols-5 items-center w-full p-4 hover:bg-dark-800"
+      onClick={handleClick}
     >
       {/* Movie poster section */}
       <span className="col-span-1 relative w-4/5 md:w-3/5 aspect-[2/3]">
@@ -39,7 +61,7 @@ export function MyListCard({ movie }: { movie: MovieUserList }) {
         />
       </span>
       {/* Movie details section */}
-      <div className="col-span-4 flex flex-col w-full text-textColorNeutral-50">
+      <div className="col-span-4 flex flex-col w-full text-textColorNeutral-50 text-start">
         {/* Movie title */}
         <span className="span-lg capitalize font-semibold ">{name}</span>
         {/* Additional details */}
@@ -53,6 +75,6 @@ export function MyListCard({ movie }: { movie: MovieUserList }) {
           })}
         </span>
       </div>
-    </Link>
+    </button>
   );
 }
