@@ -19,7 +19,8 @@ import { HeroCardProps } from './HeroCard.model';
  */
 export function HeroCard({ movieData }: HeroCardProps): JSX.Element {
   // Destructure movieData for easier access
-  const { name, slug, duration, release_year, description, image2 } = movieData;
+  const { name, slug, duration, release_year, description, image2, category } =
+    movieData;
   const [date, setDate] = useState<number>(0);
 
   useEffect(() => {
@@ -39,7 +40,7 @@ export function HeroCard({ movieData }: HeroCardProps): JSX.Element {
         <div className="flex flex-col justify-center gap-8 w-11/12 md:w-10/12 h-full">
           <div className="w-full h-auto">
             <span className="span-sm px-3 py-1 rounded-full bg-dark-500/30 text-textColorNeutral-50 font-medium">
-              {'Película'}
+              {category}
             </span>
             <h2 className="heading-2 font-extrabold text-textColorNeutral-50 mt-2">
               {name}
