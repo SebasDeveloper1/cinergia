@@ -7,7 +7,7 @@ export interface ButtonStyleType extends React.CSSProperties {
 
 export interface HorizontalSliderPropsTypes {
   movieList:
-    | { type: 'API'; data: MovieAPI[] }
+    | { type: 'API'; data: MovieAPI[] | FreeShortsMoviesListAPI[] }
     | { type: 'TEST'; data: MovieType[] | TrendingMovieType[] };
 
   breakpoints: {
