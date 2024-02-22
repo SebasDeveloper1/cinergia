@@ -1,6 +1,7 @@
 // Import necessary dependencies and components
 import { fetchMovieDetails } from '@/app/lib/data/fetch';
 import { HeroCard } from './HeroCard';
+import NotFound from '@/app/not-found';
 
 /**
  * Hero Component for Movie Details Page
@@ -33,6 +34,10 @@ export async function Hero({
     await fetchMovieDetails(movieId);
 
   const movieData = data[0];
+
+  if (!movieData) {
+    return <NotFound />;
+  }
 
   // Renders the HeroCard with the movie information
   return <HeroCard movieData={movieData} />;

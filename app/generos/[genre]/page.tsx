@@ -1,9 +1,18 @@
-// Import necessary dependencies and types
 import { fetchHomeSection, fetchMovieListForGenre } from '@/app/lib/data/fetch';
+import NotFound from '@/app/not-found';
 import { Hero } from '@/app/ui/components/Genres/Hero';
 import { MovieList } from '@/app/ui/components/Genres/MovieList';
-import { NoMoviesAvailable } from '@/app/ui/components/Genres/NoMoviesAvailable';
 import { ScrollTopButtonWrapper } from '@/app/ui/components/shared/ScrollTopButtonWrapper';
+
+// Utility function to handle common logic for assigning values
+const setDefaultGenreInfo = (defaultGenreInfo, data) => {
+  Object.assign(defaultGenreInfo, {
+    id: data.id,
+    name: data.name,
+    description: data.description,
+    movies: data.movies.reverse(),
+  });
+};
 
 /**
  * Genre Page
@@ -27,34 +36,27 @@ export default async function GenrePage({
   // Extract genre slug from parameters
   const genreSlug = params.genre;
 
+  // Set up default genre information structure
+  const defaultGenreInfo: GenreInfoAPI = {
+    id: 0,
+    name: '',
+    description: '',
+    movies: [],
+  };
+
+  let movieList: MovieAPI[];
+
   try {
-    // Set up default genre information structure
-    const defaultGenreInfo: GenreInfoAPI = {
-      id: 0,
-      name: '',
-      description: '',
-      movies: [],
-    };
-
-    let movieList: MovieAPI[] = [];
-
     // Fetch the list of movies for the specified genre
     const {
       data: [genreData],
-    }: { data: GenreInfoAPI[] } = (await fetchMovieListForGenre({
+    }: { data: GenreInfoAPI[] } = await fetchMovieListForGenre({
       genreSlug,
       top: 10,
-    })) ?? { data: [] };
+    });
 
-    // If there are movies available, display the Hero component with information about the first movie
     if (genreData && genreData.movies && genreData.movies.length > 0) {
-      Object.assign(defaultGenreInfo, {
-        id: genreData.id,
-        name: genreData.name,
-        description: genreData.description,
-        movies: genreData.movies.reverse(),
-      });
-
+      setDefaultGenreInfo(defaultGenreInfo, genreData);
       movieList = [...(genreData.movies as MovieAPI[])];
     } else {
       // If no movies available, fetch data for the "Cortometrajes Gratuitos" section
@@ -63,13 +65,16 @@ export default async function GenrePage({
       });
       const homeSectionData = data[0];
 
-      Object.assign(defaultGenreInfo, {
-        id: homeSectionData.id,
-        name: homeSectionData.name,
-        description: homeSectionData.description,
-        movies: homeSectionData.movies.reverse(),
-      });
+      if (
+        !homeSectionData ||
+        !homeSectionData.movies ||
+        homeSectionData.movies.length === 0
+      ) {
+        // If both fetchMovieListForGenre and fetchHomeSection return empty data, display NotFound
+        return <NotFound />;
+      }
 
+      setDefaultGenreInfo(defaultGenreInfo, homeSectionData);
       movieList = [...(homeSectionData.movies as MovieAPI[])];
     }
 
@@ -85,11 +90,9 @@ export default async function GenrePage({
       </section>
     );
   } catch (error) {
-    // Handle errors when fetching the movie list
-    console.error('Error fetching movie list:', error);
-    throw new Error('Failed to fetch movie list. Please try again later.');
+    // Handle the error (e.g., display an error message)
+    console.error('Error fetching data:', error);
+    // You can also redirect to an error page if needed
+    return <NotFound />;
   }
-
-  // Display a message when no movies are available
-  return <NoMoviesAvailable />;
 }
