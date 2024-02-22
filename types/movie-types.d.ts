@@ -107,7 +107,7 @@ interface MovieAPI {
   name: string;
   slug: string;
   releaseYear: Date;
-  image2: string;
+  image1: string;
   image2: string;
 }
 
