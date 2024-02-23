@@ -57,6 +57,7 @@ export function MovieCard({ movieData }: MovieCardPropsTypes) {
           {/* Movie poster image using Next.js Image component */}
           <Image
             fill
+            sizes="(max-width: 640px) 100vw, (max-width: 768px) 100vw, (max-width: 1024px) 100vw, (max-width: 1080px) 100vw, 1536px"
             src={imageURL}
             alt={title || 'Movie Card'}
             placeholder="blur"

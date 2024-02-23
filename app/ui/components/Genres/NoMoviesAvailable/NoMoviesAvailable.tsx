@@ -8,9 +8,11 @@ export function NoMoviesAvailable() {
           ¡Upss!
         </span>
 
-        <figure className="relative w-3/12">
+        <figure className="relative w-10/12 md:w-1/2 lg:w-1/5 aspect-square">
           {/* Use the Next.js Image component for optimized image loading */}
           <Image
+            fill
+            sizes="100%"
             src={noMoviesAvailable}
             alt={'No found'}
             placeholder="blur"

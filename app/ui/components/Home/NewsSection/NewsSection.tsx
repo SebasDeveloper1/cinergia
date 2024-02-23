@@ -46,14 +46,17 @@ export async function NewsSection(): Promise<JSX.Element> {
         </div>
         <div className="relative w-11/12">
           <div className="relative flex justify-center items-center w-full">
-            <figure className="z-10 relative w-full">
+            <figure className="z-10 relative w-full aspect-[2/1] lg:aspect-[3/1]">
               {/* Use the Next.js Image component for optimized image loading */}
               <Image
+                fill
+                sizes="(max-width: 640px) 100vw, (max-width: 768px) 100vw, (max-width: 1024px) 100vw, (max-width: 1080px) 100vw, 1536px"
+                quality={100}
                 src={walletImage}
                 alt={'Wallets'}
                 placeholder="blur"
                 loading="lazy"
-                className="z-20 object-cover object-center"
+                className="z-20 "
                 blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIwIiBoZWlnaHQ9IjMyMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4="
               />
             </figure>
