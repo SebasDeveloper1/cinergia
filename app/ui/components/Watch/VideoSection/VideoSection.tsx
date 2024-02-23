@@ -33,7 +33,7 @@ export function VideoSection({ movieData }: VideoSectionProps) {
         </section>
         <article className="w-full aspect-video">
           <VideoPlayer
-            src={`https://muse.ai/embed/${urlId}?search=0&links=0&logo=0&title=0&cover_play_position=center`}
+            src={`https://muse.ai/embed/${urlId}?search=0&links=0&logo=0&title=0&cover_play_position=center&autoplay=1`}
             allowFullScreen
           />
         </article>

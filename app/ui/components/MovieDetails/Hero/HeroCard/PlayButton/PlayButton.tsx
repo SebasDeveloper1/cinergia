@@ -16,7 +16,7 @@ export function PlayButton({
   handlePay,
 }: PlayButtonProps): JSX.Element {
   const { slug, payment_type } = movieData;
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
   const router = useRouter();
 
   /**
@@ -51,11 +51,11 @@ export function PlayButton({
     }
   };
 
-  if (isLoading) {
+  if (isLoading || status === 'loading') {
     return (
       <svg
         aria-hidden="true"
-        className="inline w-12 aspect-square text-customNeutral-50/60 fill-primary-500 animate-spin"
+        className="inline w-12 aspect-square text-customNeutral-50/30 fill-primary-500 animate-spin"
         viewBox="0 0 100 101"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
