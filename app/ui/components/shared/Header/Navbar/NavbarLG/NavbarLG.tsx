@@ -55,7 +55,7 @@ export function NavbarLG({
             >
               {/* Link to the specified href */}
               <Link
-                className="flex items-center gap-3"
+                className="flex items-center gap-2"
                 href={link?.href}
                 title={link?.name}
               >
@@ -70,7 +70,7 @@ export function NavbarLG({
             <li className="navbar-item-lg w-full capitalize">
               <button
                 type="button"
-                className="flex items-center gap-3 whitespace-nowrap"
+                className="flex items-center gap-2 whitespace-nowrap"
                 title={'Mi lista'}
                 aria-label="Mi lista"
                 onClick={(e) => handleMyList(e)}

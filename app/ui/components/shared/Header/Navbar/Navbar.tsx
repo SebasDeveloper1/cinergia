@@ -43,14 +43,37 @@ export function Navbar(): JSX.Element {
   // Define an array of navigation links with names, hrefs, and icons
   const links: NavbarPropsTypes[] = [
     {
+      name: 'Inicio',
+      href: '/',
+      icon: (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="icon icon-tabler icon-tabler-home"
+          width={20}
+          height={20}
+          viewBox="0 0 24 24"
+          strokeWidth={2}
+          stroke="currentColor"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <path d="M5 12l-2 0l9 -9l9 9l-2 0" />
+          <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+          <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+        </svg>
+      ),
+    },
+    {
       name: 'contenido',
       href: '/contenido',
       icon: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="icon icon-tabler icon-tabler-movie"
-          width={24}
-          height={24}
+          width={20}
+          height={20}
           viewBox="0 0 24 24"
           strokeWidth={2}
           stroke="currentColor"
@@ -87,6 +110,7 @@ export function Navbar(): JSX.Element {
           <figure className="relative w-28 md:w-32 h-full">
             <Image
               fill
+              sizes="100%"
               src={cinergiaLogo}
               alt={'Logo Cinergia'}
               placeholder="blur"

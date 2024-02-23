@@ -39,7 +39,9 @@ export function SessionSection(): JSX.Element {
   // Show a loading indicator while checking the session status
   if (status === 'loading' && pathname !== '/auth/signin') {
     return (
-      <div className="w-44 h-10 rounded-lg bg-dark-500 animate-pulse"></div>
+      <div className="rounded-lg padding-button bg-dark-500 whitespace-nowrap ml-6 animate-pulse text-transparent">
+        Iniciar sesión
+      </div>
     );
   }
 

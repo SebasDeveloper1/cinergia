@@ -286,12 +286,12 @@ export function NavbarSM({
             {links.map((link) => (
               <li
                 key={`Navbar-link-${link.name}`}
-                className="navbar-item-sm w-full pt-4"
+                className="navbar-item-sm w-full"
               >
                 {/* Link to the specified href */}
                 <button
                   type="button"
-                  className="flex items-center gap-3 capitalize"
+                  className="flex items-center gap-3 w-full pt-4 capitalize"
                   onClick={(e) => handleLink(e, link?.href)}
                 >
                   {/* Display the link icon and name */}
@@ -302,10 +302,10 @@ export function NavbarSM({
             ))}
             {/* Logout button for authenticated users */}
             {session ? (
-              <li className="navbar-item-sm w-full pt-4">
+              <li className="navbar-item-sm w-full">
                 <button
                   type="button"
-                  className="flex items-center gap-3 w-full capitalize"
+                  className="flex items-center gap-3 w-full pt-4 capitalize"
                   onClick={() => signOut()}
                 >
                   <svg

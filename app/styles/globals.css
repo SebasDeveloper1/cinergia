@@ -156,7 +156,7 @@
   .navbar-item-sm {
     @apply navbar-item text-base;
   }
-  .navbar-item-xl {
+  .navbar-item-lg {
     @apply navbar-item text-base;
   }
 }
