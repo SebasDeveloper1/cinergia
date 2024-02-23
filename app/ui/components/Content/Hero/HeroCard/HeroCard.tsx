@@ -23,7 +23,7 @@ export function HeroCard({
   listSlug,
 }: HeroCardProps): JSX.Element {
   // Destructure key movie information
-  const { name, slug, image2, release_year } = firstMovieDetails;
+  const { name, slug, image2, release_year, category } = firstMovieDetails;
   const [date, setDate] = useState<number>(0);
 
   useEffect(() => {
@@ -46,7 +46,7 @@ export function HeroCard({
           <div className="w-full h-auto">
             {/* Movie type label */}
             <span className="span-sm px-3 py-1 rounded-full bg-dark-500/30 text-textColorNeutral-50 font-medium">
-              {'Película'}
+              {category}
             </span>
             {/* Movie title */}
             <h2 className="heading-3 w-full md:w-3/4 font-extrabold text-textColorNeutral-50 mt-2">

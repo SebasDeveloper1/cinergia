@@ -18,7 +18,7 @@ import { MovieCardProps } from './MovieCard.model';
  * @returns {JSX.Element} - JSX element representing the MovieCard component.
  */
 export function MovieCard({ movieData }: MovieCardProps) {
-  const { name, releaseYear, slug, image2 } = movieData;
+  const { name, releaseYear, slug, poster1 } = movieData;
   const [isImageVisible, setIsImageVisible] = useState(false);
   const [date, setDate] = useState<number>(0);
   const [ref, inView] = useInView({
@@ -39,7 +39,7 @@ export function MovieCard({ movieData }: MovieCardProps) {
     }
   }, [inView, isImageVisible]);
 
-  const imageURL = `http://cdn.cursosya.info/${image2}`;
+  const imageURL = `http://cdn.cursosya.info/${poster1}`;
   const imageSrc = isImageVisible
     ? imageURL
     : 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIwIiBoZWlnaHQ9IjMyMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4=';

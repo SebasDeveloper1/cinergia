@@ -38,6 +38,7 @@ export function InfoSection({ movieData }: InfoSectionProps): JSX.Element {
     genres,
     director,
     release_year,
+    category,
   } = movieData;
 
   const [openModal, setOpenModal] = useState<boolean>(false);
@@ -166,17 +167,18 @@ export function InfoSection({ movieData }: InfoSectionProps): JSX.Element {
     <>
       <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full">
         <section className="col-span-1 flex flex-col gap-4 w-full h-full">
-          <article className="flex flex-col justify-center gap-4 w-full h-auto text-textColorNeutral-50">
+          <article className="flex flex-col justify-center gap-2 w-full h-auto text-textColorNeutral-50">
             <div className="w-full leading-4">
               <h2 className="heading-5 font-extrabold">{name}</h2>
-              <span className="inline-block w-full span-xs font-semibold">
+              <span className="span-xs px-1.5 py-0.5 mb-4 rounded-r-full bg-primary-600 text-textColorNeutral-50 font-medium">
+                {category}
+              </span>
+              <span className="inline-block w-full pt-2 span-xs font-semibold">
                 Producido por:
               </span>
               <span className="inline-block w-full span-xs">
                 {directorList}
               </span>
-
-              <span className="inline-block w-full span-xs">{`Perú`}</span>
             </div>
             <span className="span-sm font-medium text-customNeutral-300">
               {genreList}

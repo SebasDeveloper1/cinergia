@@ -107,8 +107,10 @@ interface MovieAPI {
   name: string;
   slug: string;
   releaseYear: Date;
+  image1: string;
   image2: string;
-  image2: string;
+  poster1: string;
+  poster2: string;
 }
 
 //Movie details api types
@@ -128,6 +130,8 @@ interface MovieDetailsAPI {
   id: number;
   image1: string;
   image2: string;
+  poster1: string;
+  poster2: string;
   languages: LanguageAPI[];
   name: string;
   price: string;
@@ -179,8 +183,10 @@ interface FreeShortsMoviesListAPI {
   name: string;
   slug: string;
   releaseYear: Date;
+  image1: string;
   image2: string;
-  image2: string;
+  poster1: string;
+  poster2: string;
 }
 
 //Genres list types
