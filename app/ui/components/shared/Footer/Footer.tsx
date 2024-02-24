@@ -17,9 +17,10 @@ export function Footer(): JSX.Element {
     >
       <div className="flex justify-center items-center w-full h-full py-16 border-b-[4rem] border-bgPrimaryDark">
         <div className="flex flex-col justify-center items-center gap-4 w-11/12 md:w-10/12 h-full">
-          <figure className="relative h-20 aspect-video">
+          <figure className="relative h-20 aspect-square">
             <Image
               fill
+              sizes="100%"
               src={cinergiaLogo}
               alt={'Logo Cinergia'}
               placeholder="blur"

@@ -12,14 +12,15 @@ export default function NotFound() {
           Hmmm!
         </span>
 
-        <figure className="relative w-3/12">
+        <figure className="relative w-10/12 md:w-1/2 lg:w-1/5 aspect-square">
           {/* Use the Next.js Image component for optimized image loading */}
           <Image
+            fill
+            sizes="100%"
             src={notFound}
             alt={'No found'}
             placeholder="blur"
             loading="lazy"
-            className="object-cover object-center"
             blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIwIiBoZWlnaHQ9IjMyMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4="
           />
         </figure>

@@ -60,6 +60,7 @@ export function MovieCard({ movieData }: MovieCardProps) {
         <span className="relative w-full aspect-[2/3]">
           <Image
             fill
+            sizes="(max-width: 640px) 100vw, (max-width: 768px) 100vw, (max-width: 1024px) 100vw, (max-width: 1080px) 100vw, 1536px"
             src={imageSrc}
             alt={name || 'Movie Card'}
             placeholder="blur"

@@ -66,6 +66,7 @@ export function SessionSection(): JSX.Element {
             <figure className="relative h-8 aspect-square">
               <Image
                 fill
+                sizes="(max-width: 640px) 100px, (max-width: 768px) 96px, 96px"
                 src={session?.user?.image as string}
                 alt={session?.user?.name as string}
                 placeholder="blur"
