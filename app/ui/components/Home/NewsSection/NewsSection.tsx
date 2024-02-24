@@ -37,7 +37,7 @@ export async function NewsSection(): Promise<JSX.Element> {
         <div className="relative flex justify-center items-center w-full">
           {/* Render the HorizontalMovieListSecondary component with specified props */}
           <HorizontalMovieListSecondary
-            title="Novedades MNET"
+            title="Novedades"
             description="Millones de películas por descubrir. Explora ahora."
             movieList={movieListReverse}
             className="w-11/12"

@@ -174,10 +174,8 @@ export function InfoSection({ movieData }: InfoSectionProps): JSX.Element {
                 {category}
               </span>
               <span className="inline-block w-full pt-2 span-xs font-semibold">
-                Producido por:
-              </span>
-              <span className="inline-block w-full span-xs">
-                {directorList}
+                Dirigido por:
+                <span className="font-normal">{` ${directorList}`}</span>
               </span>
             </div>
             <span className="span-sm font-medium text-customNeutral-300">

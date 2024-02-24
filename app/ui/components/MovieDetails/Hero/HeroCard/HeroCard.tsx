@@ -13,8 +13,8 @@ const paymentTypeConfig: Record<string, ConfigtPaymentTypes> = {
   },
   DO: {
     bg: 'bg-greenBrushStroke2',
-    title: '¡Disfrútala y apoya nuestro contenido!',
-    text: 'Donación mínima',
+    title: '¡Disfrútala y apoya nuestro contenido con una donación!',
+    text: '',
     subtitle: '',
   },
   DV: {
@@ -67,8 +67,8 @@ export function HeroCard({ movieData }: HeroCardProps): JSX.Element {
         <div
           className={`absolute top-16 lg:top-[4.5rem] -left-5 w-full md:w-fit max-w-xl ${bg} bg-contain bg-center bg-no-repeat`}
         >
-          <div className="flex flex-col w-full pl-12 md:pr-40 py-12">
-            <span className="span-xl text-textColorNeutral-50 font-semibold">
+          <div className="flex flex-col w-full pl-12 md:pr-20 py-12">
+            <span className="span-xl md:text-2xl lg:text-3xl text-textColorNeutral-50 font-semibold">
               {title}
             </span>
             {payment_type ? (
