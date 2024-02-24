@@ -1,4 +1,5 @@
 import { fetchMovieDetails } from '@/app/lib/data/fetch';
+import NotFound from '@/app/not-found';
 import { VideoSection } from '@/app/ui/components/Watch/VideoSection';
 
 /**
@@ -34,6 +35,11 @@ export default async function WatchFreePage({
     await fetchMovieDetails(movieId);
 
   const movieData = data[0];
+
+  if (!movieData) {
+    return <NotFound />;
+  }
+
   const { image2 } = movieData;
 
   return (
