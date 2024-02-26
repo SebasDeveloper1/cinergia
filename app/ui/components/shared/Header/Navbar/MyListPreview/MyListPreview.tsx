@@ -57,7 +57,7 @@ export function MyListPreview({
 
         // Extract movie list from user data
         const userData = userDataResponse.data[0];
-        const movieList = userData?.movies;
+        const movieList = userData?.movies.reverse();
 
         // If movieList exists, update the state with the fetched data
         if (movieList) {
@@ -150,7 +150,7 @@ export function MyListPreview({
         </button>
       </header>
       <div className="overflow-hidden w-full h-full pb-[4rem] lg:pb-[4.5rem]">
-        <ul className="overflow-y-auto w-full h-full pb-10">
+        <ul className="overflow-y-auto w-full h-full pb-16">
           {myListData.length > 0 ? (
             <>
               {myListData.map((movie) => (

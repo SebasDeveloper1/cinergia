@@ -36,7 +36,7 @@ export function MyListCard({ movie, handleMyListState }: MyListCardProps) {
       onClick={handleClick}
     >
       {/* Movie poster section */}
-      <span className="col-span-1 relative w-4/5 md:w-3/5 aspect-[2/3]">
+      <span className="col-span-1 relative w-4/5 md:w-3/5 aspect-[2/3] bg-bgMovieCard bg-cover bg-center">
         {/* Movie poster image using Next.js Image component */}
         <Image
           fill
