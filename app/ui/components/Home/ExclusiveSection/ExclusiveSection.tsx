@@ -1,6 +1,7 @@
 // Import necessary dependencies and types
 import { fetchHomeSection, fetchMovieDetails } from '@/app/lib/data/fetch';
 import { ExclusiveSectionCard } from './ExclusiveSectionCard';
+import { homeSections } from '@/app/lib/lists/homeSectionSlugs';
 
 /**
  * ExclusiveSection Component
@@ -16,7 +17,7 @@ export async function ExclusiveSection(): Promise<JSX.Element> {
   try {
     // Fetch data for the "Exclusiva" section
     const { data }: HomeSectionRequestAPI = await fetchHomeSection({
-      section: 'exclusiva',
+      section: homeSections?.exclusiveSection,
     });
     // Extract relevant information from the fetched data
     const sectionInfo: HomeSectionAPI = data[0];

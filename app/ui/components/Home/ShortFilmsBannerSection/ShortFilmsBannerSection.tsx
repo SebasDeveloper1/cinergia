@@ -1,5 +1,6 @@
 // Import necessary dependencies and types
 import { fetchHomeSection, fetchMovieDetails } from '@/app/lib/data/fetch';
+import { homeSections } from '@/app/lib/lists/homeSectionSlugs';
 import { BannerSliderMovie } from '@/app/ui/components/shared/Sliders/BannerSliderMovie';
 
 /**
@@ -14,7 +15,7 @@ import { BannerSliderMovie } from '@/app/ui/components/shared/Sliders/BannerSlid
  */
 export async function ShortFilmsBannerSection(): Promise<JSX.Element> {
   try {
-    const listSlug = 'cortos-gratuitos';
+    const listSlug = homeSections?.shortFilmsSection;
     // Fetch data for the "Cortometrajes Gratuitos" section
     const { data }: HomeSectionRequestAPI = await fetchHomeSection({
       section: listSlug,

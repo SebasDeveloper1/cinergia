@@ -5,6 +5,7 @@ import Figure2 from '@/app/ui/components/shared/assets/Figure2';
 import Figure3 from '@/app/ui/components/shared/assets/Figure3';
 import walletImage from '@/public/images/walletImage.png';
 import { fetchHomeSection } from '@/app/lib/data/fetch';
+import { homeSections } from '@/app/lib/lists/homeSectionSlugs';
 
 /**
  * NewsSection Component
@@ -20,7 +21,7 @@ import { fetchHomeSection } from '@/app/lib/data/fetch';
 export async function NewsSection(): Promise<JSX.Element> {
   // Fetch data for the "Exclusiva" section
   const { data }: HomeSectionRequestAPI = await fetchHomeSection({
-    section: 'novedades',
+    section: homeSections?.newsSection,
   });
 
   // Extract relevant information from the fetched data

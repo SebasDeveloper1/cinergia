@@ -1,5 +1,6 @@
 // Import necessary dependencies and types
 import { fetchHomeSection, fetchMovieDetails } from '@/app/lib/data/fetch';
+import { homeSections } from '@/app/lib/lists/homeSectionSlugs';
 import { RecommendedMovieBanner } from '@/app/ui/components/Home/RecommendedMovieBanner';
 
 /**
@@ -15,7 +16,7 @@ export async function WeekMovieSection(): Promise<JSX.Element> {
   try {
     // Fetch data for the "Película de la semana" section
     const { data }: HomeSectionRequestAPI = await fetchHomeSection({
-      section: 'pelicula-de-la-semana',
+      section: homeSections?.weekMovieSection,
     });
 
     // Extract relevant information from the fetched data
