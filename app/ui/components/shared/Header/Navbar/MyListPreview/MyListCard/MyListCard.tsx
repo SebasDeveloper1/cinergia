@@ -29,7 +29,7 @@ export function MyListCard({
   movie: MovieUserList;
   handleMyListState: Dispatch<SetStateAction<boolean>>;
 }) {
-  const { name, image2, slug, date_end, date_start } = movie;
+  const { name, poster1, slug, date_end, date_start } = movie;
   const router = useRouter();
 
   const handleClick = (e: MouseEvent | TouchEvent | KeyboardEvent) => {
@@ -51,8 +51,8 @@ export function MyListCard({
         {/* Movie poster image using Next.js Image component */}
         <Image
           fill
-          sizes="(max-width: 640px) 100vw, (max-width: 768px) 100vw, (max-width: 1024px) 100vw, (max-width: 1080px) 100vw, 1536px"
-          src={`https://cdn.cursosya.info/${image2}`}
+          sizes="320px"
+          src={`https://cdn.cursosya.info/${poster1}`}
           alt={name || 'Movie Card'}
           placeholder="blur"
           loading="lazy"

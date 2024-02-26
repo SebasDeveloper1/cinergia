@@ -136,6 +136,8 @@ interface MovieUserList {
   transactionId: string; // Unique identifier for the transaction associated with the movie
   image1: string; // URL for the first image
   image2: string; // URL for the second image
+  poster1: string; // URL for the first poster image
+  poster2: string; // URL for the second poster image
 }
 
 /////////////////////////////////////////////
