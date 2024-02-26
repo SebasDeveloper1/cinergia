@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { HeroCardProps } from './Hero.model';
 import { HorizontalMovieListPrimary } from '@/app/ui/components/shared/HorizontalMovieList/HorizontalMovieListPrimary';
 import Link from 'next/link';
+import { IMAGES_URL } from '@/app/lib/data/urls';
 
 /**
  * HeroCard Component
@@ -38,7 +39,7 @@ export function HeroCard({
     <section
       className="w-full min-h-[50vh] bg-cover bg-center"
       style={{
-        backgroundImage: `url('http://cdn.cursosya.info/${image2}')`,
+        backgroundImage: `url('${IMAGES_URL}/${image2}')`,
       }}
     >
       <div className="w-full min-h-[50vh] py-20 lg:py-[5.5rem] flex flex-col justify-start items-center gap-16 bg-gradient-to-br from-bgPrimaryDark/90 via-bgPrimaryDark/50 to-transparent">

@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { MovieCardProps } from './MovieCard.model';
+import { IMAGES_URL } from '@/app/lib/data/urls';
 
 /**
  * MovieCard Component
@@ -39,7 +40,7 @@ export function MovieCard({ movieData }: MovieCardProps) {
     }
   }, [inView, isImageVisible]);
 
-  const imageURL = `http://cdn.cursosya.info/${poster1}`;
+  const imageURL = `${IMAGES_URL}/${poster1}`;
   const imageSrc = isImageVisible
     ? imageURL
     : 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIwIiBoZWlnaHQ9IjMyMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4=';
