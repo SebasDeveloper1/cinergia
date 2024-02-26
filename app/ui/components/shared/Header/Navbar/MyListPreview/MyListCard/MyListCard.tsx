@@ -3,13 +3,8 @@
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { calculateTimeToMovie } from '@/app/lib/utils/calculateTimeToMovie';
-import {
-  MouseEvent,
-  TouchEvent,
-  KeyboardEvent,
-  Dispatch,
-  SetStateAction,
-} from 'react';
+import { MouseEvent, TouchEvent, KeyboardEvent } from 'react';
+import { MyListCardProps } from '../MyListPreview.model';
 
 /**
  * MyListCard Component
@@ -22,13 +17,7 @@ import {
  * @param {TrendingMovieType} props.movie - An object containing information about the movie.
  * @returns {JSX.Element} - JSX element representing the MyListCard component.
  */
-export function MyListCard({
-  movie,
-  handleMyListState,
-}: {
-  movie: MovieUserList;
-  handleMyListState: Dispatch<SetStateAction<boolean>>;
-}) {
+export function MyListCard({ movie, handleMyListState }: MyListCardProps) {
   const { name, poster1, slug, date_end, date_start } = movie;
   const router = useRouter();
 

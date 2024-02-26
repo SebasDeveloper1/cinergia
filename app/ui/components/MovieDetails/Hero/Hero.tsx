@@ -2,6 +2,7 @@
 import { fetchMovieDetails } from '@/app/lib/data/fetch';
 import { HeroCard } from './HeroCard';
 import NotFound from '@/app/not-found';
+import { HerProps } from './Hero.model';
 
 /**
  * Hero Component for Movie Details Page
@@ -24,11 +25,7 @@ import NotFound from '@/app/not-found';
  *   return <Hero movieId={movieId} />;
  * };
  */
-export async function Hero({
-  movieId,
-}: {
-  movieId: string;
-}): Promise<JSX.Element> {
+export async function Hero({ movieId }: HerProps): Promise<JSX.Element> {
   // Fetches movie information based on the provided ID
   const { data }: { data: MovieDetailsAPI[] } =
     await fetchMovieDetails(movieId);

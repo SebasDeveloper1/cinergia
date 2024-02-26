@@ -1,4 +1,4 @@
-export interface EventBannerSliderPropsTypes {
+export interface EventBannerSliderProps {
   eventTitle: string;
   eventDate?: string;
   backgroundImageUrl: string;

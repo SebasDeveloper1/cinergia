@@ -24,7 +24,7 @@ import { HeroCard } from '../HeroCard';
 export function HeroSlider({ movieList }: HeroSliderProps): JSX.Element {
   // Define custom styles for Swiper pagination bullets
   const bulletStyle: BulletStyleType = {
-    '--swiper-pagination-color': '#1775E8',
+    '--swiper-pagination-color': '#0190f8',
     '--swiper-pagination-bullet-inactive-color': '#ffffff',
   };
 

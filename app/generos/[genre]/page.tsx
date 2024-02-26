@@ -3,6 +3,7 @@ import NotFound from '@/app/not-found';
 import { Hero } from '@/app/ui/components/Genres/Hero';
 import { MovieList } from '@/app/ui/components/Genres/MovieList';
 import { ScrollTopButtonWrapper } from '@/app/ui/components/shared/ScrollTopButtonWrapper';
+import { GenrePageProps } from './GenrePage.model';
 
 // Utility function to handle common logic for assigning values
 const setDefaultGenreInfo = (defaultGenreInfo, data) => {
@@ -28,11 +29,7 @@ const setDefaultGenreInfo = (defaultGenreInfo, data) => {
  * @returns {JSX.Element} - JSX element representing the Genre Page.
  * @throws {Error} - Throws an error if there is an issue fetching the movie list.
  */
-export default async function GenrePage({
-  params,
-}: {
-  params: { genre: string };
-}) {
+export default async function GenrePage({ params }: GenrePageProps) {
   // Extract genre slug from parameters
   const genreSlug = params.genre;
 

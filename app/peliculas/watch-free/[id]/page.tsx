@@ -1,6 +1,7 @@
 import { fetchMovieDetails } from '@/app/lib/data/fetch';
 import NotFound from '@/app/not-found';
 import { VideoSection } from '@/app/ui/components/Watch/VideoSection';
+import { WatchFreePageProps } from '../../PeliculasPage.model';
 
 /**
  * WatchPage Component
@@ -23,12 +24,10 @@ import { VideoSection } from '@/app/ui/components/Watch/VideoSection';
  *
  * export default MovieDetails;
  */
-interface WatchFreePage {
-  params: { id: string };
-}
+
 export default async function WatchFreePage({
   params,
-}: WatchFreePage): Promise<JSX.Element> {
+}: WatchFreePageProps): Promise<JSX.Element> {
   const movieId: string = params.id;
 
   // Fetches movie information based on the provided ID

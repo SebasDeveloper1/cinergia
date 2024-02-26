@@ -1,4 +1,4 @@
-export interface RecommendedMovieBannerPropsTypes {
+export interface RecommendedMovieBannerProps {
   titleBanner: string;
   background: string;
   movieData: MovieDetailsAPI;

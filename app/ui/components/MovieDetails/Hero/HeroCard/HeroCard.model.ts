@@ -14,6 +14,10 @@ export interface OverviewSectionProps {
   whySeeIt: string; // Reasons to watch the movie.
 }
 
+export interface WrapperPlayButtonProps {
+  movieData: MovieDetailsAPI;
+}
+
 // Describes the properties for a Play Button component.
 export interface PlayButtonProps
   extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -23,7 +27,7 @@ export interface PlayButtonProps
   handlePay: () => void;
 }
 
-export interface ConfigtPaymentTypes {
+export interface ConfigPayment {
   bg: string;
   title: string;
   text?: string;

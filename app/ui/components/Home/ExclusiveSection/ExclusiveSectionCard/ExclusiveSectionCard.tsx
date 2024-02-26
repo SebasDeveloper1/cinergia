@@ -1,6 +1,6 @@
 // Import necessary dependencies and types
 import Link from 'next/link';
-import { ExclusiveSectionCardPropsTypes } from './ExclusiveSectionCard.model';
+import { ExclusiveSectionCardProps } from './ExclusiveSectionCard.model';
 
 /**
  * ExclusiveSectionCard Component
@@ -10,7 +10,7 @@ import { ExclusiveSectionCardPropsTypes } from './ExclusiveSectionCard.model';
  * The backdrop image dynamically adjusts its width based on the window size.
  *
  * @component
- * @param {ExclusiveSectionCardPropsTypes} props - Props for configuring the ExclusiveSectionCard component.
+ * @param {ExclusiveSectionCardProps} props - Props for configuring the ExclusiveSectionCard component.
  * @param {MovieType} props.movieData - Movie data used to populate the card.
  * @returns {JSX.Element} - JSX element representing the ExclusiveSectionCard component.
  */
@@ -18,7 +18,7 @@ export function ExclusiveSectionCard({
   titleBanner,
   background,
   movieData,
-}: ExclusiveSectionCardPropsTypes): JSX.Element {
+}: ExclusiveSectionCardProps): JSX.Element {
   // Destructure movieData to extract relevant information
   const { name, description, slug, image2, agerates } = movieData;
 

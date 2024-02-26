@@ -10,6 +10,7 @@ import {
   saveMoviePay,
 } from '@/app/lib/pay/izipay';
 import { iziConfigFuntion } from '@/app/lib/pay/iziConfig';
+import { WrapperPlayButtonProps } from '../HeroCard.model';
 
 /**
  * Wrapper component for the PlayButton, responsible for handling user authentication,
@@ -22,9 +23,7 @@ import { iziConfigFuntion } from '@/app/lib/pay/iziConfig';
  */
 export default function WrapperPlayButton({
   movieData,
-}: {
-  movieData: MovieDetailsAPI;
-}) {
+}: WrapperPlayButtonProps) {
   // Destructure movieData
   const { id: movieId, price } = movieData;
 

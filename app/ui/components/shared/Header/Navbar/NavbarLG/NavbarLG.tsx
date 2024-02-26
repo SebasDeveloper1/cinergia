@@ -4,7 +4,7 @@ import { useSession } from 'next-auth/react';
 import Link from 'next/link';
 import { Dispatch, MouseEvent, SetStateAction } from 'react';
 // import { InputSearch } from '@/app/ui/components/shared/Inputs/InputSearch';
-import { NavbarPropsTypes } from '../Navbar.model';
+import { NavbarProps } from '../Navbar.model';
 import { SessionSection } from './SessionSection';
 
 /**
@@ -14,7 +14,7 @@ import { SessionSection } from './SessionSection';
  *
  * @component
  * @param {Object} props - The properties of the NavbarLG component.
- * @param {NavbarPropsTypes[]} props.links - An array of objects representing navigation links, each with a name, href, and icon.
+ * @param {NavbarProps[]} props.links - An array of objects representing navigation links, each with a name, href, and icon.
  * @param {Dispatch<SetStateAction<boolean>>} props.handleMyListState - A function to handle the state of MyListPreview visibility.
  * @param {boolean} props.myListState - The state of MyListPreview visibility.
  * @returns {JSX.Element} - JSX element representing the NavbarLG component.
@@ -24,7 +24,7 @@ export function NavbarLG({
   handleMyListState,
   myListState,
 }: {
-  links: NavbarPropsTypes[];
+  links: NavbarProps[];
   handleMyListState: Dispatch<SetStateAction<boolean>>;
   myListState: boolean;
 }): JSX.Element {

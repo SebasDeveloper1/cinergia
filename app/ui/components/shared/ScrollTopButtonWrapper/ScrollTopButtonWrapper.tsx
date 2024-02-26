@@ -6,12 +6,11 @@ import {
   TouchEvent,
   KeyboardEvent,
 } from 'react';
+import { ScrollTopButtonWrapperProps } from './ScrollTopButtonWrapper.model';
 
 export function ScrollTopButtonWrapper({
   children,
-}: {
-  children: JSX.Element;
-}) {
+}: ScrollTopButtonWrapperProps) {
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
 
   useEffect(() => {

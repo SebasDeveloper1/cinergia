@@ -5,8 +5,6 @@ import {
   MouseEvent,
   TouchEvent,
   KeyboardEvent,
-  Dispatch,
-  SetStateAction,
   useRef,
   useState,
   useEffect,
@@ -15,6 +13,7 @@ import useOnClickOutside from '@/app/lib/hooks/useOnClickOutside';
 import { MyListCard } from './MyListCard';
 import { fetchUserData } from '@/app/lib/data/fetch';
 import { useSession } from 'next-auth/react';
+import { MyListPreviewProps } from './MyListPreview.model';
 
 /**
  * MyListPreview Component
@@ -31,10 +30,7 @@ import { useSession } from 'next-auth/react';
 export function MyListPreview({
   handleMyListState,
   myListState,
-}: {
-  handleMyListState: Dispatch<SetStateAction<boolean>>;
-  myListState: boolean;
-}): JSX.Element {
+}: MyListPreviewProps): JSX.Element {
   const [myListData, setMyListData] = useState<MovieUserList[]>([]);
   // State to manage loading state
   // eslint-disable-next-line @typescript-eslint/no-unused-vars

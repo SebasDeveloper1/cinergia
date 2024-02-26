@@ -1,4 +1,4 @@
-export interface BannerSliderMoviePropsTypes {
+export interface BannerSliderMovieProps {
   sectionTitle: string;
   background: string;
   firstMovieDetails: MovieDetailsAPI;

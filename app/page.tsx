@@ -18,7 +18,7 @@ import { ScrollTopButtonWrapper } from './ui/components/shared/ScrollTopButtonWr
  * @component
  * @returns {JSX.Element} - JSX element representing the Home component.
  */
-export default function Home() {
+export default function Home(): JSX.Element {
   return (
     <ScrollTopButtonWrapper>
       {/* Main content area */}

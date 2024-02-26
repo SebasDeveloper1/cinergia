@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { NavbarSM } from '@/app/ui/components/shared/Header/Navbar/NavbarSM';
 import { NavbarLG } from '@/app/ui/components/shared/Header/Navbar/NavbarLG';
-import { NavbarPropsTypes } from './Navbar.model';
+import { NavbarProps } from './Navbar.model';
 import { MyListPreview } from './MyListPreview';
 import cinergiaLogo from '@/public/cinergiaLogoWeb1.svg';
 
@@ -41,7 +41,7 @@ export function Navbar(): JSX.Element {
   }, [openMyList]);
 
   // Define an array of navigation links with names, hrefs, and icons
-  const links: NavbarPropsTypes[] = [
+  const links: NavbarProps[] = [
     {
       name: 'Inicio',
       href: '/',

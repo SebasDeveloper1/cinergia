@@ -5,7 +5,7 @@ import { usePathname, useRouter } from 'next/navigation';
 import { useState, useRef, MouseEvent, Dispatch, SetStateAction } from 'react';
 // import { InputSearch } from '@/app/ui/components/shared/Inputs/InputSearch';
 import useOnClickOutside from '@/app/lib/hooks/useOnClickOutside';
-import { NavbarPropsTypes } from '../Navbar.model';
+import { NavbarProps } from '../Navbar.model';
 import Image from 'next/image';
 
 /**
@@ -15,7 +15,7 @@ import Image from 'next/image';
  *
  * @component
  * @param {Object} props - The properties of the NavbarSM component.
- * @param {NavbarPropsTypes[]} props.links - An array of objects representing navigation links, each with a name, href, and icon.
+ * @param {NavbarProps[]} props.links - An array of objects representing navigation links, each with a name, href, and icon.
  * @param {Dispatch<SetStateAction<boolean>>} props.handleMyListState - A function to handle the state of MyListPreview visibility.
  * @param {boolean} props.myListState - The state of MyListPreview visibility.
  * @returns {JSX.Element} - JSX element representing the NavbarSM component.
@@ -25,7 +25,7 @@ export function NavbarSM({
   handleMyListState,
   myListState,
 }: {
-  links: NavbarPropsTypes[];
+  links: NavbarProps[];
   handleMyListState: Dispatch<SetStateAction<boolean>>;
   myListState: boolean;
 }): JSX.Element {

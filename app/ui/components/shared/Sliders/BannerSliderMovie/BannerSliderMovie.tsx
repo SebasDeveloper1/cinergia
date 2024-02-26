@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 import { HorizontalSlider } from '@/app/ui/components/shared/Sliders/HorizontalSlider';
 import { extractValuesByKey } from '@/app/lib/utils/extractValuesByKey';
 import BannerSliderMovieSkeleton from './BannerSliderMovieSkeleton';
-import { BannerSliderMoviePropsTypes } from './BannerSliderMovie.model';
+import { BannerSliderMovieProps } from './BannerSliderMovie.model';
 
 /**
  * BannerSliderMovie Component
@@ -25,7 +25,7 @@ export function BannerSliderMovie({
   firstMovieDetails,
   movieList,
   listSlug,
-}: BannerSliderMoviePropsTypes): JSX.Element {
+}: BannerSliderMovieProps): JSX.Element {
   // Destructure movieList to extract relevant information
   const { name, description, slug, image2, agerates } = firstMovieDetails;
 

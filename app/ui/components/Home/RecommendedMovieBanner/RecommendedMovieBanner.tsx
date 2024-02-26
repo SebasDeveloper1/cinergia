@@ -1,6 +1,6 @@
 // Import necessary dependencies and types
 import Link from 'next/link';
-import { RecommendedMovieBannerPropsTypes } from './RecommendedMovieBanner.model';
+import { RecommendedMovieBannerProps } from './RecommendedMovieBanner.model';
 
 /**
  * RecommendedMovieBanner Component
@@ -17,7 +17,7 @@ export function RecommendedMovieBanner({
   titleBanner,
   background,
   movieData,
-}: RecommendedMovieBannerPropsTypes): JSX.Element {
+}: RecommendedMovieBannerProps): JSX.Element {
   // Destructure movieData to extract relevant information
   const { name, description, slug, image2, agerates } = movieData;
 

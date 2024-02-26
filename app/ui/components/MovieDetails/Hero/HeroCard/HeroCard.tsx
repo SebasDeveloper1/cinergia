@@ -1,11 +1,11 @@
 // Import necessary dependencies and types
 import { InfoSection } from './InfoSection';
 import { OverviewSectionSM } from './OverviewSectionSM';
-import { ConfigtPaymentTypes, HeroCardProps } from './HeroCard.model';
+import { ConfigPayment, HeroCardProps } from './HeroCard.model';
 import WrapperPlayButton from './WrapperPlayButton/WrapperPlayButton';
 
 // Object to map payment_type to configuration
-const paymentTypeConfig: Record<string, ConfigtPaymentTypes> = {
+const paymentTypeConfig: Record<string, ConfigPayment> = {
   PT: {
     bg: 'bg-fucsiaBrushStroke2',
     title: 'Disfrútala solo por',
@@ -49,7 +49,7 @@ export function HeroCard({ movieData }: HeroCardProps): JSX.Element {
   const { description, whySee, image2, price, payment_type } = movieData;
 
   // Retrieve configuration based on payment_type
-  const config: ConfigtPaymentTypes =
+  const config: ConfigPayment =
     paymentTypeConfig[payment_type] || paymentTypeConfig['default'];
 
   // Destructure configuration for easy access
