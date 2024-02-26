@@ -23,11 +23,12 @@ import { VideoSection } from '@/app/ui/components/Watch/VideoSection';
  *
  * export default MovieDetails;
  */
+interface WatchPage {
+  params: { id: string };
+}
 export default async function WatchPage({
   params,
-}: {
-  params: { id: string };
-}): Promise<JSX.Element> {
+}: WatchPage): Promise<JSX.Element> {
   const movieId: string = params.id;
 
   // Fetches movie information based on the provided ID

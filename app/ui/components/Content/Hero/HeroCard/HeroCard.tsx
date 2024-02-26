@@ -14,7 +14,7 @@ import Link from 'next/link';
  * @component
  * @param {HeroCardProps} props - Props for configuring the HeroCard component.
  * @param {MovieDetailsAPI} props.firstMovieDetails - Details of the first movie to be displayed.
- * @param {FreeShortsMoviesListAPI[]} props.movieList - List of movies for the horizontal movie list section.
+ * @param {MovieAPI[]} props.movieList - List of movies for the horizontal movie list section.
  * @returns {JSX.Element} - JSX element representing the HeroCard component.
  */
 export function HeroCard({

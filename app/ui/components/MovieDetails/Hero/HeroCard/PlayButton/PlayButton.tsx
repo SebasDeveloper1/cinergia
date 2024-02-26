@@ -9,6 +9,13 @@ import { PlayButtonProps } from '../HeroCard.model';
  * @param {PlayButtonProps} props - The properties of the PlayButton component.
  * @returns {JSX.Element} - The rendered PlayButton component.
  */
+
+enum PaymentType {
+  totalPay = 'PT',
+  mandatoryDonation = 'DO',
+  voluntaryDonation = 'DV',
+  free = null,
+}
 export function PlayButton({
   movieData,
   userMovieList,
@@ -25,11 +32,14 @@ export function PlayButton({
    */
   const handleClick = () => {
     // If no payment type is selected, navigate to free watch route.
-    if (payment_type === null) {
+    if (payment_type === PaymentType.free) {
       router.push(`/peliculas/watch-free/${slug}`);
     }
     // If payment type is 'DO' or 'PT'
-    else {
+    else if (
+      payment_type === PaymentType.totalPay ||
+      payment_type === PaymentType.mandatoryDonation
+    ) {
       // If the user is logged in, navigate to the regular watch route.j
       if (session) {
         if (userMovieList.length > 0) {

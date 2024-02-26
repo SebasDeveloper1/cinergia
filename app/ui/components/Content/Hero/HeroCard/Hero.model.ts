@@ -1,5 +1,5 @@
 export interface HeroCardProps {
   firstMovieDetails: MovieDetailsAPI;
-  movieList: FreeShortsMoviesListAPI[];
+  movieList: MovieAPI[];
   listSlug: string;
 }

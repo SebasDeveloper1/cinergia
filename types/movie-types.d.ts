@@ -1,3 +1,144 @@
+// Movie types
+interface MovieAPI {
+  id: number; // Unique identifier for the movie
+  name: string; // Movie name
+  slug: string; // URL-friendly version of the movie name
+  releaseYear: Date; // Release year of the movie
+  image1: string; // URL for the first image
+  image2: string; // URL for the second image
+  poster1: string; // URL for the first poster image
+  poster2: string; // URL for the second poster image
+}
+
+// Movie List API types
+interface MovieListAPI {
+  data: MovieAPI[]; // Array of MovieAPI objects
+}
+
+interface MovieDetailsObjAPI {
+  data: MovieDetailsAPI;
+}
+
+// Movie Details API types
+interface MovieDetailsAPI {
+  id: number; // Unique identifier for the movie
+  name: string; // Movie name
+  slug: string; // URL-friendly version of the movie name
+  release_year: Date; // Release year of the movie
+  description: string; // Movie description
+  duration: number; // Duration of the movie in minutes
+  price: string; // Price of the movie
+  trailer: string; // URL for the movie trailer
+  urlId: string; // Unique identifier for the movie URL
+  whySee: string; // Reason to watch the movie
+  payment_type: PaymentType; // Payment type: 'PT' (Purchase), 'DO' (Donation), 'DV' (Dividend), or null
+  created_at: Date; // Timestamp of when the movie details were created
+  agerates: AgerateAPI[]; // Array of AgerateAPI objects
+  category: string; // Movie category
+  director: DirectorAPI[]; // Array of DirectorAPI objects
+  genres: string[]; // Array of genre names
+  image1: string; // URL for the first image
+  image2: string; // URL for the second image
+  poster1: string; // URL for the first poster image
+  poster2: string; // URL for the second poster image
+  languages: LanguageAPI[]; // Array of LanguageAPI objects
+}
+
+interface AgerateAPI {
+  id: number; // Unique identifier for the agerates
+  name: string; // Agerate name
+  range: string; // Agerate range
+}
+
+interface DirectorAPI {
+  id: number; // Unique identifier for the director
+  firstName: string; // Director's first name
+  lastName: string; // Director's last name
+}
+
+interface LanguageAPI {
+  id: number; // Unique identifier for the language
+  name: string; // Language name
+}
+
+enum PaymentType {
+  totalPay = 'PT',
+  mandatoryDonation = 'DO',
+  voluntaryDonation = 'DV',
+  free = null,
+}
+
+// Home Section API types
+interface HomeSectionAPI {
+  id: number; // Unique identifier for the home section
+  name: string; // Home section name
+  description: string | null; // Home section description (nullable)
+  background: string; // URL for the home section background image
+  movies: MovieAPI[]; // Array of MovieAPI objects associated with the home section
+}
+
+interface HomeSectionRequestAPI {
+  data: HomeSectionAPI[]; // Array of HomeSectionAPI objects
+}
+
+// Free Shorts List API types
+interface FreeShortsRequestAPI {
+  data: MovieAPI[]; // Array of MovieAPI objects for free shorts
+}
+
+// Genres List API types
+interface GenresListAPI {
+  id: number; // Unique identifier for the genre
+  name: string; // Genre name
+  slug: string; // URL-friendly version of the genre name
+  description: null | string; // Genre description (nullable)
+  created_at: Date; // Timestamp of when the genre was created
+  updated_at: Date; // Timestamp of when the genre was last updated
+}
+
+interface GenresRequestAPI {
+  data: GenresListAPI[]; // Array of GenresListAPI objects
+}
+
+// Movie List by Genre API types
+interface GenreInfoAPI {
+  id: number; // Unique identifier for the genre
+  name: string; // Genre name
+  description: string | null; // Genre description (nullable)
+  movies: MovieAPI[] | null; // Array of MovieAPI objects associated with the genre (nullable)
+}
+
+interface MoviesDataForGenresRequestAPI {
+  data: GenreInfoAPI[]; // Array of GenreInfoAPI objects
+}
+
+// User API types
+interface UserDataAPI {
+  created_at?: Date; // Timestamp of when the user data was created (nullable)
+  email: string; // User's email address
+  id: number; // Unique identifier for the user
+  movies?: MovieUserList[]; // Array of MovieUserList objects associated with the user (nullable)
+  name: string; // User's name
+  image: string; // URL for the user's profile image
+}
+
+interface UserDataRequestAPI {
+  data: UserDataAPI[]; // Array of UserDataAPI objects
+}
+
+interface MovieUserList {
+  id: number; // Unique identifier for the movie user list entry
+  name: string; // Movie name
+  slug: string; // URL-friendly version of the movie name
+  releaseYear: string; // Release year of the movie
+  date_start: string; // Start date of the user's interaction with the movie
+  date_end: string; // End date of the user's interaction with the movie
+  transactionId: string; // Unique identifier for the transaction associated with the movie
+  image1: string; // URL for the first image
+  image2: string; // URL for the second image
+}
+
+/////////////////////////////////////////////
 enum MediaType {
   Movie = 'movie',
   Tv = 'tv',
@@ -93,149 +234,4 @@ interface Video {
 interface VideoList {
   id: number;
   results: Video[];
-}
-
-//////////////////////////////
-
-//Movie list api types
-interface MovieListAPI {
-  data: MovieAPI[];
-}
-
-interface MovieAPI {
-  id: number;
-  name: string;
-  slug: string;
-  releaseYear: Date;
-  image1: string;
-  image2: string;
-  poster1: string;
-  poster2: string;
-}
-
-//Movie details api types
-
-interface MovieDetailsObjAPI {
-  data: MovieDetailsAPI;
-}
-
-interface MovieDetailsAPI {
-  agerates: AgerateAPI[];
-  category: string;
-  created_at: Date;
-  description: string;
-  director: DirectorAPI[];
-  duration: number;
-  genres: string[];
-  id: number;
-  image1: string;
-  image2: string;
-  poster1: string;
-  poster2: string;
-  languages: LanguageAPI[];
-  name: string;
-  price: string;
-  release_year: Date;
-  slug: string;
-  trailer: string;
-  urlId: string;
-  whySee: string;
-  payment_type: 'PT' | 'DO' | 'DV' | null;
-}
-
-interface AgerateAPI {
-  id: number;
-  name: string;
-  range: string;
-}
-
-interface DirectorAPI {
-  firstName: string;
-  id: number;
-  lastName: string;
-}
-
-interface LanguageAPI {
-  id: number;
-  name: string;
-}
-
-// home sections api types
-interface HomeSectionRequestAPI {
-  data: HomeSectionAPI[];
-}
-
-interface HomeSectionAPI {
-  id: number;
-  name: string;
-  description: string | null;
-  background: string;
-  movies: MovieAPI[];
-}
-
-// Free Shorts List types
-interface FreeShortsRequestAPI {
-  data: FreeShortsMoviesListAPI[];
-}
-
-interface FreeShortsMoviesListAPI {
-  id: number;
-  name: string;
-  slug: string;
-  releaseYear: Date;
-  image1: string;
-  image2: string;
-  poster1: string;
-  poster2: string;
-}
-
-//Genres list types
-interface GenresRequestAPI {
-  data: GenresListAPI[];
-}
-
-interface GenresListAPI {
-  created_at: Date;
-  description: null | string;
-  id: number;
-  name: string;
-  slug: string;
-  updated_at: Date;
-}
-
-//Movie List by genre
-interface MoviesDataForGenresRequestAPI {
-  data: GenreInfoAPI[];
-}
-
-interface GenreInfoAPI {
-  description: string | null;
-  id: number;
-  movies: MovieAPI[] | null;
-  name: string;
-}
-
-interface UserDataRequestAPI {
-  data: UserDataAPI[];
-}
-
-interface UserDataAPI {
-  created_at?: Date;
-  email: string;
-  id: number;
-  movies?: MovieUserList[];
-  name: string;
-  image: string;
-}
-
-interface MovieUserList {
-  date_end: string;
-  date_start: string;
-  id: number;
-  image1: string;
-  image2: string;
-  name: string;
-  releaseYear: string;
-  slug: string;
-  transactionId: string;
 }

@@ -3,7 +3,7 @@ import { HTMLAttributes } from 'react';
 export interface HorizontalMovieListTypes
   extends HTMLAttributes<HTMLDivElement> {
   title: string;
-  movieList: FreeShortsMoviesListAPI[] | MovieAPI[];
+  movieList: MovieAPI[] | MovieAPI[];
 }
 
 export interface HorizontalMovieListPrimaryTypes

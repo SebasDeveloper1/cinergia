@@ -4,13 +4,15 @@
  * @param {string} endDate - The end date in 'YYYY-MM-DDTHH:mm:ss.SSSZ' format.
  * @returns {string} - A message indicating the remaining time.
  */
+
+interface CalculateTimeToMovie {
+  startDate: string;
+  endDate: string;
+}
 export const calculateTimeToMovie = ({
   startDate,
   endDate,
-}: {
-  startDate: string;
-  endDate: string;
-}): string => {
+}: CalculateTimeToMovie): string => {
   // Parse the dates
   const current = new Date();
   const start = new Date(startDate);

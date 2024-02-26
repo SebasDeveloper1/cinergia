@@ -2,7 +2,7 @@
 import { validateUser } from '@/app/lib/data/createUser';
 import { signIn, useSession } from 'next-auth/react';
 import { useEffect } from 'react';
-export default function GooglePage() {
+export default function GooglePage(): JSX.Element {
   const { data: session, status } = useSession();
 
   useEffect(() => {

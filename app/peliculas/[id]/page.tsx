@@ -1,6 +1,11 @@
 import { Hero } from '@/app/ui/components/MovieDetails/Hero';
 
-export default function page({ params }: { params: { id: string } }) {
+interface Page {
+  params: {
+    id: string;
+  };
+}
+export default function page({ params }: Page): JSX.Element {
   const movieId: string = params.id;
   return <Hero movieId={movieId} />;
 }

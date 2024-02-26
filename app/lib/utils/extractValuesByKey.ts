@@ -15,14 +15,12 @@
  * const resultValues = extractValuesByKey({ array: myArray, key: "name" });
  * console.log(resultValues); // Output: ["Illumination", ...]
  */
-
-export const extractValuesByKey = ({
-  array,
-  key,
-}: {
+interface ExtractValuesByKey {
   array: Array<any>;
   key: string;
-}) => {
+}
+
+export const extractValuesByKey = ({ array, key }: ExtractValuesByKey) => {
   // Map each object in the array and extract the value corresponding to the provided key
   const valuesArray = array.map((item) => item[key]);
 

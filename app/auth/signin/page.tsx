@@ -25,7 +25,7 @@ import { validateUser } from '@/app/lib/data/createUser';
  *   <SignInPage />
  * );
  */
-export default function SignInPage() {
+export default function SignInPage(): JSX.Element {
   /**
    * Handles the sign-in process using the Google authentication provider.
    * Retrieves the previous path from sessionStorage for redirection after successful sign-in.

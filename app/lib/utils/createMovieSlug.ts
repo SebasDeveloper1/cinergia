@@ -6,13 +6,14 @@
  * @param {string | undefined} movie.title - The title of the movie (optional).
  * @returns {string} - The generated slug for the movie.
  */
+interface CreateMovieSlug {
+  id: number;
+  title?: string;
+}
 const createMovieSlug = ({
   id,
   title = 'No Title',
-}: {
-  id: number;
-  title?: string;
-}): string => {
+}: CreateMovieSlug): string => {
   /**
    * Converts the title to lowercase and replaces spaces with hyphens.
    * @param {string} title - The title of the movie.
