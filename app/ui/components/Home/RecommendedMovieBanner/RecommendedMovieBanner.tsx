@@ -1,6 +1,8 @@
 // Import necessary dependencies and types
 import Link from 'next/link';
 import { RecommendedMovieBannerProps } from './RecommendedMovieBanner.model';
+import { IMAGES_URL } from '@/app/lib/data/urls';
+import { routesPaths } from '@/app/routes/routes';
 
 /**
  * RecommendedMovieBanner Component
@@ -23,8 +25,8 @@ export function RecommendedMovieBanner({
 
   // Construct the background image URL
   const backgroundImageUrl = background
-    ? `url('https://cdn.cursosya.info/${background}')`
-    : `url('https://cdn.cursosya.info/${image2}')`;
+    ? `url('${IMAGES_URL}/${background}')`
+    : `url('${IMAGES_URL}/${image2}')`;
 
   /**
    * Render the JSX for the RecommendedMovieBanner component
@@ -69,7 +71,7 @@ export function RecommendedMovieBanner({
             {/* "Ver Película" button */}
             <Link
               className="button-secondary padding-button w-full md:w-fit"
-              href={`/peliculas/${slug}`}
+              href={`${routesPaths?.movies}/${slug}`}
             >
               Ver Película
             </Link>

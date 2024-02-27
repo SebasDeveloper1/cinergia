@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { MovieCardProps } from './MovieCard.model';
 import { IMAGES_URL } from '@/app/lib/data/urls';
+import { routesPaths } from '@/app/routes/routes';
 
 /**
  * MovieCard Component
@@ -56,7 +57,7 @@ export function MovieCard({ movieData }: MovieCardProps) {
     <li className="group overflow-hidden rounded-sm bg-dark-800 border border-dark-900">
       <Link
         className="relative group flex flex-col justify-center items-center"
-        href={`/peliculas/${slug}`}
+        href={`${routesPaths?.movies}/${slug}`}
       >
         <span className="relative w-full aspect-[2/3]">
           <Image

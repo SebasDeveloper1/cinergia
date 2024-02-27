@@ -6,6 +6,8 @@ import { HorizontalSlider } from '@/app/ui/components/shared/Sliders/HorizontalS
 import { extractValuesByKey } from '@/app/lib/utils/extractValuesByKey';
 import BannerSliderMovieSkeleton from './BannerSliderMovieSkeleton';
 import { BannerSliderMovieProps } from './BannerSliderMovie.model';
+import { IMAGES_URL } from '@/app/lib/data/urls';
+import { routesPaths } from '@/app/routes/routes';
 
 /**
  * BannerSliderMovie Component
@@ -34,8 +36,8 @@ export function BannerSliderMovie({
 
   // Construct the background image URL
   const backgroundImageUrl = background
-    ? `url('https://cdn.cursosya.info/${background}')`
-    : `url('https://cdn.cursosya.info/${image2}')`;
+    ? `url('${IMAGES_URL}/${background}')`
+    : `url('${IMAGES_URL}/${image2}')`;
 
   const extractValuesAgregates = extractValuesByKey({
     array: agerates,
@@ -94,7 +96,7 @@ export function BannerSliderMovie({
             {/* "Ver película" button */}
             <Link
               className="button-secondary padding-button w-full md:w-fit"
-              href={`/peliculas/${slug}`}
+              href={`${routesPaths?.movies}/${slug}`}
             >
               Ver Película
             </Link>
@@ -102,7 +104,7 @@ export function BannerSliderMovie({
             {/* "Ver más" button */}
             <Link
               className="button-outlined padding-button w-full md:w-fit"
-              href={`/generos/${listSlug}`}
+              href={`${routesPaths?.genres}/${listSlug}`}
             >
               Ver Más
             </Link>

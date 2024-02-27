@@ -5,6 +5,7 @@ import { HeroCardProps } from './Hero.model';
 import { HorizontalMovieListPrimary } from '@/app/ui/components/shared/HorizontalMovieList/HorizontalMovieListPrimary';
 import Link from 'next/link';
 import { IMAGES_URL } from '@/app/lib/data/urls';
+import { routesPaths } from '@/app/routes/routes';
 
 /**
  * HeroCard Component
@@ -61,7 +62,7 @@ export function HeroCard({
           {/* Button to view the movie */}
           <Link
             className="button-secondary padding-button w-full md:w-fit"
-            href={`/peliculas/${slug}`}
+            href={`${routesPaths?.movies}/${slug}`}
           >
             Ver Película
           </Link>
@@ -71,7 +72,7 @@ export function HeroCard({
           <HorizontalMovieListPrimary
             title="Cortometrajes Gratuitos"
             movieList={movieList}
-            path={`/generos/${listSlug}`}
+            path={`${routesPaths?.genres}/${listSlug}`}
           />
         </section>
       </div>

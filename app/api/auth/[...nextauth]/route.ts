@@ -1,5 +1,6 @@
 import NextAuth from 'next-auth';
 import GoogleProvider from 'next-auth/providers/google';
+import { routesPaths } from '@/app/routes/routes';
 
 const handler = NextAuth({
   providers: [
@@ -20,7 +21,7 @@ const handler = NextAuth({
     },
   },
   pages: {
-    signIn: '/auth/signin',
+    signIn: routesPaths?.signin,
   },
 });
 

@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { convertMinutesToHours } from '@/app/lib/utils/convertMinutesToHours';
 import { HeroCardProps } from './HeroCard.model';
+import { routesPaths } from '@/app/routes/routes';
 
 /**
  * HeroCard Component
@@ -55,7 +56,7 @@ export function HeroCard({ movieData }: HeroCardProps): JSX.Element {
           </p>
           <Link
             className="button-primary padding-button w-full md:w-fit"
-            href={`/peliculas/${slug}`}
+            href={`${routesPaths?.movies}/${slug}`}
           >
             Ver Película
           </Link>

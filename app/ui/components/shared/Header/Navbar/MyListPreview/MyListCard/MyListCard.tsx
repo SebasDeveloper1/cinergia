@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { calculateTimeToMovie } from '@/app/lib/utils/calculateTimeToMovie';
 import { MouseEvent, TouchEvent, KeyboardEvent } from 'react';
 import { MyListCardProps } from '../MyListPreview.model';
+import { routesPaths } from '@/app/routes/routes';
 
 /**
  * MyListCard Component
@@ -24,7 +25,7 @@ export function MyListCard({ movie, handleMyListState }: MyListCardProps) {
   const handleClick = (e: MouseEvent | TouchEvent | KeyboardEvent) => {
     e.preventDefault();
     handleMyListState(false);
-    router.push(`/peliculas/${slug}`);
+    router.push(`${routesPaths?.movies}/${slug}`);
   };
   /**
    * Render the JSX for the MyListCard component

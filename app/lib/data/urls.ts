@@ -1,1 +1,1 @@
-export const IMAGES_URL = 'http://cdn.cursosya.info';
+export const IMAGES_URL = 'https://cdn.cursosya.info';

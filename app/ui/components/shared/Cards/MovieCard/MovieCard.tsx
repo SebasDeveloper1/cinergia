@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { MovieCardPropsTypes } from './MovieCard.model';
 import createMovieSlug from '@/app/lib/utils/createMovieSlug';
+import { routesPaths } from '@/app/routes/routes';
 
 /**
  * MovieCard Component
@@ -51,7 +52,7 @@ export function MovieCard({ movieData }: MovieCardPropsTypes) {
     <li className="group overflow-hidden rounded-sm bg-bgSecondaryDark md:hover:bg-dark-800">
       <Link
         className="relative group flex flex-col justify-center items-center"
-        href={`/peliculas/${createMovieSlug({ id, title })}`}
+        href={`${routesPaths?.movies}/${createMovieSlug({ id, title })}`}
       >
         <span className="relative w-full aspect-[2/3] md:aspect-video">
           {/* Movie poster image using Next.js Image component */}

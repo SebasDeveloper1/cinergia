@@ -4,6 +4,8 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { MovieCardAPIProps } from './MovieCardAPI.model';
+import { IMAGES_URL } from '@/app/lib/data/urls';
+import { routesPaths } from '@/app/routes/routes';
 
 /**
  * MovieCardAPI Component
@@ -21,13 +23,13 @@ export function MovieCardAPI({ movieData }: MovieCardAPIProps): JSX.Element {
   const { name, slug, releaseYear, image1 } = movieData;
 
   // URL for the movie poster image
-  const imageURL = `https://cdn.cursosya.info/${image1}`;
+  const imageURL = `${IMAGES_URL}/${image1}`;
 
   return (
     <li className="group overflow-hidden rounded-sm bg-bgSecondaryDark md:hover:bg-dark-800">
       <Link
         className="relative group flex flex-col justify-center items-center bg-bgMovieCard bg-cover bg-center"
-        href={`/peliculas/${slug}`}
+        href={`${routesPaths?.movies}/${slug}`}
       >
         <span className="relative w-full aspect-[2/3] md:aspect-video">
           {/* Movie poster image using Next.js Image component */}

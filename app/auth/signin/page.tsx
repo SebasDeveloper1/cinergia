@@ -7,6 +7,7 @@ import cinergiaLogo from '@/public/cinergiaLogoWeb3.svg';
 import { popupCenter } from '@/app/lib/utils/popupCenter';
 import { useEffect } from 'react';
 import { validateUser } from '@/app/lib/data/createUser';
+import { routesPaths } from '@/app/routes/routes';
 
 /**
  * SignInPage Component
@@ -47,7 +48,7 @@ export default function SignInPage(): JSX.Element {
 
   // Function to handle Google sign-in
   const handleSigninGoogle = () => {
-    popupCenter('/auth/google', 'Iniciar sesión');
+    popupCenter(routesPaths?.authGoogle, 'Iniciar sesión');
   };
 
   // Loading state while checking for session information

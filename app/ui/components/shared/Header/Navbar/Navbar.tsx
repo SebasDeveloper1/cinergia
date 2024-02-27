@@ -9,6 +9,7 @@ import { NavbarLG } from '@/app/ui/components/shared/Header/Navbar/NavbarLG';
 import { NavbarProps } from './Navbar.model';
 import { MyListPreview } from './MyListPreview';
 import cinergiaLogo from '@/public/cinergiaLogoWeb1.svg';
+import { routesPaths } from '@/app/routes/routes';
 
 /**
  * Navbar Component
@@ -44,7 +45,7 @@ export function Navbar(): JSX.Element {
   const links: NavbarProps[] = [
     {
       name: 'Inicio',
-      href: '/',
+      href: routesPaths?.home,
       icon: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -67,7 +68,7 @@ export function Navbar(): JSX.Element {
     },
     {
       name: 'contenido',
-      href: '/contenido',
+      href: routesPaths?.content,
       icon: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -104,7 +105,7 @@ export function Navbar(): JSX.Element {
       <div className="relative flex justify-between items-center w-full h-full p-4 backdrop-blur-md">
         {/* Application logo */}
         <Link
-          href="/"
+          href={routesPaths?.home}
           className="flex justify-center items-center gap-2 h-full"
         >
           <figure className="relative w-28 md:w-32 h-full">
