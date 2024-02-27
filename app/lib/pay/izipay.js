@@ -34,7 +34,7 @@ export async function getTokenSession(
 
   // Make a POST request to the token API
   const response = await fetch(
-    'https://api.cursosya.info/api/token?transactionId=' + transactionId,
+    'https://api.cinergia.lat/api/token?transactionId=' + transactionId,
     {
       method: 'POST',
       headers: headers,
@@ -78,7 +78,7 @@ export async function saveMoviePay(transactionId, clientId, movieId, amount) {
     };
 
     // Make a POST request to the movie payment API
-    const response = await fetch('https://api.cursosya.info/api/client-movie', {
+    const response = await fetch('https://api.cinergia.lat/api/client-movie', {
       method: 'POST',
       headers: {
         accept: 'application/json',

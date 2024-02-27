@@ -1,6 +1,5 @@
 import { fetchUserData } from './fetch';
-
-const apiUrl = `https://api.cursosya.info/api/clients`;
+import { USER_DATA_URL } from './urls';
 
 export const createUserDB = async ({ user }: { user: UserDataAPI }) => {
   const userData = {
@@ -11,7 +10,7 @@ export const createUserDB = async ({ user }: { user: UserDataAPI }) => {
   };
 
   try {
-    const response = await fetch(apiUrl, {
+    const response = await fetch(USER_DATA_URL, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -22,7 +21,7 @@ export const createUserDB = async ({ user }: { user: UserDataAPI }) => {
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error('Error al enviar la solicitud:', error);
+    console.error('Error sending request:', error);
   }
 };
 

@@ -2,6 +2,7 @@ import { fetchMovieDetails } from '@/app/lib/data/fetch';
 import NotFound from '@/app/not-found';
 import { VideoSection } from '@/app/ui/components/Watch/VideoSection';
 import { WatchFreePageProps } from '../../PeliculasPage.model';
+import { CDN_IMAGES_BASE_URL } from '@/app/lib/data/urls';
 
 /**
  * WatchPage Component
@@ -46,7 +47,7 @@ export default async function WatchFreePage({
     <div
       className="z-[60] fixed inset-0 w-full h-screen bg-cover bg-center"
       style={{
-        backgroundImage: `url('https://cdn.cursosya.info/${image2}')`,
+        backgroundImage: `url('${CDN_IMAGES_BASE_URL}${image2}')`,
       }}
     >
       <div className="flex justify-center items-center w-full h-screen bg-dark-950/80 backdrop-blur-sm">

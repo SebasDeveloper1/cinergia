@@ -6,7 +6,7 @@ import { HorizontalSlider } from '@/app/ui/components/shared/Sliders/HorizontalS
 import { extractValuesByKey } from '@/app/lib/utils/extractValuesByKey';
 import BannerSliderMovieSkeleton from './BannerSliderMovieSkeleton';
 import { BannerSliderMovieProps } from './BannerSliderMovie.model';
-import { IMAGES_URL } from '@/app/lib/data/urls';
+import { CDN_IMAGES_BASE_URL } from '@/app/lib/data/urls';
 import { routesPaths } from '@/app/routes/routes';
 
 /**
@@ -36,8 +36,8 @@ export function BannerSliderMovie({
 
   // Construct the background image URL
   const backgroundImageUrl = background
-    ? `url('${IMAGES_URL}/${background}')`
-    : `url('${IMAGES_URL}/${image2}')`;
+    ? `url('${CDN_IMAGES_BASE_URL}${background}')`
+    : `url('${CDN_IMAGES_BASE_URL}${image2}')`;
 
   const extractValuesAgregates = extractValuesByKey({
     array: agerates,

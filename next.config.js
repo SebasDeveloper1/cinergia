@@ -2,10 +2,17 @@
 const nextConfig = {
   // output: 'export',
   images: {
-    domains: [
-      'image.tmdb.org',
-      'cdn.cursosya.info',
-      'lh3.googleusercontent.com',
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'cdn.cinergia.lat',
+      },
+      {
+        protocol: 'https',
+        hostname: '*.googleusercontent.com',
+        port: '',
+        pathname: '**',
+      },
     ],
   },
 };

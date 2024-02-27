@@ -1,3 +1,13 @@
+import {
+  FREE_SHORTS_LIST_URL,
+  GENRES_LIST_URL,
+  HOME_SECTION_URL,
+  MOVIE_DETAIL_URL,
+  MOVIE_LIST_FOR_GENRE_URL,
+  MOVIE_LIST_URL,
+  USER_DATA_URL,
+} from './urls';
+
 /**
  * Retrieves a list of movies from the API.
  *
@@ -6,7 +16,7 @@
  * @returns {Promise<Array>} - A Promise that resolves to an array of movie data.
  * @throws {Error} - Throws an error if there is an issue fetching the movie list.
  */ export async function fetchMovieList({ top = 10 }: { top: number }) {
-  const apiUrl = `${process.env.API_URL}/api/movies?top=${top}`;
+  const apiUrl = `${MOVIE_LIST_URL}?top=${top}`;
   const options = {
     next: { revalidate: 3600 },
   };
@@ -37,7 +47,7 @@
  * @throws {Error} - Throws an error if there is an issue fetching movie details.
  */
 export async function fetchMovieDetails(movieSlug: string) {
-  const apiUrl = `${process.env.API_URL}/api/movies/${movieSlug}`;
+  const apiUrl = `${MOVIE_DETAIL_URL}${movieSlug}`;
   const options = {
     next: { revalidate: 3600 },
   };
@@ -69,7 +79,7 @@ export async function fetchMovieDetails(movieSlug: string) {
  * @throws {Error} - Throws an error if there is an issue fetching home section data.
  */
 export async function fetchHomeSection({ section }: { section: string }) {
-  const apiUrl = `${process.env.API_URL}/api/homesection/${section}`;
+  const apiUrl = `${HOME_SECTION_URL}${section}`;
   const options = {
     next: { revalidate: 3600 },
   };
@@ -99,7 +109,7 @@ export async function fetchHomeSection({ section }: { section: string }) {
  * @throws {Error} - Throws an error if there is an issue fetching the free shorts list.
  */
 export async function fetchFreeShortsList() {
-  const apiUrl = `${process.env.API_URL}/api/freeshorts?top=10}`;
+  const apiUrl = `${FREE_SHORTS_LIST_URL}`;
   const options = {
     next: { revalidate: 3600 },
   };
@@ -135,7 +145,7 @@ export async function fetchGenresList({
 }: {
   list: 'genres' | 'categories';
 }) {
-  const apiUrl = `${process.env.API_URL}/api/${list}`;
+  const apiUrl = `${GENRES_LIST_URL}${list}`;
   const options = {
     next: { revalidate: 3600 },
   };
@@ -174,7 +184,7 @@ export async function fetchMovieListForGenre({
   genreSlug: string;
   top: number;
 }) {
-  const apiUrl = `${process.env.API_URL}/api/movies-genre/${genreSlug}?top=${top}`;
+  const apiUrl = `${MOVIE_LIST_FOR_GENRE_URL}${genreSlug}?top=${top}`;
   const options = {
     next: { revalidate: 3600 },
   };
@@ -238,7 +248,7 @@ export async function fetchMovieDataForGenres(genresList: GenresListAPI[]) {
 }
 
 export async function fetchUserData({ email }: { email: string }) {
-  const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/api/clients?email=${email}`;
+  const apiUrl = `${USER_DATA_URL}?email=${email}`;
   const options = {
     next: { revalidate: 1 },
   };

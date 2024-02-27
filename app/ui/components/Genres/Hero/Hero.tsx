@@ -1,5 +1,5 @@
 // Import necessary dependencies and types
-import { IMAGES_URL } from '@/app/lib/data/urls';
+import { CDN_IMAGES_BASE_URL } from '@/app/lib/data/urls';
 import { HeroProps } from './Hero.model';
 
 /**
@@ -32,7 +32,7 @@ export function Hero({ genreInfo, movieInfo }: HeroProps) {
     <section
       className="w-full h-[40vh] lg:h-[50vh] bg-cover bg-center"
       style={{
-        backgroundImage: `url(' ${IMAGES_URL}/${image2}')`,
+        backgroundImage: `url(' ${CDN_IMAGES_BASE_URL}${image2}')`,
       }}
     >
       <div className="w-full h-[40vh] lg:h-[50vh] flex flex-col place-items-center bg-bgPrimaryDark/70">

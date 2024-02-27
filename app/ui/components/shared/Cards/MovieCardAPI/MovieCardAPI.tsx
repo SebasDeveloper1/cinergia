@@ -4,7 +4,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { MovieCardAPIProps } from './MovieCardAPI.model';
-import { IMAGES_URL } from '@/app/lib/data/urls';
+import { CDN_IMAGES_BASE_URL } from '@/app/lib/data/urls';
 import { routesPaths } from '@/app/routes/routes';
 
 /**
@@ -23,7 +23,7 @@ export function MovieCardAPI({ movieData }: MovieCardAPIProps): JSX.Element {
   const { name, slug, releaseYear, image1 } = movieData;
 
   // URL for the movie poster image
-  const imageURL = `${IMAGES_URL}/${image1}`;
+  const imageURL = `${CDN_IMAGES_BASE_URL}${image1}`;
 
   return (
     <li className="group overflow-hidden rounded-sm bg-bgSecondaryDark md:hover:bg-dark-800">

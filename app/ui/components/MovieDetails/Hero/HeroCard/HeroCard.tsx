@@ -3,6 +3,7 @@ import { InfoSection } from './InfoSection';
 import { OverviewSectionSM } from './OverviewSectionSM';
 import { ConfigPayment, HeroCardProps } from './HeroCard.model';
 import WrapperPlayButton from './WrapperPlayButton/WrapperPlayButton';
+import { CDN_IMAGES_BASE_URL } from '@/app/lib/data/urls';
 
 // Object to map payment_type to configuration
 const paymentTypeConfig: Record<string, ConfigPayment> = {
@@ -61,7 +62,7 @@ export function HeroCard({ movieData }: HeroCardProps): JSX.Element {
       <section
         className="relative overflow-hidden w-full min-h-screen bg-cover bg-center"
         style={{
-          backgroundImage: `url('https://cdn.cursosya.info/${image2}')`,
+          backgroundImage: `url('${CDN_IMAGES_BASE_URL}${image2}')`,
         }}
       >
         <div
