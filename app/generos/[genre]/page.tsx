@@ -49,7 +49,6 @@ export default async function GenrePage({ params }: GenrePageProps) {
       data: [genreData],
     }: { data: GenreInfoAPI[] } = await fetchMovieListForGenre({
       genreSlug,
-      top: 10,
     });
 
     if (genreData && genreData.movies && genreData.movies.length > 0) {

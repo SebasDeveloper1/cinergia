@@ -1,5 +1,6 @@
 // Import necessary dependencies and types
 import { fetchGenresList, fetchMovieDataForGenres } from '@/app/lib/data/fetch';
+import { routesPaths } from '@/app/routes/routes';
 import { HorizontalMovieListPrimary } from '@/app/ui/components/shared/HorizontalMovieList/HorizontalMovieListPrimary';
 
 /**
@@ -56,7 +57,7 @@ export async function ListSection(): Promise<JSX.Element> {
                   key={`genreList_${genre}`}
                   title={genre}
                   movieList={movieList}
-                  path={`/generos/${slug}`}
+                  path={`${routesPaths?.genres}/${slug}`}
                 />
               );
             }

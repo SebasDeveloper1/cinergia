@@ -15,8 +15,8 @@ import {
  * @param {number} options.top - The number of top movies to retrieve (default is 10).
  * @returns {Promise<Array>} - A Promise that resolves to an array of movie data.
  * @throws {Error} - Throws an error if there is an issue fetching the movie list.
- */ export async function fetchMovieList({ top = 10 }: { top: number }) {
-  const apiUrl = `${MOVIE_LIST_URL}?top=${top}`;
+ */ export async function fetchMovieList({ top }: { top?: number }) {
+  const apiUrl = `${MOVIE_LIST_URL}${top ? `?top=${top}` : ''}`;
   const options = {
     next: { revalidate: 3600 },
   };
@@ -179,12 +179,12 @@ export async function fetchGenresList({
  */
 export async function fetchMovieListForGenre({
   genreSlug,
-  top = 10,
+  top,
 }: {
   genreSlug: string;
-  top: number;
+  top?: number;
 }) {
-  const apiUrl = `${MOVIE_LIST_FOR_GENRE_URL}${genreSlug}?top=${top}`;
+  const apiUrl = `${MOVIE_LIST_FOR_GENRE_URL}${genreSlug}${top ? `?top=${top}` : ''}`;
   const options = {
     next: { revalidate: 3600 },
   };
