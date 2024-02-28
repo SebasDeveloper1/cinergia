@@ -3,6 +3,7 @@
 import { signIn, useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { PlayButtonProps } from '../HeroCard.model';
+import { paymentType } from '@/app/lib/lists/paymentType';
 
 /**
  * PlayButton Component
@@ -10,12 +11,6 @@ import { PlayButtonProps } from '../HeroCard.model';
  * @returns {JSX.Element} - The rendered PlayButton component.
  */
 
-enum PaymentType {
-  totalPay = 'PT',
-  mandatoryDonation = 'DO',
-  voluntaryDonation = 'DV',
-  free = null,
-}
 export function PlayButton({
   movieData,
   userMovieList,
@@ -32,13 +27,13 @@ export function PlayButton({
    */
   const handleClick = () => {
     // If no payment type is selected, navigate to free watch route.
-    if (payment_type === PaymentType.free) {
+    if (payment_type === paymentType.free) {
       router.push(`/peliculas/watch-free/${slug}`);
     }
     // If payment type is 'DO' or 'PT'
     else if (
-      payment_type === PaymentType.totalPay ||
-      payment_type === PaymentType.mandatoryDonation
+      payment_type === paymentType.totalPay ||
+      payment_type === paymentType.mandatoryDonation
     ) {
       // If the user is logged in, navigate to the regular watch route.j
       if (session) {

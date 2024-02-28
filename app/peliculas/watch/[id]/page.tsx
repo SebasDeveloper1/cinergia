@@ -3,6 +3,7 @@ import NotFound from '@/app/not-found';
 import { VideoSection } from '@/app/ui/components/Watch/VideoSection';
 import { WatchPageProps } from '../../PeliculasPage.model';
 import { CDN_IMAGES_BASE_URL } from '@/app/lib/data/urls';
+import { paymentType } from '@/app/lib/lists/paymentType';
 
 /**
  * WatchPage Component
@@ -74,7 +75,7 @@ export default async function WatchPage({
 
   const movieData = data[0];
 
-  if (!movieData) {
+  if (!movieData || movieData.payment_type === paymentType.free) {
     return <NotFound />;
   }
 
