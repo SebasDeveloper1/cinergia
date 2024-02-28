@@ -16,7 +16,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Cinergia | Contenido: Explora el Cine Latinoamericano',
   description:
-    'Explora la riqueza del cine latinoamericano en Cinergia. Descubre emocionantes películas, cautivadores cortometrajes y envolventes largometrajes, todos creados con pasión y dedicación en la región. Sumérgete en la diversidad de géneros cinematográficos, explora historias únicas y talento excepcional. ¡Cinergia es tu ventana al extraordinario mundo del cine latinoamericano!',
+    'Explora el cine latino en Cinergia: emocionantes películas, cautivadores cortometrajes y envolventes largometrajes, creados con pasión en la región. ¡Cinergia, tu ventana al cine latino!',
   keywords: [
     'Cinergia',
     'cine latinoamericano',

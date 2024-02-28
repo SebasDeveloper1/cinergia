@@ -23,7 +23,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Cinergia - Tu Plataforma de Streaming Favorita en Latinoamérica',
   description:
-    'Descubre el fascinante universo del cine latinoamericano en Cinergia, tu plataforma exclusiva para disfrutar de emocionantes películas, cautivadores cortometrajes y envolventes largometrajes, todos creados con pasión y dedicación en la región. Sumérgete en la riqueza de nuestra cinematografía regional mientras exploras historias únicas, talento excepcional y la vibrante cultura audiovisual de nuestra comunidad. ¡Cinergia es tu ventana al extraordinario mundo del cine latinoamericano!',
+    'Explora el cine latino en Cinergia, tu plataforma exclusiva para emocionantes películas y cortometrajes. Sumérgete en la riqueza de nuestra cinematografía regional. ¡Cinergia, tu ventana al mundo del cine latino!',
   keywords: [
     'Cinergia',
     'cine latinoamericano',
