@@ -25,7 +25,44 @@ import { CDN_IMAGES_BASE_URL } from '@/app/lib/data/urls';
  *
  * export default MovieDetails;
  */
+export async function generateMetadata({ params }: WatchFreePageProps) {
+  const movieId: string = params.id;
+  // Fetches movie information based on the provided ID
+  const { data }: { data: MovieDetailsAPI[] } =
+    await fetchMovieDetails(movieId);
 
+  const movieData = data[0];
+  if (!movieData) {
+    return <NotFound />;
+  }
+
+  return {
+    title: `Cinergia | ${movieData?.name}`,
+    description: movieData?.description,
+    keyworks: [
+      'Cinergia',
+      'cine en streaming',
+      'películas',
+      'cortometrajes',
+      'largometrajes',
+      'géneros cinematográficos',
+      'explorar géneros',
+      'últimas películas',
+      'cinematografía',
+      'plataforma de streaming',
+      movieData?.name,
+      ...movieData.genres,
+    ],
+    authors: { name: 'Cinergia' },
+    openGraph: {
+      type: 'website',
+      title: `Cinergia | ${movieData?.name}`,
+      description: movieData?.description,
+      siteName: 'Cinergia',
+      images: [`${CDN_IMAGES_BASE_URL}${movieData?.poster1}`],
+    },
+  };
+}
 export default async function WatchFreePage({
   params,
 }: WatchFreePageProps): Promise<JSX.Element> {

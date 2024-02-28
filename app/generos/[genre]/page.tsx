@@ -29,6 +29,71 @@ const setDefaultGenreInfo = (defaultGenreInfo, data) => {
  * @returns {JSX.Element} - JSX element representing the Genre Page.
  * @throws {Error} - Throws an error if there is an issue fetching the movie list.
  */
+
+export async function generateMetadata({ params }: GenrePageProps) {
+  // Extract genre slug from parameters
+  const genreSlug = params.genre;
+
+  // Set up default genre information structure
+  const defaultGenreInfo: GenreInfoAPI = {
+    id: 0,
+    name: '',
+    description: '',
+    movies: [],
+  };
+
+  try {
+    // Fetch the list of movies for the specified genre
+    const {
+      data: [genreData],
+    }: { data: GenreInfoAPI[] } = await fetchMovieListForGenre({
+      genreSlug,
+    });
+
+    if (genreData && genreData.movies && genreData.movies.length > 0) {
+      setDefaultGenreInfo(defaultGenreInfo, genreData);
+    } else {
+      // If no movies available, fetch data for the "Cortometrajes Gratuitos" section
+      const { data }: HomeSectionRequestAPI = await fetchHomeSection({
+        section: genreSlug,
+      });
+      const homeSectionData = data[0];
+
+      setDefaultGenreInfo(defaultGenreInfo, homeSectionData);
+    }
+  } catch (error) {
+    // Handle the error (e.g., display an error message)
+    console.error('Error fetching data:', error);
+    // You can also redirect to an error page if needed
+  }
+
+  return {
+    title: `Cinergia | ${defaultGenreInfo?.name}`,
+    description: `Explora la riqueza del cine de ${defaultGenreInfo?.name} en Cinergia. Descubre emocionantes películas, cautivadores cortometrajes y envolventes largometrajes.`,
+    keywords: [
+      'Cinergia',
+      'cine en streaming',
+      'películas',
+      'cortometrajes',
+      'largometrajes',
+      'géneros cinematográficos',
+      'explorar géneros',
+      'últimas películas',
+      'cinematografía',
+      'plataforma de streaming',
+      defaultGenreInfo?.name,
+    ],
+    authors: { name: 'Cinergia' },
+    openGraph: {
+      type: 'website',
+      title: `Cinergia | ${defaultGenreInfo?.name}`,
+      description: `Explora la riqueza del cine latinoamericano en Cinergia. Descubre lo mejor del cine de ${defaultGenreInfo?.name}, solo aquí.`,
+      siteName: 'Cinergia',
+      images: ['https://cdn.cinergia.lat/images/logo-web-2B.png'],
+    },
+  };
+}
+
 export default async function GenrePage({ params }: GenrePageProps) {
   // Extract genre slug from parameters
   const genreSlug = params.genre;

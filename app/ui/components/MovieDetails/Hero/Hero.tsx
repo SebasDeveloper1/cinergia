@@ -25,6 +25,7 @@ import { HerProps } from './Hero.model';
  *   return <Hero movieId={movieId} />;
  * };
  */
+
 export async function Hero({ movieId }: HerProps): Promise<JSX.Element> {
   // Fetches movie information based on the provided ID
   const { data }: { data: MovieDetailsAPI[] } =

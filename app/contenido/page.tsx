@@ -1,6 +1,7 @@
 // Import necessary dependencies and components
 import { Hero } from '@/app/ui/components/Content/Hero';
 import { ListSection } from '@/app/ui/components/Content/ListSection/ListSection';
+import { Metadata } from 'next';
 
 /**
  * Content Page Component
@@ -11,6 +12,34 @@ import { ListSection } from '@/app/ui/components/Content/ListSection/ListSection
  * @component
  * @returns {JSX.Element} - JSX element representing the Content component.
  */
+
+export const metadata: Metadata = {
+  title: 'Cinergia | Contenido: Explora el Cine Latinoamericano',
+  description:
+    'Explora la riqueza del cine latinoamericano en Cinergia. Descubre emocionantes películas, cautivadores cortometrajes y envolventes largometrajes, todos creados con pasión y dedicación en la región. Sumérgete en la diversidad de géneros cinematográficos, explora historias únicas y talento excepcional. ¡Cinergia es tu ventana al extraordinario mundo del cine latinoamericano!',
+  keywords: [
+    'Cinergia',
+    'cine latinoamericano',
+    'películas latinoamericanas',
+    'cortometrajes latinoamericanos',
+    'largometrajes latinoamericanos',
+    'géneros cinematográficos',
+    'explorar géneros',
+    'últimas películas',
+    'cinematografía regional',
+    'plataforma de streaming latinoamericana',
+  ],
+  authors: { name: 'Cinergia' },
+  openGraph: {
+    type: 'website',
+    title: 'Cinergia - Géneros y Últimas Películas Latinoamericanas',
+    description:
+      'Explora la riqueza del cine latinoamericano en Cinergia. Descubre emocionantes películas, cautivadores cortometrajes y envolventes largometrajes, todos creados con pasión y dedicación en la región. ¡Cinergia es tu ventana al extraordinario mundo del cine latinoamericano!',
+    siteName: 'Cinergia',
+    images: ['https://cdn.cinergia.lat/images/logo-web-2B.png'],
+  },
+};
+
 export default function Content(): JSX.Element {
   /**
    * Render the JSX for the Content component
