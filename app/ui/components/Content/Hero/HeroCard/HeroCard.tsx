@@ -51,9 +51,9 @@ export function HeroCard({
               {category}
             </span>
             {/* Movie title */}
-            <h2 className="heading-3 w-full md:w-3/4 font-extrabold text-textColorNeutral-50 mt-2">
+            <h1 className="heading-3 w-full md:w-3/4 font-extrabold text-textColorNeutral-50 mt-2">
               {name}
-            </h2>
+            </h1>
             {/* Movie release year */}
             <span className="span-lg max-w-prose text-textColorNeutral-100">
               {date}

@@ -30,9 +30,9 @@ export function MovieList({ genreInfo, movieList }: MovieListProps) {
     <section className="flex place-content-center w-full py-16">
       <div className="w-11/12 md:w-10/12">
         {/* Genre Heading */}
-        <h2 className="heading-3 font-bold text-textColorNeutral-50 w-fit mb-12">
+        <h1 className="heading-3 font-bold text-textColorNeutral-50 w-fit mb-12">
           {name}
-        </h2>
+        </h1>
         {/* Movie Grid */}
         <ul className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-x-4 gap-y-8 w-full">
           {movieList.map((movie: MovieAPI) => (

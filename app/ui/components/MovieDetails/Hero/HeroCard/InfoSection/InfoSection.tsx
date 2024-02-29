@@ -169,7 +169,7 @@ export function InfoSection({ movieData }: InfoSectionProps): JSX.Element {
         <section className="col-span-1 flex flex-col gap-4 w-full h-full">
           <article className="flex flex-col justify-center gap-2 w-full h-auto text-textColorNeutral-50">
             <div className="w-full leading-4">
-              <h2 className="heading-5 font-extrabold">{name}</h2>
+              <h1 className="heading-5 font-extrabold">{name}</h1>
               <span className="span-xs px-1.5 py-0.5 mb-4 rounded-r-full bg-primary-600 text-textColorNeutral-50 font-medium">
                 {category}
               </span>
