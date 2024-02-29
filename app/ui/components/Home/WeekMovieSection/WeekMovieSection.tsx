@@ -2,6 +2,8 @@
 import { fetchHomeSection, fetchMovieDetails } from '@/app/lib/data/fetch';
 import { homeSections } from '@/app/lib/lists/homeSectionSlugs';
 import { RecommendedMovieBanner } from '@/app/ui/components/Home/RecommendedMovieBanner';
+import { Suspense } from 'react';
+import { Loading } from './LoadingSkeleton';
 
 /**
  * WeekMovieSection Component
@@ -34,11 +36,15 @@ export async function WeekMovieSection(): Promise<JSX.Element> {
      * Render the JSX for the WeekMovieSection component
      */
     return (
-      <RecommendedMovieBanner
-        titleBanner="Película de la semana"
-        background={sectionInfo?.background}
-        movieData={firstMovieDetails}
-      />
+      <>
+        <Suspense fallback={<Loading />}>
+          <RecommendedMovieBanner
+            titleBanner="Película de la semana"
+            background={sectionInfo?.background}
+            movieData={firstMovieDetails}
+          />
+        </Suspense>
+      </>
     );
   } catch (error) {
     // Handle errors and throw an informative error message

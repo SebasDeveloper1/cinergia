@@ -2,8 +2,8 @@
 // Import necessary dependencies and types
 import { useEffect, useState } from 'react';
 import { HorizontalMovieListSecondaryTypes } from '../HorizontalMovieList.model';
-import HorizontalMovieListSecondarySkeleton from './HorizontalMovieListSecondarySkeleton';
 import { HorizontalSlider } from '../../Sliders/HorizontalSlider';
+import { Loading } from './LoadingSkeleton';
 
 /**
  * HorizontalMovieListSecondary Component
@@ -38,7 +38,7 @@ export function HorizontalMovieListSecondary({
 
   // Render skeleton loader while loading
   if (loading) {
-    return <HorizontalMovieListSecondarySkeleton />;
+    return <Loading />;
   }
 
   // Render the actual content after loading

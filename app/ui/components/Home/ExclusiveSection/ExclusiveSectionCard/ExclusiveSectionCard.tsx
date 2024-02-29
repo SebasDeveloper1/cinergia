@@ -32,7 +32,7 @@ export function ExclusiveSectionCard({
   // Render the JSX for the ExclusiveSectionCard component
   return (
     <section
-      className="relative flex items-center justify-center w-full min-height-banner--sm lg:min-height-banner--lg bg-cover bg-center "
+      className="relative flex items-center justify-center w-full min-h-[100vh] bg-cover bg-center "
       style={{
         backgroundImage: backgroundImageUrl,
       }}
@@ -42,7 +42,7 @@ export function ExclusiveSectionCard({
           {titleBanner}
         </span>
       </div>
-      <div className="relative flex items-center justify-center w-full min-height-banner--sm lg:min-height-banner--lg py-5 lg:py-10 bg-gradient-to-br from-bgPrimaryDark/70 via-bgPrimaryDark/50 to-transparent after:absolute after:inset-x-0 after:bottom-0 after:w-full after:h-4 after:bg-gradient-to-t after:from-bgPrimaryDark after:to-transparent">
+      <div className="relative flex items-center justify-center w-full min-h-[100vh] py-5 lg:py-10 bg-gradient-to-br from-bgPrimaryDark/70 via-bgPrimaryDark/50 to-transparent after:absolute after:inset-x-0 after:bottom-0 after:w-full after:h-4 after:bg-gradient-to-t after:from-bgPrimaryDark after:to-transparent">
         <div className="z-30 flex flex-col justify-center gap-8 w-11/12 md:w-10/12">
           <div className="flex flex-col gap-4 w-full">
             {/* Exclusive badge */}

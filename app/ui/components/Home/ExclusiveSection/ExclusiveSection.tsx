@@ -2,6 +2,8 @@
 import { fetchHomeSection, fetchMovieDetails } from '@/app/lib/data/fetch';
 import { ExclusiveSectionCard } from './ExclusiveSectionCard';
 import { homeSections } from '@/app/lib/lists/homeSectionSlugs';
+import { Suspense } from 'react';
+import { Loading } from './LoadingSkeleton';
 
 /**
  * ExclusiveSection Component
@@ -32,11 +34,15 @@ export async function ExclusiveSection(): Promise<JSX.Element> {
 
     // Render the ExclusiveSectionCard component with the fetched movie data
     return (
-      <ExclusiveSectionCard
-        titleBanner="Exclusiva"
-        background={sectionInfo?.background}
-        movieData={firstMovieDetails}
-      />
+      <>
+        <Suspense fallback={<Loading />}>
+          <ExclusiveSectionCard
+            titleBanner="Exclusiva"
+            background={sectionInfo?.background}
+            movieData={firstMovieDetails}
+          />
+        </Suspense>
+      </>
     );
   } catch (error) {
     // Handle errors and throw an informative error message

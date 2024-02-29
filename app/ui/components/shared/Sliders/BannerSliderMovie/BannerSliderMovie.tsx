@@ -4,10 +4,10 @@ import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { HorizontalSlider } from '@/app/ui/components/shared/Sliders/HorizontalSlider';
 import { extractValuesByKey } from '@/app/lib/utils/extractValuesByKey';
-import BannerSliderMovieSkeleton from './BannerSliderMovieSkeleton';
 import { BannerSliderMovieProps } from './BannerSliderMovie.model';
 import { CDN_IMAGES_BASE_URL } from '@/app/lib/data/urls';
 import { routesPaths } from '@/app/routes/routes';
+import { Loading } from './LoadingSkeleton';
 
 /**
  * BannerSliderMovie Component
@@ -53,18 +53,18 @@ export function BannerSliderMovie({
 
   // Render skeleton loader while loading
   if (loading) {
-    return <BannerSliderMovieSkeleton />;
+    return <Loading />;
   }
 
   // Render the JSX for the BannerSliderMovie component
   return (
     <section
-      className="flex items-center justify-center w-full min-height-banner--sm lg:min-height-banner--lg bg-cover bg-center "
+      className="flex items-center justify-center w-full min-h-[100vh] bg-cover bg-center "
       style={{
         backgroundImage: backgroundImageUrl,
       }}
     >
-      <div className="relative flex flex-col items-center justify-center w-full min-height-banner--sm lg:min-height-banner--lg py-14 lg:py-16 bg-gradient-to-br from-bgPrimaryDark via-bgPrimaryDark/40 to-transparent after:absolute after:inset-x-0 after:top-0 after:w-full after:h-4 after:bg-gradient-to-t after:from-transparent after:to-bgPrimaryDark">
+      <div className="relative flex flex-col items-center justify-center w-full min-h-[100vh] py-14 lg:py-16 bg-gradient-to-br from-bgPrimaryDark via-bgPrimaryDark/40 to-transparent after:absolute after:inset-x-0 after:top-0 after:w-full after:h-4 after:bg-gradient-to-t after:from-transparent after:to-bgPrimaryDark">
         {/* Section title */}
         <div className="z-10 absolute top-0 -left-5 w-fit p-12 bg-greenBrushStroke1 bg-clip-padding bg-center bg-no-repeat">
           <span className="span-xl text-2xl lg:text-4xl text-textColorNeutral-50 font-semibold whitespace-nowrap">

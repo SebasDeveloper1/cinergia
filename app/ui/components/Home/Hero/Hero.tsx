@@ -1,6 +1,8 @@
 // Import necessary dependencies and types
 import { fetchMovieDetails, fetchMovieList } from '@/app/lib/data/fetch';
 import { HeroSlider } from './HeroSlider';
+import { Suspense } from 'react';
+import { Loading } from './LoadingSkeleton';
 
 /**
  * Hero Component
@@ -29,5 +31,12 @@ export async function Hero(): Promise<JSX.Element> {
   const flatMovieList = movieList.flat();
 
   // Render the HeroSlider component with the fetched movie data
-  return <HeroSlider movieList={flatMovieList} />;
+  return (
+    <>
+      <Suspense fallback={<Loading />}>
+        <HeroSlider movieList={flatMovieList} />;
+      </Suspense>
+      ;
+    </>
+  );
 }
