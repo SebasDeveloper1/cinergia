@@ -1,9 +1,9 @@
 'use client';
 // Import necessary dependencies and types
 import { useEffect, useState } from 'react';
-import HorizontalMovieListPrimarySkeleton from './HorizontalMovieListPrimarySkeleton';
 import { HorizontalMovieListPrimaryTypes } from '../HorizontalMovieList.model';
 import { HorizontalSlider } from '@/app/ui/components/shared/Sliders/HorizontalSlider';
+import { Loading } from './LoadingSkeleton';
 
 /**
  * HorizontalMovieListPrimary Component
@@ -31,6 +31,10 @@ export function HorizontalMovieListPrimary({
       setLoading(false);
     }, 1000);
   }, []);
+
+  if (loading) {
+    return <Loading />;
+  }
 
   /**
    * Render the JSX for the HorizontalMovieListPrimary component
@@ -67,21 +71,16 @@ export function HorizontalMovieListPrimary({
       <div className="relative w-full">
         {/* Background gradient for mobile view */}
         <div className="z-10 md:hidden absolute inset-y-0 right-0 w-14  bg-gradient-to-l from-bgPrimaryDark to-transparent"></div>
-        {/* Render skeleton loader while loading */}
-        {loading ? (
-          <HorizontalMovieListPrimarySkeleton />
-        ) : (
-          /* Horizontal movie slider */
-          <HorizontalSlider
-            movieList={{ type: 'API', data: movieList }}
-            breakpoints={{
-              320: { slidesPerView: 2 },
-              480: { slidesPerView: 3 },
-              768: { slidesPerView: 4 },
-              1536: { slidesPerView: 5 },
-            }}
-          />
-        )}
+        {/* Horizontal movie slider  */}
+        <HorizontalSlider
+          movieList={{ type: 'API', data: movieList }}
+          breakpoints={{
+            320: { slidesPerView: 2 },
+            480: { slidesPerView: 3 },
+            768: { slidesPerView: 4 },
+            1536: { slidesPerView: 5 },
+          }}
+        />
       </div>
     </article>
   );

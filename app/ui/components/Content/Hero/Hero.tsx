@@ -1,8 +1,9 @@
 // Import necessary dependencies and types
-import React from 'react';
+import React, { Suspense } from 'react';
 import { HeroCard } from '@/app/ui/components/Content/Hero/HeroCard';
 import { fetchHomeSection, fetchMovieDetails } from '@/app/lib/data/fetch';
 import { homeSections } from '@/app/lib/lists/homeSectionSlugs';
+import { Loading } from './LoadingSkeleton';
 
 /**
  * Fetches trending movies and renders the HeroCard component.
@@ -35,11 +36,15 @@ export async function Hero(): Promise<JSX.Element> {
      * Render the JSX for the Hero component
      */
     return (
-      <HeroCard
-        firstMovieDetails={firstMovieDetails}
-        movieList={movieListReverse}
-        listSlug={listSlug}
-      />
+      <>
+        <Suspense fallback={<Loading />}>
+          <HeroCard
+            firstMovieDetails={firstMovieDetails}
+            movieList={movieListReverse}
+            listSlug={listSlug}
+          />
+        </Suspense>
+      </>
     );
   } catch (error) {
     // Handle errors and throw an informative error message
