@@ -1,31 +1,4 @@
-'use client';
-import { validateUser } from '@/app/lib/data/createUser';
-import { signIn, useSession } from 'next-auth/react';
-import { useEffect } from 'react';
-import { Loading } from './LoadingSkeleton';
-export default function GooglePage(): JSX.Element {
-  const { data: session, status } = useSession();
-
-  useEffect(() => {
-    const fetchData = async () => {
-      if (!(status === 'loading') && !session) {
-        void signIn('google');
-      }
-
-      if (session) {
-        await validateUser({ user: session.user as UserDataAPI });
-        window.close();
-      }
-    };
-
-    fetchData();
-  }, [session, status]);
-
-  // Loading state while checking for session information
-  if (status === 'loading') {
-    return <Loading />;
-  }
-
+export function Loading() {
   return (
     <div className="z-[60] fixed inset-0 w-screen h-screen flex flex-col justify-center items-center bg-white">
       <div
