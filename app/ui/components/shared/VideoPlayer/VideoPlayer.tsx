@@ -1,7 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
-import VideoPlayerSkeleton from './VideoPlayerSkeleton';
 import { VideoPlayerProps } from './VideoPlayer.model';
+import { Loading } from './LoadingSkeleton';
 
 /**
  * VideoPlayer Component
@@ -45,7 +45,7 @@ export function VideoPlayer(props: VideoPlayerProps) {
 
   return (
     <div className="relative w-full h-full">
-      {loading && <VideoPlayerSkeleton />}
+      {loading && <Loading />}
       <iframe
         id="videoPlayer"
         className={`w-full h-full ${loading ? 'hidden' : ''}`}
