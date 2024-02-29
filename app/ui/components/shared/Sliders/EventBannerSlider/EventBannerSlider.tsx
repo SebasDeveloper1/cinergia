@@ -2,8 +2,8 @@
 // Import necessary dependencies and types
 import { useState, useEffect } from 'react';
 import { HorizontalSlider } from '@/app/ui/components/shared/Sliders/HorizontalSlider';
-import EventBannerSliderSkeleton from './EventBannerSliderSkeleton';
 import { EventBannerSliderProps } from './EventBannerSlider.model';
+import { Loading } from './LoadingSkeleton';
 
 /**
  * EventBannerSlider Component
@@ -41,7 +41,7 @@ export function EventBannerSlider({
    */
   // Render skeleton loader while loading
   if (loading) {
-    return <EventBannerSliderSkeleton />;
+    return <Loading />;
   }
 
   // Render the actual content after loading

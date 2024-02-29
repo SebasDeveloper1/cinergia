@@ -1,4 +1,4 @@
-export default function EventBannerSliderSkeleton() {
+export function Loading() {
   return (
     <section className="flex items-center justify-center w-full min-height-banner--sm lg:min-height-banner--lg bg-cover bg-center rounded-md bg-dark-800 animate-pulse">
       <div className="flex flex-col items-center justify-center w-full min-height-banner--sm lg:min-height-banner--lg py-14 lg:py-16">
