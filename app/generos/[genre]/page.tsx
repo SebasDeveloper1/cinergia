@@ -4,6 +4,8 @@ import { Hero } from '@/app/ui/components/Genres/Hero';
 import { MovieList } from '@/app/ui/components/Genres/MovieList';
 import { ScrollTopButtonWrapper } from '@/app/ui/components/shared/ScrollTopButtonWrapper';
 import { GenrePageProps } from './GenrePage.model';
+import { Loading } from '@/app/ui/components/Genres/Hero/LoadingSkeleton';
+import { Suspense } from 'react';
 
 // Utility function to handle common logic for assigning values
 const setDefaultGenreInfo = (defaultGenreInfo, data) => {
@@ -144,7 +146,9 @@ export default async function GenrePage({ params }: GenrePageProps) {
       <section className="w-full">
         <ScrollTopButtonWrapper>
           <>
-            <Hero genreInfo={defaultGenreInfo} movieInfo={movieList[0]} />
+            <Suspense fallback={<Loading />}>
+              <Hero genreInfo={defaultGenreInfo} movieInfo={movieList[0]} />
+            </Suspense>
             <MovieList genreInfo={defaultGenreInfo} movieList={movieList} />
           </>
         </ScrollTopButtonWrapper>
