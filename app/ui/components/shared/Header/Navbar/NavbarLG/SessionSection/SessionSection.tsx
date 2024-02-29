@@ -4,6 +4,7 @@ import { signIn, signOut, useSession } from 'next-auth/react';
 import { useState, MouseEvent, TouchEvent, KeyboardEvent } from 'react';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
+import { Loading } from './LoadingSkeleton';
 
 /**
  * SessionSection Component
@@ -38,11 +39,7 @@ export function SessionSection(): JSX.Element {
 
   // Show a loading indicator while checking the session status
   if (status === 'loading' && pathname !== '/auth/signin') {
-    return (
-      <div className="rounded-lg padding-button bg-dark-500 whitespace-nowrap ml-6 animate-pulse text-transparent">
-        Iniciar sesión
-      </div>
-    );
+    return <Loading />;
   }
 
   return (
