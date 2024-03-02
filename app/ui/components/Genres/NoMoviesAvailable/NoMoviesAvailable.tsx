@@ -1,5 +1,14 @@
 import Image from 'next/image';
 import noMoviesAvailable from '@/public/images/noMoviesAvailable.svg';
+/**
+ * NoMoviesAvailable Component
+ *
+ * A React component that represents a message when no movies are available.
+ * It includes an illustrative image and a corresponding text message.
+ *
+ * @component
+ * @returns {JSX.Element} - JSX element representing the NoMoviesAvailable component.
+ */
 export function NoMoviesAvailable() {
   return (
     <section className="flex flex-col justify-center items-center w-full h-screen">

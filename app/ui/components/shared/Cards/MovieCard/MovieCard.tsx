@@ -6,7 +6,6 @@ import { useState, useEffect } from 'react';
 import { MovieCardPropsTypes } from './MovieCard.model';
 import createMovieSlug from '@/app/lib/utils/createMovieSlug';
 import { routesPaths } from '@/app/routes/routes';
-
 /**
  * MovieCard Component
  *
@@ -21,10 +20,8 @@ import { routesPaths } from '@/app/routes/routes';
 export function MovieCard({ movieData }: MovieCardPropsTypes) {
   // Extracting movie data properties
   const { id, title, backdrop_path } = movieData;
-
   // State to manage the width of the movie backdrop based on window size
   const [widthBackdropMovie, setWidthBackdropMovie] = useState<string>('w780');
-
   /**
    * useEffect hook to handle window resize events and update the width of the movie backdrop accordingly.
    */
@@ -33,21 +30,16 @@ export function MovieCard({ movieData }: MovieCardPropsTypes) {
       const width = window.innerWidth >= 768 ? 'w1280' : 'w780';
       setWidthBackdropMovie(width);
     };
-
     // Add event listener for window resize
     window.addEventListener('resize', handleResize);
-
     // Call handleResize initially
     handleResize();
-
     // Clean up event listener on component unmount
     return () => {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
-
   const imageURL = `https://image.tmdb.org/t/p/${widthBackdropMovie}/${backdrop_path}`;
-
   return (
     <ul>
       <li className="group overflow-hidden rounded-sm bg-bgSecondaryDark md:hover:bg-dark-800">

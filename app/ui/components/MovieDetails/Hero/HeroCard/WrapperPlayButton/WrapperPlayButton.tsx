@@ -175,14 +175,13 @@ export default function WrapperPlayButton({
               MERCHANT_CODE,
               ORDER_NUMBER,
               ORDER_CURRENCY,
+              // @ts-ignore
               ORDER_AMOUNT,
               currentTimeUnix,
             });
-
             // Create IziPay instance and load the form
             // @ts-ignore
             const checkout = new Izipay({ config: iziConfig?.config });
-
             checkout &&
               checkout.LoadForm({
                 authorization: token,
@@ -193,7 +192,6 @@ export default function WrapperPlayButton({
             console.log(error.message, error.Errors, error.date);
           }
         };
-
         // Load the payment form
         handleLoadForm();
       } else if (error) {
@@ -201,7 +199,6 @@ export default function WrapperPlayButton({
       }
     });
   };
-
   /**
    * Initiates the payment process for the movie.
    */
@@ -214,7 +211,6 @@ export default function WrapperPlayButton({
       orderCurrency: ORDER_CURRENCY, // Order currency
     });
   };
-
   return (
     <div className="z-[10] w-fit h-fit">
       <PlayButton

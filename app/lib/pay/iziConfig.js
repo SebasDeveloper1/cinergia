@@ -1,4 +1,17 @@
 /* eslint-disable no-undef */
+/**
+ * Function to generate IziPay configuration.
+ *
+ * @function
+ * @param {Object} params - Configuration parameters for IziPay.
+ * @param {string} params.TRANSACTION_ID - Unique transaction identifier.
+ * @param {string} params.MERCHANT_CODE - Merchant code for IziPay.
+ * @param {string} params.ORDER_NUMBER - Order number for the transaction.
+ * @param {string} params.ORDER_CURRENCY - Currency code for the order.
+ * @param {number} params.ORDER_AMOUNT - Amount for the order.
+ * @param {number} params.currentTimeUnix - Current time in Unix timestamp format.
+ * @returns {Object} - IziPay configuration object.
+ */
 export const iziConfigFuntion = ({
   TRANSACTION_ID,
   MERCHANT_CODE,
@@ -8,7 +21,7 @@ export const iziConfigFuntion = ({
   currentTimeUnix,
 }) => {
   return {
-    // Configuración específica para IziPay
+    // Specific configuration for IziPay
     config: {
       transactionId: TRANSACTION_ID,
       action: Izipay.enums.payActions.PAY,

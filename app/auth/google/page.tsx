@@ -1,31 +1,53 @@
 'use client';
-import { validateUser } from '@/app/lib/data/createUser';
+// Import React and related libraries
+import React, { useEffect } from 'react';
+// Import Next.js libraries and components
 import { signIn, useSession } from 'next-auth/react';
-import { useEffect } from 'react';
+// Import internal utilities and components
+import { validateUser } from '@/app/lib/data/createUser';
 import { Loading } from './LoadingSkeleton';
+/**
+ * GooglePage Component
+ *
+ * This component represents a page that authenticates users using Google sign-in.
+ * It uses NextAuth for authentication and includes a loading state while checking for session information.
+ *
+ * @component
+ * @returns {JSX.Element} - JSX element representing the GooglePage component.
+ * @example
+ * // Usage in a parent component or route
+ * import GooglePage from '@/app/ui/components/GooglePage';
+ * //...
+ * return (
+ *   <GooglePage />
+ * );
+ */
 export default function GooglePage(): JSX.Element {
+  // Retrieve user session information and status using useSession hook
   const { data: session, status } = useSession();
 
+  // useEffect hook to perform actions when the component mounts
   useEffect(() => {
+    // Function to fetch data and handle authentication
     const fetchData = async () => {
+      // If not in a loading state and no session, initiate Google sign-in
       if (!(status === 'loading') && !session) {
         void signIn('google');
       }
-
+      // If a session exists, validate the user and close the window
       if (session) {
         await validateUser({ user: session.user as UserDataAPI });
         window.close();
       }
     };
-
+    // Call the fetchData function
     fetchData();
   }, [session, status]);
-
-  // Loading state while checking for session information
+  // Display loading state while checking for session information
   if (status === 'loading') {
     return <Loading />;
   }
-
+  // Render the main content of the component
   return (
     <div className="z-[60] fixed inset-0 w-screen h-screen flex flex-col justify-center items-center bg-white">
       <div

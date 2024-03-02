@@ -3,7 +3,6 @@ import Link from 'next/link';
 import { ExclusiveSectionCardProps } from './ExclusiveSectionCard.model';
 import { CDN_IMAGES_BASE_URL } from '@/app/lib/data/urls';
 import { routesPaths } from '@/app/routes/routes';
-
 /**
  * ExclusiveSectionCard Component
  *
@@ -23,12 +22,10 @@ export function ExclusiveSectionCard({
 }: ExclusiveSectionCardProps): JSX.Element {
   // Destructure movieData to extract relevant information
   const { name, description, slug, image2, agerates } = movieData;
-
   // Construct the background image URL
   const backgroundImageUrl = background
     ? `url('${CDN_IMAGES_BASE_URL}${background}')`
     : `url('${CDN_IMAGES_BASE_URL}${image2}')`;
-
   // Render the JSX for the ExclusiveSectionCard component
   return (
     <section
@@ -63,7 +60,6 @@ export function ExclusiveSectionCard({
               {description}
             </p>
           </div>
-
           {/* Action buttons */}
           <div className="flex flex-col md:flex-row gap-4 justify-start items-center w-full">
             {/* "Ver película" button */}

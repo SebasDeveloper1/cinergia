@@ -3,17 +3,35 @@ import Link from 'next/link';
 import { RecommendedMovieBannerProps } from './RecommendedMovieBanner.model';
 import { CDN_IMAGES_BASE_URL } from '@/app/lib/data/urls';
 import { routesPaths } from '@/app/routes/routes';
-
 /**
  * RecommendedMovieBanner Component
  *
  * A React component presenting a banner with information about a recommended movie.
  *
  * @component
- * @param {Object} props - Props for the RecommendedMovieBanner component.
+ * @param {RecommendedMovieBannerProps} props - Props for the RecommendedMovieBanner component.
  * @param {string} props.titleBanner - The title for the banner section.
+ * @param {string} props.background - The background image URL for the banner.
  * @param {MovieType} props.movieData - Information about the recommended movie.
  * @returns {JSX.Element} - JSX element representing the RecommendedMovieBanner component.
+ * @example
+ * // Example usage of RecommendedMovieBanner component
+ * const MyMovieBanner = () => {
+ *   const movieData = {
+ *     name: 'Example Movie',
+ *     description: 'This is an example movie.',
+ *     slug: 'example-movie',
+ *     image2: 'example-image.jpg',
+ *     agerates: [{ range: 'PG-13' }],
+ *   };
+ *   return (
+ *     <RecommendedMovieBanner
+ *       titleBanner="Recommended Movie"
+ *       background="example-background.jpg"
+ *       movieData={movieData}
+ *     />
+ *   );
+ * };
  */
 export function RecommendedMovieBanner({
   titleBanner,
@@ -22,12 +40,10 @@ export function RecommendedMovieBanner({
 }: RecommendedMovieBannerProps): JSX.Element {
   // Destructure movieData to extract relevant information
   const { name, description, slug, image2, agerates } = movieData;
-
   // Construct the background image URL
   const backgroundImageUrl = background
     ? `url('${CDN_IMAGES_BASE_URL}${background}')`
     : `url('${CDN_IMAGES_BASE_URL}${image2}')`;
-
   /**
    * Render the JSX for the RecommendedMovieBanner component
    */
@@ -44,7 +60,6 @@ export function RecommendedMovieBanner({
             {titleBanner}
           </span>
         </div>
-
         <div className="flex flex-col justify-center gap-8 w-11/12 md:w-10/12">
           <div className="flex flex-col gap-1 w-full">
             {/* Banner title and movie information */}
@@ -54,18 +69,15 @@ export function RecommendedMovieBanner({
                 {name}
               </h2>
             </div>
-
             {/* Agerates */}
             <span className="span-xl text-textColorAccent-500 font-semibold mb-5">
               {agerates[0]?.range}
             </span>
-
             {/* Movie overview */}
             <p className="paragraph-lg line-clamp-5 lg:line-clamp-none font-normal text-textColorNeutral-50 max-w-prose">
               {description}
             </p>
           </div>
-
           {/* Action buttons */}
           <div className="flex flex-col md:flex-row gap-4 justify-start items-center w-full">
             {/* "Ver Película" button */}

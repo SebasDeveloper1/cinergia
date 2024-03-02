@@ -8,7 +8,6 @@ import {
 } from 'react';
 import useOnClickOutside from '@/app/lib/hooks/useOnClickOutside';
 import { ModalProps } from '../Modal.model';
-
 /**
  * Modal Component
  *
@@ -23,36 +22,30 @@ import { ModalProps } from '../Modal.model';
  * @param {function} props.handleOpenModal - Function to handle opening and closing of the modal.
  * @returns {JSX.Element} - JSX element representing the Modal component.
  */
-
 export function VideoPlayerModal({
   children,
   openModalState,
   handleOpenModal,
 }: ModalProps) {
   const modalRef = useRef(null);
-
   useEffect(() => {
     if (openModalState) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'visible';
     }
-
     // Cleanup function
     return () => {
       document.body.style.overflow = 'visible';
     };
   }, [openModalState]);
-
   useOnClickOutside(modalRef, () => {
     handleOpenModal(!openModalState);
   });
-
   const handleClose = (e: MouseEvent | TouchEvent | KeyboardEvent) => {
     e.preventDefault();
     handleOpenModal(!openModalState);
   };
-
   return (
     <section className="z-[60] fixed inset-0 flex flex-col justify-center items-center gap-8 w-full h-screen bg-dark-950/80 backdrop-blur-sm">
       <button

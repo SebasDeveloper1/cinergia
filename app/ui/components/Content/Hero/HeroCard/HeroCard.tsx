@@ -1,10 +1,16 @@
 'use client';
 // Import necessary dependencies and types
+// React Hooks
 import { useState, useEffect } from 'react';
+// Model
 import { HeroCardProps } from './Hero.model';
+// Shared UI Components
 import { HorizontalMovieListPrimary } from '@/app/ui/components/shared/HorizontalMovieList/HorizontalMovieListPrimary';
+// Next.js
 import Link from 'next/link';
+// Data URLs
 import { CDN_IMAGES_BASE_URL } from '@/app/lib/data/urls';
+// Routes
 import { routesPaths } from '@/app/routes/routes';
 
 /**
@@ -17,6 +23,7 @@ import { routesPaths } from '@/app/routes/routes';
  * @param {HeroCardProps} props - Props for configuring the HeroCard component.
  * @param {MovieDetailsAPI} props.firstMovieDetails - Details of the first movie to be displayed.
  * @param {MovieAPI[]} props.movieList - List of movies for the horizontal movie list section.
+ * @param {string} props.listSlug - Slug for the movie list section.
  * @returns {JSX.Element} - JSX element representing the HeroCard component.
  */
 export function HeroCard({

@@ -41,7 +41,6 @@ export function Hero({ genreInfo, movieInfo }: HeroProps) {
           <h2 className="heading-2 font-bold text-textColorNeutral-50 w-fit">
             ¡Bienvenido!
           </h2>
-
           {/* Display genre description if available */}
           {description ? (
             <span className="span-xl md:text-2xl text-textColorNeutral-50 max-w-prose">

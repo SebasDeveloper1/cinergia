@@ -7,7 +7,6 @@ import { ShortFilmsBannerSection } from '@/app/ui/components/Home/ShortFilmsBann
 import { WeekMovieSection } from '@/app/ui/components/Home/WeekMovieSection';
 import { ScrollTopButtonWrapper } from './ui/components/shared/ScrollTopButtonWrapper';
 import { Metadata } from 'next';
-
 /**
  * Home Component
  *
@@ -19,7 +18,6 @@ import { Metadata } from 'next';
  * @component
  * @returns {JSX.Element} - JSX element representing the Home component.
  */
-
 export const metadata: Metadata = {
   title: 'Cinergia - Tu Plataforma de Streaming Favorita en Latinoamérica',
   description:
@@ -47,7 +45,6 @@ export const metadata: Metadata = {
     images: ['https://cdn.cinergia.lat/images/logo-web-2B.png'],
   },
 };
-
 export default function Home(): JSX.Element {
   return (
     <ScrollTopButtonWrapper>
@@ -55,19 +52,14 @@ export default function Home(): JSX.Element {
       <main className="w-full">
         {/* Hero section */}
         <Hero />
-
         {/* ExclusiveSection component */}
         <ExclusiveSection />
-
         {/* NewsSection component */}
         <NewsSection />
-
         {/* ShortFilmsBannerSection component */}
         <ShortFilmsBannerSection />
-
         {/* EventBannerSection component */}
         {/* <EventBannerSection /> */}
-
         {/* WeekMovieSection component */}
         <WeekMovieSection />
       </main>

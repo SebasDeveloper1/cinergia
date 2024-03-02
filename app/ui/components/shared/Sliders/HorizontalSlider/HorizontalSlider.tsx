@@ -12,7 +12,6 @@ import {
   ButtonStyleType,
   HorizontalSliderPropsTypes,
 } from './HorizontalSlider.model';
-
 /**
  * HorizontalSlider Component
  *
@@ -35,7 +34,6 @@ export function HorizontalSlider({
     '--swiper-navigation-color': '#ffffff',
     '--swiper-navigation-sides-offset': '0',
   };
-
   return (
     <Swiper
       navigation={{ enabled: true }}

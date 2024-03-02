@@ -6,12 +6,11 @@ import { convertMinutesToHours } from '@/app/lib/utils/convertMinutesToHours';
 import { HeroCardProps } from './HeroCard.model';
 import { routesPaths } from '@/app/routes/routes';
 import { CDN_IMAGES_BASE_URL } from '@/app/lib/data/urls';
-
 /**
  * HeroCard Component
  *
  * The HeroCard component represents a card displaying detailed information
- * about a movie, including name, slug, movieLength, description and image2.
+ * about a movie, including name, slug, duration, release year, description, image, and category.
  * It also includes a background image and a button to view the movie.
  *
  * @component
@@ -24,12 +23,10 @@ export function HeroCard({ movieData }: HeroCardProps): JSX.Element {
   const { name, slug, duration, release_year, description, image2, category } =
     movieData;
   const [date, setDate] = useState<number>(0);
-
   useEffect(() => {
     const year = new Date(release_year).getFullYear();
     return setDate(year);
   }, [release_year]);
-
   // Render the HeroCard component with movie details
   return (
     <section

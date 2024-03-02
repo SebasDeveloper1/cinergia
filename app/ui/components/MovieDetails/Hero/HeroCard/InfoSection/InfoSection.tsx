@@ -7,11 +7,10 @@ import {
   useEffect,
 } from 'react';
 import { VideoPlayerModal } from '@/app/ui/components/shared/Modals/VideoPlayerModal';
+import { VideoPlayer } from '@/app/ui/components/shared/VideoPlayer';
 import { convertMinutesToHours } from '@/app/lib/utils/convertMinutesToHours';
 import { extractValuesByKey } from '@/app/lib/utils/extractValuesByKey';
 import { InfoSectionProps } from '../HeroCard.model';
-import { VideoPlayer } from '@/app/ui/components/shared/VideoPlayer';
-
 /**
  * InfoSection Component
  *
@@ -24,9 +23,16 @@ import { VideoPlayer } from '@/app/ui/components/shared/VideoPlayer';
  * @param {MovieType} props.movieData - Movie data used to populate the information.
  * @param {VideoList} props.videos - List of videos related to the movie.
  * @returns {JSX.Element} - JSX element representing the InfoSection component.
- *
+ * @example
+ * // Example usage of InfoSection component in a React component
+ * const MovieDetailsPage = () => {
+ *   const movieData = //...fetch movie data from API or other source
+ *   const videos = //...fetch video data from API or other source
+ *   return (
+ *     <InfoSection movieData={movieData} videos={videos} />
+ *   );
+ * };
  */
-
 export function InfoSection({ movieData }: InfoSectionProps): JSX.Element {
   const {
     name,

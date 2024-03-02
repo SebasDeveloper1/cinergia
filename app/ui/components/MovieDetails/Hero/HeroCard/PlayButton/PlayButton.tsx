@@ -1,17 +1,36 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 'use client';
-import { signIn, useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
+import { signIn, useSession } from 'next-auth/react';
 import { PlayButtonProps } from '../HeroCard.model';
 import { paymentType } from '@/app/lib/lists/paymentType';
 import { Loading } from './LoadingSkeleton';
-
 /**
  * PlayButton Component
- * @param {PlayButtonProps} props - The properties of the PlayButton component.
- * @returns {JSX.Element} - The rendered PlayButton component.
+ *
+ * The `PlayButton` component provides a button to play a movie based on its payment type and the user's session.
+ *
+ * @component
+ * @param {PlayButtonProps} props - Props for configuring the PlayButton component.
+ * @param {MovieType} props.movieData - Movie data used to determine the payment type and navigate to the appropriate route.
+ * @param {Array} props.userMovieList - List of movies owned by the user.
+ * @param {boolean} props.isLoading - Loading state of the component.
+ * @param {Function} props.handlePay - Callback function to handle the payment process.
+ * @returns {JSX.Element} - JSX element representing the PlayButton component.
+ * @example
+ * // Example usage of PlayButton component in a React component
+ * const MovieDetails = () => {
+ *   const movieData = //...fetch movie data from API or other source
+ *   const userMovieList = //...fetch user's movie list from API or other source
+ *   const isLoading = //...loading state from API or other source
+ *   const handlePayment = () => {
+ *     //...logic to handle the payment process
+ *   }
+ *   return (
+ *     <PlayButton movieData={movieData} userMovieList={userMovieList} isLoading={isLoading} handlePay={handlePayment} />
+ *   );
+ * };
  */
-
 export function PlayButton({
   movieData,
   userMovieList,
@@ -21,7 +40,6 @@ export function PlayButton({
   const { slug, payment_type } = movieData;
   const { data: session, status } = useSession();
   const router = useRouter();
-
   /**
    * Handles the click event based on the payment type and user session.
    * Navigates to the appropriate route.
@@ -56,11 +74,9 @@ export function PlayButton({
       }
     }
   };
-
   if (isLoading || status === 'loading') {
     return <Loading />;
   }
-
   return (
     <>
       <button

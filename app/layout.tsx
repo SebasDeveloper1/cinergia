@@ -6,10 +6,8 @@ import { Header } from '@/app/ui/components/shared/Header';
 import { Footer } from '@/app/ui/components/shared/Footer';
 import { ScrollWrapper } from '@/app/lib/utils/ScrollWrapper';
 import GoogleAuthProvider from './context/GoogleAuthProvider';
-
 // Initialize the Inter font with Latin subset
 const inter = Inter({ subsets: ['latin'] });
-
 /**
  * RootLayout Component
  *
@@ -20,7 +18,6 @@ const inter = Inter({ subsets: ['latin'] });
  * @param {React.ReactNode} props.children - The child components to be rendered within the layout.
  * @returns {JSX.Element} - JSX element representing the RootLayout component.
  */
-
 export default function RootLayout({
   children,
 }: {

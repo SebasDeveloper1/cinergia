@@ -1,10 +1,9 @@
 'use client';
 // Import necessary dependencies and types
 import { useEffect, useState } from 'react';
-import { HorizontalMovieListPrimaryTypes } from '../HorizontalMovieList.model';
 import { HorizontalSlider } from '@/app/ui/components/shared/Sliders/HorizontalSlider';
+import { HorizontalMovieListPrimaryTypes } from '../HorizontalMovieList.model';
 import { Loading } from './LoadingSkeleton';
-
 /**
  * HorizontalMovieListPrimary Component
  *
@@ -14,7 +13,7 @@ import { Loading } from './LoadingSkeleton';
  * @param {Object} props - The component props.
  * @param {string} props.title - The title of the movie list.
  * @param {string} props.path - The path or link associated with the movie list.
- * @param {TrendingMovieType[] | MovieType[]} props.movieList - An array of movie data of type TrendingMovieType[] or MovieType[].
+ * @param {MovieAPI[]} props.movieList - An array of movie data of type TrendingMovieType[] or MovieType[].
  * @returns {JSX.Element} - JSX element representing the HorizontalMovieListPrimary component.
  */
 export function HorizontalMovieListPrimary({
@@ -24,18 +23,15 @@ export function HorizontalMovieListPrimary({
 }: HorizontalMovieListPrimaryTypes): JSX.Element {
   // State to manage loading status
   const [loading, setLoading] = useState(true);
-
   // Simulating loading delay with a timeout
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
     }, 1000);
   }, []);
-
   if (loading) {
     return <Loading />;
   }
-
   /**
    * Render the JSX for the HorizontalMovieListPrimary component
    */

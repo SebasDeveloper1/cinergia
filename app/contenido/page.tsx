@@ -1,8 +1,8 @@
-// Import necessary dependencies and components
+// Import React and related libraries
+import { Metadata } from 'next';
+// Import internal components
 import { Hero } from '@/app/ui/components/Content/Hero';
 import { ListSection } from '@/app/ui/components/Content/ListSection/ListSection';
-import { Metadata } from 'next';
-
 /**
  * Content Page Component
  *
@@ -11,8 +11,14 @@ import { Metadata } from 'next';
  *
  * @component
  * @returns {JSX.Element} - JSX element representing the Content component.
+ * @example
+ * // Usage in a parent component or route
+ * import Content from '@/app/ui/components/Content';
+ * //...
+ * return (
+ *   <Content />
+ * );
  */
-
 export const metadata: Metadata = {
   title: 'Cinergia | Contenido: Explora el Cine Latinoamericano',
   description:
@@ -39,7 +45,15 @@ export const metadata: Metadata = {
     images: ['https://cdn.cinergia.lat/images/logo-web-2B.png'],
   },
 };
-
+/**
+ * Content Page Component
+ *
+ * This component represents the main structure of the Content page.
+ * It includes a Hero component for displaying a featured section and a ListSection component for displaying a list of items.
+ *
+ * @component
+ * @returns {JSX.Element} - JSX element representing the Content component.
+ */
 export default function Content(): JSX.Element {
   /**
    * Render the JSX for the Content component

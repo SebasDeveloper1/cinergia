@@ -1,10 +1,9 @@
 // Import necessary dependencies and types
 import { InfoSection } from './InfoSection';
+import WrapperPlayButton from './WrapperPlayButton/WrapperPlayButton';
 import { OverviewSectionSM } from './OverviewSectionSM';
 import { ConfigPayment, HeroCardProps } from './HeroCard.model';
-import WrapperPlayButton from './WrapperPlayButton/WrapperPlayButton';
 import { CDN_IMAGES_BASE_URL } from '@/app/lib/data/urls';
-
 // Object to map payment_type to configuration
 const paymentTypeConfig: Record<string, ConfigPayment> = {
   PT: {
@@ -31,31 +30,35 @@ const paymentTypeConfig: Record<string, ConfigPayment> = {
     subtitle: 'Sin costo alguno',
   },
 };
-
 /**
  * HeroCard Component
  *
- * The HeroCard component represents a card displaying detailed information
+ * The `HeroCard` component represents a card displaying detailed information
  * about a movie, including title, release date, runtime, and overview.
  * It also includes a background image and a button to view the movie.
  *
  * @component
- * @param {HeroCardProps} props - Props for configuring the HeroCard component.
+ * @param {HeroCardProps} props - Props for configuring the `HeroCard` component.
  * @param {MovieType} props.movieData - Movie data used to populate the card.
  * @param {VideoList} props.videos - List of videos related to the movie.
- * @returns {JSX.Element} - JSX element representing the HeroCard component.
+ * @returns {JSX.Element} - JSX element representing the `HeroCard` component.
+ * @example
+ * // Example usage of `HeroCard` component in a React component
+ * const MovieDetails = () => {
+ *   const movieData = //...fetch movie data from API or other source
+ *   return (
+ *     <HeroCard movieData={movieData} />
+ *   );
+ * };
  */
 export function HeroCard({ movieData }: HeroCardProps): JSX.Element {
   // Destructure movieData for easier access
   const { description, whySee, image2, price, payment_type } = movieData;
-
   // Retrieve configuration based on payment_type
   const config: ConfigPayment =
     paymentTypeConfig[payment_type] || paymentTypeConfig['default'];
-
   // Destructure configuration for easy access
   const { bg, title, text = '', subtitle } = config;
-
   // Render the HeroCard component with movie details
   return (
     <>

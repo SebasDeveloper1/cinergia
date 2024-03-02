@@ -1,14 +1,18 @@
 'use client';
+// Import React and React-related libraries
+import { useEffect } from 'react';
+// Import Next.js libraries and components
 import { useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 import Image from 'next/image';
-import siningCover from '@/public/images/siningCover.jpg';
-import cinergiaLogo from '@/public/cinergiaLogoWeb3.svg';
-import { popupCenter } from '@/app/lib/utils/popupCenter';
-import { useEffect } from 'react';
+// Import internal utilities and components
 import { validateUser } from '@/app/lib/data/createUser';
 import { routesPaths } from '@/app/routes/routes';
+import { popupCenter } from '@/app/lib/utils/popupCenter';
 import { Loading } from './LoadingSkeleton';
+// Import images and assets
+import siningCover from '@/public/images/siningCover.jpg';
+import cinergiaLogo from '@/public/cinergiaLogoWeb3.svg';
 
 /**
  * SignInPage Component
@@ -28,11 +32,6 @@ import { Loading } from './LoadingSkeleton';
  * );
  */
 export default function SignInPage(): JSX.Element {
-  /**
-   * Handles the sign-in process using the Google authentication provider.
-   * Retrieves the previous path from sessionStorage for redirection after successful sign-in.
-   */
-
   // Use next-auth/react hook to get session information
   const { data: session, status } = useSession();
   const router = useRouter();
@@ -57,6 +56,7 @@ export default function SignInPage(): JSX.Element {
     return <Loading />;
   }
 
+  // Render the main content of the component
   return (
     <div className="z-[60] fixed inset-0 w-screen lg:h-screen bg-bgPrimaryDark">
       <div className="overflow-y-auto w-full h-full">

@@ -1,7 +1,7 @@
+// Import necessary components and types
 import { Header } from '@/app/ui/components/Watch/VideoSection/Header';
 import { VideoPlayer } from '@/app/ui/components/shared/VideoPlayer';
 import { VideoSectionProps } from './VideoSection.model';
-
 /**
  * VideoSection Component
  *
@@ -12,6 +12,7 @@ import { VideoSectionProps } from './VideoSection.model';
  * @param {Object} props - The properties object containing movieData.
  * @param {Object} props.movieData - The movie data object containing information about the movie.
  * @returns {JSX.Element} - JSX element representing the VideoSection component.
+ *
  * @example
  * // Usage in a parent component
  * import { VideoSection } from '@/app/ui/components/Watch/VideoSection';
@@ -23,8 +24,9 @@ import { VideoSectionProps } from './VideoSection.model';
  * export default MovieDetailsPage;
  */
 export function VideoSection({ movieData }: VideoSectionProps) {
+  // Extract the unique identifier for the video
   const { urlId } = movieData;
-
+  // Return JSX representation of the VideoSection component
   return (
     <section className="flex flex-col justify-center items-center w-full">
       <article className="overflow-hidden relative w-11/12 md:w-9/12 rounded-sm border border-borderNeutral-50/10">

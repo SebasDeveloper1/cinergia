@@ -1,7 +1,6 @@
 // Import necessary dependencies and types
 import React from 'react';
 import { InputSearchProps } from '../Inputs.model';
-
 /**
  * InputSearch Component
  *
@@ -12,7 +11,6 @@ import { InputSearchProps } from '../Inputs.model';
  * @param {string} [props.variant='LG'] - The variant of the input (SM or LG).
  * @returns {JSX.Element} - JSX element representing the InputSearch component.
  */
-
 export function InputSearch({
   variant = 'LG',
   ...InputSearchProps

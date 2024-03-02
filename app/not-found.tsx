@@ -4,7 +4,6 @@ import notFound from '@/public/images/notFound404.svg';
 import { useRouter } from 'next/navigation';
 export default function NotFound() {
   const router = useRouter();
-
   return (
     <section className="flex flex-col justify-center items-center w-full h-screen">
       <div className="flex flex-col justify-center items-center gap-6 w-11/12 h-screen">

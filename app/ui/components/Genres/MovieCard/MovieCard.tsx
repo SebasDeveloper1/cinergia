@@ -1,13 +1,16 @@
 // Import necessary dependencies and types
 'use client';
+// React Imports
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
+// Internal Model
 import { MovieCardProps } from './MovieCard.model';
+// Internal URL
 import { CDN_IMAGES_BASE_URL } from '@/app/lib/data/urls';
+// Internal Routes
 import { routesPaths } from '@/app/routes/routes';
-
 /**
  * MovieCard Component
  *

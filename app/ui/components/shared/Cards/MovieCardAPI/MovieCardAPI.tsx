@@ -6,7 +6,6 @@ import Image from 'next/image';
 import { MovieCardAPIProps } from './MovieCardAPI.model';
 import { CDN_IMAGES_BASE_URL } from '@/app/lib/data/urls';
 import { routesPaths } from '@/app/routes/routes';
-
 /**
  * MovieCardAPI Component
  *
@@ -15,16 +14,14 @@ import { routesPaths } from '@/app/routes/routes';
  *
  * @component
  * @param {Object} props - The component props.
- * @param {MovieType | TrendingMovieType} props.movieData - An object containing movie data, either of type MovieType or TrendingMovieType.
+ * @param {MovieAPI} props.movieData - An object containing movie data, either of type MovieType or TrendingMovieType.
  * @returns {JSX.Element} - JSX element representing the MovieCardAPI component.
  */
 export function MovieCardAPI({ movieData }: MovieCardAPIProps): JSX.Element {
   // Extracting movie data properties
   const { name, slug, releaseYear, image1 } = movieData;
-
   // URL for the movie poster image
   const imageURL = `${CDN_IMAGES_BASE_URL}${image1}`;
-
   return (
     <ul>
       <li className="group overflow-hidden rounded-sm bg-bgSecondaryDark md:hover:bg-dark-800">

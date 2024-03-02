@@ -16,7 +16,6 @@
  * export const config = { matcher: ['/peliculas/watch/:path*'] };
  */
 export { default } from 'next-auth/middleware';
-
 /**
  * Middleware Configuration
  *

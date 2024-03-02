@@ -1,7 +1,6 @@
 'use client';
 import { useRouter } from 'next/navigation';
 import { HeaderProps } from './Header.model';
-
 /**
  * Header Component
  *
@@ -21,16 +20,13 @@ import { HeaderProps } from './Header.model';
  *
  * export default MovieDetailsPage;
  */
-
 export function Header({ movieData }: HeaderProps) {
   const { name, agerates } = movieData;
   const { name: agerate, range } = agerates[0];
   const router = useRouter();
-
   const handleToBack = () => {
     router.back();
   };
-
   return (
     <section className="z-10 overflow-hidden flex justify-center items-center w-full pl-4 border-l-4 border-accent-600">
       <article className="flex justify-between items-center gap-3 w-full">

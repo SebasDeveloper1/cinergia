@@ -1,10 +1,9 @@
 // Import necessary dependencies and types
-import { fetchHomeSection, fetchMovieDetails } from '@/app/lib/data/fetch';
-import { homeSections } from '@/app/lib/lists/homeSectionSlugs';
-import { RecommendedMovieBanner } from '@/app/ui/components/Home/RecommendedMovieBanner';
 import { Suspense } from 'react';
+import { fetchHomeSection, fetchMovieDetails } from '@/app/lib/data/fetch';
+import { RecommendedMovieBanner } from '@/app/ui/components/Home/RecommendedMovieBanner';
+import { homeSections } from '@/app/lib/lists/homeSectionSlugs';
 import { Loading } from './LoadingSkeleton';
-
 /**
  * WeekMovieSection Component
  *
@@ -13,6 +12,13 @@ import { Loading } from './LoadingSkeleton';
  * @component
  * @returns {Promise<JSX.Element>} - Promise resolving to JSX element representing the WeekMovieSection component.
  * @throws {Error} - Throws an error if there's an issue fetching data for the WeekMovieSection component.
+ * @example
+ * // Example usage of WeekMovieSection component in a React component or route
+ * const HomePage = () => {
+ *   return (
+ *     <WeekMovieSection />
+ *   );
+ * };
  */
 export async function WeekMovieSection(): Promise<JSX.Element> {
   try {
@@ -20,18 +26,14 @@ export async function WeekMovieSection(): Promise<JSX.Element> {
     const { data }: HomeSectionRequestAPI = await fetchHomeSection({
       section: homeSections?.weekMovieSection,
     });
-
     // Extract relevant information from the fetched data
     const sectionInfo: HomeSectionAPI = data[0];
     const movieList: MovieAPI[] = sectionInfo?.movies;
     const firstMovie: MovieAPI = movieList[0];
-
     // Fetch details for the recommended movie
     const { data: firstMovieData }: { data: MovieDetailsAPI[] } =
       await fetchMovieDetails(firstMovie?.slug);
-
     const firstMovieDetails: MovieDetailsAPI = firstMovieData[0];
-
     /**
      * Render the JSX for the WeekMovieSection component
      */

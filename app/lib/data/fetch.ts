@@ -1,3 +1,4 @@
+// Constants
 import {
   FREE_SHORTS_LIST_URL,
   GENRES_LIST_URL,
@@ -15,7 +16,8 @@ import {
  * @param {number} options.top - The number of top movies to retrieve (default is 10).
  * @returns {Promise<Array>} - A Promise that resolves to an array of movie data.
  * @throws {Error} - Throws an error if there is an issue fetching the movie list.
- */ export async function fetchMovieList({ top }: { top?: number }) {
+ */
+export async function fetchMovieList({ top }: { top?: number }) {
   const apiUrl = `${MOVIE_LIST_URL}${top ? `?top=${top}` : ''}`;
   const options = {
     next: { revalidate: 3600 },
@@ -38,7 +40,6 @@ import {
     throw new Error('Error fetching movie list');
   }
 }
-
 /**
  * Retrieves details for a specific movie using its slug.
  *
@@ -247,6 +248,14 @@ export async function fetchMovieDataForGenres(genresList: GenresListAPI[]) {
   return resultArray;
 }
 
+/**
+ * Fetches user data from the API.
+ *
+ * @param {Object} options - Options for fetching user data.
+ * @param {string} options.email - The email address of the user.
+ * @returns {Promise<Object>} - A Promise that resolves to user data.
+ * @throws {Error} - Throws an error if there is an issue fetching user data.
+ */
 export async function fetchUserData({ email }: { email: string }) {
   const apiUrl = `${USER_DATA_URL}?email=${email}`;
   const options = {

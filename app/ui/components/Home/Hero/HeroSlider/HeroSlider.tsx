@@ -8,18 +8,20 @@ import 'swiper/css/pagination';
 import { Pagination, Autoplay } from 'swiper/modules';
 import { BulletStyleType, HeroSliderProps } from './HeroSlider.model';
 import { HeroCard } from '../HeroCard';
-
 /**
  * HeroSlider Component
  *
- * The HeroSlider component is responsible for displaying a dynamic slider
+ * The `HeroSlider` component is responsible for displaying a dynamic slider
  * featuring movie cards. It utilizes the Swiper library for the slider functionality.
- * The movieList prop is used to populate the slider with movie data.
+ * The `movieList` prop is used to populate the slider with movie data.
  *
  * @component
  * @param {HeroSliderProps} props - Props for configuring the HeroSlider component.
  * @param {MovieType[]} props.movieList - An array of movie data to be displayed in the slider.
  * @returns {JSX.Element} - JSX element representing the HeroSlider component.
+ * @example
+ * // Example usage of HeroSlider component
+ * <HeroSlider movieList={myMovieList} />
  */
 export function HeroSlider({ movieList }: HeroSliderProps): JSX.Element {
   // Define custom styles for Swiper pagination bullets
@@ -27,7 +29,6 @@ export function HeroSlider({ movieList }: HeroSliderProps): JSX.Element {
     '--swiper-pagination-color': '#0190f8',
     '--swiper-pagination-bullet-inactive-color': '#ffffff',
   };
-
   // Render the Swiper component with movie cards
   return (
     <Swiper

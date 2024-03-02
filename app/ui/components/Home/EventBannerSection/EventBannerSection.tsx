@@ -1,7 +1,6 @@
 // Import necessary dependencies and types
 import { fetchTrending } from '@/app/lib/data/data';
 import { EventBannerSlider } from '@/app/ui/components/shared/Sliders/EventBannerSlider';
-
 /**
  * EventBannerSection Component
  *
@@ -14,7 +13,6 @@ export async function EventBannerSection(): Promise<JSX.Element> {
   // Fetch trending movies using the fetchTrending function
   const { results: EventMovieListResults }: ResultsMoviesTypes =
     await fetchTrending();
-
   /**
    * Render the JSX for the EventBannerSection component
    */

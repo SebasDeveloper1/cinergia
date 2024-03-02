@@ -8,7 +8,6 @@ import { BannerSliderMovieProps } from './BannerSliderMovie.model';
 import { CDN_IMAGES_BASE_URL } from '@/app/lib/data/urls';
 import { routesPaths } from '@/app/routes/routes';
 import { Loading } from './LoadingSkeleton';
-
 /**
  * BannerSliderMovie Component
  *
@@ -17,8 +16,8 @@ import { Loading } from './LoadingSkeleton';
  * @component
  * @param {string} sectionTitle - The title of the movie section.
  * @param {string} background - The background image URL for the banner slider.
- * @param {MovieDetailsType} firstMovieDetails - Details of the first movie in the slider.
- * @param {TrendingMovieType[]} movieList - An array of movie objects for display.
+ * @param {MovieDetailsAPI} firstMovieDetails - Details of the first movie in the slider.
+ * @param {MovieAPI[]} movieList - An array of movie objects for display.
  * @returns {JSX.Element} - JSX element representing the BannerSliderMovie component.
  */
 export function BannerSliderMovie({
@@ -30,32 +29,26 @@ export function BannerSliderMovie({
 }: BannerSliderMovieProps): JSX.Element {
   // Destructure movieList to extract relevant information
   const { name, description, slug, image2, agerates } = firstMovieDetails;
-
   // State to manage loading status
   const [loading, setLoading] = useState(true);
-
   // Construct the background image URL
   const backgroundImageUrl = background
     ? `url('${CDN_IMAGES_BASE_URL}${background}')`
     : `url('${CDN_IMAGES_BASE_URL}${image2}')`;
-
   const extractValuesAgregates = extractValuesByKey({
     array: agerates,
     key: 'range',
   });
-
   // Simulating loading delay with a timeout
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
     }, 1000);
   }, []);
-
   // Render skeleton loader while loading
   if (loading) {
     return <Loading />;
   }
-
   // Render the JSX for the BannerSliderMovie component
   return (
     <section
@@ -71,7 +64,6 @@ export function BannerSliderMovie({
             {sectionTitle}
           </span>
         </div>
-
         {/* Movie details */}
         <div className="flex flex-col justify-center gap-8 w-11/12 md:w-10/12 pt-12">
           <div className="flex flex-col gap-1 w-full">
@@ -84,13 +76,11 @@ export function BannerSliderMovie({
                 {extractValuesAgregates}
               </span>
             </div>
-
             {/* Movie overview */}
             <p className="paragraph-base line-clamp-5 lg:line-clamp-none font-normal text-textColorNeutral-50 max-w-prose">
               {description}
             </p>
           </div>
-
           {/* Action buttons */}
           <div className="flex flex-col md:flex-row gap-4 justify-start items-center w-full">
             {/* "Ver película" button */}
@@ -100,7 +90,6 @@ export function BannerSliderMovie({
             >
               Ver Película
             </Link>
-
             {/* "Ver más" button */}
             <Link
               className="button-outlined padding-button w-full md:w-fit"
@@ -109,7 +98,6 @@ export function BannerSliderMovie({
               Ver Más
             </Link>
           </div>
-
           {/* Horizontal movie slider */}
           <div className="flex justify-end items-center w-full mt-4">
             <div className="w-full md:w-3/4">

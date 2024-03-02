@@ -1,5 +1,25 @@
 import { OverviewSectionProps } from '../HeroCard.model';
-
+/**
+ * OverviewSectionSM Component
+ *
+ * The `OverviewSectionSM` component displays a simplified version of movie details,
+ * including the overview and reasons to watch it. This version is designed for small screens.
+ *
+ * @component
+ * @param {OverviewSectionProps} props - Props for configuring the OverviewSectionSM component.
+ * @param {string} props.overview - Overview or synopsis of the movie.
+ * @param {string} props.whySeeIt - Reasons to watch the movie.
+ * @returns {JSX.Element} - JSX element representing the OverviewSectionSM component.
+ * @example
+ * // Example usage of OverviewSectionSM component in a React component
+ * const MovieDetailsPageSM = () => {
+ *   const overviewText = //...fetch overview text from API or other source
+ *   const whySeeItText = //...fetch whySeeIt text from API or other source
+ *   return (
+ *     <OverviewSectionSM overview={overviewText} whySeeIt={whySeeItText} />
+ *   );
+ * };
+ */
 export function OverviewSectionSM({
   overview,
   whySeeIt,

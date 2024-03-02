@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react';
 import { HorizontalMovieListSecondaryTypes } from '../HorizontalMovieList.model';
 import { HorizontalSlider } from '../../Sliders/HorizontalSlider';
 import { Loading } from './LoadingSkeleton';
-
 /**
  * HorizontalMovieListSecondary Component
  *
@@ -16,7 +15,7 @@ import { Loading } from './LoadingSkeleton';
  * @param {string} title - The title of the movie list section.
  * @param {string} description - The description or additional information about the movie list.
  * @param {string} path - The path or link to navigate to when the "Ver Más" (See More) button is clicked.
- * @param {TrendingMovieType[]} movieList - An array of movie objects to be displayed in the horizontal slider.
+ * @param {MovieAPI[]} movieList - An array of movie objects to be displayed in the horizontal slider.
  * @param {...any} props - Additional props that can be applied to the component's root element.
  * @returns {JSX.Element} - JSX element representing the HorizontalMovieListSecondary component.
  */

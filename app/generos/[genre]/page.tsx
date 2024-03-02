@@ -1,12 +1,16 @@
+// React Imports
+import { Suspense } from 'react';
+// Internal Utilities and Data Fetching
 import { fetchHomeSection, fetchMovieListForGenre } from '@/app/lib/data/fetch';
-import NotFound from '@/app/not-found';
+// Internal Components
 import { Hero } from '@/app/ui/components/Genres/Hero';
 import { MovieList } from '@/app/ui/components/Genres/MovieList';
 import { ScrollTopButtonWrapper } from '@/app/ui/components/shared/ScrollTopButtonWrapper';
+import NotFound from '@/app/not-found';
+// Internal Models
 import { GenrePageProps } from './GenrePage.model';
+// Internal Loading Component
 import { Loading } from '@/app/ui/components/Genres/Hero/LoadingSkeleton';
-import { Suspense } from 'react';
-
 // Utility function to handle common logic for assigning values
 const setDefaultGenreInfo = (defaultGenreInfo, data) => {
   Object.assign(defaultGenreInfo, {
@@ -16,7 +20,6 @@ const setDefaultGenreInfo = (defaultGenreInfo, data) => {
     movies: data.movies.reverse(),
   });
 };
-
 /**
  * Genre Page
  *
@@ -31,11 +34,9 @@ const setDefaultGenreInfo = (defaultGenreInfo, data) => {
  * @returns {JSX.Element} - JSX element representing the Genre Page.
  * @throws {Error} - Throws an error if there is an issue fetching the movie list.
  */
-
 export async function generateMetadata({ params }: GenrePageProps) {
   // Extract genre slug from parameters
   const genreSlug = params.genre;
-
   // Set up default genre information structure
   const defaultGenreInfo: GenreInfoAPI = {
     id: 0,
@@ -43,7 +44,6 @@ export async function generateMetadata({ params }: GenrePageProps) {
     description: '',
     movies: [],
   };
-
   try {
     // Fetch the list of movies for the specified genre
     const {
@@ -68,7 +68,6 @@ export async function generateMetadata({ params }: GenrePageProps) {
     console.error('Error fetching data:', error);
     // You can also redirect to an error page if needed
   }
-
   return {
     title: `Cinergia | ${defaultGenreInfo?.name}`,
     description: `Explora la riqueza del cine de ${defaultGenreInfo?.name} en Cinergia. Descubre emocionantes películas, cautivadores cortometrajes y envolventes largometrajes.`,
@@ -95,11 +94,9 @@ export async function generateMetadata({ params }: GenrePageProps) {
     },
   };
 }
-
 export default async function GenrePage({ params }: GenrePageProps) {
   // Extract genre slug from parameters
   const genreSlug = params.genre;
-
   // Set up default genre information structure
   const defaultGenreInfo: GenreInfoAPI = {
     id: 0,
@@ -107,9 +104,7 @@ export default async function GenrePage({ params }: GenrePageProps) {
     description: '',
     movies: [],
   };
-
   let movieList: MovieAPI[];
-
   try {
     // Fetch the list of movies for the specified genre
     const {
@@ -117,7 +112,6 @@ export default async function GenrePage({ params }: GenrePageProps) {
     }: { data: GenreInfoAPI[] } = await fetchMovieListForGenre({
       genreSlug,
     });
-
     if (genreData && genreData.movies && genreData.movies.length > 0) {
       setDefaultGenreInfo(defaultGenreInfo, genreData);
       movieList = [...(genreData.movies as MovieAPI[])];
@@ -127,7 +121,6 @@ export default async function GenrePage({ params }: GenrePageProps) {
         section: genreSlug,
       });
       const homeSectionData = data[0];
-
       if (
         !homeSectionData ||
         !homeSectionData.movies ||
@@ -136,11 +129,9 @@ export default async function GenrePage({ params }: GenrePageProps) {
         // If both fetchMovieListForGenre and fetchHomeSection return empty data, display NotFound
         return <NotFound />;
       }
-
       setDefaultGenreInfo(defaultGenreInfo, homeSectionData);
       movieList = [...(homeSectionData.movies as MovieAPI[])];
     }
-
     // Display the Genre Page with Hero and MovieList components
     return (
       <section className="w-full">

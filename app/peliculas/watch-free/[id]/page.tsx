@@ -1,10 +1,12 @@
+// External Libraries
 import { fetchMovieDetails } from '@/app/lib/data/fetch';
-import NotFound from '@/app/not-found';
+// Internal Components and Pages
 import { VideoSection } from '@/app/ui/components/Watch/VideoSection';
+import NotFound from '@/app/not-found';
+// Page-specific Models and Constants
 import { WatchFreePageProps } from '../../PeliculasPage.model';
 import { CDN_IMAGES_BASE_URL } from '@/app/lib/data/urls';
 import { paymentType } from '@/app/lib/lists/paymentType';
-
 /**
  * WatchPage Component
  *
@@ -31,12 +33,10 @@ export async function generateMetadata({ params }: WatchFreePageProps) {
   // Fetches movie information based on the provided ID
   const { data }: { data: MovieDetailsAPI[] } =
     await fetchMovieDetails(movieId);
-
   const movieData = data[0];
   if (!movieData) {
     return <NotFound />;
   }
-
   return {
     title: `Cinergia | ${movieData?.name}`,
     description: movieData?.description,
@@ -68,19 +68,14 @@ export default async function WatchFreePage({
   params,
 }: WatchFreePageProps): Promise<JSX.Element> {
   const movieId: string = params.id;
-
   // Fetches movie information based on the provided ID
   const { data }: { data: MovieDetailsAPI[] } =
     await fetchMovieDetails(movieId);
-
   const movieData = data[0];
-
   if (!movieData || movieData.payment_type !== paymentType.free) {
     return <NotFound />;
   }
-
   const { image2 } = movieData;
-
   return (
     <div
       className="z-[60] fixed inset-0 w-full h-screen bg-cover bg-center"

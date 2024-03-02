@@ -2,7 +2,6 @@
 // Import necessary dependencies and types
 import { MovieCard } from '../MovieCard';
 import { MovieListProps } from './MovieList.model';
-
 /**
  * MovieList Component
  *
@@ -18,15 +17,12 @@ import { MovieListProps } from './MovieList.model';
 export function MovieList({ genreInfo, movieList }: MovieListProps) {
   // Destructure genre information
   const { name } = genreInfo;
-
+  /**
+   * Renders the MovieList component.
+   *
+   * @returns {JSX.Element} - JSX element representing the MovieList component.
+   */
   return (
-    /**
-     * MovieList Section
-     *
-     * Displays a list of movies for a specific genre.
-     *
-     * @returns {JSX.Element}
-     */
     <section className="flex place-content-center w-full py-16">
       <div className="w-11/12 md:w-10/12">
         {/* Genre Heading */}
